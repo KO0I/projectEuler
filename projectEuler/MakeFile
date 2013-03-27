@@ -1,0 +1,16 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99 -g
+
+SRC = fib.c 2e.c
+#HDR = pqueue.h
+OBJ = $(SRC:.c=.o)
+TARGET = 2e
+
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $(OBJ)
+$(OBJ): $(HDR)
+tags: $(SRC) $(HDR)
+	ctags $^
+.PHONY: clean
+clean:
+	rm -f $(TARGET) $(OBJ)

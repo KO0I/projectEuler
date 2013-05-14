@@ -14,3 +14,10 @@
  * consecutive primes?
  *
  */
+
+/*For this project, I'll need:
+ *  -my prime number generator, (or at least just one million primes)
+ *  -a prime factorization program
+ *  -this program, which takes the output of the previous program and runs
+ *  along.
+ */

@@ -1,0 +1,133 @@
+\documentclass{article}
+\title{Project Euler Problem 17\\Number Letter Counts}
+\author{Patrick Harrington}
+\usepackage{amsmath}
+\usepackage{subcaption}
+
+\begin{document}
+\maketitle
+\section{Problem Statement}
+If the numbers 1 to 5 are written out in words: one, two, three, four,
+five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+
+If all the numbers from 1 to 1000 (one thousand) inclusive were written out
+in words, how many letters would be used?
+
+
+NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and
+forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20
+letters. The use of ``and'' when writing out numbers is in compliance with
+British usage.
+
+\section{Method}
+Since we are converting each number to a string in the range {1,1000}, we
+might as well save ourselves a great deal of work and find common quantities.
+\subsection{Redifining the numbers}
+
+The following table shows all of the most common numbers (which also make up
+parts of larger numbers) as the integer value of the letters present.
+
+\begin{tabular}{ccc}
+  \begin{minipage}{.3\linewidth}
+  \begin{tabular}[center]{c|c}
+    Number  & Letters \\
+    \hline
+    One & 3\\
+    Two & 3\\
+    Three & 5\\
+    Four & 4\\
+    Five & 4\\
+    Six & 3\\
+    Seven & 5\\
+    Eight & 5\\
+    Nine & 4\\
+  \end{tabular}
+  \end{minipage} &
+
+  \begin{minipage}{.3\linewidth}
+  \begin{tabular}[center]{c|c}
+    Number  & Letters \\
+    \hline
+    Ten & 3\\
+    Eleven & 6\\
+    Twelve & 6\\
+    Thirteen & 8\\
+    Fourteen & 8\\
+    Fifteen & 7\\
+    Sixteen & 7\\
+    Seventeen & 9\\
+    Eighteen & 8\\
+    Nineteen & 8\\
+  \end{tabular}
+  \end{minipage}  &
+  
+  \begin{minipage}{.3\linewidth}
+  \begin{tabular}[center]{c|c}
+    Number  & Letters \\
+    \hline
+    Twenty & 6\\
+    Thirty & 6\\
+    Forty & 5\\
+    Fifty & 5\\
+    Sixty & 5\\
+    Seventy & 7\\
+    Eighty & 6\\
+    Ninety & 6\\
+  \end{tabular}
+  \end{minipage}  
+\end{tabular}
+
+
+
+\subsection{Summation}
+The next logical step was to find the values for repeating ranges such as 1-9,
+1-99 and so on. 
+
+\subsubsection{\{ 1-9 \}}
+The first range to have its values summed was 1 through 9:
+\begin{eqnarray*}
+  a &=& \sum_{i=1}^{9} Letters[i]\\
+  a &=& \boxed{36}
+  \label{1thru9}
+\end{eqnarray*}
+
+\subsubsection{ \{ 10-19 \} }
+Next, the teens
+\begin{eqnarray*}
+  b &=& \sum_{i=10}^{19} Letters[i]\\
+  b &=& \boxed{70}
+  \label{10thru19}
+\end{eqnarray*}
+
+\subsubsection{\{ 20-90 \}}
+Next, a corner case was considered; every ten integers were summed as \emph{c}.
+\begin{eqnarray*}
+  c &=& \sum_{i=20}^{90} Letters[i\times10]\\
+  c &=& \boxed{46}
+  \label{20thru90}
+\end{eqnarray*}
+
+So the number of letters in the range \{1,99\} is:
+\begin{eqnarray*}
+  9a+b+10c &=& d\\ 
+  d &=&\boxed{854} 
+  \label{1thru99sum}
+\end{eqnarray*}
+
+With this in mind, and given that 
+\begin{eqnarray*}
+  \text{One Thousand} &=& \boxed{11}
+\end{eqnarray*}
+
+the final equation can be set up:
+
+\begin{eqnarray*}
+  \overbrace{10d}^{\text{1$\to$99 }} +
+  \underbrace{(900 \times 7)}_{\text{hundred}} +
+  \overbrace{(891\times3)}^{\text{and}}+
+  100a+11\\
+\end{eqnarray*}                   
+\begin{eqnarray*}
+  \text{\bf{Final Answer}}: \boxed{21124}
+\end{eqnarray*}                   
+\end{document}

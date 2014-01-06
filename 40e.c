@@ -70,9 +70,9 @@ while(n <= end){
   printf("\n");
 
   for(i=0;i<=end;i++){
-    printf("%i ",d[i]);
+    printf("%i",d[i]);
   }
-  printf("\n");
+printf("\n");
 return 0;
 }
 

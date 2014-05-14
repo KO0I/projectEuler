@@ -1,0 +1,201 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6606,        192]
+NotebookOptionsPosition[      5893,        162]
+NotebookOutlinePosition[      6228,        177]
+CellTagsIndexPosition[      6185,        174]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+  SuperscriptBox["a", "b"]}], "\[IndentingNewLine]", 
+ RowBox[{"Clear", "[", "\[Zeta]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Animate", "[", 
+  RowBox[{
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"a", ",", "b"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "2", ",", "\[Zeta]"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"b", ",", "2", ",", "\[Zeta]"}], "}"}], ",", 
+     RowBox[{"Contours", "\[Rule]", "2"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Zeta]", ",", "5", ",", "100"}], "}"}], ",", 
+   RowBox[{"AnimationRunning", "\[Rule]", "False"}], ",", 
+   RowBox[{"AnimationRate", "\[Rule]", "0.01"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.609038542178389*^9, 3.609038583772911*^9}, {
+  3.60903862921024*^9, 3.609038669605714*^9}, {3.609038761136579*^9, 
+  3.609038824601026*^9}, {3.6090388750252647`*^9, 3.609038938318556*^9}, {
+  3.60903898041009*^9, 3.609038994002987*^9}, {3.609039029802607*^9, 
+  3.609039087930957*^9}, {3.6090391270707493`*^9, 3.609039205898295*^9}, {
+  3.609039241867322*^9, 3.609039242499078*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Zeta]$$ = 5.527366600036621, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Zeta]$$], 5, 100}}, Typeset`size$$ = {
+    360., {176., 181.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Zeta]$10894$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`\[Zeta]$$ = 5}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`\[Zeta]$$, $CellContext`\[Zeta]$10894$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ContourPlot[
+        $CellContext`f[$CellContext`a, $CellContext`b], {$CellContext`a, 
+         2, $CellContext`\[Zeta]$$}, {$CellContext`b, 
+         2, $CellContext`\[Zeta]$$}, Contours -> 2], 
+      "Specifications" :> {{$CellContext`\[Zeta]$$, 5, 100, AnimationRunning -> 
+         False, AnimationRate -> 0.01, 
+         AppearanceElements -> {
+          "ProgressSlider", "PlayPauseButton", "FasterSlowerButtons", 
+           "DirectionButton"}}}, 
+      "Options" :> {
+       ControlType -> Animator, AppearanceElements -> None, DefaultBaseStyle -> 
+        "Animate", DefaultLabelStyle -> "AnimateLabel", SynchronousUpdating -> 
+        True, ShrinkingDelay -> 10.}, "DefaultOptions" :> {}],
+     ImageSizeCache->{407., {211., 218.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Animate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.609039042051229*^9, 3.609039089197617*^9}, {
+   3.609039135036306*^9, 3.609039148023018*^9}, {3.6090391784196453`*^9, 
+   3.609039206605483*^9}, 3.609039244972178*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "The", " ", "gradient", " ", "of", " ", "the", " ", "function", " ", "at", 
+   " ", 
+   SuperscriptBox["2", "4"], " ", "should", " ", "be", " ", "equal", " ", 
+   "to", " ", "the", " ", "gradient", " ", "at", " ", 
+   SuperscriptBox["4", "2"], " ", "??"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.609039307352703*^9, 3.6090394036798887`*^9}, {
+  3.609039527557328*^9, 3.60903953153905*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"a", ",", "b"}], "]"}], ",", "a"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"D", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"a", ",", "b"}], "]"}], ",", "b"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.609039502899667*^9, 3.609039512904708*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["a", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "b"}]], " ", "b"}]], "Output",
+ CellChangeTimes->{3.6090395132624607`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["a", "b"], " ", 
+  RowBox[{"Log", "[", "a", "]"}]}]], "Output",
+ CellChangeTimes->{3.6090395132649117`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["4", 
+   RowBox[{
+    RowBox[{"-", "1"}], "+", "2"}]], " ", "2"}]], "Input",
+ CellChangeTimes->{{3.609039571476973*^9, 3.609039574911153*^9}, {
+  3.609039615300906*^9, 3.609039620301598*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.609039575484641*^9, 3.609039620794726*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{
+   SuperscriptBox["2", "4"], " ", "*", " ", 
+   RowBox[{"Log", "[", "4", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.609039578408929*^9, 3.609039632841151*^9}}],
+
+Cell[BoxData["22.18070977791825`"], "Output",
+ CellChangeTimes->{{3.609039600422739*^9, 3.6090396334058733`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1278, 783},
+WindowMargins->{{0, Automatic}, {2, Automatic}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1184, 26, 99, "Input"],
+Cell[1766, 50, 2252, 43, 446, "Output"]
+}, Open  ]],
+Cell[4033, 96, 443, 9, 32, "Input"],
+Cell[CellGroupData[{
+Cell[4501, 109, 334, 10, 55, "Input"],
+Cell[4838, 121, 162, 5, 32, "Output"],
+Cell[5003, 128, 148, 4, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5188, 137, 232, 6, 32, "Input"],
+Cell[5423, 145, 92, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5552, 151, 209, 5, 35, "Input"],
+Cell[5764, 158, 113, 1, 64, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

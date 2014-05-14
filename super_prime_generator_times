@@ -1,0 +1,33 @@
+A record of how fast the primes were generated
+
+Number of primes generated is defined as N 
+
+N=100000
+
+Time 1: 5.739754s
+Time 2: 5.737716s
+Time 3: 5.795399s
+
+After adding in mpz_clear for variables
+
+Time 1: 5.768508s
+Time 2: 5.662978s
+Time 3: 5.850702s
+
+Using original code again, N=200000
+
+Time 1: 16.770259s
+Time 2: 16.358762s
+
+Modifying the loop - removing if statement
+
+Time 1: 16.919828s
+Time 2: 16.954651s
+
+Modifying the limit
+
+Time 1: 16.507892s
+Time 2: 16.670888s
+
+Modifying the function to check for perfect squares first seemed to work, but
+super_prime_generator2 is a hot mess

@@ -14,7 +14,7 @@ measurement of algorithm runtime.
  \IfFileExists{../../build/math_plots/#1.pdf}{%
   \includegraphics[width=0.92\linewidth,height=0.37\textheight,keepaspectratio]{../../build/math_plots/#1.pdf}%
  }{\fbox{\parbox{0.76\linewidth}{%
-  Figure not generated: \texttt{#1.pdf}. Run \texttt{make plots-math}
+  Figure not generated: \texttt{\detokenize{#1.pdf}}. Run \texttt{make plots-math}
   before rebuilding this report.}}}%
  \caption{Project Euler #2: #3}\label{fig:#1}
  \end{figure}

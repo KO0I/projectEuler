@@ -127,6 +127,50 @@ def totals(rows, info, out):
     write(fig, out, "totals")
 
 
+def matching_problem_ids(rows, languages):
+    """Exact intersection of implemented problem IDs, not a union of partial suites."""
+    if len(languages) < 2:
+        return []
+    return sorted(set.intersection(*(set(rows[lang]) for lang in languages)))
+
+
+def matched_subset_totals(rows, info, out):
+    """Compare equal problem sets; never disguise Factor's partial suite as full."""
+    languages = info["languages"]
+    numbers = matching_problem_ids(rows, languages)
+    if not numbers:
+        return
+    fig, ax = plt.subplots(figsize=(9.5, 6))
+    times = []
+    for index, language in enumerate(languages):
+        passed = [n for n in numbers if rows[language][n]["status"] == "pass"]
+        if len(passed) != len(numbers):
+            ax.text(index, .05, f"{len(passed)}/{len(numbers)} passed\n"
+                    "No comparable total",
+                    ha="center", transform=ax.get_xaxis_transform())
+            continue
+        duration = sum(float(rows[language][n]["runtime_ms"]) for n in numbers)
+        times.append(duration)
+        ax.bar(index, duration, width=.6, color=COLORS[language],
+               hatch=HATCHES[language], edgecolor="#222222", linewidth=.8)
+        ax.annotate(f"{duration:.2f} [ms]", (index, duration), xytext=(0, 8),
+                    textcoords="offset points", ha="center", fontsize=10)
+    if times:
+        ax.set_yscale("log")
+        ax.set_ylim(min(times) / 2, max(times) * 2)
+    ax.set_xticks(range(len(languages)), [lang.upper() for lang in languages])
+    ax.set_ylabel("Sum of per-problem process wall times [ms] (log scale)")
+    ax.set_title(f"Equal-coverage comparison: {len(numbers)} shared Euler problems"
+                 "\nSame runner; exactly one execution per problem")
+    ax.grid(axis="y", linestyle=":", alpha=.4)
+    fig.text(.03, .03, "Shared Euler IDs: " + ", ".join(map(str, numbers)) +
+             ". Compilation excluded; interpreter startup included.\n"
+             "Algorithmic differences remain. X/partial coverage is not zero; "
+             "single observations have no statistical error bars.", fontsize=8)
+    fig.tight_layout(rect=(0, .1, 1, 1))
+    write(fig, out, "matched_subset_totals")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run", type=Path, help="Saved run directory; default is the latest profile")
@@ -137,6 +181,7 @@ def main():
         parser.error(str(exc))
     runtime_by_problem(rows, info, run / "plots")
     totals(rows, info, run / "plots")
+    matched_subset_totals(rows, info, run / "plots")
     print(f"Saved SVG/PNG/PDF charts under {run / 'plots'}")
 
 

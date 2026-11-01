@@ -2,12 +2,15 @@ USING: io kernel locals math math.functions math.order math.parser ranges sequen
 IN: scratchpad
 
 ! Search all four legal directions of a 20-by-20 grid.
-! Read exactly two-digit DECIMAL cells; generic string>number interprets
-! zero-padded strings such as 08 as invalid numeric literals.
+! The input separates rows with LF as well as spaces. Split on *all*
+! ASCII whitespace; otherwise the last cell of one row merges with the first
+! cell of the next. Accumulate the zero-padded cells explicitly in base 10.
 : decimal-cell ( str -- n ) 0 [ 48 - swap 10 * + ] reduce ;
 : read-grid ( -- seq )
     "tests/data/p011.txt" utf8 file-contents
-    split-words [ decimal-cell ] map ;
+    [ { 32 10 13 9 } member? ] split-when
+    [ empty? not ] filter
+    [ decimal-cell ] map ;
 
 :: grid-product ( grid x y dx dy -- n )
     1 :> result!

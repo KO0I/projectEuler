@@ -14,7 +14,7 @@
 : bptr@ ( b -- a ) 3 cells + @ ;
 : bptr! ( a b -- ) 3 cells + ! ;
 
-: bnew { requested | b p } ( u -- b )
+: bnew 0 0 { requested b p } ( u -- b )
   4 cells allocate throw to b
   requested 1 max cells allocate throw to p
   0 b bsign!  0 b blen!
@@ -26,7 +26,7 @@
   index b blen@ < if b bptr@ index cells + @ else 0 then ;
 : blimb! { value index b } ( u i b -- )
   value b bptr@ index cells + ! ;
-: bensure { needed b | newcap p } ( u b -- )
+: bensure 0 0 { needed b newcap p } ( u b -- )
   b bcap@ to newcap
   begin newcap needed < while newcap 2* to newcap repeat
   newcap b bcap@ > if
@@ -51,7 +51,7 @@
   a blen@ b bensure
   a blen@ 0 ?do i a blimb@ i b blimb! loop
   a blen@ b blen! a bsign@ b bsign! ;
-: babscompare { a b | v w } ( a b -- -1|0|1 )
+: babscompare 0 0 { a b v w } ( a b -- -1|0|1 )
   a blen@ b blen@ < if -1 exit then
   a blen@ b blen@ > if 1 exit then
   a blen@ 0 ?do
@@ -60,7 +60,7 @@
     v w < if -1 exit then
     v w > if 1 exit then
   loop 0 ;
-: baddabs! { a b | carry value size } ( a b -- )
+: baddabs! 0 0 0 { a b carry value size } ( a b -- )
   a blen@ b blen@ max to size
   size 1+ a bensure
   0 to carry
@@ -72,7 +72,7 @@
   carry 0> if carry size a blimb! size 1+ a blen!
   else size a blen! then
   a blen@ 0> if 1 a bsign! else 0 a bsign! then ;
-: bsubabs! { a b | borrow value } ( a b -- )
+: bsubabs! 0 0 { a b borrow value } ( a b -- )
   \ Preconditions: |a| >= |b|; this subtracts unsigned magnitudes.
   a b babscompare 0< abort" bsubabs: negative magnitude"
   0 to borrow
@@ -84,7 +84,7 @@
   loop
   borrow 0<> abort" bsubabs: borrow"
   a bnormalize ;
-: badd { a b out | relation } ( a b out -- )
+: badd 0 { a b out relation } ( a b out -- )
   \ Output must not alias the two inputs.
   a bsign@ b bsign@ = if
     a out bcopy out b baddabs!
@@ -95,7 +95,7 @@
     relation 0> if a out bcopy out b bsubabs!
     else b out bcopy out a bsubabs! then
   then ;
-: bmul-small! { factor b | carry value } ( u b -- )
+: bmul-small! 0 0 { factor b carry value } ( u b -- )
   factor 0= if b bclear exit then
   0 to carry
   b blen@ 0 ?do
@@ -109,7 +109,7 @@
     carry big-base / to carry
     b blen@ 1+ b blen!
   repeat ;
-: bmul { a b out | carry value index limit } ( a b out -- )
+: bmul 0 0 0 0 { a b out carry value index limit } ( a b out -- )
   \ Output must not alias the two inputs.
   a blen@ b blen@ + to limit
   limit 1+ out bensure
@@ -127,7 +127,7 @@
   loop
   a bsign@ b bsign@ * 0< if -1 else 1 then out bsign!
   out bnormalize ;
-: bdiv-small! { divisor b | remainder value index } ( u b -- r )
+: bdiv-small! 0 0 0 { divisor b remainder value index } ( u b -- r )
   divisor 0= abort" division by zero"
   0 to remainder
   b blen@ 0 ?do
@@ -138,7 +138,7 @@
   loop
   b bnormalize
   remainder ;
-: badd-small! { small b | temp } ( u b -- )
+: badd-small! 0 { small b temp } ( u b -- )
   small 0= if exit then
   1 bnew to temp
   small temp bset-u
@@ -152,13 +152,13 @@
     [char] 0 -
     10 b bmul-small! b badd-small!
   loop ;
-: bdecimal-length { b | n digits } ( b -- u )
+: bdecimal-length 0 0 { b n digits } ( b -- u )
   b blen@ 0= if 1 exit then
   b blen@ 1- b blimb@ to n
   0 to digits
   begin n 0> while n 10 / to n digits 1+ to digits repeat
   b blen@ 1- 4 * digits + ;
-: bdigitsum { b | result n } ( b -- u )
+: bdigitsum 0 0 { b result n } ( b -- u )
   0 to result
   b blen@ 0 ?do
     i b blimb@ to n

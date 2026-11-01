@@ -2,86 +2,66 @@ name: Project Euler language validation
 
 on:
   pull_request:
-    branches:
-      - reorganize/solutions-by-language
+    branches: [reorganize/solutions-by-language]
+    paths:
+      - 'solutions/**'
+      - 'support/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'explanations/latex/**'
+      - 'Makefile'
+      - '.github/workflows/euler-validation.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: euler-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  c:
-    name: C / GNU MP
-    runs-on: ubuntu-latest
-    timeout-minutes: 12
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install GMP development files
-        run: sudo apt-get update && sudo apt-get install -y libgmp-dev
-      - name: Build and check 37 C problems
-        run: make test-c
-
-  rust:
-    name: Rust stable
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-      - name: Verify stable toolchain
-        run: rustup default stable && cargo --version && rustc --version
-      - name: Native Rust unit tests
-        run: cargo test --release --manifest-path solutions/rust/Cargo.toml
-      - name: Build and check 37 Rust problems
-        run: make test-rust
-
-  forth:
-    name: Gforth with base-10000 arithmetic
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Gforth
-        run: sudo apt-get update && sudo apt-get install -y gforth
-      - name: Arbitrary-precision Forth unit tests
-        run: gforth solutions/forth/test-big.fs
-      - name: Compile Forth solver definitions
-        run: gforth solutions/forth/solvers.fs -e 'bye'
-      - name: Check 37 Forth problems
-        run: make test-forth
-
-  plots:
-    name: One-run runtime profiles and mathematical figures
-    if: github.event_name == 'workflow_dispatch'
+  validate:
+    name: C, Rust and Forth on one machine
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
-      - name: Install compilers and Gforth
-        run: sudo apt-get update && sudo apt-get install -y gforth libgmp-dev python3-venv
-      - name: Prepare plotting environment
+      - name: Install language and documentation dependencies
         run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gforth libgmp-dev python3-venv texlive-latex-recommended lmodern
           python3 -m venv .venv
           .venv/bin/pip install --disable-pip-version-check numpy matplotlib
           rustup default stable
-      - name: Build native code
-        run: make c-release rust-release
-      - name: Profile exactly once per problem and language
-        id: benchmark
-        continue-on-error: true
-        run: .venv/bin/python scripts/bench.py --mode profile --languages c rust forth
-      - name: Generate plots from recorded observations
-        if: always()
+      - name: Check runner and native helpers (not full solution warm-ups)
         run: |
-          .venv/bin/python scripts/plots.py
-          .venv/bin/python scripts/math_plots.py
-      - uses: actions/upload-artifact@v4
+          make unit-c unit-forth unit-python PYTHON=.venv/bin/python
+          cargo test --release --lib --manifest-path solutions/rust/Cargo.toml -- --skip small_problems
+      - name: Build optimized executables
+        run: make c-release rust-release
+      - name: Validate and profile each of the 111 solutions exactly once
+        id: profile
+        continue-on-error: true
+        run: make profile PYTHON=.venv/bin/python
+      - name: Generate mathematical figures
+        run: make plots-math PYTHON=.venv/bin/python
+      - name: Compile exact repository LaTeX with red corrections
+        run: make docs
+      - name: Preserve measurements, plots, PDF, TeX sources and dependency lock
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: euler-one-run-profiles
+          name: euler-validation-${{ github.run_id }}
           path: |
             build/profile/
             build/math_plots/
+            explanations/latex/build/*.pdf
+            explanations/latex/*.tex
+            explanations/latex/chapters/*.tex
+            solutions/rust/Cargo.lock
+          if-no-files-found: warn
           retention-days: 30
-      - name: Report suite validation failures
-        if: steps.benchmark.outcome == 'failure'
+      - name: Fail the check when an answer, timeout, or plotting check failed
+        if: steps.profile.outcome == 'failure'
         run: exit 1

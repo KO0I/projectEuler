@@ -1,6 +1,7 @@
-\ Project Euler solvers for Gforth; answer is one signed cell (64-bit host).
-\ All source files are pure Forth and use the shared big.fs for large integers.
+\ Project Euler solvers for 64-bit Gforth, with base-10000 big integers.
 include big.fs
+: require-64bit ( -- ) 1 cells 8 <> abort" These solvers require 64-bit Gforth" ;
+require-64bit
 
 : is-prime? 0 { n divisor } ( n -- flag )
   n 2 < if false exit then
@@ -12,7 +13,7 @@ include big.fs
   repeat true ;
 : integer-gcd 0 { a b temp } ( a b -- gcd )
   begin b 0<> while
-    a b mod to temp  b to a  temp to b
+    a b mod to temp b to a temp to b
   repeat a ;
 : decimal-palindrome? 0 0 { n x reversed } ( n -- flag )
   n to x 0 to reversed
@@ -36,8 +37,7 @@ include big.fs
   result ;
 : proper-divisor-sum 0 0 { n result divisor } ( n -- sum )
   n 2 < if 0 exit then
-  1 to result
-  2 to divisor
+  1 to result 2 to divisor
   begin divisor n divisor / <= while
     n divisor mod 0= if
       result divisor + to result
@@ -46,8 +46,7 @@ include big.fs
     divisor 1+ to divisor
   repeat result ;
 : factorial 0 { n acc } ( n -- n! )
-  1 to acc
-  n 2 < if 1 exit then
+  1 to acc n 2 < if 1 exit then
   n 1+ 2 do acc i * to acc loop acc ;
 : digit-pow-sum 0 0 0 { n exponent result x digit } ( n power -- sum )
   n to x 0 to result
@@ -62,8 +61,7 @@ include big.fs
   addr u r/o open-file throw to f
   capacity allocate throw to buf
   buf capacity f read-file throw to count
-  f close-file throw
-  buf count ;
+  f close-file throw buf count ;
 : sieve-build 0 0 { limit p j } ( limit -- ptr )
   limit 1+ allocate throw to p
   p limit 1+ 1 fill
@@ -73,30 +71,25 @@ include big.fs
     p i + c@ 0<> if
       i i * to j
       begin j limit <= while
-        0 p j + c!
-        j i + to j
+        0 p j + c! j i + to j
       repeat
     then
   loop p ;
 
 : p1 ( -- answer )
-  0 1000 0 do
-    i 3 mod 0= i 5 mod 0= or if i + then
-  loop ;
+  0 1000 0 do i 3 mod 0= i 5 mod 0= or if i + then loop ;
 : p2 ( -- answer )
   1 2 0 0 { a b sum next }
   begin b 4000000 <= while
     b 2 mod 0= if sum b + to sum then
-    a b + to next
-    b to a next to b
+    a b + to next b to a next to b
   repeat sum ;
 : p3 ( -- answer )
   600851475143 2 1 { n d last }
   begin d n d / <= while
     n d mod 0= if d to last n d / to n
     else d 2 = if 3 else d 2 + then to d then
-  repeat
-  n 1 > if n else last then ;
+  repeat n 1 > if n else last then ;
 : p4 ( -- answer )
   0 { best }
   1000 100 do
@@ -108,12 +101,9 @@ include big.fs
   loop best ;
 : p5 ( -- answer )
   1 { result }
-  21 2 do
-    result result i integer-gcd / i * to result
-  loop result ;
+  21 2 do result result i integer-gcd / i * to result loop result ;
 : p6 ( -- answer )
-  100 101 * 2 / dup *
-  100 101 * 201 * 6 / - ;
+  100 101 * 2 / dup * 100 101 * 201 * 6 / - ;
 : p7 ( -- answer )
   0 1 { count value }
   begin count 10001 < while
@@ -134,19 +124,14 @@ include big.fs
     1 to product
     13 0 do product digits j i + + c@ * to product loop
     product best > if product to best then
-  loop
-  buffer free throw digits free throw best ;
+  loop buffer free throw digits free throw best ;
 : pythagorean-product 0 { a b c } ( a b -- result-or-zero )
   1000 a - b - to c
-  c b > a a * b b * + c c * = and if
-    a b * c *
-  else 0 then ;
+  c b > a a * b b * + c c * = and if a b * c * else 0 then ;
 : p9 ( -- answer )
   334 1 do
     500 i 1+ do
-      j i pythagorean-product dup 0<> if
-        unloop unloop exit
-      else drop then
+      j i pythagorean-product dup 0<> if unloop unloop exit else drop then
     loop
   loop -1 ;
 : p10 ( -- answer )
@@ -184,12 +169,10 @@ include big.fs
     grid i j 0 1 grid-product best max to best
     grid i j 1 1 grid-product best max to best
     grid i j -1 1 grid-product best max to best
-  loop loop
-  grid free throw buf free throw best ;
+  loop loop grid free throw buf free throw best ;
 : p12 ( -- answer )
   1 0 { n tri }
-  begin
-    n n 1+ * 2 / to tri
+  begin n n 1+ * 2 / to tri
     tri divisor-count 500 > if tri exit then
     n 1+ to n
   again ;
@@ -202,24 +185,15 @@ include big.fs
   s" lsum" r/o open-file throw
   0 0 0 0 0 { f total next line count more }
   16 bnew to total 16 bnew to next
-  128 allocate throw to line
-  0 to count
-  begin
-    line 128 f read-line throw to more
-    more
-  while
-    line over next bfrom-dec
-    total next baddabs!
-    count 1+ to count
-    drop
+  128 allocate throw to line 0 to count
+  begin line 128 f read-line throw to more more while
+    line over next bfrom-dec total next baddabs!
+    count 1+ to count drop
   repeat drop
   f close-file throw line free throw
   count 100 <> abort" p013 must contain 100 numbers"
-  begin total bdecimal-length 10 > while
-    10 total bdiv-small! drop
-  repeat
-  total bto-u
-  total bfree next bfree ;
+  begin total bdecimal-length 10 > while 10 total bdiv-small! drop repeat
+  total bto-u total bfree next bfree ;
 : p14 ( -- answer )
   1 0 0 0 { best-start best-length n length }
   1000000 1 do
@@ -231,10 +205,8 @@ include big.fs
     length best-length > if length to best-length i to best-start then
   loop best-start ;
 : p16 ( -- answer )
-  64 bnew { n }
-  1 n bset-u
-  1000 0 do 2 n bmul-small! loop
-  n bdigitsum n bfree ;
+  64 bnew { n } 1 n bset-u
+  1000 0 do 2 n bmul-small! loop n bdigitsum n bfree ;
 create letter-small
   0 , 3 , 3 , 5 , 4 , 4 , 3 , 5 , 5 , 4 ,
   3 , 6 , 6 , 8 , 8 , 7 , 7 , 9 , 8 , 8 ,
@@ -242,21 +214,14 @@ create letter-tens 0 , 0 , 6 , 6 , 5 , 5 , 5 , 7 , 6 , 6 ,
 : small-letters ( n -- count ) cells letter-small + @ ;
 : tens-letters ( n -- count ) cells letter-tens + @ ;
 : count-letters 0 { n answer } ( n -- count )
-  n 1000 = if 11 exit then
-  0 to answer
+  n 1000 = if 11 exit then 0 to answer
   n 100 >= if
     n 100 / small-letters 7 + answer + to answer
-    n 100 mod to n
-    n 0<> if answer 3 + to answer then
+    n 100 mod to n n 0<> if answer 3 + to answer then
   then
-  n 20 >= if
-    n 10 / tens-letters answer + to answer
-    n 10 mod to n
-  then
-  n 0> if n small-letters answer + to answer then
-  answer ;
-: p17 ( -- answer )
-  0 1001 1 do i count-letters + loop ;
+  n 20 >= if n 10 / tens-letters answer + to answer n 10 mod to n then
+  n 0> if n small-letters answer + to answer then answer ;
+: p17 ( -- answer ) 0 1001 1 do i count-letters + loop ;
 : leap? { year } ( year -- flag )
   year 4 mod 0= year 100 mod 0<> year 400 mod 0= or and ;
 create month-days 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ,
@@ -271,10 +236,8 @@ create month-days 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ,
     loop
   loop answer ;
 : p20 ( -- answer )
-  64 bnew { n }
-  1 n bset-u
-  101 2 do i n bmul-small! loop
-  n bdigitsum n bfree ;
+  64 bnew { n } 1 n bset-u
+  101 2 do i n bmul-small! loop n bdigitsum n bfree ;
 : p21 ( -- answer )
   0 0 { sum pair }
   10000 2 do
@@ -284,16 +247,13 @@ create month-days 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ,
     then
   loop sum ;
 : p25 ( -- answer )
-  1 bnew 1 bnew 1 bnew
-  0 0 { a b temp old index }
-  1 a bset-u 1 b bset-u
-  2 to index
+  1 bnew 1 bnew 1 bnew 0 0 { a b temp old index }
+  1 a bset-u 1 b bset-u 2 to index
   begin b bdecimal-length 1000 < while
-    a b temp badd
-    a to old b to a temp to b old to temp
+    a b temp badd a to old b to a temp to b old to temp
     index 1+ to index
-  repeat
-  a bfree b bfree temp bfree index ;
+  repeat a bfree b bfree temp bfree index ;
+
 \ Names scores: in-memory sort of quoted, comma-separated records.
 create names-address 5200 cells allot
 create names-length 5200 cells allot
@@ -305,190 +265,133 @@ create names-length 5200 cells allot
   a name-addr to addr a name-len to len
   b name-addr a cells names-address + !
   b name-len a cells names-length + !
-  addr b cells names-address + !
-  len b cells names-length + ! ;
+  addr b cells names-address + ! len b cells names-length + ! ;
 : name-sort 0 0 0 0 { lo hi left right pivot-addr pivot-len } ( lo hi -- )
-  lo hi >= if exit then
-  lo to left hi to right
-  lo hi + 2 / name-addr to pivot-addr
-  lo hi + 2 / name-len to pivot-len
+  lo hi >= if exit then lo to left hi to right
+  lo hi + 2 / name-addr to pivot-addr lo hi + 2 / name-len to pivot-len
   begin left right <= while
-    begin
-      left hi <= if
-        left name-addr left name-len pivot-addr pivot-len compare 0<
-      else false then
-    while left 1+ to left repeat
-    begin
-      right lo >= if
-        right name-addr right name-len pivot-addr pivot-len compare 0>
-      else false then
-    while right 1- to right repeat
-    left right <= if
-      left right name-swap
-      left 1+ to left right 1- to right
-    then
+    begin left hi <= if
+      left name-addr left name-len pivot-addr pivot-len compare 0<
+    else false then while left 1+ to left repeat
+    begin right lo >= if
+      right name-addr right name-len pivot-addr pivot-len compare 0>
+    else false then while right 1- to right repeat
+    left right <= if left right name-swap left 1+ to left right 1- to right then
   repeat
-  lo right < if lo right recurse then
-  left hi < if left hi recurse then ;
+  lo right < if lo right recurse then left hi < if left hi recurse then ;
 : name-value 0 { addr count sum } ( addr u -- score )
-  0 to sum
-  count 0 ?do
-    addr i + c@ [char] A - 1+ sum + to sum
-  loop sum ;
+  0 to sum count 0 ?do addr i + c@ [char] A - 1+ sum + to sum loop sum ;
 : p22 ( -- answer )
-  s" names.txt" 60000 read-fixture
-  0 0 0 0 { buf count start inside found sum }
+  s" names.txt" 60000 read-fixture 0 0 0 0 { buf count start inside found sum }
   0 to found false to inside 0 to sum
   count 0 do
     buf i + c@ [char] " = if
       inside if
         buf start + names-address found cells + !
-        i start - names-length found cells + !
-        found 1+ to found false to inside
-      else
-        i 1+ to start true to inside
-      then
+        i start - names-length found cells + ! found 1+ to found false to inside
+      else i 1+ to start true to inside then
     then
   loop
   found 5163 <> abort" p022 expected 5163 names"
   0 found 1- name-sort
-  found 0 do
-    i name-addr i name-len name-value i 1+ * sum + to sum
-  loop
+  found 0 do i name-addr i name-len name-value i 1+ * sum + to sum loop
   buf free throw sum ;
 
 : quadratic-run 0 0 { a b n value } ( a b -- count )
-  0 to n
-  begin
-    n n * a n * + b + to value
-    value is-prime?
+  0 to n begin n n * a n * + b + to value value is-prime?
   while n 1+ to n repeat n ;
 : p27 ( -- answer )
   0 0 0 { best product score }
-  1000 2 do
-    i is-prime? if
-      1000 -999 do
-        i j quadratic-run to score
-        score best > if score to best i j * to product then
-      loop
-    then
-  loop product ;
+  1000 2 do i is-prime? if
+    1000 -999 do
+      i j quadratic-run to score score best > if score to best i j * to product then
+    loop
+  then loop product ;
 : p28 ( -- answer )
   1 { result }
-  1002 3 do
-    i 2 mod 1 = if
-      i i * 4 * i 1- 6 * - result + to result
-    then
-  loop result ;
+  1002 3 do i 2 mod 1 = if
+    i i * 4 * i 1- 6 * - result + to result
+  then loop result ;
 : primitive-root 0 0 0 0 { n base power exp current-exp } ( n -- root exp )
   n to base 1 to exp
-  n 1+ 2 ?do
-    i to power 1 to current-exp
-    begin power n < while
-      power i * to power current-exp 1+ to current-exp
-    repeat
+  n 1+ 2 ?do i to power 1 to current-exp
+    begin power n < while power i * to power current-exp 1+ to current-exp repeat
     power n = if i to base current-exp to exp leave then
   loop base exp ;
 create power-seen 61000 allot
 : p29 ( -- answer )
-  power-seen 61000 erase
-  0 0 0 0 { count root exp key }
-  101 2 do
-    i primitive-root to exp to root
-    101 2 do
-      root 601 * exp i * + to key
-      power-seen key + c@ 0= if
-        1 power-seen key + c! count 1+ to count
-      then
+  power-seen 61000 erase 0 0 0 0 { count root exp key }
+  101 2 do i primitive-root to exp to root
+    101 2 do root 601 * exp i * + to key
+      power-seen key + c@ 0= if 1 power-seen key + c! count 1+ to count then
     loop
   loop count ;
 : p30 ( -- answer )
   0 { sum }
-  354295 2 do
-    i 5 digit-pow-sum i = if sum i + to sum then
-  loop sum ;
+  354295 2 do i 5 digit-pow-sum i = if sum i + to sum then loop sum ;
 : digit-factorial-sum 0 0 { n value result } ( n -- sum )
   n to value 0 to result
-  begin
-    value 10 mod factorial result + to result
-    value 10 / to value
+  begin value 10 mod factorial result + to result value 10 / to value
     value 0= if result exit then
   again ;
 : p34 ( -- answer )
   0 { sum }
-  2540161 3 do
-    i digit-factorial-sum i = if sum i + to sum then
-  loop sum ;
+  2540161 3 do i digit-factorial-sum i = if sum i + to sum then loop sum ;
 : p35 ( -- answer )
   1000000 sieve-build 0 0 0 0 { primes count rotated power good }
   0 to count
-  1000000 2 do
-    primes i + c@ 0<> if
-      1 to power
-      begin power i 10 / <= while power 10 * to power repeat
-      i to rotated true to good
-      begin
-        rotated 10 / rotated 10 mod power * + to rotated
-        primes rotated + c@ 0= if false to good then
-        rotated i = good 0= or
-      until
-      good if count 1+ to count then
-    then
-  loop
-  primes free throw count ;
+  1000000 2 do primes i + c@ 0<> if
+    1 to power begin power i 10 / <= while power 10 * to power repeat
+    i to rotated true to good
+    begin rotated 10 / rotated 10 mod power * + to rotated
+      primes rotated + c@ 0= if false to good then
+      rotated i = good 0= or
+    until
+    good if count 1+ to count then
+  then loop primes free throw count ;
 : p39 ( -- answer )
   0 0 0 0 0 0 0 { best-perimeter best-count count numerator denominator b c }
-  1001 12 do
-    0 to count
+  1001 12 do 0 to count
     i 3 / 1 do
-      j j i 2 * - * to numerator
-      2 j i - * to denominator
+      j j i 2 * - * to numerator 2 j i - * to denominator
       numerator 0> numerator denominator mod 0= and if
-        numerator denominator / to b
-        j i - b - to c
+        numerator denominator / to b j i - b - to c
         i b < b c < and if count 1+ to count then
       then
-    loop
-    count best-count > if count to best-count i to best-perimeter then
+    loop count best-count > if count to best-count i to best-perimeter then
   loop best-perimeter ;
 create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
 : p40 ( -- answer )
   0 0 1 1 0 0 { at position product n divisor digit }
   begin at 7 < while
-    1 to divisor
-    begin divisor n 10 / <= while divisor 10 * to divisor repeat
+    1 to divisor begin divisor n 10 / <= while divisor 10 * to divisor repeat
     begin divisor 0> while
-      n divisor / 10 mod to digit
-      position 1+ to position
+      n divisor / 10 mod to digit position 1+ to position
       position champernowne-targets at cells + @ = if
-        product digit * to product
-        at 1+ to at
+        product digit * to product at 1+ to at
         at 7 = if product exit then
       then
       divisor 10 / to divisor
-    repeat
-    n 1+ to n
+    repeat n 1+ to n
   repeat product ;
-\ Integer binary search. Avoid nested parentheses in Forth stack comments.
+\ Integer binary search. Forth stack comments cannot contain nested parentheses.
 : integer-sqrt 0 0 0 { n low high midpoint } ( n -- root )
   0 to low n to high
   begin low high < while
     low high low - 2 / + 1+ to midpoint
-    midpoint n midpoint / <= if midpoint to low
-    else midpoint 1- to high then
+    midpoint n midpoint / <= if midpoint to low else midpoint 1- to high then
   repeat low ;
 : pentagonal? 0 0 { n t root } ( n -- flag )
   n 1 < if false exit then
-  n 24 * 1+ to t
-  t integer-sqrt to root
+  n 24 * 1+ to t t integer-sqrt to root
   root root * t = root 1+ 6 mod 0= and ;
 : p44 ( -- answer )
   0 0 0 0 { best pj pk difference }
   5000 2 do
     i i 3 * 1- * 2 / to pj
-    0 i 1- do
-      i i 3 * 1- * 2 / to pk
-      pj pk - to difference
+    \ A descending +LOOP includes its limit. Use 1, never the invalid P_0.
+    1 i 1- do
+      i i 3 * 1- * 2 / to pk pj pk - to difference
       best 0<> difference best >= and if leave then
       difference pentagonal? if
         pj pk + pentagonal? if difference to best then
@@ -497,127 +400,85 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
   loop best ;
 : p46 ( -- answer )
   9 0 0 0 { n representation half root }
-  begin
-    n is-prime? 0= if
-      false to representation
-      n 2 do
-        i is-prime? if
-          n i - 2 mod 0= if
-            n i - 2 / to half
-            half integer-sqrt to root
-            root root * half = if true to representation leave then
-          then
-        then
-      loop
-      representation 0= if n exit then
-    then
-    n 2 + to n
-  again ;
+  begin n is-prime? 0= if
+    false to representation
+    n 2 do i is-prime? if n i - 2 mod 0= if
+      n i - 2 / to half half integer-sqrt to root
+      root root * half = if true to representation leave then
+    then then loop
+    representation 0= if n exit then
+  then n 2 + to n again ;
 : distinct-prime-factors 0 0 0 { n value divisor count } ( n -- distinct count )
   n to value 2 to divisor 0 to count
   begin divisor value divisor / <= while
-    value divisor mod 0= if
-      count 1+ to count
+    value divisor mod 0= if count 1+ to count
       begin value divisor mod 0= while value divisor / to value repeat
-    then
-    divisor 1+ to divisor
-  repeat
-  value 1 > if count 1+ to count then
-  count ;
+    then divisor 1+ to divisor
+  repeat value 1 > if count 1+ to count then count ;
 : p47 ( -- answer )
   0 { streak }
-  1000000 2 do
-    i distinct-prime-factors 4 = if
-      streak 1+ to streak
-      streak 4 = if i 3 - unloop exit then
-    else 0 to streak then
-  loop -1 ;
+  1000000 2 do i distinct-prime-factors 4 = if
+    streak 1+ to streak streak 4 = if i 3 - unloop exit then
+  else 0 to streak then loop -1 ;
 : multiply-mod { a b modulo } ( a b modulo -- remainder )
   a b um* modulo um/mod drop ;
 : power-mod 0 { base exponent modulo result } ( b exp m -- residue )
   1 to result
   begin exponent 0> while
     exponent 1 and if result base modulo multiply-mod to result then
-    base base modulo multiply-mod to base
-    exponent 2 / to exponent
+    base base modulo multiply-mod to base exponent 2 / to exponent
   repeat result ;
 : p48 ( -- answer )
   0 { sum }
-  1001 1 do
-    i i 10000000000 power-mod sum + 10000000000 mod to sum
-  loop sum ;
+  1001 1 do i i 10000000000 power-mod sum + 10000000000 mod to sum loop sum ;
 : prefix@ ( index address -- value ) swap cells + @ ;
 : prefix! ( value index address -- ) swap cells + ! ;
 : p50 ( -- answer )
   1000000 sieve-build 0 0 0 0 0 0 0 { primes count best-length best-prime start-index end-index value prefix }
   80001 cells allocate throw to prefix
-  0 to count 0 to best-length 0 to best-prime
-  0 0 prefix prefix!
-  1000000 2 do
-    primes i + c@ 0<> if
-      count prefix prefix@ i + count 1+ prefix prefix!
-      count 1+ to count
-    then
-  loop
+  0 to count 0 to best-length 0 to best-prime 0 0 prefix prefix!
+  1000000 2 do primes i + c@ 0<> if
+    count prefix prefix@ i + count 1+ prefix prefix! count 1+ to count
+  then loop
   0 to start-index
   begin start-index count < while
     start-index best-length + 1+ to end-index
     begin end-index count <= while
       end-index prefix prefix@ start-index prefix prefix@ - to value
       value 1000000 >= if
-        \ LEAVE is for counted loops; terminate this BEGIN loop explicitly.
+        \ LEAVE is for counted loops, not BEGIN loops.
         count 1+ to end-index
       else
-        primes value + c@ 0<> if
-          end-index start-index - to best-length value to best-prime
-        then
+        primes value + c@ 0<> if end-index start-index - to best-length value to best-prime then
         end-index 1+ to end-index
       then
-    repeat
-    start-index 1+ to start-index
-  repeat
-  primes free throw prefix free throw best-prime ;
+    repeat start-index 1+ to start-index
+  repeat primes free throw prefix free throw best-prime ;
 : big-reverse 0 0 { original reversed temp digit } ( big big -- )
-  8 bnew to temp
-  original temp bcopy
-  reversed bclear
+  8 bnew to temp original temp bcopy reversed bclear
   begin temp blen@ 0> while
-    10 temp bdiv-small! to digit
-    10 reversed bmul-small!
-    digit reversed badd-small!
-  repeat
-  temp bfree ;
+    10 temp bdiv-small! to digit 10 reversed bmul-small! digit reversed badd-small!
+  repeat temp bfree ;
 : p55 ( -- answer )
-  8 bnew 8 bnew 8 bnew
-  0 0 0 { value reversed temp old reached count }
+  8 bnew 8 bnew 8 bnew 0 0 0 { value reversed temp old reached count }
   0 to count
-  10000 1 do
-    i value bset-u false to reached
+  10000 1 do i value bset-u false to reached
     50 0 do
-      value reversed big-reverse
-      value reversed temp badd
+      value reversed big-reverse value reversed temp badd
       value to old temp to value old to temp
       value reversed big-reverse
       value reversed babscompare 0= if true to reached leave then
-    loop
-    reached 0= if count 1+ to count then
-  loop
-  value bfree reversed bfree temp bfree count ;
+    loop reached 0= if count 1+ to count then
+  loop value bfree reversed bfree temp bfree count ;
 : p69 ( -- answer )
   1 2 { result candidate }
-  begin
-    candidate is-prime? if
-      result 1000000 candidate / > if result exit then
-      result candidate * to result
-    then
-    candidate 1+ to candidate
-  again ;
+  begin candidate is-prime? if
+    result 1000000 candidate / > if result exit then result candidate * to result
+  then candidate 1+ to candidate again ;
 create squared-digits 0 , 1 , 4 , 9 , 16 , 25 , 36 , 49 , 64 , 81 ,
 : digit-squares 0 { n result } ( n -- sum )
   0 to result
-  begin
-    n 10 mod cells squared-digits + @ result + to result
-    n 10 / to n
+  begin n 10 mod cells squared-digits + @ result + to result n 10 / to n
     n 0= if result exit then
   again ;
 : chain-end { n } ( n -- 1|89 )
@@ -627,9 +488,7 @@ create ends-at-89 568 allot
   ends-at-89 568 erase
   568 1 do i chain-end 89 = if 1 ends-at-89 i + c! then loop
   0 { count }
-  10000000 1 do
-    i digit-squares ends-at-89 + c@ 0<> if count 1+ to count then
-  loop count ;
+  10000000 1 do i digit-squares ends-at-89 + c@ 0<> if count 1+ to count then loop count ;
 : euler-solve ( number -- answer )
   case
     1 of p1 endof 2 of p2 endof 3 of p3 endof 4 of p4 endof

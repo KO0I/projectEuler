@@ -379,7 +379,7 @@ create names-length 5200 cells allot
 : p28 ( -- answer )
   1 { result }
   1002 3 do
-    i 2 mod 1= if
+    i 2 mod 1 = if
       i i * 4 * i 1- 6 * - result + to result
     then
   loop result ;

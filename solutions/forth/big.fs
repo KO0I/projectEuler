@@ -57,8 +57,8 @@
   a blen@ 0 ?do
     a blen@ 1- i - a blimb@ to v
     b blen@ 1- i - b blimb@ to w
-    v w < if -1 exit then
-    v w > if 1 exit then
+    v w < if -1 unloop exit then
+    v w > if 1 unloop exit then
   loop 0 ;
 : baddabs! 0 0 0 { a b carry value size } ( a b -- )
   a blen@ b blen@ max to size

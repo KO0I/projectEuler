@@ -1,8 +1,8 @@
-name: Project Euler language validation
+name: Project Euler language validation with Factor
 
 on:
   pull_request:
-    branches: [reorganize/solutions-by-language]
+    branches: [reorganize/solutions-by-language, feature/euler-c-rust-forth]
     paths:
       - 'solutions/**'
       - 'support/**'
@@ -22,9 +22,9 @@ concurrency:
 
 jobs:
   validate:
-    name: C, Rust and Forth on one machine
+    name: C, Rust, Gforth and Factor (partial) on one machine
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - name: Install language and documentation dependencies
@@ -34,13 +34,24 @@ jobs:
           python3 -m venv .venv
           .venv/bin/pip install --disable-pip-version-check numpy matplotlib
           rustup default stable
+      - name: Install Factor language VM 0.102
+        shell: bash
+        run: |
+          url="https://downloads.factorcode.org/releases/0.102/factor-linux-x86-64-0.102.tar.gz"
+          mkdir -p "$RUNNER_TEMP/factor-root"
+          curl --fail --location --retry 3 "$url" -o "$RUNNER_TEMP/factor-0.102.tar.gz"
+          tar -xzf "$RUNNER_TEMP/factor-0.102.tar.gz" -C "$RUNNER_TEMP/factor-root"
+          vm="$(find "$RUNNER_TEMP/factor-root" -type f -name factor -perm -u=x | head -n 1)"
+          test -n "$vm"
+          "$vm" -help >/dev/null
+          echo "FACTOR_VM=$vm" >> "$GITHUB_ENV"
       - name: Check runner and native helpers (not full solution warm-ups)
         run: |
           make unit-c unit-forth unit-python PYTHON=.venv/bin/python
           cargo test --release --lib --manifest-path solutions/rust/Cargo.toml -- --skip small_problems
       - name: Build optimized executables
         run: make c-release rust-release
-      - name: Validate and profile each of the 111 solutions exactly once
+      - name: Validate and profile all 111 existing + 12 Factor solutions exactly once
         id: profile
         continue-on-error: true
         run: make profile PYTHON=.venv/bin/python

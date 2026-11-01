@@ -3,7 +3,7 @@ Requires: Python 3, GCC + GMP headers and libraries, Rust + Cargo, Gforth.
 Use: ./scripts/test.ps1 -Action test|profile|plots|plots-math
 #>
 param(
-  [ValidateSet('test','test-c','test-rust','test-forth','profile','profile-c','profile-rust','profile-forth','plots','plots-math','clean')]
+  [ValidateSet('test','test-c','test-rust','test-forth','test-factor','profile','profile-c','profile-rust','profile-forth','profile-factor','plots','plots-math','clean')]
   [string]$Action = 'test'
 )
 $ErrorActionPreference = 'Stop'
@@ -28,23 +28,29 @@ function Build-Rust {
 function Check-Forth {
     if (-not (Get-Command 'gforth' -ErrorAction SilentlyContinue)) { throw 'Gforth is missing' }
 }
+function Check-Factor {
+    if (-not $env:FACTOR_VM) { $env:FACTOR_VM = Join-Path $Root '.toolchains/factor/factor.exe' }
+    if (-not (Test-Path $env:FACTOR_VM)) { throw 'Set FACTOR_VM to Factor VM (not GNU factor).' }
+}
 
 switch ($Action) {
     'test' {
-        Build-C; Build-Rust; Check-Forth
-        Invoke-Checked 'python' (@('scripts/bench.py','--mode','test','--languages','c','rust','forth'))
+        Build-C; Build-Rust; Check-Forth; Check-Factor
+        Invoke-Checked 'python' (@('scripts/bench.py','--mode','test','--languages','c','rust','forth','factor'))
     }
     'test-c' { Build-C; Invoke-Checked 'python' @('scripts/bench.py','--mode','test','--languages','c') }
     'test-rust' { Build-Rust; Invoke-Checked 'python' @('scripts/bench.py','--mode','test','--languages','rust') }
     'test-forth' { Check-Forth; Invoke-Checked 'python' @('scripts/bench.py','--mode','test','--languages','forth') }
+    'test-factor' { Check-Factor; Invoke-Checked 'python' @('scripts/bench.py','--mode','test','--languages','factor') }
     'profile' {
-        Build-C; Build-Rust; Check-Forth
-        try { Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','c','rust','forth') }
+        Build-C; Build-Rust; Check-Forth; Check-Factor
+        try { Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','c','rust','forth','factor') }
         finally { Invoke-Checked 'python' @('scripts/plots.py') }
     }
     'profile-c' { Build-C; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','c')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
     'profile-rust' { Build-Rust; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','rust')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
     'profile-forth' { Check-Forth; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','forth')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
+    'profile-factor' { Check-Factor; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','factor')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
     'plots' { Invoke-Checked 'python' @('scripts/plots.py') }
     'plots-math' { Invoke-Checked 'python' @('scripts/math_plots.py') }
     'clean' { Remove-Item -Force -Recurse 'build' -ErrorAction SilentlyContinue; Invoke-Checked 'cargo' @('clean','--manifest-path','solutions/rust/Cargo.toml') }

@@ -26,7 +26,20 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "tests" / "answers.json"
-LANGUAGES = ("c", "rust", "forth")
+LANGUAGES = ("c", "rust", "forth", "factor")
+FACTOR_PROBLEMS = frozenset((1, 2, 5, 6, 9, 10, 11, 16, 20, 25, 28, 39))
+
+def selected_problems(language: str, manifest: list[dict]) -> list[dict]:
+    if language != "factor":
+        return manifest
+    subset = [p for p in manifest if p["number"] in FACTOR_PROBLEMS]
+    if len(subset) != len(FACTOR_PROBLEMS):
+        raise ValueError("Factor coverage references an unknown problem")
+    return subset
+
+def factor_vm() -> str:
+    # GNU coreutils also provides /usr/bin/factor; do not invoke that.
+    return os.environ.get("FACTOR_VM") or str(ROOT / ".toolchains/factor/factor")
 FIELDS = ("run_id", "language", "problem", "stem", "runtime_ms", "status",
           "expected", "actual", "exit_code", "message")
 
@@ -40,6 +53,9 @@ def command(language: str, number: int, stem: str) -> list[str]:
                     (f"p{number}" + suffix))]
     if language == "forth":
         return ["gforth", str(ROOT / "solutions" / "forth" / f"p{number}.fs")]
+    if language == "factor":
+        return [factor_vm(), "-no-user-init",
+                str(ROOT / "solutions" / "factor" / f"p{number}.factor")]
     raise ValueError(f"Unsupported language: {language}")
 
 
@@ -75,6 +91,7 @@ def environment() -> dict:
         "cargo": probe(["cargo", "--version"]),
         "rust_profile": "release (see solutions/rust/Cargo.toml)",
         "gforth": probe(["gforth", "--version"]),
+        "factor_vm": factor_vm(),
         "github_run_id": os.environ.get("GITHUB_RUN_ID"),
         "manifest_sha256": hashlib.sha256(MANIFEST.read_bytes()).hexdigest(),
     }
@@ -146,7 +163,10 @@ def main(argv: list[str] | None = None) -> int:
         "runs_per_solution": 1, "warmup_runs": 0,
         "compilation_included": False, "startup_included": True,
         "unit": "ms", "timeout_s": args.timeout, "languages": args.languages,
-        "problems": sorted(numbers), "environment": environment(),
+        "problems": sorted(numbers),
+        "coverage": {lang: sorted(p["number"] for p in selected_problems(lang, problems))
+                     for lang in args.languages},
+        "environment": environment(),
         "language_summaries": {},
         "interpretation": "One observation per program; no statistical uncertainty estimate. "
                           "Implementations differ in algorithms, libraries and input loading; "
@@ -156,14 +176,18 @@ def main(argv: list[str] | None = None) -> int:
     suite_start = time.perf_counter_ns()
     for language in args.languages:
         language_start = time.perf_counter_ns()
-        rows = [run_one(language, item, args.timeout, run_id) for item in problems]
+        subset = selected_problems(language, problems)
+        rows = [run_one(language, item, args.timeout, run_id) for item in subset]
         language_wall = (time.perf_counter_ns() - language_start) / 1_000_000
         passed = sum(row["status"] == "pass" for row in rows)
         failures += len(rows) - passed
         child_ms = sum(float(r["runtime_ms"]) for r in rows if r["runtime_ms"])
         summary = {
             "passed": passed, "expected_count": len(rows),
-            "complete": passed == len(rows), "suite_wall_ms": language_wall,
+            "complete": passed == len(rows),
+            "full_coverage": len(rows) == len(problems),
+            "manifest_count": len(problems),
+            "suite_wall_ms": language_wall,
             "attempted_child_runtime_ms": child_ms,
             "passing_child_runtime_ms": sum(float(r["runtime_ms"]) for r in rows
                                              if r["status"] == "pass"),

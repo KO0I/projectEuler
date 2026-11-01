@@ -14,8 +14,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "build" / "profile"
-COLORS = {"c": "#2b6684", "rust": "#cc7954", "forth": "#76718c"}
-HATCHES = {"c": "///", "rust": "\\\\\\", "forth": "xxx"}
+COLORS = {"c": "#2b6684", "rust": "#cc7954", "forth": "#76718c", "factor": "#407c61"}
+HATCHES = {"c": "///", "rust": "\\\\\\", "forth": "xxx", "factor": "oo"}
 
 
 def load(run: Path | None = None):
@@ -32,7 +32,7 @@ def load(run: Path | None = None):
         with (run / f"{language}.csv").open(newline="", encoding="utf-8") as handle:
             records = list(csv.DictReader(handle))
         numbers = [int(r["problem"]) for r in records]
-        if sorted(numbers) != sorted(info["problems"]):
+        if sorted(numbers) != sorted(info.get("coverage", {}).get(language, info["problems"])):
             raise ValueError(f"Missing or duplicated problem rows for {language}")
         for row in records:
             if row["run_id"] != info["run_id"] or row["language"] != language:
@@ -60,17 +60,21 @@ def runtime_by_problem(rows, info, out):
     positive = []
     for index, language in enumerate(languages):
         times = [float(rows[language][n]["runtime_ms"])
-                 if rows[language][n]["status"] == "pass" else math.nan
-                 for n in numbers]
+                 if n in rows[language] and rows[language][n]["status"] == "pass"
+                 else math.nan for n in numbers]
         positive.extend(ms for ms in times if math.isfinite(ms))
         xs = np.arange(len(numbers)) + (index - (len(languages) - 1) / 2) * width
         ax.bar(xs, times, width, label=language.upper(), color=COLORS[language],
                hatch=HATCHES[language], edgecolor="#222222", linewidth=.5)
-        for x, ms in zip(xs, times):
+        for x, ms, number in zip(xs, times, numbers):
             if not math.isfinite(ms):
-                # The mark is at an AXES fraction, not a fake measured duration.
-                ax.plot(x, .02, "x", transform=ax.get_xaxis_transform(),
-                        color="#222222", markersize=5)
+                # Hollow circle: not implemented; X: attempted and failed.
+                absent = number not in rows[language]
+                ax.plot(x, .02, "o" if absent else "x",
+                        transform=ax.get_xaxis_transform(),
+                        color="#222222",
+                        markerfacecolor="none" if absent else "#222222",
+                        markersize=4 if absent else 5)
     if positive:
         ax.set_yscale("log")
         ax.set_ylim(bottom=min(positive) / 2, top=max(positive) * 1.5)
@@ -80,8 +84,8 @@ def runtime_by_problem(rows, info, out):
     ax.set_title("Runtime by problem and language — one execution per program")
     ax.grid(axis="y", linestyle=":", alpha=.4)
     ax.legend()
-    fig.text(.01, .015, "X = failed or unavailable, not zero. Compilation excluded; startup included. "
-             "No error bars from single observations.", fontsize=9)
+    fig.text(.01, .015, "X = failed/unavailable; hollow circle = not implemented. Neither means zero [ms]. "
+             "Compilation excluded; startup included. No single-run error bars.", fontsize=9)
     fig.text(.01, -.015, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)
     fig.tight_layout(rect=(0, .06, 1, 1))
     write(fig, out, "runtime_by_problem")
@@ -93,9 +97,13 @@ def totals(rows, info, out):
     for i, language in enumerate(languages):
         summary = info["language_summaries"][language]
         count = len(rows[language])
-        complete = summary["complete"] and all(r["status"] == "pass" for r in rows[language].values())
+        complete = (summary["complete"] and summary.get("full_coverage", True)
+                    and len(rows[language]) == len(info["problems"])
+                    and all(r["status"] == "pass" for r in rows[language].values()))
         if not complete:
-            ax.text(i, .04, f"Incomplete\n{summary['passed']}/{count} pass",
+            status = "Partial coverage" if not summary.get("full_coverage", True) else "Incomplete"
+            ax.text(i, .04, f"{status}\n{summary['passed']}/{count} pass\n"
+                    f"{count}/{len(info['problems'])} implemented",
                     ha="center", transform=ax.get_xaxis_transform())
             continue
         wall = summary["suite_wall_ms"]
@@ -112,7 +120,7 @@ def totals(rows, info, out):
     ax.grid(axis="y", linestyle=":", alpha=.4)
     ax.legend(handles=[Line2D([], [], linestyle="none", marker="D", color="white",
                               markeredgecolor="black", label="Sum of child-process durations")])
-    fig.text(.05, .03, "Bars include runner overhead; diamonds exclude it. Incomplete suites have no total bar.\n"
+    fig.text(.05, .03, "Bars include runner overhead; diamonds exclude it. Partial/failed suites have no total bar.\n"
              "Algorithms, libraries and fixture loading differ: these are implementation timings, not language rankings.",
              fontsize=9)
     fig.tight_layout(rect=(0, .1, 1, 1))

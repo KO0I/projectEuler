@@ -1,0 +1,210 @@
+{
+  "93": "All 210 four-digit sets agree with independent Python Fraction subset DP; official 1,2,3,4 target count and maximum also agree.",
+  "98": {
+    "comparison": "Eight representative pairs agree with independent injective letter-to-digit mapping enumeration, including every repeated-letter pair from the fixture.",
+    "pairs": [
+      {
+        "a": "CARE",
+        "b": "RACE",
+        "maximum": 9216
+      },
+      {
+        "a": "BOARD",
+        "b": "BROAD",
+        "maximum": 18769
+      },
+      {
+        "a": "SHEET",
+        "b": "THESE",
+        "maximum": 0
+      },
+      {
+        "a": "CENTRE",
+        "b": "RECENT",
+        "maximum": 0
+      },
+      {
+        "a": "EXCEPT",
+        "b": "EXPECT",
+        "maximum": 0
+      },
+      {
+        "a": "FORMER",
+        "b": "REFORM",
+        "maximum": 0
+      },
+      {
+        "a": "AB",
+        "b": "BA",
+        "maximum": 0
+      },
+      {
+        "a": "BOBO",
+        "b": "OBBO",
+        "maximum": 0
+      }
+    ]
+  },
+  "111": {
+    "comparison": "All per-digit M/N/S quantities for 2-, 3-, and 4-digit primes agree with independent exhaustive trial division. Every 10-digit search stops within two replacements, bounding its sum far below uint64_t.",
+    "ten_digit_rows": [
+      {
+        "length": 10,
+        "digit": 0,
+        "changed": 2,
+        "count": 8,
+        "sum": 38000000042
+      },
+      {
+        "length": 10,
+        "digit": 1,
+        "changed": 1,
+        "count": 11,
+        "sum": 12882626601
+      },
+      {
+        "length": 10,
+        "digit": 2,
+        "changed": 2,
+        "count": 39,
+        "sum": 97447914665
+      },
+      {
+        "length": 10,
+        "digit": 3,
+        "changed": 1,
+        "count": 7,
+        "sum": 23234122821
+      },
+      {
+        "length": 10,
+        "digit": 4,
+        "changed": 1,
+        "count": 1,
+        "sum": 4444444447
+      },
+      {
+        "length": 10,
+        "digit": 5,
+        "changed": 1,
+        "count": 1,
+        "sum": 5555555557
+      },
+      {
+        "length": 10,
+        "digit": 6,
+        "changed": 1,
+        "count": 1,
+        "sum": 6666666661
+      },
+      {
+        "length": 10,
+        "digit": 7,
+        "changed": 1,
+        "count": 9,
+        "sum": 59950904793
+      },
+      {
+        "length": 10,
+        "digit": 8,
+        "changed": 2,
+        "count": 32,
+        "sum": 285769942206
+      },
+      {
+        "length": 10,
+        "digit": 9,
+        "changed": 1,
+        "count": 8,
+        "sum": 78455389922
+      }
+    ]
+  },
+  "118": "All 63 nonempty subsets of digits 1..6 agree with independent permutation-and-cut enumeration, deduplicated as sorted prime tuples.",
+  "103": "Every pair of nonempty disjoint subsets of the 255-sum seed satisfies both special-sum rules. Manual audit proves completeness of the finite increasing-set search and safety of both pruning rules.",
+  "108": {
+    "factors": [
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        13,
+        1
+      ]
+    ],
+    "solutions": 1013,
+    "proof": "Consecutive primes with nonincreasing positive exponents cover all minima. The verified primorial upper bound excludes any need for primes beyond the supplied list, and overflow guards prune before multiplication."
+  },
+  "110": {
+    "factors": [
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        5,
+        2
+      ],
+      [
+        7,
+        2
+      ],
+      [
+        11,
+        1
+      ],
+      [
+        13,
+        1
+      ],
+      [
+        17,
+        1
+      ],
+      [
+        19,
+        1
+      ],
+      [
+        23,
+        1
+      ],
+      [
+        29,
+        1
+      ],
+      [
+        31,
+        1
+      ],
+      [
+        37,
+        1
+      ]
+    ],
+    "solutions": 4018613,
+    "proof": "Consecutive primes with nonincreasing positive exponents cover all minima. The verified primorial upper bound excludes any need for primes beyond the supplied list, and overflow guards prune before multiplication."
+  },
+  "elapsed_seconds": 1.001108860000386
+}

@@ -1,0 +1,982 @@
+{
+  "compiler": [
+    "cc"
+  ],
+  "flags": [
+    "-O1",
+    "-g",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Werror",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-pie",
+    "-no-pie",
+    "-Isupport/c"
+  ],
+  "source_revision": "e44f23ed50de1df537097dfa62e339a688e128ba",
+  "results": [
+    {
+      "number": 1,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "233168",
+      "actual": "233168",
+      "stderr": ""
+    },
+    {
+      "number": 2,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "4613732",
+      "actual": "4613732",
+      "stderr": ""
+    },
+    {
+      "number": 3,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "6857",
+      "actual": "6857",
+      "stderr": ""
+    },
+    {
+      "number": 4,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "906609",
+      "actual": "906609",
+      "stderr": ""
+    },
+    {
+      "number": 5,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "232792560",
+      "actual": "232792560",
+      "stderr": ""
+    },
+    {
+      "number": 6,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "25164150",
+      "actual": "25164150",
+      "stderr": ""
+    },
+    {
+      "number": 7,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "104743",
+      "actual": "104743",
+      "stderr": ""
+    },
+    {
+      "number": 8,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "23514624000",
+      "actual": "23514624000",
+      "stderr": ""
+    },
+    {
+      "number": 9,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "31875000",
+      "actual": "31875000",
+      "stderr": ""
+    },
+    {
+      "number": 10,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "142913828922",
+      "actual": "142913828922",
+      "stderr": ""
+    },
+    {
+      "number": 11,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "70600674",
+      "actual": "70600674",
+      "stderr": ""
+    },
+    {
+      "number": 12,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "76576500",
+      "actual": "76576500",
+      "stderr": ""
+    },
+    {
+      "number": 13,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "5537376230",
+      "actual": "5537376230",
+      "stderr": ""
+    },
+    {
+      "number": 14,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "837799",
+      "actual": "837799",
+      "stderr": ""
+    },
+    {
+      "number": 15,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "137846528820",
+      "actual": "137846528820",
+      "stderr": ""
+    },
+    {
+      "number": 16,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1366",
+      "actual": "1366",
+      "stderr": ""
+    },
+    {
+      "number": 17,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "21124",
+      "actual": "21124",
+      "stderr": ""
+    },
+    {
+      "number": 18,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1074",
+      "actual": "1074",
+      "stderr": ""
+    },
+    {
+      "number": 19,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "171",
+      "actual": "171",
+      "stderr": ""
+    },
+    {
+      "number": 20,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "648",
+      "actual": "648",
+      "stderr": ""
+    },
+    {
+      "number": 21,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "31626",
+      "actual": "31626",
+      "stderr": ""
+    },
+    {
+      "number": 22,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "871198282",
+      "actual": "871198282",
+      "stderr": ""
+    },
+    {
+      "number": 23,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "4179871",
+      "actual": "4179871",
+      "stderr": ""
+    },
+    {
+      "number": 24,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "2783915460",
+      "actual": "2783915460",
+      "stderr": ""
+    },
+    {
+      "number": 25,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "4782",
+      "actual": "4782",
+      "stderr": ""
+    },
+    {
+      "number": 26,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "983",
+      "actual": "983",
+      "stderr": ""
+    },
+    {
+      "number": 27,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "-59231",
+      "actual": "-59231",
+      "stderr": ""
+    },
+    {
+      "number": 28,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "669171001",
+      "actual": "669171001",
+      "stderr": ""
+    },
+    {
+      "number": 29,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "9183",
+      "actual": "9183",
+      "stderr": ""
+    },
+    {
+      "number": 30,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "443839",
+      "actual": "443839",
+      "stderr": ""
+    },
+    {
+      "number": 31,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "73682",
+      "actual": "73682",
+      "stderr": ""
+    },
+    {
+      "number": 32,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "45228",
+      "actual": "45228",
+      "stderr": ""
+    },
+    {
+      "number": 33,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "100",
+      "actual": "100",
+      "stderr": ""
+    },
+    {
+      "number": 34,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "40730",
+      "actual": "40730",
+      "stderr": ""
+    },
+    {
+      "number": 35,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "55",
+      "actual": "55",
+      "stderr": ""
+    },
+    {
+      "number": 36,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "872187",
+      "actual": "872187",
+      "stderr": ""
+    },
+    {
+      "number": 37,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "748317",
+      "actual": "748317",
+      "stderr": ""
+    },
+    {
+      "number": 38,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "932718654",
+      "actual": "932718654",
+      "stderr": ""
+    },
+    {
+      "number": 39,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "840",
+      "actual": "840",
+      "stderr": ""
+    },
+    {
+      "number": 40,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "210",
+      "actual": "210",
+      "stderr": ""
+    },
+    {
+      "number": 41,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "7652413",
+      "actual": "7652413",
+      "stderr": ""
+    },
+    {
+      "number": 42,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "162",
+      "actual": "162",
+      "stderr": ""
+    },
+    {
+      "number": 43,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "16695334890",
+      "actual": "16695334890",
+      "stderr": ""
+    },
+    {
+      "number": 44,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "5482660",
+      "actual": "5482660",
+      "stderr": ""
+    },
+    {
+      "number": 45,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1533776805",
+      "actual": "1533776805",
+      "stderr": ""
+    },
+    {
+      "number": 46,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "5777",
+      "actual": "5777",
+      "stderr": ""
+    },
+    {
+      "number": 47,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "134043",
+      "actual": "134043",
+      "stderr": ""
+    },
+    {
+      "number": 48,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "9110846700",
+      "actual": "9110846700",
+      "stderr": ""
+    },
+    {
+      "number": 49,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "296962999629",
+      "actual": "296962999629",
+      "stderr": ""
+    },
+    {
+      "number": 50,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "997651",
+      "actual": "997651",
+      "stderr": ""
+    },
+    {
+      "number": 51,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "121313",
+      "actual": "121313",
+      "stderr": ""
+    },
+    {
+      "number": 52,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "142857",
+      "actual": "142857",
+      "stderr": ""
+    },
+    {
+      "number": 53,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "4075",
+      "actual": "4075",
+      "stderr": ""
+    },
+    {
+      "number": 54,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "376",
+      "actual": "376",
+      "stderr": ""
+    },
+    {
+      "number": 55,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "249",
+      "actual": "249",
+      "stderr": ""
+    },
+    {
+      "number": 56,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "972",
+      "actual": "972",
+      "stderr": ""
+    },
+    {
+      "number": 57,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "153",
+      "actual": "153",
+      "stderr": ""
+    },
+    {
+      "number": 58,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "26241",
+      "actual": "26241",
+      "stderr": ""
+    },
+    {
+      "number": 59,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "129448",
+      "actual": "129448",
+      "stderr": ""
+    },
+    {
+      "number": 60,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "26033",
+      "actual": "26033",
+      "stderr": ""
+    },
+    {
+      "number": 61,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "28684",
+      "actual": "28684",
+      "stderr": ""
+    },
+    {
+      "number": 62,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "127035954683",
+      "actual": "127035954683",
+      "stderr": ""
+    },
+    {
+      "number": 63,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "49",
+      "actual": "49",
+      "stderr": ""
+    },
+    {
+      "number": 64,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1322",
+      "actual": "1322",
+      "stderr": ""
+    },
+    {
+      "number": 65,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "272",
+      "actual": "272",
+      "stderr": ""
+    },
+    {
+      "number": 66,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "661",
+      "actual": "661",
+      "stderr": ""
+    },
+    {
+      "number": 67,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "7273",
+      "actual": "7273",
+      "stderr": ""
+    },
+    {
+      "number": 68,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "6531031914842725",
+      "actual": "6531031914842725",
+      "stderr": ""
+    },
+    {
+      "number": 69,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "510510",
+      "actual": "510510",
+      "stderr": ""
+    },
+    {
+      "number": 70,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "8319823",
+      "actual": "8319823",
+      "stderr": ""
+    },
+    {
+      "number": 71,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "428570",
+      "actual": "428570",
+      "stderr": ""
+    },
+    {
+      "number": 72,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "303963552391",
+      "actual": "303963552391",
+      "stderr": ""
+    },
+    {
+      "number": 73,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "7295372",
+      "actual": "7295372",
+      "stderr": ""
+    },
+    {
+      "number": 74,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "402",
+      "actual": "402",
+      "stderr": ""
+    },
+    {
+      "number": 75,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "161667",
+      "actual": "161667",
+      "stderr": ""
+    },
+    {
+      "number": 76,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "190569291",
+      "actual": "190569291",
+      "stderr": ""
+    },
+    {
+      "number": 77,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "71",
+      "actual": "71",
+      "stderr": ""
+    },
+    {
+      "number": 78,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "55374",
+      "actual": "55374",
+      "stderr": ""
+    },
+    {
+      "number": 79,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "73162890",
+      "actual": "73162890",
+      "stderr": ""
+    },
+    {
+      "number": 80,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "40886",
+      "actual": "40886",
+      "stderr": ""
+    },
+    {
+      "number": 81,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "427337",
+      "actual": "427337",
+      "stderr": ""
+    },
+    {
+      "number": 82,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "260324",
+      "actual": "260324",
+      "stderr": ""
+    },
+    {
+      "number": 83,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "425185",
+      "actual": "425185",
+      "stderr": ""
+    },
+    {
+      "number": 84,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "101524",
+      "actual": "101524",
+      "stderr": ""
+    },
+    {
+      "number": 85,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "2772",
+      "actual": "2772",
+      "stderr": ""
+    },
+    {
+      "number": 86,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1818",
+      "actual": "1818",
+      "stderr": ""
+    },
+    {
+      "number": 87,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1097343",
+      "actual": "1097343",
+      "stderr": ""
+    },
+    {
+      "number": 88,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "7587457",
+      "actual": "7587457",
+      "stderr": ""
+    },
+    {
+      "number": 89,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "743",
+      "actual": "743",
+      "stderr": ""
+    },
+    {
+      "number": 90,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1217",
+      "actual": "1217",
+      "stderr": ""
+    },
+    {
+      "number": 91,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "14234",
+      "actual": "14234",
+      "stderr": ""
+    },
+    {
+      "number": 92,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "8581146",
+      "actual": "8581146",
+      "stderr": ""
+    },
+    {
+      "number": 93,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1258",
+      "actual": "1258",
+      "stderr": ""
+    },
+    {
+      "number": 94,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "518408346",
+      "actual": "518408346",
+      "stderr": ""
+    },
+    {
+      "number": 95,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "14316",
+      "actual": "14316",
+      "stderr": ""
+    },
+    {
+      "number": 96,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "24702",
+      "actual": "24702",
+      "stderr": ""
+    },
+    {
+      "number": 97,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "8739992577",
+      "actual": "8739992577",
+      "stderr": ""
+    },
+    {
+      "number": 98,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "18769",
+      "actual": "18769",
+      "stderr": ""
+    },
+    {
+      "number": 99,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "709",
+      "actual": "709",
+      "stderr": ""
+    },
+    {
+      "number": 100,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "756872327473",
+      "actual": "756872327473",
+      "stderr": ""
+    },
+    {
+      "number": 101,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "37076114526",
+      "actual": "37076114526",
+      "stderr": ""
+    },
+    {
+      "number": 102,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "228",
+      "actual": "228",
+      "stderr": ""
+    },
+    {
+      "number": 103,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "20313839404245",
+      "actual": "20313839404245",
+      "stderr": ""
+    },
+    {
+      "number": 104,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "329468",
+      "actual": "329468",
+      "stderr": ""
+    },
+    {
+      "number": 105,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "73702",
+      "actual": "73702",
+      "stderr": ""
+    },
+    {
+      "number": 106,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "21384",
+      "actual": "21384",
+      "stderr": ""
+    },
+    {
+      "number": 107,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "259679",
+      "actual": "259679",
+      "stderr": ""
+    },
+    {
+      "number": 108,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "180180",
+      "actual": "180180",
+      "stderr": ""
+    },
+    {
+      "number": 109,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "38182",
+      "actual": "38182",
+      "stderr": ""
+    },
+    {
+      "number": 110,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "9350130049860600",
+      "actual": "9350130049860600",
+      "stderr": ""
+    },
+    {
+      "number": 111,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "612407567715",
+      "actual": "612407567715",
+      "stderr": ""
+    },
+    {
+      "number": 112,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "1587000",
+      "actual": "1587000",
+      "stderr": ""
+    },
+    {
+      "number": 113,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "51161058134250",
+      "actual": "51161058134250",
+      "stderr": ""
+    },
+    {
+      "number": 114,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "16475640049",
+      "actual": "16475640049",
+      "stderr": ""
+    },
+    {
+      "number": 115,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "168",
+      "actual": "168",
+      "stderr": ""
+    },
+    {
+      "number": 116,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "20492570929",
+      "actual": "20492570929",
+      "stderr": ""
+    },
+    {
+      "number": 117,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "100808458960497",
+      "actual": "100808458960497",
+      "stderr": ""
+    },
+    {
+      "number": 118,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "44680",
+      "actual": "44680",
+      "stderr": ""
+    },
+    {
+      "number": 119,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "248155780267521",
+      "actual": "248155780267521",
+      "stderr": ""
+    },
+    {
+      "number": 120,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "333082500",
+      "actual": "333082500",
+      "stderr": ""
+    }
+  ]
+}

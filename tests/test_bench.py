@@ -21,6 +21,19 @@ class BenchmarkTests(unittest.TestCase):
             return row
     def test_single_invocation(self):
         self.assertEqual(self.run_fake()["status"], "pass")
+    def test_single_solver_invocation_with_startup_split(self):
+        calibration = {"status": "measured", "baseline_ms": 0.123456}
+        completed = subprocess.CompletedProcess(["solver"], 0, stdout="233168\n", stderr="")
+        with patch.object(bench, "command", return_value=["solver"]), \
+             patch.object(bench.shutil, "which", return_value="solver"), \
+             patch.object(bench.subprocess, "run", return_value=completed) as invoke, \
+             patch.object(bench.time, "perf_counter_ns", side_effect=[0, 2_000_000]):
+            row = bench.run_one("c", PROBLEM, 30, "test-run", calibration)
+            invoke.assert_called_once()
+        self.assertEqual(row["startup_estimate_ms"], "0.123456")
+        self.assertEqual(row["execution_residual_ms"], "1.876544")
+        self.assertEqual(row["runtime_ms"], "2.000000")
+        self.assertEqual(row["split_status"], "estimated")
     def test_wrong_answer(self):
         self.assertEqual(self.run_fake("123\n")["status"], "wrong-answer")
     def test_non_numeric_output(self):
@@ -35,6 +48,7 @@ class BenchmarkTests(unittest.TestCase):
             invoke.assert_called_once()
             self.assertEqual(row["status"], "timeout")
             self.assertNotEqual(row["runtime_ms"], "")
+            self.assertEqual(row["startup_estimate_ms"], "")
     def test_missing_is_unmeasured(self):
         with patch.object(bench, "command", return_value=["/not-present/euler-solver"]), \
              patch.object(bench.shutil, "which", return_value=None), \
@@ -43,6 +57,7 @@ class BenchmarkTests(unittest.TestCase):
             invoke.assert_not_called()
             self.assertEqual(row["status"], "missing")
             self.assertEqual(row["runtime_ms"], "")
+            self.assertEqual(row["execution_residual_ms"], "")
 
 if __name__ == "__main__":
     unittest.main()

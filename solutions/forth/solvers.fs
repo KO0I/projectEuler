@@ -489,6 +489,11 @@ create ends-at-89 568 allot
   568 1 do i chain-end 89 = if 1 ends-at-89 i + c! then loop
   0 { count }
   10000000 1 do i digit-squares ends-at-89 + c@ 0<> if count 1+ to count then loop count ;
+include extra.fs
+include extra2.fs
+include extra3.fs
+include extra4.fs
+
 : euler-solve ( number -- answer )
   case
     1 of p1 endof 2 of p2 endof 3 of p3 endof 4 of p4 endof
@@ -501,5 +506,26 @@ create ends-at-89 568 allot
     40 of p40 endof 44 of p44 endof 46 of p46 endof 47 of p47 endof
     48 of p48 endof 50 of p50 endof 55 of p55 endof 69 of p69 endof
     92 of p92 endof
+    15 of p15 endof 18 of p18 endof 23 of p23 endof 24 of p24 endof
+    26 of p26 endof 31 of p31 endof 32 of p32 endof 33 of p33 endof
+    36 of p36 endof 37 of p37 endof 38 of p38 endof 41 of p41 endof
+    42 of p42 endof 43 of p43 endof 45 of p45 endof 49 of p49 endof
+    52 of p52 endof 53 of p53 endof 56 of p56 endof 57 of p57 endof
+    58 of p58 endof 63 of p63 endof 64 of p64 endof 65 of p65 endof
+    67 of p67 endof 71 of p71 endof 72 of p72 endof 73 of p73 endof
+    75 of p75 endof 76 of p76 endof 77 of p77 endof 78 of p78 endof
+    79 of p79 endof 81 of p81 endof 82 of p82 endof 85 of p85 endof
+    86 of p86 endof 90 of p90 endof 91 of p91 endof 94 of p94 endof
+    97 of p97 endof 100 of p100 endof 101 of p101 endof 106 of p106 endof
+    108 of p108 endof 110 of p110 endof 112 of p112 endof 113 of p113 endof
+    114 of p114 endof 115 of p115 endof 116 of p116 endof 117 of p117 endof
+    119 of p119 endof 120 of p120 endof
+    51 of p51 endof 62 of p62 endof 70 of p70 endof 74 of p74 endof
+    87 of p87 endof 88 of p88 endof 89 of p89 endof 95 of p95 endof
+    102 of p102 endof 105 of p105 endof 109 of p109 endof 111 of p111 endof
+    118 of p118 endof
+    54 of p54 endof 59 of p59 endof 61 of p61 endof 66 of p66 endof 68 of p68 endof 80 of p80 endof
+    83 of p83 endof 96 of p96 endof 99 of p99 endof 104 of p104 endof 107 of p107 endof
+    60 of p60 endof 84 of p84 endof 93 of p93 endof 98 of p98 endof 103 of p103 endof
     abort" unsupported Project Euler problem"
   endcase ;

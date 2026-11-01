@@ -4,6 +4,8 @@
 Compilation is a separate Make target. Timings include process/interpreter
 startup, computation, output capture and teardown. Test runs are kept apart
 from profiling runs; each run has its own directory and provenance metadata.
+Profiling additionally calibrates a *minimal* language startup baseline using
+no-op programs, not extra runs of the Euler solutions. It is only an estimate.
 """
 from __future__ import annotations
 
@@ -24,24 +26,28 @@ import sys
 import time
 import uuid
 
+# Running as `python scripts/bench.py` and importlib-loading it in the tests
+# establish different import roots. Both use the same shared implementation.
+try:
+    from scripts.startup_timing import calibrate, isolated_factor_environment, split_wall_time
+except ModuleNotFoundError:
+    from startup_timing import calibrate, isolated_factor_environment, split_wall_time
+
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "tests" / "answers.json"
 LANGUAGES = ("c", "rust", "forth", "factor")
-FACTOR_PROBLEMS = frozenset((1, 2, 5, 6, 9, 10, 11, 16, 20, 25, 28, 39))
-
 def selected_problems(language: str, manifest: list[dict]) -> list[dict]:
-    if language != "factor":
-        return manifest
-    subset = [p for p in manifest if p["number"] in FACTOR_PROBLEMS]
-    if len(subset) != len(FACTOR_PROBLEMS):
-        raise ValueError("Factor coverage references an unknown problem")
-    return subset
+    """Honor explicit language coverage from the answer manifest."""
+    if language not in LANGUAGES:
+        raise ValueError(f"Unsupported language: {language}")
+    return [p for p in manifest if language in p.get("languages", ())]
 
 def factor_vm() -> str:
     # GNU coreutils also provides /usr/bin/factor; do not invoke that.
     return os.environ.get("FACTOR_VM") or str(ROOT / ".toolchains/factor/factor")
-FIELDS = ("run_id", "language", "problem", "stem", "runtime_ms", "status",
-          "expected", "actual", "exit_code", "message")
+FIELDS = ("run_id", "language", "problem", "stem", "runtime_ms",
+          "startup_estimate_ms", "execution_residual_ms", "split_status",
+          "status", "expected", "actual", "exit_code", "message")
 
 
 def command(language: str, number: int, stem: str) -> list[str]:
@@ -54,7 +60,7 @@ def command(language: str, number: int, stem: str) -> list[str]:
     if language == "forth":
         return ["gforth", str(ROOT / "solutions" / "forth" / f"p{number}.fs")]
     if language == "factor":
-        return [factor_vm(), "-no-user-init",
+        return [factor_vm(), f"-roots={ROOT / 'solutions' / 'factor'}",
                 str(ROOT / "solutions" / "factor" / f"p{number}.factor")]
     raise ValueError(f"Unsupported language: {language}")
 
@@ -97,11 +103,13 @@ def environment() -> dict:
     }
 
 
-def run_one(language: str, problem: dict, timeout: float, run_id: str) -> dict:
+def run_one(language: str, problem: dict, timeout: float, run_id: str,
+            startup_calibration: dict | None = None) -> dict:
     number, stem, expected = (problem[k] for k in ("number", "stem", "answer"))
     cmd = command(language, number, stem)
     row = dict(run_id=run_id, language=language, problem=number, stem=stem,
-               runtime_ms="", status="missing", expected=str(expected),
+               runtime_ms="", startup_estimate_ms="", execution_residual_ms="",
+               split_status="unavailable", status="missing", expected=str(expected),
                actual="", exit_code="", message="")
     if not shutil.which(cmd[0]) and not Path(cmd[0]).is_file():
         row["message"] = "executable/interpreter not found; no execution occurred"
@@ -109,8 +117,10 @@ def run_one(language: str, problem: dict, timeout: float, run_id: str) -> dict:
     start = time.perf_counter_ns()
     try:
         # This is the sole solution invocation. Validation uses this same output.
+        kwargs = ({"env": isolated_factor_environment(root=ROOT)}
+                  if language == "factor" else {})
         proc = subprocess.run(cmd, cwd=ROOT, encoding="utf-8", errors="replace",
-                              capture_output=True, timeout=timeout, check=False)
+                              capture_output=True, timeout=timeout, check=False, **kwargs)
         elapsed = time.perf_counter_ns() - start
         row["runtime_ms"] = f"{elapsed / 1_000_000:.6f}"
         row["exit_code"] = proc.returncode
@@ -125,6 +135,9 @@ def run_one(language: str, problem: dict, timeout: float, run_id: str) -> dict:
             row["status"] = "wrong-answer"
         else:
             row["status"] = "pass"
+        if row["status"] == "pass":
+            (row["startup_estimate_ms"], row["execution_residual_ms"],
+             row["split_status"]) = split_wall_time(row["runtime_ms"], startup_calibration)
     except subprocess.TimeoutExpired:
         row["runtime_ms"] = f"{(time.perf_counter_ns() - start) / 1_000_000:.6f}"
         row["status"] = "timeout"
@@ -142,11 +155,15 @@ def main(argv: list[str] | None = None) -> int:
                         default=list(LANGUAGES))
     parser.add_argument("--mode", choices=("test", "profile"), default="test")
     parser.add_argument("--timeout", type=float, default=30.0)
+    parser.add_argument("--startup-samples", type=int, default=5,
+                        help="Number of independent no-op runs per language (profile only)")
     args = parser.parse_args(argv)
     if len(set(args.languages)) != len(args.languages):
         parser.error("Duplicate languages would violate the single-run policy")
     if not math.isfinite(args.timeout) or args.timeout <= 0:
         parser.error("--timeout must be a finite positive number")
+    if not 1 <= args.startup_samples <= 99:
+        parser.error("--startup-samples must be between 1 and 99")
     problems = json.loads(MANIFEST.read_text(encoding="utf-8"))["problems"]
     numbers = [p["number"] for p in problems]
     if len(numbers) != len(set(numbers)):
@@ -158,7 +175,7 @@ def main(argv: list[str] | None = None) -> int:
     outdir = base / run_id
     outdir.mkdir(parents=True, exist_ok=False)
     info = {
-        "schema": 2, "run_id": run_id, "mode": args.mode,
+        "schema": 3, "run_id": run_id, "mode": args.mode,
         "timestamp_utc": stamp.isoformat(), "clock": "time.perf_counter_ns",
         "runs_per_solution": 1, "warmup_runs": 0,
         "compilation_included": False, "startup_included": True,
@@ -167,17 +184,28 @@ def main(argv: list[str] | None = None) -> int:
         "coverage": {lang: sorted(p["number"] for p in selected_problems(lang, problems))
                      for lang in args.languages},
         "environment": environment(),
+        "startup_calibrations": {},
         "language_summaries": {},
         "interpretation": "One observation per program; no statistical uncertainty estimate. "
+                          "Startup is a separately sampled no-op process baseline, NOT a direct "
+                          "measurement of each solution's initialization. Execution residual "
+                          "includes solver initialization, imports, computation, I/O and teardown. "
+                          "If the baseline exceeds wall time the startup part is capped, not extrapolated. "
                           "Implementations differ in algorithms, libraries and input loading; "
                           "this is not an intrinsic language-speed comparison.",
     }
     failures = 0
     suite_start = time.perf_counter_ns()
     for language in args.languages:
+        calibration = (calibrate(language, samples=args.startup_samples,
+                                 timeout=args.timeout, factor_vm=factor_vm())
+                       if args.mode == "profile" else None)
+        info["startup_calibrations"][language] = calibration or {
+            "status": "not-run", "message": "Tests do not perform startup calibration"
+        }
         language_start = time.perf_counter_ns()
         subset = selected_problems(language, problems)
-        rows = [run_one(language, item, args.timeout, run_id) for item in subset]
+        rows = [run_one(language, item, args.timeout, run_id, calibration) for item in subset]
         language_wall = (time.perf_counter_ns() - language_start) / 1_000_000
         passed = sum(row["status"] == "pass" for row in rows)
         failures += len(rows) - passed
@@ -191,14 +219,28 @@ def main(argv: list[str] | None = None) -> int:
             "attempted_child_runtime_ms": child_ms,
             "passing_child_runtime_ms": sum(float(r["runtime_ms"]) for r in rows
                                              if r["status"] == "pass"),
+            "passing_startup_estimate_ms": sum(float(r["startup_estimate_ms"]) for r in rows
+                                              if r["status"] == "pass" and r["startup_estimate_ms"]),
+            "passing_execution_residual_ms": sum(float(r["execution_residual_ms"]) for r in rows
+                                                if r["status"] == "pass" and r["execution_residual_ms"]),
+            "split_passing_count": sum(r["status"] == "pass" and bool(r["startup_estimate_ms"])
+                                       for r in rows),
+            "capped_startup_count": sum(r["split_status"] == "capped" for r in rows),
         }
         info["language_summaries"][language] = summary
         with (outdir / f"{language}.csv").open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, FIELDS)
+            writer = csv.DictWriter(handle, FIELDS, lineterminator="\n")
             writer.writeheader()
             writer.writerows(rows)
         print(f"{language}: {passed}/{len(rows)} passing; child time {child_ms:.3f} [ms]; "
               f"language suite wall time {language_wall:.3f} [ms]", flush=True)
+        if args.mode == "profile":
+            if calibration and calibration["status"] == "measured":
+                print(f"  startup no-op median {calibration['baseline_ms']:.3f} [ms] "
+                      f"({len(calibration['sample_ms'])} independent probes); "
+                      f"{summary['capped_startup_count']} clipped decompositions", flush=True)
+            else:
+                print(f"  startup calibration unavailable: {calibration['message']}", flush=True)
         for row in rows:
             if row["status"] != "pass":
                 print(f"  {row['problem']:>2}: {row['status']}: "

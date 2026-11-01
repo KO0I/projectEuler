@@ -1,5 +1,7 @@
 //! Correct Project Euler solutions using native Rust and num-bigint.
 //! Each bin/pN.rs is independently executable; all share tested helpers.
+pub mod extra_helpers;
+mod extra;
 use num_bigint::BigUint;
 use num_traits::{One, Zero};
 use std::collections::HashSet;
@@ -243,7 +245,7 @@ pub fn solve(n: u32) -> Option<i64> {
                 while cache[v as usize]==0 {v=digit_power_sum(v,&squares);}
                 if cache[v as usize]==89 {count+=1;}
             }count},
-        _ => return None,
+        _ => return extra::solve(n),
     })
 }
 

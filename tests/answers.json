@@ -1,191 +1,1770 @@
 {
-  "schema": 1,
-  "description": "Verified reference answers for original 37 Project Euler problems; run each implementation once; compare decimal stdout",
+  "schema": 2,
+  "description": "Project Euler 1 through 120 in C, Rust, Gforth, and Factor. All 120 C answers validated; additional language implementations require their native toolchains for runtime verification.",
+  "baseline_commit": "e44f23ed50de1df537097dfa62e339a688e128ba",
   "problems": [
     {
       "number": 1,
+      "title": "Multiples of 3 or 5",
       "stem": "multiples_of_3_or_5_1",
-      "answer": "233168"
+      "answer": "233168",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=1"
     },
     {
       "number": 2,
+      "title": "Even Fibonacci Numbers",
       "stem": "even_fibonacci_numbers_2",
-      "answer": "4613732"
+      "answer": "4613732",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=2"
     },
     {
       "number": 3,
+      "title": "Largest Prime Factor",
       "stem": "largest_prime_factor_3",
-      "answer": "6857"
+      "answer": "6857",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=3"
     },
     {
       "number": 4,
+      "title": "Largest Palindrome Product",
       "stem": "largest_palindrome_product_4",
-      "answer": "906609"
+      "answer": "906609",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=4"
     },
     {
       "number": 5,
+      "title": "Smallest Multiple",
       "stem": "smallest_multiple_5",
-      "answer": "232792560"
+      "answer": "232792560",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=5"
     },
     {
       "number": 6,
+      "title": "Sum Square Difference",
       "stem": "sum_square_difference_6",
-      "answer": "25164150"
+      "answer": "25164150",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=6"
     },
     {
       "number": 7,
+      "title": "10 001st Prime",
       "stem": "10_001st_prime_7",
-      "answer": "104743"
+      "answer": "104743",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=7"
     },
     {
       "number": 8,
+      "title": "Largest Product in a Series",
       "stem": "largest_product_in_a_series_8",
-      "answer": "23514624000"
+      "answer": "23514624000",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=8"
     },
     {
       "number": 9,
+      "title": "Special Pythagorean Triplet",
       "stem": "special_pythagorean_triplet_9",
-      "answer": "31875000"
+      "answer": "31875000",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=9"
     },
     {
       "number": 10,
+      "title": "Summation of Primes",
       "stem": "summation_of_primes_10",
-      "answer": "142913828922"
+      "answer": "142913828922",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=10"
     },
     {
       "number": 11,
+      "title": "Largest Product in a Grid",
       "stem": "largest_product_in_a_grid_11",
-      "answer": "70600674"
+      "answer": "70600674",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=11"
     },
     {
       "number": 12,
+      "title": "Highly Divisible Triangular Number",
       "stem": "highly_divisible_triangular_number_12",
-      "answer": "76576500"
+      "answer": "76576500",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=12"
     },
     {
       "number": 13,
+      "title": "Large Sum",
       "stem": "large_sum_13",
-      "answer": "5537376230"
+      "answer": "5537376230",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=13"
     },
     {
       "number": 14,
+      "title": "Longest Collatz Sequence",
       "stem": "longest_collatz_sequence_14",
-      "answer": "837799"
+      "answer": "837799",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=14"
+    },
+    {
+      "number": 15,
+      "title": "Lattice Paths",
+      "stem": "lattice_paths_15",
+      "answer": "137846528820",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=15",
+      "method": "One-row dynamic programming sums paths arriving from above and the left."
     },
     {
       "number": 16,
+      "title": "Power Digit Sum",
       "stem": "power_digit_sum_16",
-      "answer": "1366"
+      "answer": "1366",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=16"
     },
     {
       "number": 17,
+      "title": "Number Letter Counts",
       "stem": "number_letter_counts_17",
-      "answer": "21124"
+      "answer": "21124",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=17"
+    },
+    {
+      "number": 18,
+      "title": "Maximum Path Sum I",
+      "stem": "maximum_path_sum_i_18",
+      "answer": "1074",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=18",
+      "method": "Bottom-up dynamic programming on the official fifteen-row triangle."
     },
     {
       "number": 19,
+      "title": "Counting Sundays",
       "stem": "counting_sundays_19",
-      "answer": "171"
+      "answer": "171",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=19"
     },
     {
       "number": 20,
+      "title": "Factorial Digit Sum",
       "stem": "factorial_digit_sum_20",
-      "answer": "648"
+      "answer": "648",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=20"
     },
     {
       "number": 21,
+      "title": "Amicable Numbers",
       "stem": "amicable_numbers_21",
-      "answer": "31626"
+      "answer": "31626",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=21"
     },
     {
       "number": 22,
+      "title": "Names Scores",
       "stem": "names_scores_22",
-      "answer": "871198282"
+      "answer": "871198282",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=22"
+    },
+    {
+      "number": 23,
+      "title": "Non-Abundant Sums",
+      "stem": "non_abundant_sums_23",
+      "answer": "4179871",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=23",
+      "method": "Divisor sieve and abundant pair sums through the statement's sufficient bound 28123."
+    },
+    {
+      "number": 24,
+      "title": "Lexicographic Permutations",
+      "stem": "lexicographic_permutations_24",
+      "answer": "2783915460",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=24",
+      "method": "Factorial-block unranking of zero-based permutation index 999999."
     },
     {
       "number": 25,
+      "title": "1000-digit Fibonacci Number",
       "stem": "1000_digit_fibonacci_number_25",
-      "answer": "4782"
+      "answer": "4782",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=25"
+    },
+    {
+      "number": 26,
+      "title": "Reciprocal Cycles",
+      "stem": "reciprocal_cycles_26",
+      "answer": "983",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=26",
+      "method": "Long division detects the first repeated remainder for every denominator below 1000."
     },
     {
       "number": 27,
+      "title": "Quadratic Primes",
       "stem": "quadratic_primes_27",
-      "answer": "-59231"
+      "answer": "-59231",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=27"
     },
     {
       "number": 28,
+      "title": "Number Spiral Diagonals",
       "stem": "number_spiral_diagonals_28",
-      "answer": "669171001"
+      "answer": "669171001",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=28"
     },
     {
       "number": 29,
+      "title": "Distinct Powers",
       "stem": "distinct_powers_29",
-      "answer": "9183"
+      "answer": "9183",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=29"
     },
     {
       "number": 30,
+      "title": "Digit Fifth Powers",
       "stem": "digit_fifth_powers_30",
-      "answer": "443839"
+      "answer": "443839",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=30"
+    },
+    {
+      "number": 31,
+      "title": "Coin Sums",
+      "stem": "coin_sums_31",
+      "answer": "73682",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=31",
+      "method": "Coin-by-coin dynamic programming counts unordered representations of 200 pence."
+    },
+    {
+      "number": 32,
+      "title": "Pandigital Products",
+      "stem": "pandigital_products_32",
+      "answer": "45228",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=32",
+      "method": "Exhaust the possible one-by-four and two-by-three digit products; deduplicate products."
+    },
+    {
+      "number": 33,
+      "title": "Digit Cancelling Fractions",
+      "stem": "digit_cancelling_fractions_33",
+      "answer": "100",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=33",
+      "method": "Exhaust proper two-digit fractions, cancel equal nonzero digits, and check exact cross products."
     },
     {
       "number": 34,
+      "title": "Digit Factorials",
       "stem": "digit_factorials_34",
-      "answer": "40730"
+      "answer": "40730",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=34"
     },
     {
       "number": 35,
+      "title": "Circular Primes",
       "stem": "circular_primes_35",
-      "answer": "55"
+      "answer": "55",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=35"
+    },
+    {
+      "number": 36,
+      "title": "Double-base Palindromes",
+      "stem": "double_base_palindromes_36",
+      "answer": "872187",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=36",
+      "method": "Check ordinary decimal and binary digit reversal for each odd integer below one million."
+    },
+    {
+      "number": 37,
+      "title": "Truncatable Primes",
+      "stem": "truncatable_primes_37",
+      "answer": "748317",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=37",
+      "method": "Traverse the entire right-truncatable-prime tree, testing each node's left truncations."
+    },
+    {
+      "number": 38,
+      "title": "Pandigital Multiples",
+      "stem": "pandigital_multiples_38",
+      "answer": "932718654",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=38",
+      "method": "Enumerate starting integers below 10000 and concatenate successive multiples until nine digits."
     },
     {
       "number": 39,
+      "title": "Integer Right Triangles",
       "stem": "integer_right_triangles_39",
-      "answer": "840"
+      "answer": "840",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=39"
     },
     {
       "number": 40,
+      "title": "Champernowne's Constant",
       "stem": "champernownes_constant_40",
-      "answer": "210"
+      "answer": "210",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=40"
+    },
+    {
+      "number": 41,
+      "title": "Pandigital Prime",
+      "stem": "pandigital_prime_41",
+      "answer": "7652413",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=41",
+      "method": "Descending digit permutations, omitting digit lengths divisible by three in digit sum."
+    },
+    {
+      "number": 42,
+      "title": "Coded Triangle Numbers",
+      "stem": "coded_triangle_numbers_42",
+      "answer": "162",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=42",
+      "method": "Parse the 1786 official words; test whether eight times each score plus one is an exact square."
+    },
+    {
+      "number": 43,
+      "title": "Sub-string Divisibility",
+      "stem": "sub_string_divisibility_43",
+      "answer": "16695334890",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=43",
+      "method": "Permutation backtracking prunes each three-digit divisibility constraint as soon as it is known."
     },
     {
       "number": 44,
+      "title": "Pentagon Numbers",
       "stem": "pentagon_numbers_44",
-      "answer": "5482660"
+      "answer": "5482660",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=44"
+    },
+    {
+      "number": 45,
+      "title": "Triangular, Pentagonal, and Hexagonal",
+      "stem": "triangular_pentagonal_and_hexagonal_45",
+      "answer": "1533776805",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=45",
+      "method": "Enumerate hexagonal numbers above 40755 and use the exact pentagonal discriminant test."
     },
     {
       "number": 46,
+      "title": "Goldbach's Other Conjecture",
       "stem": "goldbachs_other_conjecture_46",
-      "answer": "5777"
+      "answer": "5777",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=46"
     },
     {
       "number": 47,
+      "title": "Distinct Primes Factors",
       "stem": "distinct_primes_factors_47",
-      "answer": "134043"
+      "answer": "134043",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=47"
     },
     {
       "number": 48,
+      "title": "Self Powers",
       "stem": "self_powers_48",
-      "answer": "9110846700"
+      "answer": "9110846700",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=48"
+    },
+    {
+      "number": 49,
+      "title": "Prime Permutations",
+      "stem": "prime_permutations_49",
+      "answer": "296962999629",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=49",
+      "method": "Exhaust four-digit prime arithmetic progressions and compare digit-count signatures."
     },
     {
       "number": 50,
+      "title": "Consecutive Prime Sum",
       "stem": "consecutive_prime_sum_50",
-      "answer": "997651"
+      "answer": "997651",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=50"
+    },
+    {
+      "number": 51,
+      "title": "Prime Digit Replacements",
+      "stem": "prime_digit_replacements_51",
+      "answer": "121313",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=51",
+      "method": "Sieve by increasing digit length; enumerate all same-digit position masks and ten replacements."
+    },
+    {
+      "number": 52,
+      "title": "Permuted Multiples",
+      "stem": "permuted_multiples_52",
+      "answer": "142857",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=52",
+      "method": "Search increasing decimal ranges and compare exact digit multiplicities of n through 6n."
+    },
+    {
+      "number": 53,
+      "title": "Combinatoric Selections",
+      "stem": "combinatoric_selections_53",
+      "answer": "4075",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=53",
+      "method": "Pascal recurrence saturates at 1000001, preserving the threshold without large integers."
+    },
+    {
+      "number": 54,
+      "title": "Poker Hands",
+      "stem": "poker_hands_54",
+      "answer": "376",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=54",
+      "method": "Pack hand category and complete tie breakers into a base-15 integer; includes five-high ace straights."
     },
     {
       "number": 55,
+      "title": "Lychrel Numbers",
       "stem": "lychrel_numbers_55",
-      "answer": "249"
+      "answer": "249",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=55"
+    },
+    {
+      "number": 56,
+      "title": "Powerful Digit Sum",
+      "stem": "powerful_digit_sum_56",
+      "answer": "972",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=56",
+      "method": "Exact GMP powers for all positive a,b below 100, followed by decimal digit sums."
+    },
+    {
+      "number": 57,
+      "title": "Square Root Convergents",
+      "stem": "square_root_convergents_57",
+      "answer": "153",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=57",
+      "method": "Exact GMP recurrence p/q -> (p+2q)/(p+q), comparing actual decimal string lengths."
+    },
+    {
+      "number": 58,
+      "title": "Spiral Primes",
+      "stem": "spiral_primes_58",
+      "answer": "26241",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=58",
+      "method": "Test the three nonsquare corners of each layer; compare the prime ratio with exact integers."
+    },
+    {
+      "number": 59,
+      "title": "XOR Decryption",
+      "stem": "xor_decryption_59",
+      "answer": "129448",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=59",
+      "method": "Exhaust all 26^3 lowercase keys; use a documented English-frequency and common-word score. This identification is heuristic; the selected official plaintext and ASCII sum are checked."
+    },
+    {
+      "number": 60,
+      "title": "Prime Pair Sets",
+      "stem": "prime_pair_sets_60",
+      "answer": "26033",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=60",
+      "method": "Minimum five-clique search in the concatenation-prime graph. Discover a finite upper bound, then exhaust every prime below that sum to establish minimality."
+    },
+    {
+      "number": 61,
+      "title": "Cyclical Figurate Numbers",
+      "stem": "cyclical_figurate_numbers_61",
+      "answer": "28684",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=61",
+      "method": "Backtrack through four-digit polygonal numbers using two-digit overlaps, one type and one value each."
+    },
+    {
+      "number": 62,
+      "title": "Cubic Permutations",
+      "stem": "cubic_permutations_62",
+      "answer": "127035954683",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=62",
+      "method": "Group complete digit-length buckets of cubes by digit counts, then select groups of exactly five."
+    },
+    {
+      "number": 63,
+      "title": "Powerful Digit Counts",
+      "stem": "powerful_digit_counts_63",
+      "answer": "49",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=63",
+      "method": "Compare exact powers of bases 1 through 9 against successive decimal lower bounds."
+    },
+    {
+      "number": 64,
+      "title": "Odd Period Square Roots",
+      "stem": "odd_period_square_roots_64",
+      "answer": "1322",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=64",
+      "method": "Count odd continued-fraction periods using the integer square-root recurrence."
+    },
+    {
+      "number": 65,
+      "title": "Convergents of e",
+      "stem": "convergents_of_e_65",
+      "answer": "272",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=65",
+      "method": "Generate 100 convergent numerators with GMP and sum the final decimal digits."
+    },
+    {
+      "number": 66,
+      "title": "Diophantine Equation",
+      "stem": "diophantine_equation_66",
+      "answer": "661",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=66",
+      "method": "Find fundamental Pell solutions among continued-fraction convergents and compare their exact GMP numerators."
+    },
+    {
+      "number": 67,
+      "title": "Maximum Path Sum II",
+      "stem": "maximum_path_sum_ii_67",
+      "answer": "7273",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=67",
+      "method": "Bottom-up dynamic programming over the official 100-row triangle."
+    },
+    {
+      "number": 68,
+      "title": "Magic 5-gon Ring",
+      "stem": "magic_5_gon_ring_68",
+      "answer": "6531031914842725",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=68",
+      "method": "Enumerate inner nodes, derive outer nodes from a common sum, canonicalize rotation and maximize the 16-digit string."
     },
     {
       "number": 69,
+      "title": "Totient Maximum",
       "stem": "totient_maximum_69",
-      "answer": "510510"
+      "answer": "510510",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=69"
+    },
+    {
+      "number": 70,
+      "title": "Totient Permutation",
+      "stem": "totient_permutation_70",
+      "answer": "8319823",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=70",
+      "method": "Sieve every totient below ten million and compare permutation candidates by exact cross products."
+    },
+    {
+      "number": 71,
+      "title": "Ordered Fractions",
+      "stem": "ordered_fractions_71",
+      "answer": "428570",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=71",
+      "method": "Enumerate denominators and their largest reduced numerator strictly below 3/7."
+    },
+    {
+      "number": 72,
+      "title": "Counting Fractions",
+      "stem": "counting_fractions_72",
+      "answer": "303963552391",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=72",
+      "method": "Sum the totient sieve for denominators 2 through one million."
+    },
+    {
+      "number": 73,
+      "title": "Counting Fractions in a Range",
+      "stem": "counting_fractions_in_a_range_73",
+      "answer": "7295372",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=73",
+      "method": "Count the mediant tree between Farey neighbours 1/3 and 1/2, pruning by denominator."
+    },
+    {
+      "number": 74,
+      "title": "Digit Factorial Chains",
+      "stem": "digit_factorial_chains_74",
+      "answer": "402",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=74",
+      "method": "Memoize distinct chain lengths, separating newly discovered cycles from prefixes and cached tails."
+    },
+    {
+      "number": 75,
+      "title": "Singular Integer Right Triangles",
+      "stem": "singular_integer_right_triangles_75",
+      "answer": "161667",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=75",
+      "method": "Generate primitive Euclidean triples and count perimeter multiples, saturating at two."
+    },
+    {
+      "number": 76,
+      "title": "Counting Summations",
+      "stem": "counting_summations_76",
+      "answer": "190569291",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=76",
+      "method": "Use unordered coin-change partitions with allowed parts 1 through 99."
+    },
+    {
+      "number": 77,
+      "title": "Prime Summations",
+      "stem": "prime_summations_77",
+      "answer": "71",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=77",
+      "method": "Use prime coin-change partitions with an expanding bound and threshold-saturated counts."
+    },
+    {
+      "number": 78,
+      "title": "Coin Partitions",
+      "stem": "coin_partitions_78",
+      "answer": "55374",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=78",
+      "method": "Evaluate the generalized pentagonal recurrence modulo one million until a zero residue."
+    },
+    {
+      "number": 79,
+      "title": "Passcode Derivation",
+      "stem": "passcode_derivation_79",
+      "answer": "73162890",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=79",
+      "method": "Topologically order all observed digits; the acyclic one-occurrence ordering attains the minimum possible length."
+    },
+    {
+      "number": 80,
+      "title": "Square Root Digital Expansion",
+      "stem": "square_root_digital_expansion_80",
+      "answer": "40886",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=80",
+      "method": "Compute exact scaled integer square roots with GMP and sum 100 decimal digits per nonsquare."
+    },
+    {
+      "number": 81,
+      "title": "Path Sum: Two Ways",
+      "stem": "path_sum_two_ways_81",
+      "answer": "427337",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=81",
+      "method": "Run one-row right/down dynamic programming on the official matrix."
+    },
+    {
+      "number": 82,
+      "title": "Path Sum: Three Ways",
+      "stem": "path_sum_three_ways_82",
+      "answer": "260324",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=82",
+      "method": "Process columns with downward and upward relaxation passes."
+    },
+    {
+      "number": 83,
+      "title": "Path Sum: Four Ways",
+      "stem": "path_sum_four_ways_83",
+      "answer": "425185",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=83",
+      "method": "Run Dijkstra on the four-neighbour matrix graph using an O(V^2) minimum scan."
+    },
+    {
+      "number": 84,
+      "title": "Monopoly Odds",
+      "stem": "monopoly_odds_84",
+      "answer": "101524",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=84",
+      "method": "Power-iterate the 30,720-state cyclic-deck Markov chain, tracking square, consecutive doubles and both deck indices. The explicit initial deck order is one possible shuffle; tests compare a second ordering."
+    },
+    {
+      "number": 85,
+      "title": "Counting Rectangles",
+      "stem": "counting_rectangles_85",
+      "answer": "2772",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=85",
+      "method": "Compare exact triangular-number products and stop each dimension once monotonicity excludes an improvement."
+    },
+    {
+      "number": 86,
+      "title": "Cuboid Route",
+      "stem": "cuboid_route_86",
+      "answer": "1818",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=86",
+      "method": "Enumerate largest side and summed smaller sides; count valid splits when the unfolded route is an integer."
+    },
+    {
+      "number": 87,
+      "title": "Prime Power Triples",
+      "stem": "prime_power_triples_87",
+      "answer": "1097343",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=87",
+      "method": "Enumerate bounded prime fourth powers, cubes and squares, deduplicating sums in a bitset."
+    },
+    {
+      "number": 88,
+      "title": "Product-sum Numbers",
+      "stem": "product_sum_numbers_88",
+      "answer": "7587457",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=88",
+      "method": "Enumerate nondecreasing factors up to product 2K, infer padding ones, and sum distinct minima."
+    },
+    {
+      "number": 89,
+      "title": "Roman Numerals",
+      "stem": "roman_numerals_89",
+      "answer": "743",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=89",
+      "method": "Decode each official Roman numeral and compare its length with the greedy canonical token length."
+    },
+    {
+      "number": 90,
+      "title": "Cube Digit Pairs",
+      "stem": "cube_digit_pairs_90",
+      "answer": "1217",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=90",
+      "method": "Enumerate unordered pairs of six-digit sets, extending 6/9 only for display tests."
+    },
+    {
+      "number": 91,
+      "title": "Right Triangles with Integer Coordinates",
+      "stem": "right_triangles_with_integer_coordinates_91",
+      "answer": "14234",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=91",
+      "method": "Count primitive perpendicular steps at each grid point; add the three axis cases. Every endpoint remains within the 50 by 50 grid."
     },
     {
       "number": 92,
+      "title": "Square Digit Chains",
       "stem": "square_digit_chains_92",
-      "answer": "8581146"
+      "answer": "8581146",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": true,
+      "source": "https://projecteuler.net/problem=92"
+    },
+    {
+      "number": 93,
+      "title": "Arithmetic Expressions",
+      "stem": "arithmetic_expressions_93",
+      "answer": "1258",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=93",
+      "method": "Enumerate every pairwise reduction of four distinct decimal digits using reduced rational arithmetic. This covers every binary expression tree, operator choice and parenthesization."
+    },
+    {
+      "number": 94,
+      "title": "Almost Equilateral Triangles",
+      "stem": "almost_equilateral_triangles_94",
+      "answer": "518408346",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=94",
+      "method": "Enumerate the increasing Pell solutions x^2 - 3y^2 = 4 and transform them into almost-equilateral triangles. Stop once every possible perimeter exceeds one billion."
+    },
+    {
+      "number": 95,
+      "title": "Amicable Chains",
+      "stem": "amicable_chains_95",
+      "answer": "14316",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=95",
+      "method": "Sieve proper-divisor sums, then traverse the resulting finite functional graph. Traversal labels locate cycles and count every vertex at most once."
+    },
+    {
+      "number": 96,
+      "title": "Su Doku",
+      "stem": "su_doku_96",
+      "answer": "24702",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=96",
+      "method": "Solve all 50 official grids by minimum-candidate backtracking with row, column and box masks. Require exactly one solution per grid."
+    },
+    {
+      "number": 97,
+      "title": "Large Non-Mersenne Prime",
+      "stem": "large_non_mersenne_prime_97",
+      "answer": "8739992577",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=97",
+      "method": "Compute 28433 times 2^7830457 plus one modulo 10^10 using exact modular repeated squaring."
+    },
+    {
+      "number": 98,
+      "title": "Anagramic Squares",
+      "stem": "anagramic_squares_98",
+      "answer": "18769",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=98",
+      "method": "For every anagram pair, enumerate all squares of its length, derive the injective letter-to-digit map and test the mapped partner with an exact integer square root."
+    },
+    {
+      "number": 99,
+      "title": "Largest Exponential",
+      "stem": "largest_exponential_99",
+      "answer": "709",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=99",
+      "method": "Compare exact rational intervals for exponent times log(base), using an atanh series with a proven remainder bound. Overlapping intervals fall back to full GMP integer exponentiation."
+    },
+    {
+      "number": 100,
+      "title": "Arranged Probability",
+      "stem": "arranged_probability_100",
+      "answer": "756872327473",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=100",
+      "method": "Generate positive solutions of t(t-1) = 2b(b-1) by the Pell recurrence, stopping at the first total above 10^12."
+    },
+    {
+      "number": 101,
+      "title": "Optimum Polynomial",
+      "stem": "optimum_polynomial_101",
+      "answer": "37076114526",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=101",
+      "method": "Build Newton forward-difference interpolants in exact integer arithmetic and sum each fit at its first disagreement with the degree-ten generating polynomial."
+    },
+    {
+      "number": 102,
+      "title": "Triangle Containment",
+      "stem": "triangle_containment_102",
+      "answer": "228",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=102",
+      "method": "Test the signs of three exact cross products. Strictly matching signs identify origin-containing triangles; edge and degenerate cases are excluded."
+    },
+    {
+      "number": 103,
+      "title": "Special Subset Sums: Optimum",
+      "stem": "special_subset_sums_optimum_103",
+      "answer": "20313839404245",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=103",
+      "method": "Construct a feasible upper bound from the six-element optimum supplied in the statement, then exhaustively search every increasing positive seven-element set of smaller sum. Prune subset-sum collisions and necessary cardinality inequalities."
+    },
+    {
+      "number": 104,
+      "title": "Pandigital Fibonacci Ends",
+      "stem": "pandigital_fibonacci_ends_104",
+      "answer": "329468",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=104",
+      "method": "Track the last nine Fibonacci digits modulo 10^9. For each pandigital tail, compute the full Fibonacci number with GMP and check its leading nine digits exactly."
+    },
+    {
+      "number": 105,
+      "title": "Special Subset Sums: Testing",
+      "stem": "special_subset_sums_testing_105",
+      "answer": "73702",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=105",
+      "method": "Check the sorted smallest-(k+1) versus largest-k inequalities and sort all subset sums to detect collisions for each of the 100 official sets."
+    },
+    {
+      "number": 106,
+      "title": "Special Subset Sums: Meta-testing",
+      "stem": "special_subset_sums_meta_testing_106",
+      "answer": "21384",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=106",
+      "method": "Count equal-size partitions of each 2k-element selection, subtracting Catalan partitions whose ordering already settles the sum comparison."
+    },
+    {
+      "number": 107,
+      "title": "Minimal Network",
+      "stem": "minimal_network_107",
+      "answer": "259679",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=107",
+      "method": "Parse and validate the symmetric connected 40-node network. Subtract a Prim minimum spanning tree from the total weight of its undirected edges."
+    },
+    {
+      "number": 108,
+      "title": "Diophantine Reciprocals I",
+      "stem": "diophantine_reciprocals_i_108",
+      "answer": "180180",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=108",
+      "method": "Use (x-n)(y-n)=n^2 and search nonincreasing exponent vectors on consecutive primes. A constructed feasible primorial supplies a proven finite upper bound."
+    },
+    {
+      "number": 109,
+      "title": "Darts",
+      "stem": "darts_109",
+      "answer": "38182",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=109",
+      "method": "Choose a labelled double finishing region and enumerate zero, one or two earlier labelled dart regions, with the first two darts treated as an unordered multiset."
+    },
+    {
+      "number": 110,
+      "title": "Diophantine Reciprocals II",
+      "stem": "diophantine_reciprocals_ii_110",
+      "answer": "9350130049860600",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=110",
+      "method": "Use the divisor count of n^2 and exhaust all nonincreasing prime-exponent vectors below a constructed feasible primorial. Saturate divisor products only after they exceed the target."
+    },
+    {
+      "number": 111,
+      "title": "Primes with Runs",
+      "stem": "primes_with_runs_111",
+      "answer": "612407567715",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=111",
+      "method": "For each repeated digit, enumerate all choices of replacement positions and different digits, beginning with zero replacements. The first level producing primes determines the maximum repetition count."
+    },
+    {
+      "number": 112,
+      "title": "Bouncy Numbers",
+      "stem": "bouncy_numbers_112",
+      "answer": "1587000",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=112",
+      "method": "Scan digit order and count numbers containing both a rise and a fall. Test the exact 99 percent proportion by integer cross multiplication."
+    },
+    {
+      "number": 113,
+      "title": "Non-bouncy Numbers",
+      "stem": "non_bouncy_numbers_113",
+      "answer": "51161058134250",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=113",
+      "method": "Digit dynamic programming counts increasing and decreasing numbers at each length from one to 100. Subtract the nine constant-digit numbers counted twice at each length."
+    },
+    {
+      "number": 114,
+      "title": "Counting Block Combinations I",
+      "stem": "counting_block_combinations_i_114",
+      "answer": "16475640049",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=114",
+      "method": "Dynamic programming partitions rows by an initial black square or a red run of length at least three, followed by its required separator."
+    },
+    {
+      "number": 115,
+      "title": "Counting Block Combinations II",
+      "stem": "counting_block_combinations_ii_115",
+      "answer": "168",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=115",
+      "method": "Apply the separated-red-run recurrence with minimum length 50 until the count exceeds one million. Counts saturate above the threshold; twenty 51-cell blocks prove a finite bound."
+    },
+    {
+      "number": 116,
+      "title": "Red, Green or Blue Tiles",
+      "stem": "red_green_or_blue_tiles_116",
+      "answer": "20492570929",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=116",
+      "method": "For each tile length 2, 3 and 4, count tilings with black unit tiles and that colour alone, subtract the all-black row, then add the three counts."
+    },
+    {
+      "number": 117,
+      "title": "Red, Green, and Blue Tiles",
+      "stem": "red_green_and_blue_tiles_117",
+      "answer": "100808458960497",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=117",
+      "method": "Count compositions of a 50-cell row by appending one of the allowed tile lengths 1, 2, 3 and 4."
+    },
+    {
+      "number": 118,
+      "title": "Pandigital Prime Sets",
+      "stem": "pandigital_prime_sets_118",
+      "answer": "44680",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=118",
+      "method": "Count primes for every digit subset, then memoize partitions of the full digit mask. Requiring the next block to contain the lowest remaining digit removes order duplicates."
+    },
+    {
+      "number": 119,
+      "title": "Digit Power Sum",
+      "stem": "digit_power_sum_119",
+      "answer": "248155780267521",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=119",
+      "method": "For an increasing decimal cutoff 10^d, enumerate powers of every possible digit sum 2 through 9d. Sort and deduplicate all matches; stop when the complete range contains 30 terms."
+    },
+    {
+      "number": 120,
+      "title": "Square Remainders",
+      "stem": "square_remainders_120",
+      "answer": "333082500",
+      "languages": [
+        "c",
+        "rust",
+        "forth",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=120",
+      "method": "Use the binomial remainder formula to obtain 2a floor((a-1)/2) for each a, then sum from 3 through 1000."
     }
   ]
 }

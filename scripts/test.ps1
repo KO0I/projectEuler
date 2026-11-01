@@ -25,6 +25,16 @@ function Build-C {
 function Build-Rust {
     Invoke-Checked 'cargo' @('build','--release','--bins','--manifest-path','solutions/rust/Cargo.toml')
 }
+function Build-StartupC {
+    New-Item -ItemType Directory -Force -Path 'build/bench' | Out-Null
+    Invoke-Checked 'gcc' @('-O2','-std=c11','-Wall','-Wextra','support/bench/noop.c',
+        '-o','build/bench/noop-c.exe')
+}
+function Build-StartupRust {
+    New-Item -ItemType Directory -Force -Path 'build/bench' | Out-Null
+    Invoke-Checked 'rustc' @('--edition=2024','-C','opt-level=3','-C','lto=thin',
+        'support/bench/noop.rs','-o','build/bench/noop-rust.exe')
+}
 function Check-Forth {
     if (-not (Get-Command 'gforth' -ErrorAction SilentlyContinue)) { throw 'Gforth is missing' }
 }
@@ -43,12 +53,12 @@ switch ($Action) {
     'test-forth' { Check-Forth; Invoke-Checked 'python' @('scripts/bench.py','--mode','test','--languages','forth') }
     'test-factor' { Check-Factor; Invoke-Checked 'python' @('scripts/bench.py','--mode','test','--languages','factor') }
     'profile' {
-        Build-C; Build-Rust; Check-Forth; Check-Factor
+        Build-C; Build-Rust; Build-StartupC; Build-StartupRust; Check-Forth; Check-Factor
         try { Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','c','rust','forth','factor') }
         finally { Invoke-Checked 'python' @('scripts/plots.py') }
     }
-    'profile-c' { Build-C; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','c')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
-    'profile-rust' { Build-Rust; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','rust')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
+    'profile-c' { Build-C; Build-StartupC; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','c')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
+    'profile-rust' { Build-Rust; Build-StartupRust; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','rust')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
     'profile-forth' { Check-Forth; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','forth')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
     'profile-factor' { Check-Factor; try {Invoke-Checked 'python' @('scripts/bench.py','--mode','profile','--languages','factor')} finally {Invoke-Checked 'python' @('scripts/plots.py')} }
     'plots' { Invoke-Checked 'python' @('scripts/plots.py') }

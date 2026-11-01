@@ -1,50 +1,135 @@
-# Project Euler solutions
+# Project Euler solution index
 
-The main file for each available problem is linked below. Original duplicates and alternate versions are under `variants/`. Files are not necessarily complete or correct.
+C covers every official problem number from 1 through 120. The 37 solutions already
+addressed in the report are retained; the other 83 have new C implementations.
 
-| Number | Problem | File |
-|---:|---|---|
-| 1 | [multiples of 3 or 5](https://projecteuler.net/problem=1) | [c](c/multiples_of_3_or_5_1.c) |
-| 2 | [even fibonacci numbers](https://projecteuler.net/problem=2) | [c](c/even_fibonacci_numbers_2.c) |
-| 3 | [largest prime factor](https://projecteuler.net/problem=3) | [c](c/largest_prime_factor_3.c) |
-| 4 | [largest palindrome product](https://projecteuler.net/problem=4) | [c](c/largest_palindrome_product_4.c) |
-| 5 | [smallest multiple](https://projecteuler.net/problem=5) | [c](c/smallest_multiple_5.c) |
-| 6 | [sum square difference](https://projecteuler.net/problem=6) | [c](c/sum_square_difference_6.c) |
-| 7 | [10 001st prime](https://projecteuler.net/problem=7) | [c](c/10_001st_prime_7.c) |
-| 8 | [largest product in a series](https://projecteuler.net/problem=8) | [c](c/largest_product_in_a_series_8.c) |
-| 9 | [special pythagorean triplet](https://projecteuler.net/problem=9) | [c](c/special_pythagorean_triplet_9.c) |
-| 10 | [summation of primes](https://projecteuler.net/problem=10) | [c](c/summation_of_primes_10.c) |
-| 11 | [largest product in a grid](https://projecteuler.net/problem=11) | [c](c/largest_product_in_a_grid_11.c) |
-| 12 | [highly divisible triangular number](https://projecteuler.net/problem=12) | [c](c/highly_divisible_triangular_number_12.c) |
-| 13 | [large sum](https://projecteuler.net/problem=13) | [c](c/large_sum_13.c), [shell](shell/large_sum_13.sh) |
-| 14 | [longest collatz sequence](https://projecteuler.net/problem=14) | [c](c/longest_collatz_sequence_14.c) |
-| 16 | [power digit sum](https://projecteuler.net/problem=16) | [c](c/power_digit_sum_16.c) |
-| 17 | [number letter counts](https://projecteuler.net/problem=17) | [c](c/number_letter_counts_17.c), [latex](latex/number_letter_counts_17.tex) |
-| 19 | [counting sundays](https://projecteuler.net/problem=19) | [c](c/counting_sundays_19.c) |
-| 20 | [factorial digit sum](https://projecteuler.net/problem=20) | [c](c/factorial_digit_sum_20.c) |
-| 21 | [amicable numbers](https://projecteuler.net/problem=21) | [c](c/amicable_numbers_21.c) |
-| 22 | [names scores](https://projecteuler.net/problem=22) | [c](c/names_scores_22.c) |
-| 25 | [1000 digit fibonacci number](https://projecteuler.net/problem=25) | [c](c/1000_digit_fibonacci_number_25.c) |
-| 27 | [quadratic primes](https://projecteuler.net/problem=27) | [c](c/quadratic_primes_27.c) |
-| 28 | [number spiral diagonals](https://projecteuler.net/problem=28) | [c](c/number_spiral_diagonals_28.c) |
-| 29 | [distinct powers](https://projecteuler.net/problem=29) | [c](c/distinct_powers_29.c), [mathematica](mathematica/distinct_powers_29.nb) |
-| 30 | [digit fifth powers](https://projecteuler.net/problem=30) | [c](c/digit_fifth_powers_30.c) |
-| 34 | [digit factorials](https://projecteuler.net/problem=34) | [c](c/digit_factorials_34.c) |
-| 35 | [circular primes](https://projecteuler.net/problem=35) | [c](c/circular_primes_35.c) |
-| 39 | [integer right triangles](https://projecteuler.net/problem=39) | [c](c/integer_right_triangles_39.c) |
-| 40 | [champernownes constant](https://projecteuler.net/problem=40) | [c](c/champernownes_constant_40.c) |
-| 44 | [pentagon numbers](https://projecteuler.net/problem=44) | [c](c/pentagon_numbers_44.c) |
-| 46 | [goldbachs other conjecture](https://projecteuler.net/problem=46) | [c](c/goldbachs_other_conjecture_46.c) |
-| 47 | [distinct primes factors](https://projecteuler.net/problem=47) | [c](c/distinct_primes_factors_47.c) |
-| 48 | [self powers](https://projecteuler.net/problem=48) | [c](c/self_powers_48.c) |
-| 50 | [consecutive prime sum](https://projecteuler.net/problem=50) | [c](c/consecutive_prime_sum_50.c) |
-| 55 | [lychrel numbers](https://projecteuler.net/problem=55) | [c](c/lychrel_numbers_55.c) |
-| 69 | [totient maximum](https://projecteuler.net/problem=69) | [c](c/totient_maximum_69.c) |
-| 92 | [square digit chains](https://projecteuler.net/problem=92) | [c](c/square_digit_chains_92.c) |
+Each new C file contains its algorithm. The older C entry points retain their
+implementations in `support/c/euler_common.c`. Historical attempts are in
+`c/variants/`; they are not the programs built by the default target.
 
-The development branch adds 12 [Factor language solutions](factor/README.md) for problems
-1, 2, 5, 6, 9, 10, 11, 16, 20, 25, 28, 39. Factor is not Gforth and is
-not the GNU `factor` utility. Its subset is explicitly identified by the
-profiling manifest; source existence does not imply CI validation.
+See [new C methods and bounds](../docs/C_1_120.md),
+[validation](../docs/VALIDATION_C_1_120.md), and
+[the existing report](../explanations/latex/project_euler_c_explanations.tex).
 
-The development branch also contains a Rust binary for each problem in [`rust/src/bin/`](rust/src/bin/) and a Gforth entry point in [`forth/`](forth/). The historical main C programs remain in `c/variants/historical/`, with current corrected implementations using `support/c/euler_common.c`.
+| Number | Problem | C source | Status | Other implementations |
+| ---: | --- | --- | --- | --- |
+| 1 | [Multiples of 3 or 5](https://projecteuler.net/problem=1) | [C](c/multiples_of_3_or_5_1.c) | Existing report | rust, forth, factor |
+| 2 | [Even Fibonacci Numbers](https://projecteuler.net/problem=2) | [C](c/even_fibonacci_numbers_2.c) | Existing report | rust, forth, factor |
+| 3 | [Largest Prime Factor](https://projecteuler.net/problem=3) | [C](c/largest_prime_factor_3.c) | Existing report | rust, forth |
+| 4 | [Largest Palindrome Product](https://projecteuler.net/problem=4) | [C](c/largest_palindrome_product_4.c) | Existing report | rust, forth |
+| 5 | [Smallest Multiple](https://projecteuler.net/problem=5) | [C](c/smallest_multiple_5.c) | Existing report | rust, forth, factor |
+| 6 | [Sum Square Difference](https://projecteuler.net/problem=6) | [C](c/sum_square_difference_6.c) | Existing report | rust, forth, factor |
+| 7 | [10 001st Prime](https://projecteuler.net/problem=7) | [C](c/10_001st_prime_7.c) | Existing report | rust, forth |
+| 8 | [Largest Product in a Series](https://projecteuler.net/problem=8) | [C](c/largest_product_in_a_series_8.c) | Existing report | rust, forth |
+| 9 | [Special Pythagorean Triplet](https://projecteuler.net/problem=9) | [C](c/special_pythagorean_triplet_9.c) | Existing report | rust, forth, factor |
+| 10 | [Summation of Primes](https://projecteuler.net/problem=10) | [C](c/summation_of_primes_10.c) | Existing report | rust, forth, factor |
+| 11 | [Largest Product in a Grid](https://projecteuler.net/problem=11) | [C](c/largest_product_in_a_grid_11.c) | Existing report | rust, forth, factor |
+| 12 | [Highly Divisible Triangular Number](https://projecteuler.net/problem=12) | [C](c/highly_divisible_triangular_number_12.c) | Existing report | rust, forth |
+| 13 | [Large Sum](https://projecteuler.net/problem=13) | [C](c/large_sum_13.c) | Existing report | rust, forth |
+| 14 | [Longest Collatz Sequence](https://projecteuler.net/problem=14) | [C](c/longest_collatz_sequence_14.c) | Existing report | rust, forth |
+| 15 | [Lattice Paths](https://projecteuler.net/problem=15) | [C](c/lattice_paths_15.c) | Added | C only |
+| 16 | [Power Digit Sum](https://projecteuler.net/problem=16) | [C](c/power_digit_sum_16.c) | Existing report | rust, forth, factor |
+| 17 | [Number Letter Counts](https://projecteuler.net/problem=17) | [C](c/number_letter_counts_17.c) | Existing report | rust, forth |
+| 18 | [Maximum Path Sum I](https://projecteuler.net/problem=18) | [C](c/maximum_path_sum_i_18.c) | Added | C only |
+| 19 | [Counting Sundays](https://projecteuler.net/problem=19) | [C](c/counting_sundays_19.c) | Existing report | rust, forth |
+| 20 | [Factorial Digit Sum](https://projecteuler.net/problem=20) | [C](c/factorial_digit_sum_20.c) | Existing report | rust, forth, factor |
+| 21 | [Amicable Numbers](https://projecteuler.net/problem=21) | [C](c/amicable_numbers_21.c) | Existing report | rust, forth |
+| 22 | [Names Scores](https://projecteuler.net/problem=22) | [C](c/names_scores_22.c) | Existing report | rust, forth |
+| 23 | [Non-Abundant Sums](https://projecteuler.net/problem=23) | [C](c/non_abundant_sums_23.c) | Added | C only |
+| 24 | [Lexicographic Permutations](https://projecteuler.net/problem=24) | [C](c/lexicographic_permutations_24.c) | Added | C only |
+| 25 | [1000-digit Fibonacci Number](https://projecteuler.net/problem=25) | [C](c/1000_digit_fibonacci_number_25.c) | Existing report | rust, forth, factor |
+| 26 | [Reciprocal Cycles](https://projecteuler.net/problem=26) | [C](c/reciprocal_cycles_26.c) | Added | C only |
+| 27 | [Quadratic Primes](https://projecteuler.net/problem=27) | [C](c/quadratic_primes_27.c) | Existing report | rust, forth |
+| 28 | [Number Spiral Diagonals](https://projecteuler.net/problem=28) | [C](c/number_spiral_diagonals_28.c) | Existing report | rust, forth, factor |
+| 29 | [Distinct Powers](https://projecteuler.net/problem=29) | [C](c/distinct_powers_29.c) | Existing report | rust, forth |
+| 30 | [Digit Fifth Powers](https://projecteuler.net/problem=30) | [C](c/digit_fifth_powers_30.c) | Existing report | rust, forth |
+| 31 | [Coin Sums](https://projecteuler.net/problem=31) | [C](c/coin_sums_31.c) | Added | C only |
+| 32 | [Pandigital Products](https://projecteuler.net/problem=32) | [C](c/pandigital_products_32.c) | Added | C only |
+| 33 | [Digit Cancelling Fractions](https://projecteuler.net/problem=33) | [C](c/digit_cancelling_fractions_33.c) | Added | C only |
+| 34 | [Digit Factorials](https://projecteuler.net/problem=34) | [C](c/digit_factorials_34.c) | Existing report | rust, forth |
+| 35 | [Circular Primes](https://projecteuler.net/problem=35) | [C](c/circular_primes_35.c) | Existing report | rust, forth |
+| 36 | [Double-base Palindromes](https://projecteuler.net/problem=36) | [C](c/double_base_palindromes_36.c) | Added | C only |
+| 37 | [Truncatable Primes](https://projecteuler.net/problem=37) | [C](c/truncatable_primes_37.c) | Added | C only |
+| 38 | [Pandigital Multiples](https://projecteuler.net/problem=38) | [C](c/pandigital_multiples_38.c) | Added | C only |
+| 39 | [Integer Right Triangles](https://projecteuler.net/problem=39) | [C](c/integer_right_triangles_39.c) | Existing report | rust, forth, factor |
+| 40 | [Champernowne's Constant](https://projecteuler.net/problem=40) | [C](c/champernownes_constant_40.c) | Existing report | rust, forth |
+| 41 | [Pandigital Prime](https://projecteuler.net/problem=41) | [C](c/pandigital_prime_41.c) | Added | C only |
+| 42 | [Coded Triangle Numbers](https://projecteuler.net/problem=42) | [C](c/coded_triangle_numbers_42.c) | Added | C only |
+| 43 | [Sub-string Divisibility](https://projecteuler.net/problem=43) | [C](c/sub_string_divisibility_43.c) | Added | C only |
+| 44 | [Pentagon Numbers](https://projecteuler.net/problem=44) | [C](c/pentagon_numbers_44.c) | Existing report | rust, forth |
+| 45 | [Triangular, Pentagonal, and Hexagonal](https://projecteuler.net/problem=45) | [C](c/triangular_pentagonal_and_hexagonal_45.c) | Added | C only |
+| 46 | [Goldbach's Other Conjecture](https://projecteuler.net/problem=46) | [C](c/goldbachs_other_conjecture_46.c) | Existing report | rust, forth |
+| 47 | [Distinct Primes Factors](https://projecteuler.net/problem=47) | [C](c/distinct_primes_factors_47.c) | Existing report | rust, forth |
+| 48 | [Self Powers](https://projecteuler.net/problem=48) | [C](c/self_powers_48.c) | Existing report | rust, forth |
+| 49 | [Prime Permutations](https://projecteuler.net/problem=49) | [C](c/prime_permutations_49.c) | Added | C only |
+| 50 | [Consecutive Prime Sum](https://projecteuler.net/problem=50) | [C](c/consecutive_prime_sum_50.c) | Existing report | rust, forth |
+| 51 | [Prime Digit Replacements](https://projecteuler.net/problem=51) | [C](c/prime_digit_replacements_51.c) | Added | C only |
+| 52 | [Permuted Multiples](https://projecteuler.net/problem=52) | [C](c/permuted_multiples_52.c) | Added | C only |
+| 53 | [Combinatoric Selections](https://projecteuler.net/problem=53) | [C](c/combinatoric_selections_53.c) | Added | C only |
+| 54 | [Poker Hands](https://projecteuler.net/problem=54) | [C](c/poker_hands_54.c) | Added | C only |
+| 55 | [Lychrel Numbers](https://projecteuler.net/problem=55) | [C](c/lychrel_numbers_55.c) | Existing report | rust, forth |
+| 56 | [Powerful Digit Sum](https://projecteuler.net/problem=56) | [C](c/powerful_digit_sum_56.c) | Added | C only |
+| 57 | [Square Root Convergents](https://projecteuler.net/problem=57) | [C](c/square_root_convergents_57.c) | Added | C only |
+| 58 | [Spiral Primes](https://projecteuler.net/problem=58) | [C](c/spiral_primes_58.c) | Added | C only |
+| 59 | [XOR Decryption](https://projecteuler.net/problem=59) | [C](c/xor_decryption_59.c) | Added | C only |
+| 60 | [Prime Pair Sets](https://projecteuler.net/problem=60) | [C](c/prime_pair_sets_60.c) | Added | C only |
+| 61 | [Cyclical Figurate Numbers](https://projecteuler.net/problem=61) | [C](c/cyclical_figurate_numbers_61.c) | Added | C only |
+| 62 | [Cubic Permutations](https://projecteuler.net/problem=62) | [C](c/cubic_permutations_62.c) | Added | C only |
+| 63 | [Powerful Digit Counts](https://projecteuler.net/problem=63) | [C](c/powerful_digit_counts_63.c) | Added | C only |
+| 64 | [Odd Period Square Roots](https://projecteuler.net/problem=64) | [C](c/odd_period_square_roots_64.c) | Added | C only |
+| 65 | [Convergents of e](https://projecteuler.net/problem=65) | [C](c/convergents_of_e_65.c) | Added | C only |
+| 66 | [Diophantine Equation](https://projecteuler.net/problem=66) | [C](c/diophantine_equation_66.c) | Added | C only |
+| 67 | [Maximum Path Sum II](https://projecteuler.net/problem=67) | [C](c/maximum_path_sum_ii_67.c) | Added | C only |
+| 68 | [Magic 5-gon Ring](https://projecteuler.net/problem=68) | [C](c/magic_5_gon_ring_68.c) | Added | C only |
+| 69 | [Totient Maximum](https://projecteuler.net/problem=69) | [C](c/totient_maximum_69.c) | Existing report | rust, forth |
+| 70 | [Totient Permutation](https://projecteuler.net/problem=70) | [C](c/totient_permutation_70.c) | Added | C only |
+| 71 | [Ordered Fractions](https://projecteuler.net/problem=71) | [C](c/ordered_fractions_71.c) | Added | C only |
+| 72 | [Counting Fractions](https://projecteuler.net/problem=72) | [C](c/counting_fractions_72.c) | Added | C only |
+| 73 | [Counting Fractions in a Range](https://projecteuler.net/problem=73) | [C](c/counting_fractions_in_a_range_73.c) | Added | C only |
+| 74 | [Digit Factorial Chains](https://projecteuler.net/problem=74) | [C](c/digit_factorial_chains_74.c) | Added | C only |
+| 75 | [Singular Integer Right Triangles](https://projecteuler.net/problem=75) | [C](c/singular_integer_right_triangles_75.c) | Added | C only |
+| 76 | [Counting Summations](https://projecteuler.net/problem=76) | [C](c/counting_summations_76.c) | Added | C only |
+| 77 | [Prime Summations](https://projecteuler.net/problem=77) | [C](c/prime_summations_77.c) | Added | C only |
+| 78 | [Coin Partitions](https://projecteuler.net/problem=78) | [C](c/coin_partitions_78.c) | Added | C only |
+| 79 | [Passcode Derivation](https://projecteuler.net/problem=79) | [C](c/passcode_derivation_79.c) | Added | C only |
+| 80 | [Square Root Digital Expansion](https://projecteuler.net/problem=80) | [C](c/square_root_digital_expansion_80.c) | Added | C only |
+| 81 | [Path Sum: Two Ways](https://projecteuler.net/problem=81) | [C](c/path_sum_two_ways_81.c) | Added | C only |
+| 82 | [Path Sum: Three Ways](https://projecteuler.net/problem=82) | [C](c/path_sum_three_ways_82.c) | Added | C only |
+| 83 | [Path Sum: Four Ways](https://projecteuler.net/problem=83) | [C](c/path_sum_four_ways_83.c) | Added | C only |
+| 84 | [Monopoly Odds](https://projecteuler.net/problem=84) | [C](c/monopoly_odds_84.c) | Added | C only |
+| 85 | [Counting Rectangles](https://projecteuler.net/problem=85) | [C](c/counting_rectangles_85.c) | Added | C only |
+| 86 | [Cuboid Route](https://projecteuler.net/problem=86) | [C](c/cuboid_route_86.c) | Added | C only |
+| 87 | [Prime Power Triples](https://projecteuler.net/problem=87) | [C](c/prime_power_triples_87.c) | Added | C only |
+| 88 | [Product-sum Numbers](https://projecteuler.net/problem=88) | [C](c/product_sum_numbers_88.c) | Added | C only |
+| 89 | [Roman Numerals](https://projecteuler.net/problem=89) | [C](c/roman_numerals_89.c) | Added | C only |
+| 90 | [Cube Digit Pairs](https://projecteuler.net/problem=90) | [C](c/cube_digit_pairs_90.c) | Added | C only |
+| 91 | [Right Triangles with Integer Coordinates](https://projecteuler.net/problem=91) | [C](c/right_triangles_with_integer_coordinates_91.c) | Added | C only |
+| 92 | [Square Digit Chains](https://projecteuler.net/problem=92) | [C](c/square_digit_chains_92.c) | Existing report | rust, forth |
+| 93 | [Arithmetic Expressions](https://projecteuler.net/problem=93) | [C](c/arithmetic_expressions_93.c) | Added | C only |
+| 94 | [Almost Equilateral Triangles](https://projecteuler.net/problem=94) | [C](c/almost_equilateral_triangles_94.c) | Added | C only |
+| 95 | [Amicable Chains](https://projecteuler.net/problem=95) | [C](c/amicable_chains_95.c) | Added | C only |
+| 96 | [Su Doku](https://projecteuler.net/problem=96) | [C](c/su_doku_96.c) | Added | C only |
+| 97 | [Large Non-Mersenne Prime](https://projecteuler.net/problem=97) | [C](c/large_non_mersenne_prime_97.c) | Added | C only |
+| 98 | [Anagramic Squares](https://projecteuler.net/problem=98) | [C](c/anagramic_squares_98.c) | Added | C only |
+| 99 | [Largest Exponential](https://projecteuler.net/problem=99) | [C](c/largest_exponential_99.c) | Added | C only |
+| 100 | [Arranged Probability](https://projecteuler.net/problem=100) | [C](c/arranged_probability_100.c) | Added | C only |
+| 101 | [Optimum Polynomial](https://projecteuler.net/problem=101) | [C](c/optimum_polynomial_101.c) | Added | C only |
+| 102 | [Triangle Containment](https://projecteuler.net/problem=102) | [C](c/triangle_containment_102.c) | Added | C only |
+| 103 | [Special Subset Sums: Optimum](https://projecteuler.net/problem=103) | [C](c/special_subset_sums_optimum_103.c) | Added | C only |
+| 104 | [Pandigital Fibonacci Ends](https://projecteuler.net/problem=104) | [C](c/pandigital_fibonacci_ends_104.c) | Added | C only |
+| 105 | [Special Subset Sums: Testing](https://projecteuler.net/problem=105) | [C](c/special_subset_sums_testing_105.c) | Added | C only |
+| 106 | [Special Subset Sums: Meta-testing](https://projecteuler.net/problem=106) | [C](c/special_subset_sums_meta_testing_106.c) | Added | C only |
+| 107 | [Minimal Network](https://projecteuler.net/problem=107) | [C](c/minimal_network_107.c) | Added | C only |
+| 108 | [Diophantine Reciprocals I](https://projecteuler.net/problem=108) | [C](c/diophantine_reciprocals_i_108.c) | Added | C only |
+| 109 | [Darts](https://projecteuler.net/problem=109) | [C](c/darts_109.c) | Added | C only |
+| 110 | [Diophantine Reciprocals II](https://projecteuler.net/problem=110) | [C](c/diophantine_reciprocals_ii_110.c) | Added | C only |
+| 111 | [Primes with Runs](https://projecteuler.net/problem=111) | [C](c/primes_with_runs_111.c) | Added | C only |
+| 112 | [Bouncy Numbers](https://projecteuler.net/problem=112) | [C](c/bouncy_numbers_112.c) | Added | C only |
+| 113 | [Non-bouncy Numbers](https://projecteuler.net/problem=113) | [C](c/non_bouncy_numbers_113.c) | Added | C only |
+| 114 | [Counting Block Combinations I](https://projecteuler.net/problem=114) | [C](c/counting_block_combinations_i_114.c) | Added | C only |
+| 115 | [Counting Block Combinations II](https://projecteuler.net/problem=115) | [C](c/counting_block_combinations_ii_115.c) | Added | C only |
+| 116 | [Red, Green or Blue Tiles](https://projecteuler.net/problem=116) | [C](c/red_green_or_blue_tiles_116.c) | Added | C only |
+| 117 | [Red, Green, and Blue Tiles](https://projecteuler.net/problem=117) | [C](c/red_green_and_blue_tiles_117.c) | Added | C only |
+| 118 | [Pandigital Prime Sets](https://projecteuler.net/problem=118) | [C](c/pandigital_prime_sets_118.c) | Added | C only |
+| 119 | [Digit Power Sum](https://projecteuler.net/problem=119) | [C](c/digit_power_sum_119.c) | Added | C only |
+| 120 | [Square Remainders](https://projecteuler.net/problem=120) | [C](c/square_remainders_120.c) | Added | C only |

@@ -91,9 +91,9 @@ static long long problem13(void){
 static int number_letters(unsigned n){
     static const int small[]={0,3,3,5,4,4,3,5,5,4,3,6,6,8,8,7,7,9,8,8};
     static const int tens[]={0,0,6,6,5,5,5,7,6,6};
-    if(n==1000)return 11; /* one thousand */
+    if(n==1000)return 11;
     int length=0;
-    if(n>=100){length+=small[n/100]+7;n%=100;if(n)length+=3; /* and */}
+    if(n>=100){length+=small[n/100]+7;n%=100;if(n)length+=3;}
     if(n>=20){length+=tens[n/10];n%=10;}
     if(n)length+=small[n];
     return length;
@@ -131,8 +131,7 @@ static long long problem29(void){
     for(unsigned a=2;a<=100;a++)for(unsigned b=2;b<=100;b++){
         mpz_ui_pow_ui(v,a,b);values[idx++]=mpz_get_str(NULL,10,v);
     }
-    mpz_clear(v);
-    qsort(values,idx,sizeof values[0],namecmp);
+    mpz_clear(v);qsort(values,idx,sizeof values[0],namecmp);
     long long count=0;
     for(size_t i=0;i<idx;i++)if(!i||strcmp(values[i],values[i-1])!=0)count++;
     for(size_t i=0;i<idx;i++)free(values[i]);
@@ -154,8 +153,7 @@ static unsigned distinct_factors(unsigned n){
     unsigned count=0;
     for(unsigned p=2;p<=n/p;p++){
         if(n%p)continue;
-        count++;
-        do{n/=p;}while(n%p==0);
+        count++;do{n/=p;}while(n%p==0);
     }
     if(n>1)count++;
     return count;
@@ -163,18 +161,14 @@ static unsigned distinct_factors(unsigned n){
 static long long problem55(void){
     mpz_t n,rev;mpz_inits(n,rev,NULL);unsigned total=0;
     for(unsigned start=1;start<10000;start++){
-        mpz_set_ui(n,start);
-        int reached=0;
+        mpz_set_ui(n,start);int reached=0;
         for(int i=0;i<50;i++){
             char *str=mpz_get_str(NULL,10,n);size_t len=strlen(str);
             for(size_t l=0;l<len/2;l++){char t=str[l];str[l]=str[len-1-l];str[len-1-l]=t;}
-            mpz_set_str(rev,str,10);free(str);
-            mpz_add(n,n,rev);
-            str=mpz_get_str(NULL,10,n);len=strlen(str);
-            reached=1;
+            mpz_set_str(rev,str,10);free(str);mpz_add(n,n,rev);
+            str=mpz_get_str(NULL,10,n);len=strlen(str);reached=1;
             for(size_t l=0;l<len/2;l++)if(str[l]!=str[len-1-l]){reached=0;break;}
-            free(str);
-            if(reached)break;
+            free(str);if(reached)break;
         }
         if(!reached)total++;
     }
@@ -182,8 +176,7 @@ static long long problem55(void){
 }
 static long long problem92(void){
     unsigned char cache[568]={0};cache[1]=1;cache[89]=89;
-    const unsigned sq[]={0,1,4,9,16,25,36,49,64,81};
-    unsigned answer=0;
+    const unsigned sq[]={0,1,4,9,16,25,36,49,64,81};unsigned answer=0;
     for(unsigned n=1;n<10000000;n++){
         unsigned x=digit_power_sum(n,sq);
         while(!cache[x])x=digit_power_sum(x,sq);
@@ -275,7 +268,12 @@ long long euler_solve(int problem){
         }return -1;}
         case 48:{mpz_t sum,base,term,mod;mpz_inits(sum,base,term,mod,NULL);mpz_ui_pow_ui(mod,10,10);
             for(unsigned n=1;n<=1000;n++){mpz_set_ui(base,n);mpz_powm_ui(term,base,n,mod);mpz_add(sum,sum,term);mpz_mod(sum,sum,mod);}
-            long long result=(long long)mpz_get_ui(sum);mpz_clears(sum,base,term,mod,NULL);return result;}
+            /* sum < 10^10. Decimal conversion avoids unsigned-long truncation
+             * on LLP64 targets such as 64-bit Windows. */
+            char decimal[32];
+            mpz_get_str(decimal,10,sum);
+            long long result=strtoll(decimal,NULL,10);
+            mpz_clears(sum,base,term,mod,NULL);return result;}
         case 50:{unsigned char *p=sieve(1000000);if(!p)return -1;
             unsigned count=0;uint64_t prefix[80001]={0};
             for(unsigned n=2;n<1000000;n++)if(p[n]){prefix[count+1]=prefix[count]+n;count++;}

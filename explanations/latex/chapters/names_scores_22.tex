@@ -2,17 +2,16 @@
 \label{prob:22}
 \noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/names_scores_22.c}
 
-\noindent\textbf{Assessment:} Full workflow attempted; parser fragile.
+\noindent\textbf{Historical assessment:} Full workflow attempted; parser fragile.
 
 \subsection*{Mathematical goal}
 Alphabetize the names in the input file, sum each name's letter values \(A=1,\ldots,Z=26\), multiply by its one-based sorted position, and sum all the scores.
 
-\subsection*{How the C code works}
+\subsection*{How the historical C code works}
 The file \verb|names.txt| is parsed into a fixed array of 5163 names. Several adjacent-swap sorting passes examine successive character positions. After sorting, uppercase ASCII letters are valued by subtracting 64, each name score is multiplied by \verb|j+1|, and the grand total is accumulated.
 
-\subsection*{Correctness and limitations}
-Parsing by byte positions and fixed name lengths is fragile; the multi-pass sort should be replaced by lexicographic comparison with \verb|strcmp| and \verb|qsort|. On input failure the code calls \verb|fclose| on a null pointer. The expected score is 871198282, but this source should be tested against it rather than assumed correct.
-
+\subsection*{Historical correctness and limitations}
+Parsing by byte positions and fixed name lengths is fragile; the multi-pass sort should be replaced by lexicographic comparison with \verb|strcmp| and \verb|qsort|. On input failure the old code calls \verb|fclose| on a null pointer. The expected score is 871198282, but the old program should not be assumed correct merely because the reference answer is known.
 
 \subsection*{Correction to historical C --- Problem 22}
-{\color{red}\textbf{Correction:} The fixed-pass string sort and fragile byte seeking are replaced with bounded parsing of the quoted data, standard lexicographic sorting, and positional scoring. The original repository fixture still needs direct execution verification.}
+{\color{red}\textbf{Correction:} The fixed-pass string sort and fragile byte seeking are replaced with bounded parsing of the quoted data, standard lexicographic sorting, and positional scoring. The corrected C implementation, independent Rust implementation and Forth implementation each passed the expected answer \(871198282\) using the original repository dataset of 5163 names.}

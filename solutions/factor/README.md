@@ -19,7 +19,8 @@ There is deliberately no fallback to `/usr/bin/factor` (the unrelated integer
 factorization utility on many Linux distributions).
 
 All scripts compute their answer; they do not print a reference constant. Problem
-11 reads the same grid fixture as the C implementation. Native Factor bignums are
+11 reads the same grid fixture as the C implementation, parsing its zero-padded
+cells as decimal digits rather than language literals. Native Factor bignums are
 used by problems 16, 20 and 25 without artificial fixed-width overflow.
 Scripts print one decimal integer per invocation, for the existing benchmark harness.
 

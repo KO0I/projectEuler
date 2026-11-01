@@ -6,7 +6,7 @@ all: $(PDF)
 
 # The first pass writes an empty-to-populated TOC; the second inserts it and
 # shifts chapter pages; the third consumes the corrected page references.
-$(PDF): $(TEX) $(wildcard chapters/*.tex) Makefile
+$(PDF): $(TEX) $(wildcard chapters/*.tex) $(wildcard ../../build/math_plots/*.pdf) Makefile
 	mkdir -p build
 	pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build $(TEX)
 	pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build $(TEX)

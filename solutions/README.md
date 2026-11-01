@@ -42,4 +42,9 @@ The main file for each available problem is linked below. Original duplicates an
 | 69 | [totient maximum](https://projecteuler.net/problem=69) | [c](c/totient_maximum_69.c) |
 | 92 | [square digit chains](https://projecteuler.net/problem=92) | [c](c/square_digit_chains_92.c) |
 
+The development branch adds 12 [Factor language solutions](factor/README.md) for problems
+1, 2, 5, 6, 9, 10, 11, 16, 20, 25, 28, 39. Factor is not Gforth and is
+not the GNU `factor` utility. Its subset is explicitly identified by the
+profiling manifest; source existence does not imply CI validation.
+
 The development branch also contains a Rust binary for each problem in [`rust/src/bin/`](rust/src/bin/) and a Gforth entry point in [`forth/`](forth/). The historical main C programs remain in `c/variants/historical/`, with current corrected implementations using `support/c/euler_common.c`.

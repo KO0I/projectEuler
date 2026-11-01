@@ -146,4 +146,6 @@ if __name__=="__main__":
     collatz()
     prime_distribution()
     quadratic_primes()
+    from euler_visuals import make_all
+    make_all()
     print(f"Saved mathematical figures to {OUT}")

@@ -7,9 +7,11 @@ export CC CFLAGS
 C_FILES := $(wildcard solutions/c/*.c)
 C_TARGETS := $(patsubst solutions/c/%.c,build/c/%,$(C_FILES))
 RUST_MANIFEST := solutions/rust/Cargo.toml
+FACTOR_VM ?= $(CURDIR)/.toolchains/factor/factor
+export FACTOR_VM
 
-.PHONY: all c-release rust-release forth-check unit unit-c unit-rust unit-forth unit-python \
-        test test-c test-rust test-forth profile profile-c profile-rust profile-forth \
+.PHONY: all c-release rust-release forth-check factor-check unit unit-c unit-rust unit-forth unit-python \
+        test test-c test-rust test-forth test-factor profile profile-c profile-rust profile-forth profile-factor \
         plots plots-math docs clean
 all: c-release
 c-release: $(C_TARGETS)
@@ -22,6 +24,8 @@ rust-release:
 	cargo build --release --bins --manifest-path $(RUST_MANIFEST)
 forth-check:
 	@command -v gforth >/dev/null || { echo "Install 64-bit Gforth to run Forth solutions"; exit 1; }
+factor-check:
+	@test -x "$(FACTOR_VM)" || { echo "Factor language VM missing: set FACTOR_VM to the executable, NOT GNU factor"; exit 1; }
 
 build/tests/c_helpers: tests/c_helpers.c support/c/euler_common.c support/c/euler_common.h
 	@mkdir -p "$(@D)"
@@ -37,14 +41,16 @@ unit-python:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py'
 unit: unit-c unit-rust unit-forth unit-python
 
-test: c-release rust-release forth-check
-	$(PYTHON) scripts/bench.py --mode test --languages c rust forth
+test: c-release rust-release forth-check factor-check
+	$(PYTHON) scripts/bench.py --mode test --languages c rust forth factor
 test-c: c-release
 	$(PYTHON) scripts/bench.py --mode test --languages c
 test-rust: rust-release
 	$(PYTHON) scripts/bench.py --mode test --languages rust
 test-forth: forth-check
 	$(PYTHON) scripts/bench.py --mode test --languages forth
+test-factor: factor-check
+	$(PYTHON) scripts/bench.py --mode test --languages factor
 
 # Preserve BOTH validation and plotting errors. Shell dollars require $$ in Make.
 define profile_command
@@ -52,14 +58,16 @@ define profile_command
 	plot_status=0; $(MAKE) plots || plot_status=$$?; \
 	if [ $$status -ne 0 ]; then exit $$status; else exit $$plot_status; fi
 endef
-profile: c-release rust-release forth-check
-	$(call profile_command,c rust forth)
+profile: c-release rust-release forth-check factor-check
+	$(call profile_command,c rust forth factor)
 profile-c: c-release
 	$(call profile_command,c)
 profile-rust: rust-release
 	$(call profile_command,rust)
 profile-forth: forth-check
 	$(call profile_command,forth)
+profile-factor: factor-check
+	$(call profile_command,factor)
 plots:
 	$(PYTHON) scripts/plots.py
 plots-math:

@@ -56,7 +56,7 @@ include big.fs
     1 exponent 0 ?do digit * loop
     result + to result
     x 10 / to x
-    x 0= if exit then
+    x 0= if result exit then
   again ;
 : read-fixture 0 0 0 { addr u capacity f buf count } ( caddr u capacity -- buf n )
   addr u r/o open-file throw to f
@@ -474,14 +474,16 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
     repeat
     n 1+ to n
   repeat product ;
-: integer-sqrt 0 0 { n x y } ( nonnegative n -- floor(sqrt(n)) )
-  n 0= if 0 exit then
-  n to x
-  begin
-    x n x / + 2 / to y
-    y x >= if x exit then
-    y to x
-  again ;
+: integer-sqrt 0 0 0 { n low high midpoint } ( nonnegative n -- floor(sqrt(n)) )
+  0 to low  n to high
+  begin low high < while
+    low high + 1+ 2 / to midpoint
+    midpoint n midpoint / <= if
+      midpoint to low
+    else
+      midpoint 1- to high
+    then
+  repeat low ;
 : pentagonal? 0 0 { n t root } ( n -- flag )
   n 1 < if false exit then
   n 24 * 1+ to t
@@ -554,14 +556,14 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
   1001 1 do
     i i 10000000000 power-mod sum + 10000000000 mod to sum
   loop sum ;
-create prime-prefix 80001 cells allot
 : p50 ( -- answer )
-  1000000 sieve-build 0 0 0 0 0 0 { primes count best-length best-prime start-index end-index value }
+  1000000 sieve-build 0 0 0 0 0 0 0 { primes count best-length best-prime start-index end-index value prefix }
+  80001 cells allocate throw to prefix
   0 to count 0 to best-length 0 to best-prime
-  0 prime-prefix !
+  0 prefix !
   1000000 2 do
     primes i + c@ 0<> if
-      count prime-prefix cells + @ i + count 1+ prime-prefix cells + !
+      count prefix cells + @ i + count 1+ prefix cells + !
       count 1+ to count
     then
   loop
@@ -569,8 +571,8 @@ create prime-prefix 80001 cells allot
   begin start-index count < while
     start-index best-length + 1+ to end-index
     begin end-index count <= while
-      end-index prime-prefix cells + @
-      start-index prime-prefix cells + @ - to value
+      end-index prefix cells + @
+      start-index prefix cells + @ - to value
       value 1000000 >= if leave then
       primes value + c@ 0<> if
         end-index start-index - to best-length
@@ -580,7 +582,7 @@ create prime-prefix 80001 cells allot
     repeat
     start-index 1+ to start-index
   repeat
-  primes free throw best-prime ;
+  primes free throw prefix free throw best-prime ;
 : big-reverse 0 0 { original reversed temp digit } ( big big -- )
   8 bnew to temp
   original temp bcopy

@@ -88,7 +88,7 @@ include big.fs
   begin b 4000000 <= while
     b 2 mod 0= if sum b + to sum then
     a b + to next
-    b to a  next to b
+    b to a next to b
   repeat sum ;
 : p3 ( -- answer )
   600851475143 2 1 { n d last }
@@ -155,7 +155,7 @@ include big.fs
   2000000 2 do bytes i + c@ 0<> if answer i + to answer then loop
   bytes free throw answer ;
 : grid-product 0 0 0 { grid x y dx dy xx yy product } ( grid x y dx dy -- product )
-  x dx 3 * + to xx  y dy 3 * + to yy
+  x dx 3 * + to xx y dy 3 * + to yy
   xx 0< xx 20 >= or yy 0< or yy 20 >= or if 0 exit then
   1 to product
   4 0 do
@@ -168,10 +168,10 @@ include big.fs
   0 to count 0 to value false to active
   length 0 do
     buf i + c@ dup [char] 0 >= over [char] 9 <= and if
-      [char] 0 - value 10 * + to value  true to active
+      [char] 0 - value 10 * + to value true to active
     else
       drop
-      active if value grid count cells + !  count 1+ to count
+      active if value grid count cells + ! count 1+ to count
         0 to value false to active
       then
     then
@@ -201,7 +201,7 @@ include big.fs
 : p13 ( -- answer )
   s" lsum" r/o open-file throw
   0 0 0 0 0 { f total next line count more }
-  16 bnew to total  16 bnew to next
+  16 bnew to total 16 bnew to next
   128 allocate throw to line
   0 to count
   begin
@@ -223,7 +223,7 @@ include big.fs
 : p14 ( -- answer )
   1 0 0 0 { best-start best-length n length }
   1000000 1 do
-    i to n  1 to length
+    i to n 1 to length
     begin n 1 <> while
       n 2 mod 0= if n 2 / to n else n 3 * 1+ to n then
       length 1+ to length
@@ -234,7 +234,7 @@ include big.fs
   64 bnew { n }
   1 n bset-u
   1000 0 do 2 n bmul-small! loop
-  n bdigitsum  n bfree ;
+  n bdigitsum n bfree ;
 create letter-small
   0 , 3 , 3 , 5 , 4 , 4 , 3 , 5 , 5 , 4 ,
   3 , 6 , 6 , 8 , 8 , 7 , 7 , 9 , 8 , 8 ,
@@ -290,10 +290,7 @@ create month-days 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ,
   2 to index
   begin b bdecimal-length 1000 < while
     a b temp badd
-    a to old
-    b to a
-    temp to b
-    old to temp
+    a to old b to a temp to b old to temp
     index 1+ to index
   repeat
   a bfree b bfree temp bfree index ;
@@ -312,7 +309,7 @@ create names-length 5200 cells allot
   len b cells names-length + ! ;
 : name-sort 0 0 0 0 { lo hi left right pivot-addr pivot-len } ( lo hi -- )
   lo hi >= if exit then
-  lo to left  hi to right
+  lo to left hi to right
   lo hi + 2 / name-addr to pivot-addr
   lo hi + 2 / name-len to pivot-len
   begin left right <= while
@@ -386,8 +383,7 @@ create names-length 5200 cells allot
 : primitive-root 0 0 0 0 { n base power exp current-exp } ( n -- root exp )
   n to base 1 to exp
   n 1+ 2 ?do
-    i to power
-    1 to current-exp
+    i to power 1 to current-exp
     begin power n < while
       power i * to power current-exp 1+ to current-exp
     repeat
@@ -402,8 +398,7 @@ create power-seen 61000 allot
     101 2 do
       root 601 * exp i * + to key
       power-seen key + c@ 0= if
-        1 power-seen key + c!
-        count 1+ to count
+        1 power-seen key + c! count 1+ to count
       then
     loop
   loop count ;
@@ -474,15 +469,13 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
     repeat
     n 1+ to n
   repeat product ;
-: integer-sqrt 0 0 0 { n low high midpoint } ( nonnegative n -- floor(sqrt(n)) )
-  0 to low  n to high
+\ Integer binary search. Avoid nested parentheses in Forth stack comments.
+: integer-sqrt 0 0 0 { n low high midpoint } ( n -- root )
+  0 to low n to high
   begin low high < while
-    low high + 1+ 2 / to midpoint
-    midpoint n midpoint / <= if
-      midpoint to low
-    else
-      midpoint 1- to high
-    then
+    low high low - 2 / + 1+ to midpoint
+    midpoint n midpoint / <= if midpoint to low
+    else midpoint 1- to high then
   repeat low ;
 : pentagonal? 0 0 { n t root } ( n -- flag )
   n 1 < if false exit then
@@ -501,8 +494,7 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
         pj pk + pentagonal? if difference to best then
       then
     -1 +loop
-  loop
-  best ;
+  loop best ;
 : p46 ( -- answer )
   9 0 0 0 { n representation half root }
   begin
@@ -545,9 +537,7 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
 : power-mod 0 { base exponent modulo result } ( b exp m -- residue )
   1 to result
   begin exponent 0> while
-    exponent 1 and if
-      result base modulo multiply-mod to result
-    then
+    exponent 1 and if result base modulo multiply-mod to result then
     base base modulo multiply-mod to base
     exponent 2 / to exponent
   repeat result ;
@@ -556,14 +546,16 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
   1001 1 do
     i i 10000000000 power-mod sum + 10000000000 mod to sum
   loop sum ;
+: prefix@ ( index address -- value ) swap cells + @ ;
+: prefix! ( value index address -- ) swap cells + ! ;
 : p50 ( -- answer )
   1000000 sieve-build 0 0 0 0 0 0 0 { primes count best-length best-prime start-index end-index value prefix }
   80001 cells allocate throw to prefix
   0 to count 0 to best-length 0 to best-prime
-  0 prefix !
+  0 0 prefix prefix!
   1000000 2 do
     primes i + c@ 0<> if
-      count prefix cells + @ i + count 1+ prefix cells + !
+      count prefix prefix@ i + count 1+ prefix prefix!
       count 1+ to count
     then
   loop
@@ -571,14 +563,16 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
   begin start-index count < while
     start-index best-length + 1+ to end-index
     begin end-index count <= while
-      end-index prefix cells + @
-      start-index prefix cells + @ - to value
-      value 1000000 >= if leave then
-      primes value + c@ 0<> if
-        end-index start-index - to best-length
-        value to best-prime
+      end-index prefix prefix@ start-index prefix prefix@ - to value
+      value 1000000 >= if
+        \ LEAVE is for counted loops; terminate this BEGIN loop explicitly.
+        count 1+ to end-index
+      else
+        primes value + c@ 0<> if
+          end-index start-index - to best-length value to best-prime
+        then
+        end-index 1+ to end-index
       then
-      end-index 1+ to end-index
     repeat
     start-index 1+ to start-index
   repeat
@@ -602,13 +596,9 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
     50 0 do
       value reversed big-reverse
       value reversed temp badd
-      value to old
-      temp to value
-      old to temp
+      value to old temp to value old to temp
       value reversed big-reverse
-      value reversed babscompare 0= if
-        true to reached leave
-      then
+      value reversed babscompare 0= if true to reached leave then
     loop
     reached 0= if count 1+ to count then
   loop
@@ -631,9 +621,7 @@ create squared-digits 0 , 1 , 4 , 9 , 16 , 25 , 36 , 49 , 64 , 81 ,
     n 0= if result exit then
   again ;
 : chain-end { n } ( n -- 1|89 )
-  begin n 1 <> n 89 <> and while
-    n digit-squares to n
-  repeat n ;
+  begin n 1 <> n 89 <> and while n digit-squares to n repeat n ;
 create ends-at-89 568 allot
 : p92 ( -- answer )
   ends-at-89 568 erase

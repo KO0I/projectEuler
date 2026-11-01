@@ -1,27 +1,9 @@
-#include<math.h>
-#include<stdio.h>
-
-/*
- *
- *
- * A number chain is created by continuously adding the square of the digits in
- * a number to form a new number until it has been seen before.
- *
- * For example,
- *
- * 44 -> 32 -> 13 -> 10 -> 1 -> 1
- * 85 -> 89 -> 145 -> 42 -> 20 -> 4 -> 16 -> 37 -> 58 -> 89
- *
- * Therefore any chain that arrives at 1 or 89 will become stuck in an endless
- * loop. What is most amazing is that EVERY starting number will eventually
- * arrive at 1 or 89.
- *
- * How many starting numbers below ten million will arrive at 89?
- */
-
-int main(){
-
-/* The code for this problem requires that every number to be remembered? */
-
-return 0;
+/* Project Euler 92: the corrected algorithm is in support/c/euler_common.c. */
+#include <stdio.h>
+#include "euler_common.h"
+int main(void) {
+    long long answer = euler_solve(92);
+    if (answer < 0 && 92 != 27) return 1;
+    printf("%lld\n", answer);
+    return 0;
 }

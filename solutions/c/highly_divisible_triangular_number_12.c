@@ -1,13 +1,9 @@
+/* Project Euler 12: the corrected algorithm is in support/c/euler_common.c. */
 #include <stdio.h>
-
-//triangle number generator:
-
-int main(){
-  unsigned long i,tri=1,j=1;
-  for(i=2; i<=500; i++){
-    tri+=i;
-    j++;
-  }
-  printf("%lu\n", tri);
-  return 0;
+#include "euler_common.h"
+int main(void) {
+    long long answer = euler_solve(12);
+    if (answer < 0 && 12 != 27) return 1;
+    printf("%lld\n", answer);
+    return 0;
 }

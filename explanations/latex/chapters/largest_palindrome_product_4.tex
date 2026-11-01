@@ -13,3 +13,6 @@ The program opens \verb|palindrome|, reads each candidate number into \verb|temp
 \subsection*{Correctness and limitations}
 The source assumes the input file contains a complete, correctly separated list of palindromes. The historical palindrome generator does not reliably separate output records, so the data path must be verified. The calculated quotient \verb|q=temp/a| is unused; checking whether \verb|q| is a three-digit integer would remove the inner loop. The expected maximum is 906609, but it is not verified by the existing file workflow.
 
+
+\subsection*{Correction to historical C --- Problem 4}
+{\color{red}\textbf{Correction:} The new implementation enumerates products of three-digit integers and tests each product as a palindrome. It no longer relies on the historical palindrome input file or an unused second factor search.}

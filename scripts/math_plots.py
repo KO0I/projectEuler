@@ -43,8 +43,8 @@ def ulam(side=101):
             dr,dc = drdc[direction % 4]
             for _ in range(step):
                 row, col = row+dr, col+dc
+                n += 1
                 if 0 <= row < side and 0 <= col < side:
-                    n += 1
                     grid[row,col] = n
             direction += 1
         step += 1

@@ -13,3 +13,6 @@ The variable \verb|mult| begins at one. The \verb|for| loop tests \verb|mult%i| 
 \subsection*{Correctness and limitations}
 The first qualifying candidate is 232792560, but checking essentially every preceding integer is computationally expensive. A much faster implementation would multiply the highest prime powers not exceeding 20. The surrounding \verb|done| loop is not needed to express the search.
 
+
+\subsection*{Correction to historical C --- Problem 5}
+{\color{red}\textbf{Correction:} Unbounded candidate-by-candidate searching is replaced by successive least common multiples computed using the Euclidean greatest common divisor.}

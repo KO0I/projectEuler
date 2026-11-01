@@ -28,7 +28,8 @@ FIELDS = ("language", "problem", "stem", "runtime_ms", "status",
 
 def command(language: str, number: int, stem: str) -> list[str]:
     if language == "c":
-        return [str(ROOT / "build" / "c" / stem)]
+        suffix = ".exe" if os.name == "nt" else ""
+        return [str(ROOT / "build" / "c" / (stem + suffix))]
     if language == "rust":
         suffix = ".exe" if os.name == "nt" else ""
         return [str(ROOT / "solutions" / "rust" / "target" /

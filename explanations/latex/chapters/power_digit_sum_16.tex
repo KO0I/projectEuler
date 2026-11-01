@@ -13,3 +13,6 @@ The call \verb|mpz_pow_ui| computes \(2^{1000}\). At each iteration the code cal
 \subsection*{Correctness and limitations}
 The 305 iterations exceed the 302-digit input, so later positions contribute zero. The expected sum is 1366. Compilation requires GMP headers and \verb|-lgmp|. A decimal-string conversion would be simpler, but it is not the method implemented here.
 
+
+\subsection*{Correction to historical C --- Problem 16}
+{\color{red}\textbf{Correction:} GNU MP is retained for exact exponentiation, but the corrected code converts the resulting integer to decimal text and sums digit values directly.}

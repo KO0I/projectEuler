@@ -33,17 +33,13 @@ test-forth: forth-check
 	$(PYTHON) scripts/bench.py --mode test --languages forth
 
 profile: c-release rust-release forth-check
-	$(PYTHON) scripts/bench.py --mode profile --languages c rust forth
-	$(MAKE) plots
+	@$(PYTHON) scripts/bench.py --mode profile --languages c rust forth; status=$?; $(MAKE) plots; exit $status
 profile-c: c-release
-	$(PYTHON) scripts/bench.py --mode profile --languages c
-	$(MAKE) plots
+	@$(PYTHON) scripts/bench.py --mode profile --languages c; status=$?; $(MAKE) plots; exit $status
 profile-rust: rust-release
-	$(PYTHON) scripts/bench.py --mode profile --languages rust
-	$(MAKE) plots
+	@$(PYTHON) scripts/bench.py --mode profile --languages rust; status=$?; $(MAKE) plots; exit $status
 profile-forth: forth-check
-	$(PYTHON) scripts/bench.py --mode profile --languages forth
-	$(MAKE) plots
+	@$(PYTHON) scripts/bench.py --mode profile --languages forth; status=$?; $(MAKE) plots; exit $status
 plots:
 	$(PYTHON) scripts/plots.py
 plots-math:

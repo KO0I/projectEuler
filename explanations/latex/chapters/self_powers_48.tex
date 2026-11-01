@@ -16,3 +16,6 @@ GMP constructs the modulus \verb|digitspan=10^10|. The loop evaluates each \verb
 \subsection*{Correctness and limitations}
 The loop runs from 999 down to 1, omitting the 1000th term. This omission does not change the last ten digits because \(1000^{1000}\) is divisible by \(10^{10}\). The expected residue is 9110846700. The code computes full huge powers before reducing them; modular exponentiation would be significantly faster. GMP headers and \verb|-lgmp| are required.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The corrected modular GNU MP calculation includes the term for 1000, which was previously omitted but happens to contribute zero modulo ten to the tenth power.}

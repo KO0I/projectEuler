@@ -1,0 +1,11 @@
+\section{Number Letter Counts --- Problem 17}
+\label{prob:17}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/feature/euler-c-rust-forth/solutions/c/number_letter_counts_17.c}
+\subsection*{Mathematical goal}
+For integers 1 through 1000 inclusive, count letters in their British English names, excluding spaces and hyphens; non-round hundreds use the word \emph{and}.
+\subsection*{Historical approach}
+The original \LaTeX{} analysis at \texttt{solutions/latex/number\_letter\_counts\_17.tex} counts recurring words mathematically. There was no corresponding main C implementation.
+\subsection*{Corrected C implementation}
+{\color{red}\textbf{Correction:} The new C solution tabulates the lengths of words for one through nineteen and the multiples of ten, adds seven letters for \emph{hundred} and three for \emph{and} where applicable, handles \emph{one thousand} separately, and sums across all 1000 numbers.}
+\subsection*{Validation}
+The corrected C code matched the expected value \(21124\) in local testing.

@@ -13,3 +13,6 @@ The helper \verb|fact| calculates a digit's factorial by multiplying integers fr
 \subsection*{Correctness and limitations}
 This range happens to include 145 and 40585, whose total is 40730, but the source does not prove that 99999 is a sufficient upper bound. A rigorous bound comes from comparing a \(d\)-digit number with \(d\cdot9!\); candidates of six or seven digits cannot be dismissed merely by intuition. The program should derive its stopping criterion and avoid recalculating the same digit factorials.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The search now covers every candidate up to seven times nine factorial, instead of the unjustified five-digit ceiling.}

@@ -1,13 +1,13 @@
 # Project Euler C explanations in LaTeX
 
-This directory contains one LaTeX chapter for each of the **35 main C problem files**, in ascending Project Euler problem order, plus a combined compilable document.
+This directory contains one LaTeX chapter for each of the **37 main C problem files**, in ascending Project Euler problem order, plus a combined compilable document.
 
 - [Combined LaTeX source](project_euler_c_explanations.tex)
 - [Individual chapters](chapters/)
 - [C source files](../../solutions/c/)
 - [Existing LaTeX explanation for problem 17](../../solutions/latex/number_letter_counts_17.tex)
 
-Problem 13 currently has a shell attempt rather than C, and problem 17 has a LaTeX analysis rather than a C solution. Neither is falsely represented here as a C explanation.
+Problems 13 and 17 now have C implementations with chapters describing the historical approach and the corrections in red. The other chapters retain analysis of the historical attempts and add red, explicitly labelled corrections. A revised solution is not considered validated until it passes tests.
 
 Each chapter describes the mathematical goal, the C control flow and data structures, and the observed limitations. **A chapter is not a claim that its program works.** Several historical files are stubs, have undefined behavior, or calculate something other than their nominal problem.
 
@@ -37,8 +37,10 @@ Requires a reasonably complete TeX Live installation with `pdflatex`, `amsmath`,
 | 10 | [summation_of_primes_10.c](../../solutions/c/summation_of_primes_10.c) | [summation_of_primes_10.tex](chapters/summation_of_primes_10.tex) |
 | 11 | [largest_product_in_a_grid_11.c](../../solutions/c/largest_product_in_a_grid_11.c) | [largest_product_in_a_grid_11.tex](chapters/largest_product_in_a_grid_11.tex) |
 | 12 | [highly_divisible_triangular_number_12.c](../../solutions/c/highly_divisible_triangular_number_12.c) | [highly_divisible_triangular_number_12.tex](chapters/highly_divisible_triangular_number_12.tex) |
+| 13 | [large_sum_13.c](../../solutions/c/large_sum_13.c) | [large_sum_13.tex](chapters/large_sum_13.tex) |
 | 14 | [longest_collatz_sequence_14.c](../../solutions/c/longest_collatz_sequence_14.c) | [longest_collatz_sequence_14.tex](chapters/longest_collatz_sequence_14.tex) |
 | 16 | [power_digit_sum_16.c](../../solutions/c/power_digit_sum_16.c) | [power_digit_sum_16.tex](chapters/power_digit_sum_16.tex) |
+| 17 | [number_letter_counts_17.c](../../solutions/c/number_letter_counts_17.c) | [number_letter_counts_17.tex](chapters/number_letter_counts_17.tex) |
 | 19 | [counting_sundays_19.c](../../solutions/c/counting_sundays_19.c) | [counting_sundays_19.tex](chapters/counting_sundays_19.tex) |
 | 20 | [factorial_digit_sum_20.c](../../solutions/c/factorial_digit_sum_20.c) | [factorial_digit_sum_20.tex](chapters/factorial_digit_sum_20.tex) |
 | 21 | [amicable_numbers_21.c](../../solutions/c/amicable_numbers_21.c) | [amicable_numbers_21.tex](chapters/amicable_numbers_21.tex) |

@@ -13,3 +13,6 @@ The helper \verb|powi| evaluates integer powers by repeated multiplication. For 
 \subsection*{Correctness and limitations}
 This search covers all candidates that can meet the condition, and leading zero digits contribute zero. The expected sum is 443839. The upper bound is conservative; using the maximum digit-power sum gives a tighter bound. The unused variable \verb|k| and outdated comment about fourth powers do not change the computation.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The original digit-power test is retained with a mathematically bounded search domain rather than an arbitrary ceiling.}

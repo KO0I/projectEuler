@@ -26,3 +26,9 @@ From the repository root, run `make`, `make run`, or `make clean`. The default t
 For the combined LaTeX explanations, run `make -C explanations/latex`. This requires a LaTeX installation with pdflatex and standard support packages.
 
 Some C programs need `-lm`, GNU MP (`-lgmp`), or additional C support files. Some source files are unfinished or contain bugs. Existing data files remain at their original paths to preserve relative-path input reads.
+
+## Three-language corrected implementations
+
+The development branch covers all 37 represented problems in C, Rust and Forth. Corrected C wrappers call `support/c/euler_common.c`; earlier source remains under `solutions/c/variants/historical/`. Rust uses a Cargo package under `solutions/rust/`, while Forth uses Gforth and reusable base-10000 arithmetic in `solutions/forth/`.
+
+With the required toolchains installed, run `make test` to check answers, `make profile` for one-run timing and plots, and `make plots-math` for mathematical figures. See `docs/adr/0001-c-rust-forth.md`. LaTeX explanations mark corrections in red and explicitly label them for monochrome readability.

@@ -13,3 +13,6 @@ The outer loop enumerates \verb|a| and the inner loop enumerates \verb|b|. Rathe
 \subsection*{Correctness and limitations}
 The search finds \((a,b,c)=(200,375,425)\), giving 31875000. The \verb|break| exits only the inner loop, so the outer loop continues until its bound before the enclosing \verb|while| stops. A no-solution case would repeat forever because there is no explicit failure exit.
 
+
+\subsection*{Correction to historical C --- Problem 9}
+{\color{red}\textbf{Correction:} The perimeter-constrained nested search is retained, but the corrected routine terminates immediately after finding the valid triple.}

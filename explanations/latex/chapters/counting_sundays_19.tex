@@ -13,3 +13,6 @@ The global state tracks year, month \verb|j|, weekday \verb|i|, day of month and
 \subsection*{Correctness and limitations}
 The test \verb|year%4==0| omits the full Gregorian century rule, but covers leap years in the specified 1901--2000 interval, including 2000. Formal function arguments are unused, and the stopping boundary deserves tests. The intended answer is 171.
 
+
+\subsection*{Correction to historical C --- Problem 19}
+{\color{red}\textbf{Correction:} The corrected calendar traversal uses the full Gregorian leap-year rule and counts Sundays at the start of each month only within the requested date interval.}

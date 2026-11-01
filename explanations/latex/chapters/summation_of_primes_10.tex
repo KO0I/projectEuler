@@ -16,3 +16,6 @@ The program reads an integer \verb|n| from its command-line argument and loops f
 \subsection*{Correctness and limitations}
 This C program does not solve the prime-summation problem. Using \verb|int| also overflows for the intended bound. A sieve of Eratosthenes combined with a 64-bit accumulator would solve the actual problem. The mathematical answer is 142913828922, not the sum produced by the present algorithm.
 
+
+\subsection*{Correction to historical C --- Problem 10}
+{\color{red}\textbf{Correction:} The old program summed all integers, not primes, and used an undersized accumulator. The corrected implementation uses a sieve of Eratosthenes and a 64-bit prime sum.}

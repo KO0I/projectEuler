@@ -13,3 +13,6 @@ The file \verb|names.txt| is parsed into a fixed array of 5163 names. Several ad
 \subsection*{Correctness and limitations}
 Parsing by byte positions and fixed name lengths is fragile; the multi-pass sort should be replaced by lexicographic comparison with \verb|strcmp| and \verb|qsort|. On input failure the code calls \verb|fclose| on a null pointer. The expected score is 871198282, but this source should be tested against it rather than assumed correct.
 
+
+\subsection*{Correction to historical C --- Problem 22}
+{\color{red}\textbf{Correction:} The fixed-pass string sort and fragile byte seeking are replaced with bounded parsing of the quoted data, standard lexicographic sorting, and positional scoring. The original repository fixture still needs direct execution verification.}

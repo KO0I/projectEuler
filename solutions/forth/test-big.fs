@@ -5,6 +5,7 @@ include big.fs
 1 bnew constant big-a
 1 bnew constant big-b
 1 bnew constant big-result
+: run-big-tests ( -- )
 9999 big-a bset-u
 1 big-b bset-u
 big-a big-b big-result badd
@@ -43,4 +44,6 @@ big-result bdecimal-length 30 equals?
 big-result bdigitsum 135 equals?
 
 big-a bfree big-b bfree big-result bfree
+;
+run-big-tests
 bye

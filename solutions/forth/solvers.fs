@@ -528,7 +528,7 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
     then
     divisor 1+ to divisor
   repeat
-  value 1> if count 1+ to count then
+  value 1 > if count 1+ to count then
   count ;
 : p47 ( -- answer )
   0 { streak }

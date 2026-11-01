@@ -44,6 +44,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y gforth
       - name: Arbitrary-precision Forth unit tests
         run: gforth solutions/forth/test-big.fs
+      - name: Compile Forth solver definitions
+        run: gforth solutions/forth/solvers.fs -e 'bye'
       - name: Check 37 Forth problems
         run: make test-forth
 

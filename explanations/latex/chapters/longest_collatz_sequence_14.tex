@@ -13,3 +13,6 @@ The helper \verb|collatz| counts the current number as the first term and advanc
 \subsection*{Correctness and limitations}
 The implementation redundantly calls \verb|collatz(i)| up to three times. The final \verb|printf| uses \verb|%i| for \verb|unsigned long long| values, causing undefined behavior; use \verb|%llu|. Intermediate values can exceed the starting limit and may overflow. The expected starting value is 837799, but the final formatting must be repaired.
 
+
+\subsection*{Correction to historical C --- Problem 14}
+{\color{red}\textbf{Correction:} The corrected implementation calculates each chain length only once per starting value and returns the winning start without the original mismatched printf conversion specifiers.}

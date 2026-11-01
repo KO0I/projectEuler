@@ -13,3 +13,6 @@ Four functions, \verb|A| through \verb|D|, attempt to express the corner sequenc
 \subsection*{Correctness and limitations}
 Every helper overwrites its global \verb|sumA|, \verb|sumB|, \verb|sumC| or \verb|sumD| on each loop iteration instead of adding a sequence of terms. The width is five, not 1001. The print statement uses integer \verb|%ld| conversions with \verb|long double| arguments, which is undefined behavior. The expected total is 669171001, but this source does not compute it.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} All four corners of every odd-width ring are accumulated through width 1001. The old code only retained the last term and used invalid floating-point print conversions.}

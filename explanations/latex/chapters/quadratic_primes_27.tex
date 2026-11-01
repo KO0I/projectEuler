@@ -13,3 +13,6 @@ Two nested loops enumerate coefficient pairs. The helper \verb|ipow| computes th
 \subsection*{Correctness and limitations}
 The local primality checker misclassifies 2 as nonprime, because its divisor loop does not execute and its default return value denotes nonprime. It calls \verb|sqrt| before handling negatives. The algorithm also explores many coefficients with \(b\) nonprime, although \(b=f(0)\) must be prime for a nonempty run. The expected coefficient product is -59231; it should be verified only after repairing the primality test.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The primality test now correctly accepts two and excludes negative and nonprime values, including zero and one. The coefficient search starts at n equals zero.}

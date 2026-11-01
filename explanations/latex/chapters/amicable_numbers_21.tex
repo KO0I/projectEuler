@@ -13,3 +13,6 @@ The helper \verb|d| tries divisors from 2 through \(n-1\), beginning its sum at 
 \subsection*{Correctness and limitations}
 The condition \verb|d(a)==b| is true by construction, but the source never requires \verb|b==j|. The candidate seed therefore need not belong to the pair being added. \verb|prevsum| only filters consecutive duplicates, and partner bounds are not enforced. The correct total is 31626; the code needs stronger pair checks before claiming it.
 
+
+\subsection*{Correction to historical C --- Problem 21}
+{\color{red}\textbf{Correction:} Each candidate below the requested limit is counted only when it has a distinct proper-divisor-sum partner that maps back to the candidate. The earlier consecutive-sum deduplication is removed.}

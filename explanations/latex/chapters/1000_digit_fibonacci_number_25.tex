@@ -13,3 +13,6 @@ GMP integers \verb|a| and \verb|b| start at one. The nested helper \verb|fibonac
 \subsection*{Correctness and limitations}
 A nested function is a GNU C extension, not ISO C. Because the initial two sequence terms are already present, the counter starting at zero does not equal the standard Fibonacci index. Several \verb|printf| calls use \verb|%i| for \verb|unsigned long| values. The memory cleanup is placed after an unreachable \verb|return|. The correct index is 4782; the program's counter must be adjusted before treating it as that answer.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The corrected GNU MP recurrence advances the standard Fibonacci index until the value has 1000 digits. It removes the historical indexing and unreachable cleanup errors.}

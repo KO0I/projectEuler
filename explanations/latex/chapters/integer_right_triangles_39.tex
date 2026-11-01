@@ -13,3 +13,6 @@ The global \verb|p| begins at 12. Nested loops search restricted intervals of si
 \subsection*{Correctness and limitations}
 The code advances \verb|p| by four and later by eight, which skips many candidate perimeters. The side-loop bounds are interdependent and can omit triples; incrementing \verb|c| after a match can skip additional triples. \verb|testvalid| lacks a return for one possible branch, and the program prints the highest score rather than its perimeter. The expected winning perimeter is 840, but this search is not a reliable proof.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The corrected algorithm examines all perimeters up to 1000 without skipping candidates and reports the maximizing perimeter.}

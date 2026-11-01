@@ -13,3 +13,6 @@ The function \verb|factorize| starts with candidate divisor \verb|d=2|. If \verb
 \subsection*{Correctness and limitations}
 This factor-stripping approach yields the expected factor 6857 for the supplied value. \verb|unsigned long| needs to be at least 64 bits to represent the input portably. Testing candidates only up to the square root of the remaining number could improve efficiency.
 
+
+\subsection*{Correction to historical C --- Problem 3}
+{\color{red}\textbf{Correction:} The corrected trial-division routine uses a 64-bit integer and stops factoring once a candidate divisor exceeds the square root of the remaining number.}

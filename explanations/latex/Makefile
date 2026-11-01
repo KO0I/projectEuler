@@ -4,8 +4,11 @@ PDF = build/project_euler_c_explanations.pdf
 .PHONY: all clean
 all: $(PDF)
 
-$(PDF): $(TEX) $(wildcard chapters/*.tex)
+# The first pass writes an empty-to-populated TOC; the second inserts it and
+# shifts chapter pages; the third consumes the corrected page references.
+$(PDF): $(TEX) $(wildcard chapters/*.tex) Makefile
 	mkdir -p build
+	pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build $(TEX)
 	pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build $(TEX)
 	pdflatex -interaction=nonstopmode -halt-on-error -output-directory=build $(TEX)
 

@@ -13,3 +13,6 @@ The main loop tests starts from \verb|i=4| upward. For each candidate start, it 
 \subsection*{Correctness and limitations}
 The function \verb|distinctpfactors| lives in \verb|support/c/functions/distinctpfactors.c| and is not declared in this source. Linking and a prototype are required; the helper's fixed-size factor array and counting logic also merit tests. The search limit of twenty million is arbitrary. The expected first integer is 134043, but the exact code and helper should be tested before certifying the result.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} Prime factors are divided out completely before counting distinct factors, then four consecutive four-factor integers are sought.}

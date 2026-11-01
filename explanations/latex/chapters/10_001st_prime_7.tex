@@ -13,3 +13,6 @@ The program seeds a table with 2 and 3, examines successive odd candidates using
 \subsection*{Correctness and limitations}
 The hard-coded \verb|countDone=78497| is unrelated to the 10001st prime, and the desired table entry is never printed. Both the generation loop and the output loop access index \verb|countDone| in an array of that length, which is out of bounds. Candidate-reset behavior during trial division also needs correction. The expected prime is 104743; this file does not establish it.
 
+
+\subsection*{Correction to historical C --- Problem 7}
+{\color{red}\textbf{Correction:} The array bound overflow and unrelated prime-count target are removed. The corrected search counts primes until the 10001st candidate is found.}

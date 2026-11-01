@@ -16,10 +16,10 @@ The main file for each available problem is linked below. Original duplicates an
 | 10 | [summation of primes](https://projecteuler.net/problem=10) | [c](c/summation_of_primes_10.c) |
 | 11 | [largest product in a grid](https://projecteuler.net/problem=11) | [c](c/largest_product_in_a_grid_11.c) |
 | 12 | [highly divisible triangular number](https://projecteuler.net/problem=12) | [c](c/highly_divisible_triangular_number_12.c) |
-| 13 | [large sum](https://projecteuler.net/problem=13) | [shell](shell/large_sum_13.sh) |
+| 13 | [large sum](https://projecteuler.net/problem=13) | [c](c/large_sum_13.c), [shell](shell/large_sum_13.sh) |
 | 14 | [longest collatz sequence](https://projecteuler.net/problem=14) | [c](c/longest_collatz_sequence_14.c) |
 | 16 | [power digit sum](https://projecteuler.net/problem=16) | [c](c/power_digit_sum_16.c) |
-| 17 | [number letter counts](https://projecteuler.net/problem=17) | [latex](latex/number_letter_counts_17.tex) |
+| 17 | [number letter counts](https://projecteuler.net/problem=17) | [c](c/number_letter_counts_17.c), [latex](latex/number_letter_counts_17.tex) |
 | 19 | [counting sundays](https://projecteuler.net/problem=19) | [c](c/counting_sundays_19.c) |
 | 20 | [factorial digit sum](https://projecteuler.net/problem=20) | [c](c/factorial_digit_sum_20.c) |
 | 21 | [amicable numbers](https://projecteuler.net/problem=21) | [c](c/amicable_numbers_21.c) |
@@ -41,3 +41,5 @@ The main file for each available problem is linked below. Original duplicates an
 | 55 | [lychrel numbers](https://projecteuler.net/problem=55) | [c](c/lychrel_numbers_55.c) |
 | 69 | [totient maximum](https://projecteuler.net/problem=69) | [c](c/totient_maximum_69.c) |
 | 92 | [square digit chains](https://projecteuler.net/problem=92) | [c](c/square_digit_chains_92.c) |
+
+The development branch also contains a Rust binary for each problem in [`rust/src/bin/`](rust/src/bin/) and a Gforth entry point in [`forth/`](forth/). The historical main C programs remain in `c/variants/historical/`, with current corrected implementations using `support/c/euler_common.c`.

@@ -13,3 +13,6 @@ The helper \verb|P| evaluates the formula, and \verb|isPentagon| searches a prec
 \subsection*{Correctness and limitations}
 Both nested conditionals test \verb|testdif|; neither tests \verb|testsum|. As written, the key requirement that the sum is pentagonal is missing. The initial bound \verb|D=100| also prevents recording a valid larger difference. The double loop is quadratic in the number of candidates, each with a linear scan for membership. The known minimum is 5482660; it is not computed correctly by this source.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} Both the sum and difference must be pentagonal; the revised search checks both predicates and minimizes a positive difference without the erroneous initial bound.}

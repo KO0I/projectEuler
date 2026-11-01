@@ -16,3 +16,6 @@ The helper \verb|phi| begins at \verb|res=i| and, whenever a prime factor is fou
 \subsection*{Correctness and limitations}
 The factorization-based totient computation is appropriate, and the expected maximizing integer is 510510. The code recomputes \verb|phi(n)| after deciding the ratio improved, doubling work for those iterations. Its diagnostic print compares two equal values because \verb|maxval| was just updated. A product of successive small primes offers a faster mathematical route. The printed maximum remains valid if the helper is evaluated correctly.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The corrected implementation multiplies successive primes while staying at most one million. The original totient factorization was useful but recomputed values unnecessarily.}

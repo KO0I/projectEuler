@@ -16,3 +16,6 @@ The helper \verb|squareSum| adds the integers from zero through \(N\) before squ
 \subsection*{Correctness and limitations}
 The algorithm computes 25164150 for \(N=100\). It takes \(O(N)\) time and constant extra space. Closed-form expressions for the two sums would make the calculation \(O(1)\), and wider integer types would allow larger \(N\).
 
+
+\subsection*{Correction to historical C --- Problem 6}
+{\color{red}\textbf{Correction:} The corrected code evaluates the exact closed forms for the ordinary sum and the sum of squares. The original pair of accumulation loops was also mathematically sound for the specified input.}

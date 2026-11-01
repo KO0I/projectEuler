@@ -13,3 +13,6 @@ The call \verb|mpz_fac_ui(factorial,100)| constructs the factorial exactly. A mo
 \subsection*{Correctness and limitations}
 The loop runs beyond the decimal length, but the surplus digits are zero. The expected sum is 648. The output message incorrectly describes digits of \(2^{100}\), copied from problem 16; it should name \(100!\). Compiling requires GMP and \verb|-lgmp|.
 
+
+\subsection*{Correction to historical C --- Problem 20}
+{\color{red}\textbf{Correction:} GNU MP still computes 100 factorial exactly. The corrected digit-sum routine eliminates the copied message that incorrectly described a power of two.}

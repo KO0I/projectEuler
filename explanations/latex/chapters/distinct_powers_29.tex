@@ -13,3 +13,6 @@ The helper \verb|ipow| uses exponentiation by squaring: it multiplies the accumu
 \subsection*{Correctness and limitations}
 No distinct-values set or counter is present. A signed \verb|int| cannot represent general powers up to \(100^{100}\), though the small demonstration fits. A corrected algorithm could normalize bases to primitive powers and count exponent combinations, or use GMP values and a set. The expected distinct count is 9183, not an output of the existing program.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The former sample table is replaced by exact GNU MP powers that are sorted and deduplicated to count distinct results.}

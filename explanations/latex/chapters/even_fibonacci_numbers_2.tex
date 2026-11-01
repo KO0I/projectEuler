@@ -16,3 +16,6 @@ The program allocates \verb|fib[33]|, initializes the first two entries to one a
 \subsection*{Correctness and limitations}
 The declared \verb|unsigned long sum| is never initialized before \verb|sum += fib[k]|, so the behavior is undefined and the output cannot be trusted. It should start at zero. A value-bound loop would also be clearer than a fixed term count. The intended mathematical result is 4613732, not a reliable result of this source.
 
+
+\subsection*{Correction to historical C --- Problem 2}
+{\color{red}\textbf{Correction:} The original accumulator was never initialized. The corrected routine begins with zero and generates Fibonacci terms until their value exceeds four million, rather than trusting a fixed array length.}

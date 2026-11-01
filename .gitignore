@@ -3,3 +3,5 @@
 *.o
 *.swp
 /explanations/latex/build/
+/solutions/rust/target/
+__pycache__/

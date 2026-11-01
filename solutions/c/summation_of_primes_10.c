@@ -1,17 +1,9 @@
+/* Project Euler 10: the corrected algorithm is in support/c/euler_common.c. */
 #include <stdio.h>
-
-int main(int argc, char ** argv) {
-  if(argc != 2) {
-    return -1;
-  }
-  int n;
-  if(sscanf(argv[1], "%d", &n)==0){
-    return -1;
-  }
- 
-  int i,sum=0;
-  for (i =1; i<=n; i++)
-    sum +=i;
-  printf("sum: %d\n",sum);
-  return 0;
+#include "euler_common.h"
+int main(void) {
+    long long answer = euler_solve(10);
+    if (answer < 0 && 10 != 27) return 1;
+    printf("%lld\n", answer);
+    return 0;
 }

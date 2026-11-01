@@ -13,3 +13,6 @@ The helper \verb|reverse| extracts base-ten digits using remainder and division,
 \subsection*{Correctness and limitations}
 The outer loop includes 10000 itself (\verb|a<10001|), one beyond the stated strict upper bound. More importantly, repeated reverse-and-add operations can exceed the capacity of \verb|unsigned long long|; unsigned overflow silently changes the sequence. Arbitrary-precision integers are needed for a trustworthy 50-iteration test. The expected candidate count is 249, but the program's fixed-width arithmetic may not reproduce it.
 
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} GNU MP replaces fixed-width integers to avoid overflow during fifty reverse-and-add attempts; only starting values strictly below 10000 are counted.}

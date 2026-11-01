@@ -2,23 +2,37 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb}
+\usepackage{xcolor}
 \usepackage[margin=0.95in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.55em}
-\hypersetup{pdftitle={Project Euler C Code: Explanations and Limitations},pdfsubject={Code review of historical C solutions}}
-\title{Project Euler\\C Implementations: Methods and Limitations}
+\hypersetup{pdftitle={Project Euler C Code: Historical Methods and Corrections},pdfsubject={Historical C source with labelled corrections}}
+\title{Project Euler\\C Implementations: Methods and Corrections}
 \author{Source-based technical commentary}
-\date{October 2026}
+\date{November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-This document explains the actual operations performed by the C source
-files in the KO0I/projectEuler repository, ordered by Project Euler problem
-number. Descriptions distinguish correct programs from unfinished attempts
-and defects. Numerical reference answers, where shown, are not presented as
-verified outputs unless the implementation supports them.
+This document covers the 37 Project Euler problems represented in the
+KO0I/projectEuler repository, in ascending problem order. The original
+explanations and assessments describe historical C attempts, including
+unfinished programs and defects; their source links point to the preserved
+reorganization branch. They must not be mistaken for assessments of the
+subsequently corrected implementations.
+
+{\color{red}\textbf{Reading the corrections:} Red, explicitly labelled
+sections explain the repaired or completed C implementation. The main C
+files are now small entry points calling the corresponding algorithm in
+\texttt{support/c/euler\_common.c}. Historical programs remain under
+\texttt{solutions/c/variants/historical/}. Problems 13 and 17 have new C
+implementations as well as their preserved earlier analyses.}
+
+All 37 C answers, 37 Rust answers and 37 Forth answers passed the same-machine
+validation baseline recorded in \texttt{docs/VALIDATION.md}. Each program was
+run once in that profile. Passing the fixed reference inputs is evidence of
+correctness for those inputs, not a proof of a general-purpose algorithm.
 \end{abstract}
 \tableofcontents
 \clearpage
@@ -46,9 +60,13 @@ verified outputs unless the implementation supports them.
 \clearpage
 \input{chapters/highly_divisible_triangular_number_12.tex}
 \clearpage
+\input{chapters/large_sum_13.tex}
+\clearpage
 \input{chapters/longest_collatz_sequence_14.tex}
 \clearpage
 \input{chapters/power_digit_sum_16.tex}
+\clearpage
+\input{chapters/number_letter_counts_17.tex}
 \clearpage
 \input{chapters/counting_sundays_19.tex}
 \clearpage

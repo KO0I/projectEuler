@@ -11,6 +11,7 @@ import csv
 import json
 import math
 from pathlib import Path
+import shutil
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -27,6 +28,8 @@ STARTUP_HATCH = "/////"
 OVERHEAD_COLOR = "#fafafa"
 OVERHEAD_HATCH = ".."
 EDGE = "#202020"
+TIMEOUT_COLOR = "#b35c00"
+FAILURE_COLOR = "#9c1c1c"
 
 
 def parts(row: dict) -> tuple[float, float | None, float | None]:
@@ -125,6 +128,36 @@ def legend_handles(languages, *, overhead: bool = False, unattributed: bool = Fa
     return handles
 
 
+def result_marker_handles(rows, languages, problem_numbers):
+    """Describe only result states that occur in this saved run."""
+    statuses = {row["status"] for language in languages for row in rows[language].values()}
+    handles = []
+    if "timeout" in statuses:
+        handles.append(Line2D([], [], linestyle="none", marker="v",
+                              markerfacecolor=TIMEOUT_COLOR, markeredgecolor=EDGE,
+                              label="Timed out"))
+    if statuses - {"pass", "timeout"}:
+        handles.append(Line2D([], [], linestyle="none", marker="x",
+                              color=FAILURE_COLOR, label="Wrong answer or runtime error"))
+    if any(number not in rows[language]
+           for language in languages for number in problem_numbers):
+        handles.append(Line2D([], [], linestyle="none", marker="o", color=EDGE,
+                              markerfacecolor="none", label="Not implemented"))
+    return handles
+
+
+def status_summary(records):
+    counts = {}
+    for row in records:
+        counts[row["status"]] = counts.get(row["status"], 0) + 1
+    order = ("pass", "timeout", "wrong-answer", "runtime-error", "unavailable")
+    labels = [f"{counts[status]} {status.replace('-', ' ')}"
+              for status in order if counts.get(status)]
+    labels.extend(f"{count} {status.replace('-', ' ')}"
+                  for status, count in sorted(counts.items()) if status not in order)
+    return ", ".join(labels)
+
+
 def available_medians(info):
     medians = []
     for language in info["languages"]:
@@ -156,12 +189,16 @@ def runtime_by_problem(rows, info, out):
                     unattributed = True
                 draw_timed_bar(ax, x, width, total, startup, execution, language)
             else:
-                # Hollow circle: not implemented; X: attempted and failed.
                 absent = row is None
-                ax.plot(x, .02, "o" if absent else "x",
-                        transform=ax.get_xaxis_transform(), color=EDGE,
-                        markerfacecolor="none" if absent else EDGE,
-                        markersize=4 if absent else 5)
+                if absent:
+                    ax.plot(x, .02, "o", transform=ax.get_xaxis_transform(),
+                            color=EDGE, markerfacecolor="none", markersize=4)
+                elif row["status"] == "timeout":
+                    ax.plot(x, .02, "v", transform=ax.get_xaxis_transform(),
+                            color=EDGE, markerfacecolor=TIMEOUT_COLOR, markersize=6)
+                else:
+                    ax.plot(x, .02, "x", transform=ax.get_xaxis_transform(),
+                            color=FAILURE_COLOR, markersize=5)
     if positive:
         ax.set_yscale("log")
         ax.set_ylim(bottom=min(positive) / 1.75, top=max(positive) * 2)
@@ -172,11 +209,13 @@ def runtime_by_problem(rows, info, out):
     ax.set_ylabel("One measured child process [ms] (log scale)")
     ax.set_title("Startup baseline and appended execution time by Euler problem")
     ax.grid(axis="y", linestyle=":", alpha=.4)
-    ax.legend(handles=legend_handles(languages, unattributed=unattributed), ncol=3,
+    handles = legend_handles(languages, unattributed=unattributed)
+    handles.extend(result_marker_handles(rows, languages, numbers))
+    ax.legend(handles=handles, ncol=3,
               fontsize=8, loc="upper left")
     fig.text(.01, .060, available_medians(info), fontsize=9)
     fig.text(.01, .040, "Gray hatched base = estimated minimum startup; colored section = residual to observed total. "
-             "Black line = split. X = failed; hollow circle = not implemented.", fontsize=9)
+             "Black line = split. Orange triangle = timeout; red X = other failure.", fontsize=9)
     fig.text(.01, .020, "Not exact per-solver startup: solver loading and I/O are in the residual. "
              "No warm-up or solver repeats; compilation excluded; no statistical error bars.", fontsize=8)
     fig.text(.01, .004, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)
@@ -188,6 +227,7 @@ def totals(rows, info, out):
     fig, ax = plt.subplots(figsize=(10, 7))
     languages = info["languages"]
     valid_walls = []
+    incomplete_texts = []
     no_split = False
     for i, language in enumerate(languages):
         summary = info["language_summaries"][language]
@@ -197,9 +237,11 @@ def totals(rows, info, out):
                     and all(r["status"] == "pass" for r in rows[language].values()))
         if not complete:
             status = "Partial coverage" if not summary.get("full_coverage", True) else "Incomplete"
-            ax.text(i, .04, f"{status}\n{summary['passed']}/{count} pass\n"
-                    f"{count}/{len(info['problems'])} implemented",
-                    ha="center", transform=ax.get_xaxis_transform(), fontsize=9)
+            results = status_summary(rows[language].values())
+            incomplete_texts.append(ax.text(
+                i, .04, f"{status}\n{results}\n"
+                f"{count}/{len(info['problems'])} implemented",
+                ha="center", transform=ax.get_xaxis_transform(), fontsize=10))
             continue
         wall = float(summary["suite_wall_ms"])
         child = sum(float(row["runtime_ms"]) for row in rows[language].values())
@@ -233,16 +275,31 @@ def totals(rows, info, out):
     ax.grid(axis="y", linestyle=":", alpha=.4)
     if valid_walls:
         ax.set_ylim(0, max(valid_walls) * 1.48)
-    legend = legend_handles(languages, overhead=True, unattributed=no_split)
-    legend.append(Line2D([], [], linestyle="none", marker="D", color="white",
-                         markeredgecolor="black", label="End of summed child process times"))
-    ax.legend(handles=legend, fontsize=8, ncol=2)
-    fig.text(.04, .049, "Full-suite bar = startup estimate + execution residual + runner overhead. "
-             "Diamond = end of child durations.", fontsize=9)
-    fig.text(.04, .026, "Partial/failed suites have no total bar. Startup is estimated with no-op probes "
-             "rather than measured within each solver.", fontsize=8)
-    fig.text(.04, .008, "Algorithms, libraries and fixture loading differ; not an intrinsic language-speed ranking.",
-             fontsize=8)
+        legend = legend_handles(languages, overhead=True, unattributed=no_split)
+        legend.append(Line2D([], [], linestyle="none", marker="D", color="white",
+                             markeredgecolor="black", label="End of summed child process times"))
+        ax.legend(handles=legend, fontsize=8, ncol=2)
+    else:
+        for label in incomplete_texts:
+            label.set_y(.5)
+        fig.set_size_inches(8, 4.5)
+        ax.set_xlim(-.65, max(len(languages) - .35, .65))
+        ax.set_ylim(0, 1)
+        ax.yaxis.set_visible(False)
+        ax.grid(False)
+        ax.set_title("Complete-suite status (no passing total)")
+    if valid_walls:
+        fig.text(.04, .049, "Full-suite bar = startup estimate + execution residual + runner overhead. "
+                 "Diamond = end of child durations.", fontsize=9)
+        fig.text(.04, .026, "Partial/failed suites have no total bar. Startup is estimated with no-op probes "
+                 "rather than measured within each solver.", fontsize=8)
+        fig.text(.04, .008, "Algorithms, libraries and fixture loading differ; not an intrinsic language-speed ranking.",
+                 fontsize=8)
+    else:
+        fig.text(.04, .035, "No duration total is plotted because every selected language suite is incomplete.",
+                 fontsize=9)
+        fig.text(.04, .010, "Timeout work is retained in the CSV but is not presented as a successful suite time.",
+                 fontsize=8)
     fig.tight_layout(rect=(0, .095, 1, 1))
     write(fig, out, "totals")
 
@@ -266,7 +323,8 @@ def matched_subset_totals(rows, info, out):
     for index, language in enumerate(languages):
         passed = [n for n in numbers if rows[language][n]["status"] == "pass"]
         if len(passed) != len(numbers):
-            ax.text(index, .05, f"{len(passed)}/{len(numbers)} passed\n"
+            results = status_summary(rows[language][n] for n in numbers)
+            ax.text(index, .05, f"{results}\n"
                     "No comparable total", ha="center", transform=ax.get_xaxis_transform())
             continue
         durations = [parts(rows[language][n]) for n in numbers]
@@ -313,10 +371,21 @@ def main():
         run, info, rows = load(args.run)
     except (OSError, ValueError, KeyError) as exc:
         parser.error(str(exc))
-    runtime_by_problem(rows, info, run / "plots")
-    totals(rows, info, run / "plots")
-    matched_subset_totals(rows, info, run / "plots")
-    print(f"Saved SVG/PNG/PDF charts under {run / 'plots'}")
+    run_plots = run / "plots"
+    runtime_by_problem(rows, info, run_plots)
+    totals(rows, info, run_plots)
+    matched_subset_totals(rows, info, run_plots)
+
+    latest_plots = BASE / "latest-plots"
+    latest_plots.mkdir(parents=True, exist_ok=True)
+    for stem in ("runtime_by_problem", "totals", "matched_subset_totals"):
+        for extension in ("svg", "png", "pdf"):
+            (latest_plots / f"{stem}.{extension}").unlink(missing_ok=True)
+    for source in run_plots.iterdir():
+        if source.is_file():
+            shutil.copy2(source, latest_plots / source.name)
+    print(f"Saved SVG/PNG/PDF charts under {run_plots}")
+    print(f"Published the same run for documentation under {latest_plots}")
 
 
 if __name__ == "__main__":

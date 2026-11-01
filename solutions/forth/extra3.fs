@@ -112,7 +112,7 @@ create p59-letter-weights 8 , 2 , 3 , 4 , 13 , 2 , 2 , 6 , 7 , 1 , 1 , 4 , 2 , 7
 : p59 ( -- n )
   s" tests/data/p059_cipher.txt" 1455 fixture-integers
   1455 allocate throw
-  -1000000000000 0 0 0 0 { cipher length text best answer score checksum tied key }
+  -1000000000000 0 0 0 0 0 { cipher length text best answer score checksum tied key }
   length 1455 <> abort" Invalid ciphertext length"
   123 97 do 123 97 do 123 97 do
     cipher length k j i text p59-keyscore to checksum to score
@@ -239,10 +239,10 @@ variable p68-best
       first 0 p68-inner prefix@ + 1 p68-inner prefix@ + to line
       used to all true to valid
       5 0 do
-        line j p68-inner prefix@ - j 1+ 5 mod p68-inner prefix@ - to candidate
+        line i p68-inner prefix@ - i 1+ 5 mod p68-inner prefix@ - to candidate
         candidate first < candidate 10 > or if false to valid leave then
         all 1 candidate lshift and if false to valid leave then
-        candidate j p68-outer prefix!
+        candidate i p68-outer prefix!
         all 1 candidate lshift or to all
       loop
       valid if
@@ -355,7 +355,6 @@ variable p68-best
   100 0 do
     100 remainder bmul-small!
     i 0= if number remainder badd-small! then
-    10 root bmul-small!
     false to found
     10 0 do
       9 i - to digit
@@ -365,6 +364,7 @@ variable p68-best
       digit trial bmul-small!
       remainder trial babscompare 0>= if
         remainder trial bsubabs!
+        10 root bmul-small!
         digit root badd-small!
         answer digit + to answer
         true to found leave
@@ -419,7 +419,7 @@ variable p68-best
     i 98 * 8 + to offset
     9 0 do i to row
       9 0 do i to col
-        raw offset row 10 * + col + c@ [char] 0 - to ch
+        raw offset + row 10 * + col + c@ [char] 0 - to ch
         ch row 9 * col + board prefix!
         ch 0> if
           1 ch lshift to bit

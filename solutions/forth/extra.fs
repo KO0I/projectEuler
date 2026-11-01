@@ -99,7 +99,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   201 cells allocate throw 0 0 { ways coin result }
   ways 201 cells erase 1 ways !
   8 0 do i p31-coins prefix@ to coin
-    201 coin do i coin - ways prefix@ i ways cells + +! loop
+    201 coin do i coin - ways prefix@ i cells ways + +! loop
   loop
   200 ways prefix@ to result ways free throw result ;
 : digit-cancel? 0 0 0 0 0 { numerator denominator nt no dt du valid } ( n d -- flag )
@@ -132,7 +132,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
     i right-truncatable? i left-truncatable? and if total i + to total count 1+ to count then
     count 11 = if total unloop exit then
   2 +loop abort" Not all truncatable primes found" ;
-: p38 ( -- n ) 0 0 0 0 { best joined multiplier base product }
+: p38 ( -- n ) 0 0 0 0 0 { best joined multiplier base product }
   10000 1 do
     0 to joined 1 to multiplier
     begin joined decimal-digits 9 < while
@@ -188,7 +188,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   row 101 cells erase 1 row !
   101 1 do
     i 1+ 1 do
-      i j - 1+ to value
+      j i - 1+ to value
       value row prefix@ value 1- row prefix@ + 1000001 min
       value row prefix!
     loop
@@ -209,7 +209,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
       value bdecimal-length i < if leave then
     loop
   loop value bfree total ;
-: p64 ( -- n ) 0 0 0 0 0 { total root m d a period }
+: p64 ( -- n ) 0 0 0 0 0 0 { total root m d a period }
   10001 2 do i integer-sqrt to root
     root root * i <> if
       0 to m 1 to d root to a 0 to period
@@ -227,7 +227,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   loop best-n ;
 : p72 ( -- n )
   1000001 cells allocate throw 0 { phi result }
-  1000001 0 do i phi i prefix! loop
+  1000001 0 do i i phi prefix! loop
   1000001 2 do
     i phi prefix@ i = if
       1000001 i do
@@ -237,11 +237,16 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   loop
   1000001 2 do result i phi prefix@ + to result loop
   phi free throw result ;
-: p73-count { a b c d } ( a/b c/d -- count )
-  b d + 12000 > if 0 exit then
-  a b a c + b d + recurse
-  a c + b d + c d recurse + 1+ ;
-: p73 ( -- n ) 1 3 1 2 p73-count ;
+: p73 ( -- n ) 0 1 3 4000 11999 0 0 0
+  { count a b c d k next-c next-d }
+  begin
+    c 2 * d = if count exit then
+    count 1+ to count
+    12000 b + d / to k
+    k c * a - to next-c
+    k d * b - to next-d
+    c to a d to b next-c to c next-d to d
+  again ;
 : p75 ( -- n )
   1500001 allocate throw 0 0 0 0 { counts answer perimeter m n }
   counts 1500001 erase
@@ -261,13 +266,13 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   101 cells allocate throw 0 { ways answer }
   ways 101 cells erase 1 ways !
   100 1 do
-    101 i do i j - ways prefix@ i ways cells + +! loop
+    101 i do i j - ways prefix@ i cells ways + +! loop
   loop
   100 ways prefix@ to answer ways free throw answer ;
 : p77 ( -- n ) 128 cells allocate throw 2 { ways n }
   2 to n begin ways 128 cells erase 1 ways !
     n 1+ 2 do i is-prime? if
-      n 1+ i do i j - ways prefix@ i ways cells + +! loop
+      n 1+ i do i j - ways prefix@ i cells ways + +! loop
     then loop
     n ways prefix@ 5000 > if ways free throw n exit then
     n 1+ to n
@@ -289,7 +294,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
       ways free throw i unloop exit
     then
   loop ways free throw -1 ;
-: p85 ( -- n ) 2000000 0 0 0 0 { closest best width height rectangles diff }
+: p85 ( -- n ) 2000000 0 0 0 0 0 { closest best width height rectangles diff }
   2001 1 do i to width
     width 1+ 1 do i to height
       width width 1+ * height height 1+ * * 4 / to rectangles
@@ -298,7 +303,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
       rectangles 2100000 > if leave then
     loop
   loop best ;
-: p86 ( -- n ) 0 0 0 0 0 { total largest squared root low high }
+: p86 ( -- n ) 0 0 0 0 0 0 { total largest squared root low high }
   1 to largest
   begin largest 2* 1+ 2 do
       largest largest * i i * + to squared
@@ -327,7 +332,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   0 begin value 0> while value 1- value and to value 1+ repeat ;
 : p90 ( -- n )
   210 cells allocate throw 0 0 { masks count answer }
-  1024 0 do i bit-count 6 = if i masks count prefix! count 1+ to count then loop
+  1024 0 do i bit-count 6 = if i count masks prefix! count 1+ to count then loop
   count 0 do count i do
     i masks prefix@ j masks prefix@ p90-valid? if answer 1+ to answer then
   loop loop masks free throw answer ;
@@ -366,8 +371,8 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   n 10 mod to last n 10 / to n
   begin n 0> while
     n 10 mod to digit
-    digit last > if decreasing false to decreasing then
-    digit last < if increasing false to increasing then
+    digit last > if false to decreasing then
+    digit last < if false to increasing then
     digit to last n 10 / to n
   repeat increasing 0= decreasing 0= and ;
 : p112 ( -- n ) 0 100 { count n }
@@ -382,8 +387,8 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   51 1 do
     i 1- ways prefix@ i ways prefix!
     i 3 >= if i 1+ 3 do
-      i j = if 1 else i j - 1- ways prefix@ then
-      j ways cells + +!
+      i j = if 1 else j i - 1- ways prefix@ then
+      j cells ways + +!
     loop then
   loop
   50 ways prefix@ to result ways free throw result ;
@@ -393,7 +398,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   256 1 do
     i 1- ways prefix@ to result
     i 50 >= if i 1+ 50 do
-      i j = if 1 else i j - 1- ways prefix@ then
+      i j = if 1 else j i - 1- ways prefix@ then
       result + to result
     loop then
     result i ways prefix!
@@ -414,7 +419,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   51 cells allocate throw 0 { ways result }
   ways 51 cells erase 1 ways !
   51 1 do
-    5 1 do j i >= if j i - ways prefix@ j ways cells + +! then loop
+    5 1 do j i >= if j i - ways prefix@ j cells ways + +! then loop
   loop
   50 ways prefix@ to result ways free throw result ;
 : p120 ( -- n ) 0 { total }
@@ -463,7 +468,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
         endcase mod 0<>
       else false then
       if drop else
-        position 1+ used 1 digit lshift or swap recurse total + to total
+        position 1+ used 1 digit lshift or rot recurse total + to total
       then
     then
   loop total ;
@@ -544,7 +549,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
       row 0> col 0> and if
         col costs prefix@ col 1- costs prefix@ min col costs prefix!
       then
-      row 80 * col + matrix prefix@ col costs cells + +!
+      row 80 * col + matrix prefix@ col cells costs + +!
     loop
   loop
   79 costs prefix@ to answer
@@ -556,7 +561,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   80 0 do i 80 * matrix prefix@ i costs prefix! loop
   80 1 do i to column
     80 0 do
-      i 80 * column + matrix prefix@ i costs cells + +!
+      i 80 * column + matrix prefix@ i cells costs + +!
     loop
     80 1 do
       i 1- costs prefix@ i 80 * column + matrix prefix@ +
@@ -571,7 +576,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   0 costs prefix@ to answer
   80 1 do answer i costs prefix@ min to answer loop
   matrix free throw costs free throw answer ;
-: p94 ( -- n ) 2 0 0 0 0 0 0 { x y nx ny perimeter a b sum }
+: p94 ( -- n ) 2 0 0 0 0 0 0 0 { x y nx ny perimeter a b sum }
   begin x 1000000002 <= while
     x 3 mod 2 = if x 1+ 3 / to a a 1+ to b x 2 + to perimeter
     else x 1- 3 / to a a 1- to b x 2 - to perimeter then
@@ -584,7 +589,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   repeat sum ;
 : p101-sequence { n } ( n -- polynomial )
   1 10 0 do n * 1 swap - loop ;
-: p101-fit 0 0 0 { differences terms at sum coefficient } ( ptr terms at -- value )
+: p101-fit 0 0 { differences terms at sum coefficient } ( ptr terms at -- value )
   0 to sum 1 to coefficient
   terms 0 do
     i differences prefix@ coefficient * sum + to sum
@@ -598,7 +603,7 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
     k 0 do
       0 differences prefix@ i first prefix!
       k i - 1- 0 ?do
-        j 1+ differences prefix@ j differences prefix@ - j differences prefix!
+        i 1+ differences prefix@ i differences prefix@ - i differences prefix!
       loop
     loop
     k 1+ to at
@@ -659,7 +664,7 @@ variable p108-target
       begin value limit < while
         value 10 >= if value p119-digit-sum base = if
           count 12000 >= abort" Digit-power candidates capacity exceeded"
-          value values count prefix! count 1+ to count
+          value count values prefix! count 1+ to count
         then then
         value limit 1- base / > if limit to value
         else value base * to value then

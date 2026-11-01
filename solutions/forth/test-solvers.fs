@@ -49,7 +49,18 @@ create prefix-test 2 cells allot
   T{ 0 prefix-test prefix@ -> 12345 }T
   T{ 1 prefix-test prefix@ -> 67890 }T
   T{ 3 4 5 multiply-mod -> 2 }T
-  T{ 2 10 1000 power-mod -> 24 }T ;
+  T{ 2 10 1000 power-mod -> 24 }T
+  T{ p60-adj @ -> 0 }T
+  3 p60-allocate-adj
+  T{ p60-adj @ 0<> -> true }T
+  p60-free-adj
+  T{ p60-adj @ -> 0 }T ;
+: run-answer-regressions ( -- )
+  T{ p68 -> 6531031914842725 }T
+  T{ p80 -> 40886 }T
+  T{ p105 -> 73702 }T
+  T{ p115 -> 168 }T ;
 run-helper-tests
+run-answer-regressions
 .( Forth solver-helper regression tests passed.) cr
 bye

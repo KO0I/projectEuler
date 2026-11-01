@@ -1,16 +1,22 @@
 \ Additional standalone searches; share prime, bigint and fixture facilities.
 \ Problem 60: concatenation-prime graph with increasing-clique search.
 create p60-primes 4000 cells allot
-create p60-adj 16000000 allot
+variable p60-adj
 create p60-candidates 4000 cells allot
 create p60-scratch 20000 cells allot
 variable p60-count
 variable p60-best
+: p60-free-adj ( -- )
+  p60-adj @ ?dup if free throw 0 p60-adj ! then ;
+: p60-allocate-adj { count } ( count -- )
+  p60-free-adj
+  count count * allocate throw p60-adj !
+  p60-adj @ count count * erase ;
 : p60-concat 0 { a b scale } ( a b -- ab )
   10 to scale begin scale b <= while scale 10 * to scale repeat
   a scale * b + ;
 : p60-adj@ { i j } ( i j -- flag )
-  i p60-count @ * j + p60-adj + c@ 0<> ;
+  i p60-count @ * j + p60-adj @ + c@ 0<> ;
 : p60-prime@ ( index -- prime ) cells p60-primes + @ ;
 : p60-build 0 0 0 0 0 0 { limit sieve count a b n j } ( bound -- )
   limit sieve-build to sieve 0 to count
@@ -20,7 +26,7 @@ variable p60-best
     then
   loop
   count p60-count !
-  p60-adj count count * erase
+  count p60-allocate-adj
   count 0 do
     i p60-prime@ to a
     i 1+ to j
@@ -29,8 +35,8 @@ variable p60-best
       a b + p60-best @ < a b + 3 mod 0<> and if
         a b p60-concat is-prime? if
           b a p60-concat is-prime? if
-            1 p60-adj i count * j + + c!
-            1 p60-adj j count * i + + c!
+            1 p60-adj @ i count * j + + c!
+            1 p60-adj @ j count * i + + c!
           then
         then
       then
@@ -68,11 +74,13 @@ variable p60-best
   10000 p60-build
   p60-count @ 0 do i i cells p60-candidates + ! loop
   0 0 p60-candidates p60-count @ p60-search
-  p60-best @ 9223372036854775807 = abort" Prime-pair discovery bound failed"
+  p60-best @ 9223372036854775807 = if
+    p60-free-adj true abort" Prime-pair discovery bound failed"
+  then
   p60-best @ 1- p60-build
   p60-count @ 0 do i i cells p60-candidates + ! loop
   0 0 p60-candidates p60-count @ p60-search
-  p60-best @ ;
+  p60-best @ p60-free-adj ;
 
 \ Problem 93: evaluate every binary-expression tree using reduced rationals.
 defer p93-expression
@@ -92,8 +100,8 @@ create p93-reached 10000 allot
   n d p93-rational to d to n
   n d depth size 2 - p93-set
   depth size 1- p93-expression ;
-:noname 0 0 0 0 0 0 0 0 0 0
-  { depth size i j a b c d next other one two } ( depth count -- )
+:noname 0 0 0 0 0 0 0 0
+  { depth size a b c d next other one two } ( depth count -- )
   size 1 = if
     depth 0 p93-n@ to a depth 0 p93-d@ to b
     b 1 = a 0> and a 10000 < and if 1 p93-reached a + c! then
@@ -101,7 +109,7 @@ create p93-reached 10000 allot
   then
   size 0 do
     i to one
-    i 1+ size do
+    size i 1+ ?do
       i to two
       depth one p93-n@ to a depth one p93-d@ to b
       depth two p93-n@ to c depth two p93-d@ to d
@@ -244,7 +252,7 @@ fvariable p84-maximum
 : p84-cc { square doubles } ( F: probability -- )
   fdup 16e f/ 0 doubles p84-store
   fdup 16e f/ 10 0 p84-store
-  14e 16e f/ square doubles p84-store ;
+  14e f* 16e f/ square doubles p84-store ;
 : p84-ch { square doubles } ( F: probability -- )
   fdup 16e f/ 0 doubles p84-store
   fdup 16e f/ 10 0 p84-store
@@ -256,7 +264,7 @@ fvariable p84-maximum
   fdup 16e f/ square 22 = if 28 else 12 then doubles p84-store
   fdup 16e f/
     square 36 = if 33 doubles p84-cc else square 3 - doubles p84-store then
-  6e 16e f/ square doubles p84-store ;
+  6e f* 16e f/ square doubles p84-store ;
 : p84-step 0 0 { square doubles roll pair next-square next-doubles } ( square doubles dice-sum same? -- ) ( F: prob -- )
   pair doubles 2 = and if 10 0 p84-store exit then
   pair if doubles 1+ else 0 then to next-doubles

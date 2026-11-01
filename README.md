@@ -1,10 +1,11 @@
 # Project Euler solutions in C, Rust, Gforth, and Factor
 
-C now covers **all 120 problems from 1 through 120**. The 37 C solutions already addressed in the report are retained; this change adds the other 83. Each new title-named C file contains its algorithm. Rust, Gforth, and Factor now have source entry points for 120 problems each. The Factor 0.102 suite has been runtime-verified against all 120 answers; Rust and Gforth still require a recorded full native validation. Original attempts remain under `variants/`. This branch does not modify `master` until reviewed and merged.
+C now covers **all 120 problems from 1 through 120**. The 37 C solutions already addressed in the report are retained; this change adds the other 83. Each new title-named C file contains its algorithm. Rust, Gforth, and Factor now have source entry points for 120 problems each. The Factor 0.102 suite passes all 120 exact-answer checks. A recorded 60-second-per-solver Gforth run passes 115; problems 33, 49, 51, 88, and 98 time out, with no wrong answers or runtime errors. Rust still requires a recorded full native validation. Original attempts remain under `variants/`. This branch does not modify `master` until reviewed and merged.
 
 - [Problem index](solutions/README.md)
 - [The 83 new C methods, answers, bounds, and model qualifications](docs/C_1_120.md)
 - [C 1–120 validation record](docs/VALIDATION_C_1_120.md)
+- [Gforth 1–120 validation record](docs/VALIDATION_FORTH_1_120.md)
 - [Factor implementations](solutions/factor/README.md)
 - [Mathematical figure index](docs/visualization_index.md)
 - [LaTeX explanations and red correction notes](explanations/latex/README.md)
@@ -40,6 +41,7 @@ For the C suite, install a C11 compiler, GMP development files, GNU Make, and Py
 ```sh
 make -j4 c-release
 make test-c                 # all 120 exact answers and input checksums
+python3 scripts/bench.py --mode test --timeout 60 --languages forth
 make unit-c                 # independent examples and arithmetic checks
 make run-c PROBLEM=120      # build and run one problem by number
 make sanitize-c            # Linux: all 120 under AddressSanitizer and UBSan
@@ -106,8 +108,9 @@ make plots                     # regenerate plots from the latest complete run
 ```
 
 The Factor 0.102 entry points pass all 120 exact-answer checks in local native
-validation. Rust and Gforth have not yet completed the same recorded full-suite
-run. A failed benchmark remains a validation finding. The installer and full
+validation. The recorded Gforth full-suite run passes 115 of 120 with a
+60-second limit per solver; the other five are timeouts. Rust has not yet
+completed the same recorded full-suite run. A failed benchmark remains a validation finding. The installer and full
 four-language target have passed static checks but have not been executed on
 Arch Linux here.
 
@@ -126,7 +129,7 @@ make plots-math                      # deterministic mathematical visualizations
 
 Each profile invokes each selected solution exactly once, with no warm-up. Validation checks the output from that same invocation. Total wall time uses `time.perf_counter_ns()` and includes process/interpreter startup, normal execution and output capture, but excludes compilation. In profile mode, five **separate no-op probes per language** estimate a minimal startup baseline; they do **not** re-run Euler solutions. The per-problem graphics stack a **gray, diagonally hatched startup estimate**, a **language-colored/patterned execution residual**, and a **dark line at the split boundary**. Complete-suite charts additionally separate runner overhead. The baseline is an approximation, not the true solver initialization time; module imports, fixture loading, I/O and shutdown remain in the execution residual. See [startup profiling methods and limitations](docs/STARTUP_PROFILING.md). Failures, timeouts and unavailable tools are explicit states, not zero-duration successes.
 
-Every invocation creates its own `build/profile/<run-id>/` containing CSV measurements (including `startup_estimate_ms`, `execution_residual_ms` and split status), environment/revision/calibration JSON and SVG/PNG/PDF plots. `build/profile/latest.json` selects one complete run for `make plots`; old runs and languages are never pooled silently. Test results use a separate `build/test-results/` directory. No confidence intervals or error bars are inferred from a single observation.
+Every invocation creates its own `build/profile/<run-id>/` containing CSV measurements (including `startup_estimate_ms`, `execution_residual_ms` and split status), environment/revision/calibration JSON and SVG/PNG/PDF plots. `build/profile/latest.json` selects one complete run for `make plots`; old runs and languages are never pooled silently. The plot command also copies that run's figures to `build/profile/latest-plots/` for the documentation build. Test results use a separate `build/test-results/` directory. No confidence intervals or error bars are inferred from a single observation.
 
 Per-language total bars measure the whole sequential language suite, stacked as startup baseline + execution residual + runner overhead; diamonds show summed child-process durations. A separate `matched_subset_totals` figure compares only the **intersection of implemented Euler IDs** in all selected languages, now 120 when all four are selected. Only a complete passing 120-problem run receives a full-suite total bar; missing or failed native executions remain explicit rather than being plotted as zero. Missing implementations are never plotted as zero. These measurements compare the current implementations and their algorithms, libraries, and input loading.
 
@@ -138,4 +141,4 @@ Mathematical figures go to `build/math_plots/` as SVG/PNG/PDF: the five original
 
 The new C validation workflow builds all 120 programs with warnings treated as errors, verifies official input hashes, runs independent examples and exact-answer checks, and checks every program with AddressSanitizer and UBSan. It preserves validation results for 30 days. The existing multi-language workflow also handles explicit per-language coverage and retains its figure/report generation. There are no scheduled builds. `make clean` removes generated build outputs.
 
-The original C/Rust/Gforth validation baseline remains in `docs/VALIDATION.md`; the current C extension is recorded in `docs/VALIDATION_C_1_120.md`. The existing LaTeX report retains its 37 chapters. The 83 new methods and source links are documented separately in `docs/C_1_120.md`.
+The original C/Rust/Gforth validation baseline remains in `docs/VALIDATION.md`; the current extensions are recorded in `docs/VALIDATION_C_1_120.md` and `docs/VALIDATION_FORTH_1_120.md`. The existing LaTeX report retains its 37 chapters. The 83 new methods and source links are documented separately in `docs/C_1_120.md`.

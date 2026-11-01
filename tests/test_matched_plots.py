@@ -41,6 +41,11 @@ class StartupPlotTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'must match'):
             plots.parts(row)
 
+    def test_result_summary_keeps_timeouts_separate(self):
+        records = ([{'status': 'pass'}] * 115
+                   + [{'status': 'timeout'}] * 5)
+        self.assertEqual(plots.status_summary(records), '115 pass, 5 timeout')
+
     def test_breakdown_bar_has_two_colors_hatches_and_boundary_line(self):
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots()

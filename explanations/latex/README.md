@@ -16,13 +16,13 @@ Each chapter describes the mathematical goal, the C control flow and data struct
 
 ## Build the combined PDF
 
-Run `make plots-math` from the repository root **first** to embed real figures, then build the LaTeX from this directory:
+Run `make plots-math` from the repository root **first** to embed mathematical figures. Run a profile target and `make plots` to include the latest validation and timing figures. Then build the LaTeX from this directory:
 
 ```sh
 make
 ```
 
-Requires a reasonably complete TeX Live installation with `pdflatex`, `amsmath`, `geometry`, `hyperref`, `microtype`, and Latin Modern fonts. The generated PDF is `build/project_euler_c_explanations.pdf`. The atlas has placeholders for unbuilt diagrams and includes generated PDF figures after `make plots-math`. The code comparison chapter differentiates untested Factor additions from the established C/Rust/Gforth baseline. Build artifacts are excluded by the repository-wide `.gitignore`.
+Requires a reasonably complete TeX Live installation with `pdflatex`, `amsmath`, `geometry`, `hyperref`, `microtype`, and Latin Modern fonts. The generated PDF is `build/project_euler_c_explanations.pdf`. The atlas has placeholders for unbuilt diagrams and includes generated PDF figures after `make plots-math`. The code comparison chapter distinguishes complete C and Factor validation from the current 115-pass, five-timeout Gforth result and the older Rust baseline. Build artifacts are excluded by the repository-wide `.gitignore`.
 
 ## Chapters
 

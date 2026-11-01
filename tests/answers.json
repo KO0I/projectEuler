@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "description": "Project Euler 1 through 120 in C, Rust, Gforth, and Factor. All 120 C answers validated; additional language implementations require their native toolchains for runtime verification.",
+  "description": "Project Euler 1 through 120 in C, Rust, Gforth, and Factor. C and Factor pass all 120 exact-answer checks. A recorded 60-second-per-solver Gforth run passes 115 and times out on 5. Rust still requires a recorded full native validation.",
   "baseline_commit": "e44f23ed50de1df537097dfa62e339a688e128ba",
   "problems": [
     {

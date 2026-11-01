@@ -78,6 +78,9 @@ retain `runtime_ms` and add `startup_estimate_ms`, `execution_residual_ms`,
 and `split_status`. `make plots` reuses **exactly one run** and never creates
 new measurements. SVG, PNG, and PDF figures are placed under that run's
 `plots/` directory.
+The same files are copied to `build/profile/latest-plots/` so the LaTeX report
+can include the selected run without combining measurements from different run
+directories.
 
 Do not read these figures as measured time spent exclusively *inside* an
 algorithm, or as an intrinsic language speed comparison. For precise

@@ -44,11 +44,11 @@
     count 0 do
       i signatures prefix@ j signatures prefix@ = if copies 1+ to copies then
     loop
-    copies 5 = if i values prefix@ exit then
+    copies 5 = if i values prefix@ unloop exit then
   loop 0 ;
 : p62 ( -- n )
   15000 cells allocate throw 15000 cells allocate throw
-  0 10 1 0 0 0 { signatures values count bucket n cube answer }
+  0 10 1 0 0 { signatures values count bucket n cube answer }
   begin
     n n * n * to cube
     cube bucket >= if
@@ -129,7 +129,7 @@ create p74-factorials 1 , 1 , 2 , 6 , 24 , 120 , 720 , 5040 , 40320 , 362880 ,
   6250000 allocate throw
   0 0 0 0 0 0 0 { primes list seen count answer x y z value mask }
   seen 6250000 erase
-  7072 2 do primes i + c@ if i list count prefix! count 1+ to count then loop
+  7072 2 do primes i + c@ if i count list prefix! count 1+ to count then loop
   count 0 do
     i list prefix@ dup * dup * to x
     x 50000000 >= if leave then
@@ -335,6 +335,11 @@ create p89-lengths 1 , 2 , 1 , 2 , 1 , 2 , 1 , 2 , 1 , 2 , 1 , 2 , 1 ,
       then
     then
   loop
+  active if
+    count 12 >= abort" Too many set elements"
+    value count values prefix! count 1+ to count
+    value line-sum + to line-sum
+  then
   count 0> if values count p105-special? if total line-sum + to total then then
   raw free throw values free throw total ;
 

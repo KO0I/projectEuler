@@ -17,8 +17,11 @@ def main() -> None:
         "Each new C file contains its algorithm. The older C entry points retain their",
         "implementations in `support/c/euler_common.c`. Historical attempts are in",
         "`c/variants/`; they are not the programs built by the default target.", "",
+        "Rust, Gforth, and Factor also have entry points for every listed problem.",
+        "The implementation column records source coverage, not validation status.", "",
         "See [new C methods and bounds](../docs/C_1_120.md),",
-        "[validation](../docs/VALIDATION_C_1_120.md), and",
+        "[C validation](../docs/VALIDATION_C_1_120.md),",
+        "[Gforth validation](../docs/VALIDATION_FORTH_1_120.md), and",
         "[the existing report](../explanations/latex/project_euler_c_explanations.tex).", "",
         "| Number | Problem | C source | Status | Other implementations |",
         "| ---: | --- | --- | --- | --- |"]

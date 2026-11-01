@@ -1,0 +1,71 @@
+\section{Mathematical visualization atlas}
+\label{sec:visualatlas}
+
+This atlas supports algorithm explanations with actual data where available,
+and with explicitly labelled reduced examples elsewhere. Plots are generated
+by \texttt{make plots-math} and embedded only when the corresponding PDF
+exists. Every figure has an SVG, PNG and PDF counterpart under
+\texttt{build/math\_plots/}. The complete topic-to-file map is recorded in
+\texttt{docs/visualization\_index.md}. None of these figures is a
+measurement of algorithm runtime.
+
+\newcommand{\EulerChart}[3]{%
+ \begin{figure}[p]\centering
+ \IfFileExists{../../build/math_plots/#1.pdf}{%
+  \includegraphics[width=0.92\linewidth,height=0.37\textheight,keepaspectratio]{../../build/math_plots/#1.pdf}%
+ }{\fbox{\parbox{0.76\linewidth}{%
+  Figure not generated: \texttt{#1.pdf}. Run \texttt{make plots-math}
+  before rebuilding this report.}}}%
+ \caption{Project Euler #2: #3}\label{fig:#1}
+ \end{figure}
+}
+
+\subsection{Integer geometry and spirals}
+\EulerChart{pythagorean_perimeters}{9, 39, 75}{Euclid's formula enumerates
+right-triangle perimeter counts; the dashed marker gives the full problem
+39 winner $p=840$. Singular-count growth is sampled only to $p=1500$.}
+\EulerChart{spiral_diagonal_sum}{28}{Sum of the four corners of each odd-width
+ring through the full $1001\times1001$ target.}
+\EulerChart{spiral_prime_ratio}{58}{Prime density on spiral diagonals sampled
+through side length 2501, with a 10-percent reference line.}
+\EulerChart{coordinate_right_triangles}{91}{Lattice-coordinate geometry
+on a small grid; the full counting problem is not implemented here.}
+\EulerChart{almost_equilateral}{94}{The $5,5,6$ example has an integral area
+and differs from an equilateral triangle by one unit.}
+
+\subsection{Grids and dynamic programming}
+\EulerChart{grid_largest_product}{11}{Actual $20\times20$ input grid
+from the repository. The highlighted window produces the verified
+maximum product $70,600,674$.}
+\EulerChart{lattice_paths}{15}{Binomial coefficients and a sample
+six-by-six lattice path. The chart is not the full problem input.}
+\EulerChart{maximum_path_sum_demo}{18, 67}{A reduced four-row triangle
+shows how bottom-up dynamic programming identifies the maximum path sum.}
+\EulerChart{path_sum_directions}{81, 82, 83}{Three shortest-path
+models share one five-by-five example matrix but allow different moves.
+The full-sized input matrices are not supplied.}
+\EulerChart{sudoku_demo}{96}{A solved nine-by-nine example, distinguishing
+givens from cells filled by backtracking.}
+\EulerChart{triangle_containment}{102}{The signs of three oriented cross
+products decide whether the origin is inside a triangle.}
+
+\subsection{Discrete counting and networks}
+\EulerChart{magic_5gon}{68}{One valid five-gon configuration whose
+five triples have the same sum.}
+\EulerChart{monopoly_dice_kernel}{84}{The probability mass function of
+two four-sided dice. This is only the movement kernel, not Monopoly's
+complete Markov model with jail and card rules.}
+\EulerChart{counting_rectangles}{85}{The number of rectangular
+subgrids across width and height, with a target contour at two million.}
+\EulerChart{cuboid_routes}{86}{Integer-length unfolded surface
+routes for a restricted set of cuboids.}
+\EulerChart{cube_digit_pairs}{90}{A valid digit placement on two cubes,
+where six and nine can be exchanged by rotating the cube.}
+\EulerChart{minimal_network}{107}{Kruskal's minimum-spanning-tree
+procedure, shown on an explicitly synthetic graph.}
+\EulerChart{darts_checkout_counts}{109}{Distinct checkout
+combinations under score 80, with an obligatory final double.}
+\EulerChart{block_tilings}{114, 115, 116, 117}{Four exact
+dynamic-programming recurrences on short rows; the second curve is a
+scaled illustration, not the full problem-115 threshold.}
+\clearpage

@@ -14,7 +14,7 @@ FACTOR_VM=/absolute/path/to/Factor/factor make profile-factor
 ```
 
 Official release tarballs contain both the VM and its accompanying `factor.image`;
-keep these together. CI pins the Linux x86-64 Factor 0.101 release archive.
+keep these together. CI pins the Linux x86-64 Factor 0.102 release archive.
 There is deliberately no fallback to `/usr/bin/factor` (the unrelated integer
 factorization utility on many Linux distributions).
 

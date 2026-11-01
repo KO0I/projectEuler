@@ -1,110 +1,136 @@
 #!/usr/bin/env python3
-"""Regenerate runtime comparison charts from CSV; never rerun solutions."""
+"""Regenerate accessible SVG, PNG and PDF charts from ONE saved profile run."""
 from __future__ import annotations
+import argparse
 import csv
+import json
 import math
 from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "build" / "profile"
-OUT = DATA / "plots"
-LANGUAGES = ("c", "rust", "forth")
+BASE = ROOT / "build" / "profile"
 COLORS = {"c": "#2b6684", "rust": "#cc7954", "forth": "#76718c"}
 HATCHES = {"c": "///", "rust": "\\\\\\", "forth": "xxx"}
 
 
-def load():
-    results = {}
-    for language in LANGUAGES:
-        path = DATA / f"{language}.csv"
-        if not path.is_file():
-            continue
-        with path.open(newline="", encoding="utf-8") as handle:
-            results[language] = {int(row["problem"]): row for row in csv.DictReader(handle)}
-    return results
+def load(run: Path | None = None):
+    if run is None:
+        pointer = BASE / "latest.json"
+        if not pointer.is_file():
+            raise ValueError("No profile exists. Run make profile first.")
+        run = BASE / json.loads(pointer.read_text())["run_id"]
+    info = json.loads((run / "metadata.json").read_text(encoding="utf-8"))
+    if info.get("schema") != 2 or info.get("mode") != "profile":
+        raise ValueError("Expected a schema-2 profiling run, not test output")
+    rows = {}
+    for language in info["languages"]:
+        with (run / f"{language}.csv").open(newline="", encoding="utf-8") as handle:
+            records = list(csv.DictReader(handle))
+        numbers = [int(r["problem"]) for r in records]
+        if sorted(numbers) != sorted(info["problems"]):
+            raise ValueError(f"Missing or duplicated problem rows for {language}")
+        for row in records:
+            if row["run_id"] != info["run_id"] or row["language"] != language:
+                raise ValueError("Refusing to combine observations from different runs")
+            if row["status"] == "pass":
+                ms = float(row["runtime_ms"])
+                if not math.isfinite(ms) or ms <= 0:
+                    raise ValueError("Passing observations need a positive measured duration")
+        rows[language] = {int(r["problem"]): r for r in records}
+    return run, info, rows
 
 
-def write(fig, stem):
-    OUT.mkdir(parents=True, exist_ok=True)
+def write(fig, out: Path, stem: str):
+    out.mkdir(parents=True, exist_ok=True)
     for ext in ("svg", "png", "pdf"):
-        fig.savefig(OUT / f"{stem}.{ext}", dpi=180, bbox_inches="tight")
+        fig.savefig(out / f"{stem}.{ext}", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
 
-def runtime_by_problem(rows):
-    numbers = sorted(set().union(*(set(d) for d in rows.values())))
-    if not numbers:
-        return
+def runtime_by_problem(rows, info, out):
+    numbers = sorted(info["problems"])
+    languages = info["languages"]
     fig, ax = plt.subplots(figsize=(17, 6))
-    width = 0.26
-    for i, language in enumerate(LANGUAGES):
-        if language not in rows:
-            continue
-        durations = []
-        for n in numbers:
-            r = rows[language].get(n)
-            durations.append(float(r["runtime_ms"])
-                             if r and r["status"] == "pass" and r["runtime_ms"]
-                             else math.nan)
-        xs = np.arange(len(numbers)) + (i - 1) * width
-        ax.bar(xs, durations, width, label=language.upper(),
-               color=COLORS[language], hatch=HATCHES[language],
-               edgecolor="#222222", linewidth=.5)
-        # Explicit missing/failed marks, positioned above the lower log limit.
-        for x, n, duration in zip(xs, numbers, durations):
-            if not math.isfinite(duration):
-                ax.plot(x, 0.5, "x", color="#222222", markersize=4)
-    ax.set_yscale("log")
-    ax.set_ylim(bottom=0.3)
+    width = 0.8 / len(languages)
+    positive = []
+    for index, language in enumerate(languages):
+        times = [float(rows[language][n]["runtime_ms"])
+                 if rows[language][n]["status"] == "pass" else math.nan
+                 for n in numbers]
+        positive.extend(ms for ms in times if math.isfinite(ms))
+        xs = np.arange(len(numbers)) + (index - (len(languages) - 1) / 2) * width
+        ax.bar(xs, times, width, label=language.upper(), color=COLORS[language],
+               hatch=HATCHES[language], edgecolor="#222222", linewidth=.5)
+        for x, ms in zip(xs, times):
+            if not math.isfinite(ms):
+                # The mark is at an AXES fraction, not a fake measured duration.
+                ax.plot(x, .02, "x", transform=ax.get_xaxis_transform(),
+                        color="#222222", markersize=5)
+    if positive:
+        ax.set_yscale("log")
+        ax.set_ylim(bottom=min(positive) / 2, top=max(positive) * 1.5)
     ax.set_xticks(np.arange(len(numbers)), [str(n) for n in numbers])
     ax.set_xlabel("Project Euler problem number")
-    ax.set_ylabel("Single-run wall-clock duration [ms] (log scale)")
-    ax.set_title("Runtime by problem and language (one execution; compilation excluded)")
-    ax.grid(axis="y", linestyle=":", alpha=.45)
-    ax.legend()
-    ax.text(.005, -.18, "X = unavailable, failed, or untested; no error bars are inferred from one run.",
-            transform=ax.transAxes, fontsize=9)
-    fig.tight_layout()
-    write(fig, "runtime_by_problem")
-
-
-def totals(rows):
-    if not rows:
-        return
-    fig, ax = plt.subplots(figsize=(8, 5))
-    for i, language in enumerate(LANGUAGES):
-        if language not in rows:
-            continue
-        entries = list(rows[language].values())
-        passed = [r for r in entries if r["status"] == "pass" and r["runtime_ms"]]
-        total = sum(float(r["runtime_ms"]) for r in passed)
-        ax.bar(i, total, color=COLORS[language],
-               hatch=HATCHES[language], edgecolor="#222222")
-        label = f"{len(passed)}/{len(entries)} passing"
-        if passed:
-            ax.annotate(label, (i, total), xytext=(0, 5), textcoords="offset points",
-                        ha="center", va="bottom", fontsize=10)
-        else:
-            ax.annotate(label, (i, 0), xytext=(0, 5), textcoords="offset points",
-                        ha="center", fontsize=10)
-    ax.set_xticks(range(3), [l.upper() for l in LANGUAGES])
-    ax.set_ylabel("Sum of passing child process runtimes [ms]")
-    ax.set_title("Total measured runtime by language")
-    ax.text(.5, -.2, "Partial totals are NOT comparable to complete 37-problem totals.",
-            transform=ax.transAxes, ha="center", fontsize=9)
+    ax.set_ylabel("Single-run wall-clock duration [ms]" + (" (log scale)" if positive else ""))
+    ax.set_title("Runtime by problem and language — one execution per program")
     ax.grid(axis="y", linestyle=":", alpha=.4)
-    fig.tight_layout()
-    write(fig, "totals")
+    ax.legend()
+    fig.text(.01, .015, "X = failed or unavailable, not zero. Compilation excluded; startup included. "
+             "No error bars from single observations.", fontsize=9)
+    fig.text(.01, -.015, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)
+    fig.tight_layout(rect=(0, .06, 1, 1))
+    write(fig, out, "runtime_by_problem")
+
+
+def totals(rows, info, out):
+    fig, ax = plt.subplots(figsize=(9, 6))
+    languages = info["languages"]
+    for i, language in enumerate(languages):
+        summary = info["language_summaries"][language]
+        count = len(rows[language])
+        complete = summary["complete"] and all(r["status"] == "pass" for r in rows[language].values())
+        if not complete:
+            ax.text(i, .04, f"Incomplete\n{summary['passed']}/{count} pass",
+                    ha="center", transform=ax.get_xaxis_transform())
+            continue
+        wall = summary["suite_wall_ms"]
+        child = summary["passing_child_runtime_ms"]
+        ax.bar(i, wall, color=COLORS[language], hatch=HATCHES[language],
+               edgecolor="#222222", width=.62)
+        ax.plot(i, child, "D", color="white", markeredgecolor="black", markersize=6)
+        ax.annotate(f"{wall:.2f} [ms]\n{count}/{count} pass", (i, wall),
+                    xytext=(0, 6), textcoords="offset points", ha="center", fontsize=10)
+    ax.set_xticks(range(len(languages)), [l.upper() for l in languages])
+    ax.set_ylabel("Sequential suite wall-clock duration [ms]")
+    ax.set_title("Complete-suite runtime by language — same run and machine")
+    ax.margins(y=.25)
+    ax.grid(axis="y", linestyle=":", alpha=.4)
+    ax.legend(handles=[Line2D([], [], linestyle="none", marker="D", color="white",
+                              markeredgecolor="black", label="Sum of child-process durations")])
+    fig.text(.05, .03, "Bars include runner overhead; diamonds exclude it. Incomplete suites have no total bar.\n"
+             "Algorithms, libraries and fixture loading differ: these are implementation timings, not language rankings.",
+             fontsize=9)
+    fig.tight_layout(rect=(0, .1, 1, 1))
+    write(fig, out, "totals")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run", type=Path, help="Saved run directory; default is the latest profile")
+    args = parser.parse_args()
+    try:
+        run, info, rows = load(args.run)
+    except (OSError, ValueError, KeyError) as exc:
+        parser.error(str(exc))
+    runtime_by_problem(rows, info, run / "plots")
+    totals(rows, info, run / "plots")
+    print(f"Saved SVG/PNG/PDF charts under {run / 'plots'}")
 
 
 if __name__ == "__main__":
-    results = load()
-    if not results:
-        raise SystemExit("No CSV measurements under build/profile; run make profile first.")
-    runtime_by_problem(results)
-    totals(results)
-    print(f"Saved SVG/PNG/PDF charts under {OUT}")
+    main()

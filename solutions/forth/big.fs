@@ -123,7 +123,7 @@
       value big-base mod index out blimb!
       value big-base / to carry
     loop
-    carry j b blen@ + out blimb!
+    carry i b blen@ + out blimb!
   loop
   a bsign@ b bsign@ * 0< if -1 else 1 then out bsign!
   out bnormalize ;

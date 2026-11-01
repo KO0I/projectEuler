@@ -1,0 +1,15 @@
+\section{Digit Factorials --- Problem 34}
+\label{prob:34}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/digit_factorials_34.c}
+
+\noindent\textbf{Assessment:} Direct search with an unjustified upper bound.
+
+\subsection*{Mathematical goal}
+Find numbers equal to the sum of the factorials of their decimal digits and sum them, excluding the trivial cases 1 and 2.
+
+\subsection*{How the C code works}
+The helper \verb|fact| calculates a digit's factorial by multiplying integers from one through that digit, with special cases for zero and negative input. The outer loop tests \verb|j| from 100 through 99999. Remainder and division expressions isolate the units through ten-thousands digits, and the code sums their factorials into \verb|t|. If \verb|t==j|, the candidate contributes to the final \verb|sum|.
+
+\subsection*{Correctness and limitations}
+This range happens to include 145 and 40585, whose total is 40730, but the source does not prove that 99999 is a sufficient upper bound. A rigorous bound comes from comparing a \(d\)-digit number with \(d\cdot9!\); candidates of six or seven digits cannot be dismissed merely by intuition. The program should derive its stopping criterion and avoid recalculating the same digit factorials.
+

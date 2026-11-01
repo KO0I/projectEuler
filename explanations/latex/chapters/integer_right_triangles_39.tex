@@ -1,0 +1,15 @@
+\section{Integer Right Triangles --- Problem 39}
+\label{prob:39}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/integer_right_triangles_39.c}
+
+\noindent\textbf{Assessment:} Restricted search with counting flaws.
+
+\subsection*{Mathematical goal}
+For perimeters \(p\leq1000\), count integer-sided right triangles \(a<b<c\) with \(a^2+b^2=c^2\) and \(a+b+c=p\). Determine which perimeter has the most distinct triples.
+
+\subsection*{How the C code works}
+The global \verb|p| begins at 12. Nested loops search restricted intervals of sides \verb|a|, \verb|b| and \verb|c|, while \verb|testvalid| checks the Pythagorean equation using \verb|pow| and the perimeter sum. Each hit increases \verb|score|. After a perimeter is tested, \verb|highscore| may be updated; the code advances to another \verb|p| and measures CPU time.
+
+\subsection*{Correctness and limitations}
+The code advances \verb|p| by four and later by eight, which skips many candidate perimeters. The side-loop bounds are interdependent and can omit triples; incrementing \verb|c| after a match can skip additional triples. \verb|testvalid| lacks a return for one possible branch, and the program prints the highest score rather than its perimeter. The expected winning perimeter is 840, but this search is not a reliable proof.
+

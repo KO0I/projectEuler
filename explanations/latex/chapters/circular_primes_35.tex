@@ -1,0 +1,15 @@
+\section{Circular Primes --- Problem 35}
+\label{prob:35}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/circular_primes_35.c}
+
+\noindent\textbf{Assessment:} Unfinished scaffolding.
+
+\subsection*{Mathematical goal}
+A prime is circular when every cyclic rotation of its decimal digits is also prime. Count all circular primes below one million.
+
+\subsection*{How the C code works}
+The source describes separate ranges by digit length and sketches functions \verb|a|, \verb|b|, \verb|c| and \verb|d| to examine rotations. The actual \verb|main| sets up a few variables, opens \verb|circprimes|, checks for file-open failure, and closes it. No rotations are calculated and no answer is printed.
+
+\subsection*{Correctness and limitations}
+The helper functions have empty bodies despite declaring integer return types. The initialized \verb|sum=9| is neither updated nor printed. A complete solution needs prime membership tests for every rotation, with attention to leading zeros and repeated cyclic forms. The known count is 55, not a result established by this placeholder.
+

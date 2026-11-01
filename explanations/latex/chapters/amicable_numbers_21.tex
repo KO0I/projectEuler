@@ -1,0 +1,15 @@
+\section{Amicable Numbers --- Problem 21}
+\label{prob:21}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/amicable_numbers_21.c}
+
+\noindent\textbf{Assessment:} Pair-validation logic needs correction.
+
+\subsection*{Mathematical goal}
+Let \(d(n)\) denote the sum of positive proper divisors of \(n\). An amicable pair has \(d(a)=b\), \(d(b)=a\), and \(a\ne b\). Sum the amicable numbers under 10000.
+
+\subsection*{How the C code works}
+The helper \verb|d| tries divisors from 2 through \(n-1\), beginning its sum at one. The \verb|amicable| loop computes \verb|a=d(j)| and \verb|b=d(a)| for each candidate \verb|j|, then adds \verb|a+b| when its tests pass and the total differs from the previous pair sum.
+
+\subsection*{Correctness and limitations}
+The condition \verb|d(a)==b| is true by construction, but the source never requires \verb|b==j|. The candidate seed therefore need not belong to the pair being added. \verb|prevsum| only filters consecutive duplicates, and partner bounds are not enforced. The correct total is 31626; the code needs stronger pair checks before claiming it.
+

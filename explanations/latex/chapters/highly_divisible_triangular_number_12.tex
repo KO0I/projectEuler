@@ -1,0 +1,15 @@
+\section{Highly Divisible Triangular Number --- Problem 12}
+\label{prob:12}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/highly_divisible_triangular_number_12.c}
+
+\noindent\textbf{Assessment:} Partial: triangular numbers only.
+
+\subsection*{Mathematical goal}
+A triangular number is \(T_n=n(n+1)/2\). The challenge seeks the first one with more than 500 positive divisors.
+
+\subsection*{How the C code works}
+Starting from \verb|tri=1|, the loop adds every integer from 2 through 500. The printed value is \(T_{500}=125250\). The variable \verb|j| is incremented but has no effect on the result.
+
+\subsection*{Correctness and limitations}
+The source never counts the divisors of a triangular number and never tests a divisor-count threshold, so it does not solve the full problem. Efficient factorization of \(n\) and \(n+1\), with their known coprimality, can support a complete divisor-count search.
+

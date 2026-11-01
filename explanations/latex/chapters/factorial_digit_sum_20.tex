@@ -1,0 +1,15 @@
+\section{Factorial Digit Sum --- Problem 20}
+\label{prob:20}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/factorial_digit_sum_20.c}
+
+\noindent\textbf{Assessment:} GMP digit sum implemented; output label wrong.
+
+\subsection*{Mathematical goal}
+Find the sum of the decimal digits of \(100!\).
+
+\subsection*{How the C code works}
+The call \verb|mpz_fac_ui(factorial,100)| constructs the factorial exactly. A modulus with powers of ten retains the lowest digits; division by the next lower power isolates one digit. Each digit is added to \verb|result|, an arbitrary-precision accumulator.
+
+\subsection*{Correctness and limitations}
+The loop runs beyond the decimal length, but the surplus digits are zero. The expected sum is 648. The output message incorrectly describes digits of \(2^{100}\), copied from problem 16; it should name \(100!\). Compiling requires GMP and \verb|-lgmp|.
+

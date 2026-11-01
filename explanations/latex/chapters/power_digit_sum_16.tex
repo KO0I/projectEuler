@@ -1,0 +1,15 @@
+\section{Power Digit Sum --- Problem 16}
+\label{prob:16}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/power_digit_sum_16.c}
+
+\noindent\textbf{Assessment:} GMP-based algorithm implemented.
+
+\subsection*{Mathematical goal}
+Compute the sum of the base-ten digits of \(2^{1000}\). GNU MP arbitrary-precision integers allow the power to be represented exactly.
+
+\subsection*{How the C code works}
+The call \verb|mpz_pow_ui| computes \(2^{1000}\). At each iteration the code calculates \verb|giant mod a| where \verb|a| runs through powers of ten, then divides by \verb|a/10| to isolate the corresponding digit. The digit is added into the GMP variable \verb|result|, which is initialized to zero by \verb|mpz_init|.
+
+\subsection*{Correctness and limitations}
+The 305 iterations exceed the 302-digit input, so later positions contribute zero. The expected sum is 1366. Compilation requires GMP headers and \verb|-lgmp|. A decimal-string conversion would be simpler, but it is not the method implemented here.
+

@@ -1,0 +1,18 @@
+\section{Sum Square Difference --- Problem 6}
+\label{prob:6}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/sum_square_difference_6.c}
+
+\noindent\textbf{Assessment:} Correct for the input.
+
+\subsection*{Mathematical goal}
+For \(N=100\) compute
+\[
+\left(\sum_{k=1}^{N}k\right)^2-\sum_{k=1}^{N}k^2.
+\]
+
+\subsection*{How the C code works}
+The helper \verb|squareSum| adds the integers from zero through \(N\) before squaring the accumulated total. The helper \verb|sumSquare| squares each integer individually and adds the squares. \verb|main| subtracts the results and prints the intermediate quantities and difference.
+
+\subsection*{Correctness and limitations}
+The algorithm computes 25164150 for \(N=100\). It takes \(O(N)\) time and constant extra space. Closed-form expressions for the two sums would make the calculation \(O(1)\), and wider integer types would allow larger \(N\).
+

@@ -3,6 +3,8 @@
 Historical Project Euler solutions and experiments, arranged by language.
 
 - [Problem index](solutions/README.md)
+- [C source explanations in LaTeX](explanations/latex/README.md)
+- [Combined LaTeX explanations](explanations/latex/project_euler_c_explanations.tex)
 - [Original-to-new path map](docs/renames.tsv)
 
 ## Layout
@@ -11,6 +13,7 @@ Historical Project Euler solutions and experiments, arranged by language.
 - `solutions/shell/`: shell scripts
 - `solutions/mathematica/`: Mathematica notebooks
 - `solutions/latex/`: LaTeX write-ups and existing PDFs
+- `explanations/latex/`: commentary on each main C implementation, in problem order
 - `support/c/`: shared routines and experimental tools
 - `archive/`: historical binaries, build artifacts and old notes
 
@@ -20,4 +23,6 @@ Main solution filenames follow the official Project Euler title, with the proble
 
 From the repository root, run `make`, `make run`, or `make clean`. The default target remains problem 2, built into `build/`. To compile other standalone programs, use `cc -std=c99 solutions/c/multiples_of_3_or_5_1.c -o build/problem1` after creating `build/`.
 
-Some programs need `-lm`, GNU MP (`-lgmp`), or additional C support files. Some source files are unfinished or contain bugs. Existing data files remain at their original paths to preserve relative-path input reads.
+For the combined LaTeX explanations, run `make -C explanations/latex`. This requires a LaTeX installation with pdflatex and standard support packages.
+
+Some C programs need `-lm`, GNU MP (`-lgmp`), or additional C support files. Some source files are unfinished or contain bugs. Existing data files remain at their original paths to preserve relative-path input reads.

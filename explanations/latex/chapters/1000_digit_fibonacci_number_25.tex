@@ -1,0 +1,15 @@
+\section{1000-digit Fibonacci Number --- Problem 25}
+\label{prob:25}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/1000_digit_fibonacci_number_25.c}
+
+\noindent\textbf{Assessment:} GMP search with indexing and portability defects.
+
+\subsection*{Mathematical goal}
+Find the first Fibonacci index \(n\) with \(F_n\geq10^{999}\), which is equivalent to reaching 1000 decimal digits.
+
+\subsection*{How the C code works}
+GMP integers \verb|a| and \verb|b| start at one. The nested helper \verb|fibonacci| adds these numbers and swaps them to advance the sequence. The threshold \verb|top=10^999| is constructed with \verb|mpz_ui_pow_ui|. A quotient \verb|lentest=a/top| is compared with one to detect the first term above the threshold. A counter \verb|i| increments for each generated term.
+
+\subsection*{Correctness and limitations}
+A nested function is a GNU C extension, not ISO C. Because the initial two sequence terms are already present, the counter starting at zero does not equal the standard Fibonacci index. Several \verb|printf| calls use \verb|%i| for \verb|unsigned long| values. The memory cleanup is placed after an unreachable \verb|return|. The correct index is 4782; the program's counter must be adjusted before treating it as that answer.
+

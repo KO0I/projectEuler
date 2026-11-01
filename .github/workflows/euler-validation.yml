@@ -1,0 +1,85 @@
+name: Project Euler language validation
+
+on:
+  pull_request:
+    branches:
+      - reorganize/solutions-by-language
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  c:
+    name: C / GNU MP
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GMP development files
+        run: sudo apt-get update && sudo apt-get install -y libgmp-dev
+      - name: Build and check 37 C problems
+        run: make test-c
+
+  rust:
+    name: Rust stable
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify stable toolchain
+        run: rustup default stable && cargo --version && rustc --version
+      - name: Native Rust unit tests
+        run: cargo test --release --manifest-path solutions/rust/Cargo.toml
+      - name: Build and check 37 Rust problems
+        run: make test-rust
+
+  forth:
+    name: Gforth with base-10000 arithmetic
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Gforth
+        run: sudo apt-get update && sudo apt-get install -y gforth
+      - name: Arbitrary-precision Forth unit tests
+        run: gforth solutions/forth/test-big.fs
+      - name: Check 37 Forth problems
+        run: make test-forth
+
+  plots:
+    name: One-run runtime profiles and mathematical figures
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install compilers and Gforth
+        run: sudo apt-get update && sudo apt-get install -y gforth libgmp-dev python3-venv
+      - name: Prepare plotting environment
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install --disable-pip-version-check numpy matplotlib
+          rustup default stable
+      - name: Build native code
+        run: make c-release rust-release
+      - name: Profile exactly once per problem and language
+        id: benchmark
+        continue-on-error: true
+        run: .venv/bin/python scripts/bench.py --mode profile --languages c rust forth
+      - name: Generate plots from recorded observations
+        if: always()
+        run: |
+          .venv/bin/python scripts/plots.py
+          .venv/bin/python scripts/math_plots.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: euler-one-run-profiles
+          path: |
+            build/profile/
+            build/math_plots/
+          retention-days: 30
+      - name: Report suite validation failures
+        if: steps.benchmark.outcome == 'failure'
+        run: exit 1

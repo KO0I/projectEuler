@@ -1,6 +1,6 @@
 \ Project Euler solvers for Gforth; answer is one signed cell (64-bit host).
 \ All source files are pure Forth and use the shared big.fs for large integers.
-include solutions/forth/big.fs
+include big.fs
 
 : is-prime? {: n | divisor :} ( n -- flag )
   n 2 < if false exit then

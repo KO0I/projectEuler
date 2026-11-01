@@ -1,3 +1,3 @@
 \ Project Euler problem 6
-include solutions/forth/solvers.fs
+include solvers.fs
 6 euler-solve . cr bye

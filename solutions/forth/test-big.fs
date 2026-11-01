@@ -1,5 +1,5 @@
 \ Self-contained tests for the Forth dynamic-limb big integer implementation.
-include solutions/forth/big.fs
+include big.fs
 : equals? ( actual expected -- ) <> abort" Forth bignum assertion failed" ;
 
 1 bnew constant big-a

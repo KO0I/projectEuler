@@ -15,4 +15,4 @@ require math.fs
     streak 1+ to streak streak 4 = if i 3 - unloop exit then
   else 0 to streak then loop -1 ;
 
-[undefined] euler-testing [if] p47 . cr bye [then]
+[undefined] euler-testing [if] p47 .answer bye [then]

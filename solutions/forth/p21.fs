@@ -10,4 +10,4 @@ require math.fs
     then
   loop sum ;
 
-[undefined] euler-testing [if] p21 . cr bye [then]
+[undefined] euler-testing [if] p21 .answer bye [then]

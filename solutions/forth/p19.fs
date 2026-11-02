@@ -17,4 +17,4 @@ create month-days 31 , 28 , 31 , 30 , 31 , 30 , 31 , 31 , 30 , 31 , 30 , 31 ,
     loop
   loop answer ;
 
-[undefined] euler-testing [if] p19 . cr bye [then]
+[undefined] euler-testing [if] p19 .answer bye [then]

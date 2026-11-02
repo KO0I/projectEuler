@@ -17,4 +17,4 @@ require math.fs
   1500001 1 do counts i + c@ 1 = if answer 1+ to answer then loop
   counts free throw answer ;
 
-[undefined] euler-testing [if] p75 . cr bye [then]
+[undefined] euler-testing [if] p75 .answer bye [then]

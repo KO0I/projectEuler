@@ -13,4 +13,4 @@ require math.fs
     nx to x ny to y
   repeat sum ;
 
-[undefined] euler-testing [if] p94 . cr bye [then]
+[undefined] euler-testing [if] p94 .answer bye [then]

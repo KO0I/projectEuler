@@ -32,4 +32,4 @@ variable p111-count variable p111-sum
     loop
   loop result ;
 
-[undefined] euler-testing [if] p111 . cr bye [then]
+[undefined] euler-testing [if] p111 .answer bye [then]

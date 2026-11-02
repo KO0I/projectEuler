@@ -14,4 +14,4 @@ require math.fs
     loop
   loop digits free throw result ;
 
-[undefined] euler-testing [if] p24 . cr bye [then]
+[undefined] euler-testing [if] p24 .answer bye [then]

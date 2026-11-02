@@ -9,4 +9,4 @@ require math.fs
     2 +
   again ;
 
-[undefined] euler-testing [if] p58 . cr bye [then]
+[undefined] euler-testing [if] p58 .answer bye [then]

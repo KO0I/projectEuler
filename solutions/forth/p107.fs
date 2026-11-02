@@ -49,4 +49,4 @@ require math.fs
   raw free throw edges free throw distance free throw chosen free throw
   total cost - ;
 
-[undefined] euler-testing [if] p107 . cr bye [then]
+[undefined] euler-testing [if] p107 .answer bye [then]

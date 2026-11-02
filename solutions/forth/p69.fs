@@ -7,4 +7,4 @@ require math.fs
     result 1000000 candidate / > if result exit then result candidate * to result
   then candidate 1+ to candidate again ;
 
-[undefined] euler-testing [if] p69 . cr bye [then]
+[undefined] euler-testing [if] p69 .answer bye [then]

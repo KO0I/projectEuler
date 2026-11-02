@@ -4,6 +4,15 @@ require big.fs
 : require-64bit ( -- ) 1 cells 8 <> abort" These solvers require 64-bit Gforth" ;
 require-64bit
 
+\ Print one integer as the complete machine-readable answer line.
+\
+\ Gforth's standard `.` word appends a separator space. Human terminals do not
+\ care about that space, but the cross-language runner intentionally validates
+\ the exact output contract: answer digits followed by one newline. Keeping
+\ this formatting in one word prevents every problem entry point from having
+\ to remember the zero-width `.r` idiom.
+: .answer ( n -- ) 0 .r cr ;
+
 : is-prime? 0 { n divisor } ( n -- flag )
   n 2 < if false exit then
   n 2 mod 0= if n 2 = exit then

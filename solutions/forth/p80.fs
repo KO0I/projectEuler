@@ -31,4 +31,4 @@ require math.fs
     i integer-sqrt dup * i <> if i p80-root-digits total + to total then
   loop total ;
 
-[undefined] euler-testing [if] p80 . cr bye [then]
+[undefined] euler-testing [if] p80 .answer bye [then]

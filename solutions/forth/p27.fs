@@ -13,4 +13,4 @@ require math.fs
     loop
   then loop product ;
 
-[undefined] euler-testing [if] p27 . cr bye [then]
+[undefined] euler-testing [if] p27 .answer bye [then]

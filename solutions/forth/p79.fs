@@ -33,4 +33,4 @@ require math.fs
   loop
   triples free throw edges free throw present free throw emitted free throw answer ;
 
-[undefined] euler-testing [if] p79 . cr bye [then]
+[undefined] euler-testing [if] p79 .answer bye [then]

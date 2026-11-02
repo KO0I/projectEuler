@@ -7,4 +7,4 @@ require math.fs
     numerator best-d * best-n i * > if numerator to best-n i to best-d then
   loop best-n ;
 
-[undefined] euler-testing [if] p71 . cr bye [then]
+[undefined] euler-testing [if] p71 .answer bye [then]

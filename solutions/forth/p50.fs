@@ -23,4 +23,4 @@ require math.fs
     repeat start-index 1+ to start-index
   repeat primes free throw prefix free throw best-prime ;
 
-[undefined] euler-testing [if] p50 . cr bye [then]
+[undefined] euler-testing [if] p50 .answer bye [then]

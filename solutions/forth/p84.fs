@@ -80,4 +80,4 @@ fvariable p84-maximum
 
 \ Problem 98: square mappings are checked as bijections in both directions.
 
-[undefined] euler-testing [if] p84 . cr bye [then]
+[undefined] euler-testing [if] p84 .answer bye [then]

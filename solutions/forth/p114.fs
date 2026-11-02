@@ -13,4 +13,4 @@ require math.fs
   loop
   50 ways prefix@ to result ways free throw result ;
 
-[undefined] euler-testing [if] p114 . cr bye [then]
+[undefined] euler-testing [if] p114 .answer bye [then]

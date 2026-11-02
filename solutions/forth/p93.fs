@@ -84,4 +84,4 @@ create p93-reached 10000 allot
 \ Problem 103: prove the constructed seven-element bound by exhaustive
 \ increasing-set search with subset-collision and cardinality pruning.
 
-[undefined] euler-testing [if] p93 . cr bye [then]
+[undefined] euler-testing [if] p93 .answer bye [then]

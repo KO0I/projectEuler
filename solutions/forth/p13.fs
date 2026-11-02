@@ -21,4 +21,4 @@ require math.fs
   begin total bdecimal-length 10 > while 10 total bdiv-small! drop repeat
   total bto-u total bfree next bfree ;
 
-[undefined] euler-testing [if] p13 . cr bye [then]
+[undefined] euler-testing [if] p13 .answer bye [then]

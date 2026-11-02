@@ -44,4 +44,4 @@ require math.fs
     index 1000000 > abort" Pandigital Fibonacci solution not found"
   again ;
 
-[undefined] euler-testing [if] p104 . cr bye [then]
+[undefined] euler-testing [if] p104 .answer bye [then]

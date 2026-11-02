@@ -8,4 +8,4 @@ require math.fs
     12 i 2* choose middle 2 / catalan - * total + to total
   loop total ;
 
-[undefined] euler-testing [if] p106 . cr bye [then]
+[undefined] euler-testing [if] p106 .answer bye [then]

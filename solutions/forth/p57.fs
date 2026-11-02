@@ -13,4 +13,4 @@ require math.fs
   loop
   top bfree bottom bfree next bfree temp bfree total ;
 
-[undefined] euler-testing [if] p57 . cr bye [then]
+[undefined] euler-testing [if] p57 .answer bye [then]

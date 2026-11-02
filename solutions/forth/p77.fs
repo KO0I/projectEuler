@@ -10,4 +10,4 @@ require math.fs
     n 1+ to n
   again ;
 
-[undefined] euler-testing [if] p77 . cr bye [then]
+[undefined] euler-testing [if] p77 .answer bye [then]

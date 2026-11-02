@@ -40,4 +40,4 @@ create p89-lengths 1 , 2 , 1 , 2 , 1 , 2 , 1 , 2 , 1 , 2 , 1 , 2 , 1 ,
   count 1000 <> abort" Expected 1000 roman entries"
   raw free throw saved ;
 
-[undefined] euler-testing [if] p89 . cr bye [then]
+[undefined] euler-testing [if] p89 .answer bye [then]

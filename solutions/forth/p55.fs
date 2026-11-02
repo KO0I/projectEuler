@@ -19,4 +19,4 @@ require math.fs
     loop reached 0= if count 1+ to count then
   loop value bfree reversed bfree temp bfree count ;
 
-[undefined] euler-testing [if] p55 . cr bye [then]
+[undefined] euler-testing [if] p55 .answer bye [then]

@@ -14,4 +14,4 @@ require math.fs
     result 1000000 > if ways free throw i unloop exit then
   loop ways free throw -1 ;
 
-[undefined] euler-testing [if] p115 . cr bye [then]
+[undefined] euler-testing [if] p115 .answer bye [then]

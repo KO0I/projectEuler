@@ -19,4 +19,4 @@ require math.fs
   loop
   scores free throw total ;
 
-[undefined] euler-testing [if] p109 . cr bye [then]
+[undefined] euler-testing [if] p109 .answer bye [then]

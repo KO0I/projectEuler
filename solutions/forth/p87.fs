@@ -26,4 +26,4 @@ require math.fs
   loop
   primes free throw list free throw seen free throw answer ;
 
-[undefined] euler-testing [if] p87 . cr bye [then]
+[undefined] euler-testing [if] p87 .answer bye [then]

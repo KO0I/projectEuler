@@ -20,4 +20,4 @@ require math.fs
     i masks prefix@ j masks prefix@ p90-valid? if answer 1+ to answer then
   loop loop masks free throw answer ;
 
-[undefined] euler-testing [if] p90 . cr bye [then]
+[undefined] euler-testing [if] p90 .answer bye [then]

@@ -45,4 +45,4 @@ create p74-factorials 1 , 1 , 2 , 6 , 24 , 120 , 720 , 5040 , 40320 , 362880 ,
   loop
   length free throw visited free throw positions free throw path free throw answer ;
 
-[undefined] euler-testing [if] p74 . cr bye [then]
+[undefined] euler-testing [if] p74 .answer bye [then]

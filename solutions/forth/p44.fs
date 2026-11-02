@@ -15,4 +15,4 @@ require math.fs
     -1 +loop
   loop best ;
 
-[undefined] euler-testing [if] p44 . cr bye [then]
+[undefined] euler-testing [if] p44 .answer bye [then]

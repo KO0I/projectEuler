@@ -16,4 +16,4 @@ require math.fs
     largest 1+ to largest
   again ;
 
-[undefined] euler-testing [if] p86 . cr bye [then]
+[undefined] euler-testing [if] p86 .answer bye [then]

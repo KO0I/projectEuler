@@ -9,4 +9,4 @@ require math.fs
     loop upper 1+ to lower upper 10 * 9 + to upper
   again ;
 
-[undefined] euler-testing [if] p52 . cr bye [then]
+[undefined] euler-testing [if] p52 .answer bye [then]

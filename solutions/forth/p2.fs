@@ -8,4 +8,4 @@ require math.fs
     a b + to next b to a next to b
   repeat sum ;
 
-[undefined] euler-testing [if] p2 . cr bye [then]
+[undefined] euler-testing [if] p2 .answer bye [then]

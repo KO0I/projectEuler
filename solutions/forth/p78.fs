@@ -19,4 +19,4 @@ require math.fs
     then
   loop ways free throw -1 ;
 
-[undefined] euler-testing [if] p78 . cr bye [then]
+[undefined] euler-testing [if] p78 .answer bye [then]

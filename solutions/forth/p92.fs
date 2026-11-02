@@ -20,4 +20,4 @@ create ends-at-89 568 allot
   0 { count }
   10000000 1 do i digit-squares ends-at-89 + c@ 0<> if count 1+ to count then loop count ;
 
-[undefined] euler-testing [if] p92 . cr bye [then]
+[undefined] euler-testing [if] p92 .answer bye [then]

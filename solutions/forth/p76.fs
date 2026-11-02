@@ -9,4 +9,4 @@ require math.fs
   loop
   100 ways prefix@ to answer ways free throw answer ;
 
-[undefined] euler-testing [if] p76 . cr bye [then]
+[undefined] euler-testing [if] p76 .answer bye [then]

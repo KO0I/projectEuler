@@ -13,4 +13,4 @@ require math.fs
     loop count best-count > if count to best-count i to best-perimeter then
   loop best-perimeter ;
 
-[undefined] euler-testing [if] p39 . cr bye [then]
+[undefined] euler-testing [if] p39 .answer bye [then]

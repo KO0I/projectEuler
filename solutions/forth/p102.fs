@@ -40,4 +40,4 @@ require math.fs
   then loop
   coords free throw answer ;
 
-[undefined] euler-testing [if] p102 . cr bye [then]
+[undefined] euler-testing [if] p102 .answer bye [then]

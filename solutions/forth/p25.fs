@@ -11,4 +11,4 @@ require math.fs
 
 \ Names scores: in-memory sort of quoted, comma-separated records.
 
-[undefined] euler-testing [if] p25 . cr bye [then]
+[undefined] euler-testing [if] p25 .answer bye [then]

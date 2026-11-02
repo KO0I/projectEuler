@@ -3,4 +3,4 @@ require math.fs
 
 : p18 ( -- n ) s" tests/data/p018_triangle.txt" 15 triangle-path-max ;
 
-[undefined] euler-testing [if] p18 . cr bye [then]
+[undefined] euler-testing [if] p18 .answer bye [then]

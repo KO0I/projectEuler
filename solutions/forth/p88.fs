@@ -21,4 +21,4 @@ require math.fs
   else drop then loop
   minima free throw seen free throw answer ;
 
-[undefined] euler-testing [if] p88 . cr bye [then]
+[undefined] euler-testing [if] p88 .answer bye [then]

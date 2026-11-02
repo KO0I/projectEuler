@@ -71,4 +71,4 @@ require math.fs
   count 0> if values count p105-special? if total line-sum + to total then then
   raw free throw values free throw total ;
 
-[undefined] euler-testing [if] p105 . cr bye [then]
+[undefined] euler-testing [if] p105 .answer bye [then]

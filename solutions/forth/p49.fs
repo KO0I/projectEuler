@@ -19,4 +19,4 @@ require math.fs
     loop
   then loop primes free throw answer ;
 
-[undefined] euler-testing [if] p49 . cr bye [then]
+[undefined] euler-testing [if] p49 .answer bye [then]

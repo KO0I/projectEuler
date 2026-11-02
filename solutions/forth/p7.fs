@@ -8,4 +8,4 @@ require math.fs
     value is-prime? if count 1+ to count then
   repeat value ;
 
-[undefined] euler-testing [if] p7 . cr bye [then]
+[undefined] euler-testing [if] p7 .answer bye [then]

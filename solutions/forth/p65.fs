@@ -16,4 +16,4 @@ require math.fs
   numerator bdigitsum to a
   numerator bfree previous bfree next bfree temp bfree a ;
 
-[undefined] euler-testing [if] p65 . cr bye [then]
+[undefined] euler-testing [if] p65 .answer bye [then]

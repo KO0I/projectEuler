@@ -35,4 +35,4 @@ require math.fs
   loop
   successors free throw visited free throw depth free throw best-member ;
 
-[undefined] euler-testing [if] p95 . cr bye [then]
+[undefined] euler-testing [if] p95 .answer bye [then]

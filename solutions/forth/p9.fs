@@ -12,4 +12,4 @@ require math.fs
     loop
   loop -1 ;
 
-[undefined] euler-testing [if] p9 . cr bye [then]
+[undefined] euler-testing [if] p9 .answer bye [then]

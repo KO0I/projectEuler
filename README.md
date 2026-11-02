@@ -34,9 +34,12 @@ The figures below report each problem separately, with 10 problem IDs per
 image except for the final five IDs. They omit the minimal no-op startup
 estimate. Bar height is the remaining measured wall time, which still includes
 solver loading, input/output, computation, and shutdown. Every figure uses the
-same symmetric-logarithmic millisecond scale, including zero for programs whose
-observed duration did not exceed the startup estimate. An orange triangle is a
-timeout, and an open circle is a missing implementation. C and Rust passed
+same logarithmic millisecond scale. Successful programs whose observed duration
+did not exceed the startup estimate have a zero residual, which a logarithmic
+axis cannot represent; their filled diamonds are therefore pinned to the shared
+lower boundary rather than shown as invisible zero-height bars. An orange
+triangle is a timeout, and an open circle is a missing
+implementation. C and Rust passed
 255/255, Gforth passed 115/120 with timeouts at 33, 49, 51, 88, and 98, and
 Factor passed its 191 declared entries.
 

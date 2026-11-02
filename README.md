@@ -30,35 +30,42 @@ finished before timing. Each timed child includes process startup, interpreter
 or vocabulary loading, computation, output capture, and shutdown. The runner
 checked the answer produced by the same invocation.
 
-| Language | Declared entries | Valid results | Sequential suite wall time | Median valid child | Valid child range | Minimal startup median |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| C | 255 | 255 | 62.946 s | 2.285 ms | 0.263 ms to 22.513 s | 0.319 ms |
-| Rust | 255 | 255 | 64.990 s | 2.406 ms | 0.280 ms to 20.219 s | 0.385 ms |
-| Gforth | 120 | 115, plus 5 timeouts | 359.610 s | 10.375 ms | 3.799 ms to 33.253 s | 1.353 ms |
-| Factor | 191 | 191 | 421.245 s | 1.727 s | 80.137 ms to 20.479 s | 78.019 ms |
+The figures below report each problem separately. The y-axis uses milliseconds
+on the same logarithmic scale in every figure. A bar's full height is the
+observed child-process wall time. Its gray base is the minimal no-op startup
+estimate; its colored section contains solver loading, input/output, computation,
+and shutdown. An orange triangle is a timeout, and an open circle is a missing
+implementation. C and Rust passed 255/255, Gforth passed 115/120 with timeouts
+at 33, 49, 51, 88, and 98, and Factor passed its 191 declared entries.
 
-![Declared-coverage suite profile for C, Rust, Gforth, and Factor](docs/profile/20261102T044052Z/totals.svg)
+### Problems 1 to 50
 
-The C and Rust totals differ by about 2.0 seconds, but this is one run with no
-warm-up or repeated solver samples. Treat that difference as inconclusive. The
-Gforth total includes five 60-second timeout windows for problems 33, 49, 51,
-88, and 98; its 115 completed children sum to 59.299 seconds. Factor starts a
-fresh VM for each entry point and loads the shared vocabularies, so its result
-measures the repository's command-line programs rather than steady-state
-language throughput. Different algorithms and coverage sets also prevent an
-intrinsic language-speed ranking.
+![Per-problem runtime for Project Euler 1 through 50](docs/profile/20261102T044052Z/runtime_by_problem_001_050.svg)
 
-The next chart limits each language to the 120 IDs implemented in all four
-languages. It omits a Gforth total because five members of that set timed out.
-The other three bars contain only validated child-process measurements.
+### Problems 51 to 100
 
-![Equal-coverage profile over the 120 shared problem IDs](docs/profile/20261102T044052Z/matched_subset_totals.svg)
+![Per-problem runtime for Project Euler 51 through 100](docs/profile/20261102T044052Z/runtime_by_problem_051_100.svg)
 
-The [per-problem log-scale plot](docs/profile/20261102T044052Z/runtime_by_problem.svg)
-shows all measured children, timeouts, and missing implementations. The
-[metadata](docs/profile/20261102T044052Z/metadata.json) records the run ID,
-toolchain versions, timing rules, startup probes, and coverage. Raw measurements
-are available for [C](docs/profile/20261102T044052Z/c.csv),
+### Problems 101 to 150
+
+![Per-problem runtime for Project Euler 101 through 150](docs/profile/20261102T044052Z/runtime_by_problem_101_150.svg)
+
+### Problems 151 to 200
+
+![Per-problem runtime for Project Euler 151 through 200](docs/profile/20261102T044052Z/runtime_by_problem_151_200.svg)
+
+### Problems 201 to 255
+
+![Per-problem runtime for Project Euler 201 through 255](docs/profile/20261102T044052Z/runtime_by_problem_201_255.svg)
+
+Each point is one run with no warm-up or repeated solver samples. The figures
+compare these command-line programs, not intrinsic language speed. Factor starts
+a fresh VM and loads shared vocabularies for every entry point. Implementations
+also use different algorithms and data structures.
+
+The [metadata](docs/profile/20261102T044052Z/metadata.json) records the run ID,
+toolchain versions, timing rules, startup probes, and coverage. Exact per-problem
+measurements are available for [C](docs/profile/20261102T044052Z/c.csv),
 [Rust](docs/profile/20261102T044052Z/rust.csv),
 [Gforth](docs/profile/20261102T044052Z/forth.csv), and
 [Factor](docs/profile/20261102T044052Z/factor.csv). This snapshot supports

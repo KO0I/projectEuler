@@ -1,0 +1,18 @@
+\section{Distinct Powers --- Problem 29}
+\label{prob:29}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/distinct_powers_29.c}
+
+\noindent\textbf{Assessment:} Diagnostic power table, not uniqueness count.
+
+\subsection*{Mathematical goal}
+Count the distinct integers among \(a^b\) with \(2\leq a\leq100\) and \(2\leq b\leq100\). Different pairs can produce the same number, for example \(4^3=8^2\).
+
+\subsection*{How the C code works}
+The helper \verb|ipow| uses exponentiation by squaring: it multiplies the accumulated result when an exponent bit is set, shifts the exponent, and squares the base. \verb|main| prints a small table for bases and exponents 2 through 6. This demonstrates power generation but not deduplication.
+
+\subsection*{Correctness and limitations}
+No distinct-values set or counter is present. A signed \verb|int| cannot represent general powers up to \(100^{100}\), though the small demonstration fits. A corrected algorithm could normalize bases to primitive powers and count exponent combinations, or use GMP values and a set. The expected distinct count is 9183, not an output of the existing program.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The former sample table is replaced by exact GNU MP powers that are sorted and deduplicated to count distinct results.}

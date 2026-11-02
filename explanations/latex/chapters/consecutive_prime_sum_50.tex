@@ -1,0 +1,18 @@
+\section{Consecutive Prime Sum --- Problem 50}
+\label{prob:50}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/consecutive_prime_sum_50.c}
+
+\noindent\textbf{Assessment:} Unsafe exploratory attempt.
+
+\subsection*{Mathematical goal}
+Find the prime below one million that can be expressed as a sum of the greatest number of consecutive primes.
+
+\subsection*{How the C code works}
+The program loads an initial segment of primes from \verb|million_primes| into \verb|primeList| and contains a loop intended to sum consecutive windows from an offset until a demonstration sum is reached. A local \verb|isPrime| helper and result-tracking variables are present, but the main primality and scoring blocks are commented out.
+
+\subsection*{Correctness and limitations}
+The array has only ten elements while the window loop reads at least 22, causing out-of-bounds access. \verb|test| is read before initialization in the enclosing condition, and \verb|fgets(line,8,fp)| can write eight bytes into a seven-byte array. A file-open failure is not handled. The program does not produce a valid answer; the expected prime is 997651. The alternative versions in \verb|variants| are separate attempts.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} A sieve and prefix sums replace the historical ten-element array, its out-of-bounds reads, and the uninitialized accumulator.}

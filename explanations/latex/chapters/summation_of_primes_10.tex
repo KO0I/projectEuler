@@ -1,0 +1,21 @@
+\section{Summation of Primes --- Problem 10}
+\label{prob:10}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/summation_of_primes_10.c}
+
+\noindent\textbf{Assessment:} Computes a different sum.
+
+\subsection*{Mathematical goal}
+The problem asks for the sum of primes strictly below two million:
+\[
+S=\sum_{\substack{p<2\,000\,000\\p\text{ prime}}}p.
+\]
+
+\subsection*{How the C code works}
+The program reads an integer \verb|n| from its command-line argument and loops from \verb|i=1| through \verb|n|, adding each integer to \verb|sum|. It thus computes the arithmetic series \(n(n+1)/2\). There is no primality test.
+
+\subsection*{Correctness and limitations}
+This C program does not solve the prime-summation problem. Using \verb|int| also overflows for the intended bound. A sieve of Eratosthenes combined with a 64-bit accumulator would solve the actual problem. The mathematical answer is 142913828922, not the sum produced by the present algorithm.
+
+
+\subsection*{Correction to historical C --- Problem 10}
+{\color{red}\textbf{Correction:} The old program summed all integers, not primes, and used an undersized accumulator. The corrected implementation uses a sieve of Eratosthenes and a 64-bit prime sum.}

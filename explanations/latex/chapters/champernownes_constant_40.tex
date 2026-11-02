@@ -1,0 +1,18 @@
+\section{Champernowne's Constant --- Problem 40}
+\label{prob:40}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/champernownes_constant_40.c}
+
+\noindent\textbf{Assessment:} Partial digit-generation experiment.
+
+\subsection*{Mathematical goal}
+Champernowne's constant is the concatenation \(0.12345678910111213\ldots\). The task asks for the product of digits at specified powers-of-ten positions.
+
+\subsection*{How the C code works}
+The program allocates an integer digit array of length \verb|end=210|. Separate branches attempt to fill the array with one-, two- and three-digit numbers, updating counters \verb|secondpow| and \verb|thirdpow| as the decimal length changes. At the end it prints the digit positions and the generated string.
+
+\subsection*{Correctness and limitations}
+The program does not calculate the requested digit product or reach the millionth position. Its outer loop permits \verb|n==end| while the later branches write \verb|d[n+1]| or \verb|d[n+2]|, causing out-of-bounds access. It also uses a custom index convention that needs verification against the first few concatenated digits. The historical \verb|v2| alternative is likewise exploratory. The target product is 210, not a confirmed result of this code.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The corrected implementation generates decimal digits until position one million and multiplies the required digit values without a too-small array.}

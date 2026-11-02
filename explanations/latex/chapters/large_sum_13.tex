@@ -1,0 +1,11 @@
+\section{Large Sum --- Problem 13}
+\label{prob:13}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/feature/euler-c-rust-forth/solutions/c/large_sum_13.c}
+\subsection*{Mathematical goal}
+Sum the one hundred provided 50-digit integers, then report the first ten decimal digits of their exact sum.
+\subsection*{Historical approach}
+The original repository contains a short shell script attempting to sum file rows using \texttt{awk}. Floating-point addition cannot reliably retain every digit of this sum.
+\subsection*{Corrected C implementation}
+{\color{red}\textbf{Correction:} The C solution reads each value from the versioned \texttt{lsum} input, accumulates it exactly with GNU MP arbitrary-precision integers, and extracts the leading ten decimal digits. The historical shell attempt remains preserved.}
+\subsection*{Validation}
+The C, Rust and Forth implementations all returned \(5537376230\) for the repository's original 100-number input in the complete CI validation baseline.

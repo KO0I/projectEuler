@@ -1,0 +1,22 @@
+\section{Multiples of 3 or 5 --- Problem 1}
+\label{prob:1}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/multiples_of_3_or_5_1.c}
+
+\noindent\textbf{Assessment:} Correct for the specified bound.
+
+\subsection*{Mathematical goal}
+The problem asks for the sum of integers below 1000 divisible by three or five:
+\[
+S=\sum_{n=1}^{999} n\,\mathbf{1}_{(3\mid n)\lor(5\mid n)}.
+\]
+The disjunction counts multiples of both divisors once.
+
+\subsection*{How the C code works}
+The loop variable \verb|i| runs from 0 to 999. The remainder tests \verb|i%3==0| and \verb|i%5==0| select the eligible integers. The logical OR combines the conditions; the accumulator \verb|sum| starts at zero and receives each selected integer exactly once. The result is printed with \verb|printf|.
+
+\subsection*{Correctness and limitations}
+The code is correct for the stated bound and produces 233168. Including zero has no effect. The procedure takes \(O(N)\) time and \(O(1)\) auxiliary space. Inclusion--exclusion would be faster for very large limits, but it is not used here.
+
+
+\subsection*{Correction to historical C --- Problem 1}
+{\color{red}\textbf{Correction:} The existing direct enumeration already expressed the desired disjunction correctly. The corrected code retains this method and emits only the numeric answer.}

@@ -1,0 +1,21 @@
+\section{Self Powers --- Problem 48}
+\label{prob:48}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/self_powers_48.c}
+
+\noindent\textbf{Assessment:} Modular computation implemented.
+
+\subsection*{Mathematical goal}
+Compute the last ten decimal digits of \(\sum_{n=1}^{1000}n^n\). Only the residue modulo \(10^{10}\) is needed:
+\[
+S\bmod10^{10}=\left(\sum_{n=1}^{1000} n^n\right)\bmod10^{10}.
+\]
+
+\subsection*{How the C code works}
+GMP constructs the modulus \verb|digitspan=10^10|. The loop evaluates each \verb|n^n| with \verb|mpz_ui_pow_ui|, reduces it modulo \verb|digitspan|, and adds it into \verb|result|. Finally the accumulated sum is reduced modulo the same modulus and printed.
+
+\subsection*{Correctness and limitations}
+The loop runs from 999 down to 1, omitting the 1000th term. This omission does not change the last ten digits because \(1000^{1000}\) is divisible by \(10^{10}\). The expected residue is 9110846700. The code computes full huge powers before reducing them; modular exponentiation would be significantly faster. GMP headers and \verb|-lgmp| are required.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The corrected modular GNU MP calculation includes the term for 1000, which was previously omitted but happens to contribute zero modulo ten to the tenth power.}

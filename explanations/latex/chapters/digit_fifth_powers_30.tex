@@ -1,0 +1,18 @@
+\section{Digit Fifth Powers --- Problem 30}
+\label{prob:30}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/digit_fifth_powers_30.c}
+
+\noindent\textbf{Assessment:} Direct exhaustive solution.
+
+\subsection*{Mathematical goal}
+Find nontrivial positive integers whose value equals the sum of the fifth powers of their decimal digits, then sum those integers.
+
+\subsection*{How the C code works}
+The helper \verb|powi| evaluates integer powers by repeated multiplication. For each candidate \verb|j| from 2 to one million, seven expressions using division and remainder extract decimal digits from units through millions. Their fifth powers are summed and compared to \verb|j|. Matching candidates are printed and added to \verb|answer|.
+
+\subsection*{Correctness and limitations}
+This search covers all candidates that can meet the condition, and leading zero digits contribute zero. The expected sum is 443839. The upper bound is conservative; using the maximum digit-power sum gives a tighter bound. The unused variable \verb|k| and outdated comment about fourth powers do not change the computation.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The original digit-power test is retained with a mathematically bounded search domain rather than an arbitrary ceiling.}

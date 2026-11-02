@@ -1,0 +1,18 @@
+\section{Special Pythagorean Triplet --- Problem 9}
+\label{prob:9}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/special_pythagorean_triplet_9.c}
+
+\noindent\textbf{Assessment:} Search implemented.
+
+\subsection*{Mathematical goal}
+Find positive integers \(a<b<c\) satisfying \(a^2+b^2=c^2\) and \(a+b+c=1000\), then calculate \(abc\).
+
+\subsection*{How the C code works}
+The outer loop enumerates \verb|a| and the inner loop enumerates \verb|b|. Rather than search all three values independently, it computes \verb|c=sum-a-b|, making the perimeter constraint automatic. It tests \verb|a*a+b*b==c*c|. A match sets \verb|found| and prints the triplet and product.
+
+\subsection*{Correctness and limitations}
+The search finds \((a,b,c)=(200,375,425)\), giving 31875000. The \verb|break| exits only the inner loop, so the outer loop continues until its bound before the enclosing \verb|while| stops. A no-solution case would repeat forever because there is no explicit failure exit.
+
+
+\subsection*{Correction to historical C --- Problem 9}
+{\color{red}\textbf{Correction:} The perimeter-constrained nested search is retained, but the corrected routine terminates immediately after finding the valid triple.}

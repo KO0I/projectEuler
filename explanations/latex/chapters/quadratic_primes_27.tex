@@ -1,0 +1,18 @@
+\section{Quadratic Primes --- Problem 27}
+\label{prob:27}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/quadratic_primes_27.c}
+
+\noindent\textbf{Assessment:} Exhaustive search with primality edge cases.
+
+\subsection*{Mathematical goal}
+Find coefficients \(a,b\) with \(|a|<1000\), \(|b|\leq1000\), maximizing the length of the prime-producing run of \(f(n)=n^2+an+b\) for \(n=0,1,\ldots\). Report \(ab\).
+
+\subsection*{How the C code works}
+Two nested loops enumerate coefficient pairs. The helper \verb|ipow| computes the square, and \verb|isPrime| decides whether each evaluated polynomial value continues the run. The \verb|score| increases while values appear prime. The first nonprime ends the run, updates \verb|highscore| and the best coefficient pair if needed, and resets \verb|n| and \verb|score|.
+
+\subsection*{Correctness and limitations}
+The local primality checker misclassifies 2 as nonprime, because its divisor loop does not execute and its default return value denotes nonprime. It calls \verb|sqrt| before handling negatives. The algorithm also explores many coefficients with \(b\) nonprime, although \(b=f(0)\) must be prime for a nonempty run. The expected coefficient product is -59231; it should be verified only after repairing the primality test.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} The primality test now correctly accepts two and excludes negative and nonprime values, including zero and one. The coefficient search starts at n equals zero.}

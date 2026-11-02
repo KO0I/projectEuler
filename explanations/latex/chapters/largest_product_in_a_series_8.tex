@@ -1,0 +1,18 @@
+\section{Largest Product in a Series --- Problem 8}
+\label{prob:8}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/largest_product_in_a_series_8.c}
+
+\noindent\textbf{Assessment:} Unimplemented.
+
+\subsection*{Mathematical goal}
+Given the decimal digits \(d_i\), find a window of the prescribed length \(w\) maximizing \(\prod_{j=0}^{w-1}d_{i+j}\).
+
+\subsection*{How the C code works}
+The main file contains only two header inclusions. It defines no input array, search loop, product calculation, or \verb|main| function. A historical variant in \verb|solutions/c/variants/code/| records manual observations about products of large digits, but does not implement the algorithm.
+
+\subsection*{Correctness and limitations}
+This is a placeholder rather than a runnable solution. A complete implementation would scan every length-\(w\) window, compute the product, and maintain the maximum. A rolling product is possible with special handling for zero digits.
+
+
+\subsection*{Correction to historical C --- Problem 8}
+{\color{red}\textbf{Correction:} The historical main C file was only a stub. The completed algorithm examines every 13-digit window of the exact 1000-digit input and retains the largest product.}

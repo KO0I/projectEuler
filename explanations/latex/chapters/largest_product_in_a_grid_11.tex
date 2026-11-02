@@ -1,0 +1,18 @@
+\section{Largest Product in a Grid --- Problem 11}
+\label{prob:11}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/largest_product_in_a_grid_11.c}
+
+\noindent\textbf{Assessment:} Undefined indexing in diagonal loops.
+
+\subsection*{Mathematical goal}
+Find the largest product of four adjacent entries along any row, column, or diagonal in the fixed \(20\times20\) grid.
+
+\subsection*{How the C code works}
+The code stores the grid as \verb|long grid[20][20]| and makes four directional sweeps. For each starting location it multiplies four entries and compares the result with \verb|max|. The horizontal and vertical sweeps use appropriate bounds for their directions.
+
+\subsection*{Correctness and limitations}
+Both diagonal expressions contain \verb|j-1|, \verb|j-2|, and \verb|j-3| even when \verb|j| begins at zero, producing negative indices and undefined behavior. The diagonal starting-column bounds must be repaired. The unused macro \verb|#define N = 4;| is not a valid numeric definition for use in expressions. The known maximum is 70600674 but is not safely demonstrated by this source.
+
+
+\subsection*{Correction to historical C --- Problem 11}
+{\color{red}\textbf{Correction:} The old diagonal sweeps accessed negative column indices. The corrected implementation checks all four directions with explicit endpoint bounds before multiplying grid entries.}

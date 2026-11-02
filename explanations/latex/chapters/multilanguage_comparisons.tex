@@ -1,0 +1,206 @@
+\section{Cross-language algorithm comparisons}
+\label{sec:crosslanguage}
+
+The original 37-problem collection has a dated validation baseline for C, Rust,
+and Gforth. The new \emph{Factor programming language} solutions are a
+separately staged, partially covered extension. Factor is a concatenative,
+stack-based language with its own VM; it is neither Gforth nor the GNU
+\texttt{factor} integer-factorization command. The excerpts below reflect
+the algorithms in this development branch, not the uncorrected historical
+programs. No Factor speed measurements are asserted until its CI invocation
+passes reference-answer validation.
+
+\lstset{
+ basicstyle=\ttfamily\footnotesize,
+ columns=fullflexible,
+ keepspaces=true,
+ breaklines=true,
+ showstringspaces=false,
+ frame=single,
+ framesep=3pt,
+ aboveskip=5pt,
+ belowskip=5pt,
+ xleftmargin=0.02\linewidth,
+ xrightmargin=0.02\linewidth
+}
+
+\subsection{Problem 9: Special Pythagorean Triplet}
+The perimeter constraint eliminates one search variable:
+\[
+  c=1000-a-b,\qquad a<b<c,\qquad a^2+b^2=c^2.
+\]
+All versions test the same conditions but spell the computation differently.
+
+\textbf{C} (\texttt{support/c/euler\_common.c}):
+\begin{lstlisting}
+int c=1000-a-b;
+if(c>b&&a*a+b*b==c*c)return a*b*c;
+\end{lstlisting}
+
+\textbf{Rust} (\texttt{solutions/rust/src/lib.rs}):
+\begin{lstlisting}
+let c=1000-a-b;
+if c>b&&a*a+b*b==c*c {answer=a*b*c;break;}
+\end{lstlisting}
+
+\textbf{Gforth} (\texttt{solutions/forth/solvers.fs}, \texttt{pythagorean-product}):
+\begin{lstlisting}
+1000 a - b - to c
+c b > a a * b b * + c c * = and
+if a b * c * else 0 then ;
+\end{lstlisting}
+
+\textbf{Factor} (\texttt{solutions/factor/p9.factor}):
+\begin{lstlisting}
+1000 a - b - :> c
+c b > [
+    a sq b sq + c sq = [
+        a b * c * answer!
+    ] when
+] when
+\end{lstlisting}
+Unlike the C early return, this initial Factor version continues scanning the
+fixed candidate range after finding a solution. Both remain bounded searches,
+but the extra work prevents using these timings as a pure language benchmark.
+
+\subsection{Problem 11: Largest Product in a Grid}
+For each grid coordinate $(x,y)$, the four direction vectors are
+$(1,0)$, $(0,1)$, $(1,1)$ and $(-1,1)$. A four-cell window is legal only
+when its endpoint $(x+3d_x,y+3d_y)$ stays in the $20\times20$ grid:
+\[
+  P(x,y,d_x,d_y)=\prod_{k=0}^{3}G[y+kd_y,x+kd_x].
+\]
+Checking the endpoint first eliminates the negative-index undefined
+behavior in the historical C attempt.
+
+\textbf{C}:
+\begin{lstlisting}
+const int dx[]={1,0,1,-1},dy[]={0,1,1,1};
+int xx=x+3*dx[d],yy=y+3*dy[d];
+if(xx<0||xx>=20||yy<0||yy>=20)continue;
+long long product=1;
+for(int k=0;k<4;k++)
+    product*=grid[y+k*dy[d]][x+k*dx[d]];
+\end{lstlisting}
+
+\textbf{Rust}:
+\begin{lstlisting}
+let dirs=[(1,0),(0,1),(1,1),(-1,1)];
+let xx=x+3*dx; let yy=y+3*dy;
+if xx<0||xx>=20||yy<0||yy>=20 {continue;}
+\end{lstlisting}
+
+\textbf{Gforth}, using a flat cell array:
+\begin{lstlisting}
+grid y i dy * + 20 * x i dx * + + cells + @
+product * to product
+\end{lstlisting}
+
+\textbf{Factor}, using sequence access:
+\begin{lstlisting}
+y step dy * + 20 *
+x step dx * + +
+grid nth result * result!
+\end{lstlisting}
+These are excerpts of inner loops; the complete source validates all four
+directions and all starting points. The Factor and C variants read the
+committed \texttt{tests/data/p011.txt} fixture at runtime. The Rust version
+embeds it, so I/O work differs.
+
+\subsection{Problem 28: Number Spiral Diagonals}
+For odd side length $s\geq3$, the four corners on its newest ring have sum
+\[
+  \Delta(s)=4s^2-6(s-1).
+\]
+The final sum is $1+\Delta(3)+\Delta(5)+\cdots+\Delta(1001)$; no
+$1001\times1001$ array is required.
+
+\textbf{C}:
+\begin{lstlisting}
+for(long long side=3;side<=1001;side+=2)
+    sum+=4*side*side-6*(side-1);
+\end{lstlisting}
+\textbf{Rust}:
+\begin{lstlisting}
+for side in (3i64..=1001).step_by(2) {
+    sum+=4*side*side-6*(side-1);
+}
+\end{lstlisting}
+\textbf{Gforth}:
+\begin{lstlisting}
+i i * 4 * i 1- 6 * - result + to result
+\end{lstlisting}
+\textbf{Factor}:
+\begin{lstlisting}
+ring 2 * 1 + :> side
+side sq 4 * side 1 - 6 * -
+answer + answer!
+\end{lstlisting}
+All four perform a fixed number of ring updates. Their language-specific
+loop mechanics and VM/process startup can dominate the short computation.
+
+\subsection{Problem 39: Integer Right Triangles}
+The C and Rust implementations test side combinations for all perimeters
+$p\leq1000$. Gforth and Factor instead solve the two equations for $b$:
+\[
+  b=\frac{p(p-2a)}{2(p-a)}, \qquad c=p-a-b,
+\]
+then accept only exact integer divisions satisfying $a<b<c$.
+This reduces a nested side search to one candidate $b$ per pair $(p,a)$.
+
+\textbf{C}:
+\begin{lstlisting}
+int c=p-a-b;
+if(a*a+b*b==c*c)count++;
+\end{lstlisting}
+\textbf{Rust}:
+\begin{lstlisting}
+let c=p-a-b;
+if a*a+b*b==c*c {count+=1;}
+\end{lstlisting}
+\textbf{Gforth}:
+\begin{lstlisting}
+j j i 2 * - * to numerator
+2 j i - * to denominator
+numerator denominator mod 0= if
+    numerator denominator / to b
+    ...
+then
+\end{lstlisting}
+\textbf{Factor}:
+\begin{lstlisting}
+p p a 2 * - * :> numerator
+p a - 2 * :> denominator
+numerator denominator mod zero? [
+    numerator denominator /i :> b
+    p a - b - :> c
+    a b < b c < and [ count 1 + count! ] when
+] when
+\end{lstlisting}
+The Gforth excerpt includes an ellipsis where the full source applies its
+positivity and ordering tests. Differences in asymptotic work mean that
+these four implementations must not be ranked as if they executed
+identical algorithms.
+
+\subsection{Exact arithmetic: Factor versus C and Gforth}
+For problem 16 the Factor code expresses its entire big-integer computation
+as a composition of existing arbitrary-precision words:
+\begin{lstlisting}
+: p16 ( -- n ) 2 1000 ^ digit-sum ;
+\end{lstlisting}
+Problem 20 likewise composes a range product with decimal digit summation.
+C uses GMP and Gforth uses a project-specific base-$10000$ digit library.
+These implementations trade library code size, native compilation, data
+representation, and startup costs against different amounts of hand-written
+algorithm code.
+
+\subsection{Profiling interpretation}
+The runner executes each selected binary or VM script \emph{once},
+without warming up; it checks that same invocation's exact decimal output
+against \texttt{tests/answers.json}. The wall time includes startup and
+output capture, but not compilation. It records process version, source
+revision and selected coverage; no error bars or confidence intervals
+are inferred from one measurement. Only complete passing 37-problem
+language suites get total-suite bars. The initial Factor subset contains
+12 out of 37 problems, so it is never compared against full-suite totals
+as though it had identical coverage.

@@ -1,0 +1,18 @@
+\section{Pentagon Numbers --- Problem 44}
+\label{prob:44}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/pentagon_numbers_44.c}
+
+\noindent\textbf{Assessment:} Search has a repeated-condition bug.
+
+\subsection*{Mathematical goal}
+Pentagonal numbers satisfy \(P_n=n(3n-1)/2\). Find two pentagonal numbers whose sum and absolute difference are both pentagonal, minimizing their positive difference.
+
+\subsection*{How the C code works}
+The helper \verb|P| evaluates the formula, and \verb|isPentagon| searches a precomputed array for an exact match, returning zero on success. The program generates 5000 pentagonal numbers, checks all ordered pairs in nested loops, and tracks a variable \verb|D| initialized to 100.
+
+\subsection*{Correctness and limitations}
+Both nested conditionals test \verb|testdif|; neither tests \verb|testsum|. As written, the key requirement that the sum is pentagonal is missing. The initial bound \verb|D=100| also prevents recording a valid larger difference. The double loop is quadratic in the number of candidates, each with a linear scan for membership. The known minimum is 5482660; it is not computed correctly by this source.
+
+
+\subsection*{Correction to historical C}
+{\color{red}\textbf{Correction:} Both the sum and difference must be pentagonal; the revised search checks both predicates and minimizes a positive difference without the erroneous initial bound.}

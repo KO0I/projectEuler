@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "description": "Verified reference answers for original 37 Project Euler problems; run each implementation once; compare decimal stdout",
+  "problems": [
+    {
+      "number": 1,
+      "stem": "multiples_of_3_or_5_1",
+      "answer": "233168"
+    },
+    {
+      "number": 2,
+      "stem": "even_fibonacci_numbers_2",
+      "answer": "4613732"
+    },
+    {
+      "number": 3,
+      "stem": "largest_prime_factor_3",
+      "answer": "6857"
+    },
+    {
+      "number": 4,
+      "stem": "largest_palindrome_product_4",
+      "answer": "906609"
+    },
+    {
+      "number": 5,
+      "stem": "smallest_multiple_5",
+      "answer": "232792560"
+    },
+    {
+      "number": 6,
+      "stem": "sum_square_difference_6",
+      "answer": "25164150"
+    },
+    {
+      "number": 7,
+      "stem": "10_001st_prime_7",
+      "answer": "104743"
+    },
+    {
+      "number": 8,
+      "stem": "largest_product_in_a_series_8",
+      "answer": "23514624000"
+    },
+    {
+      "number": 9,
+      "stem": "special_pythagorean_triplet_9",
+      "answer": "31875000"
+    },
+    {
+      "number": 10,
+      "stem": "summation_of_primes_10",
+      "answer": "142913828922"
+    },
+    {
+      "number": 11,
+      "stem": "largest_product_in_a_grid_11",
+      "answer": "70600674"
+    },
+    {
+      "number": 12,
+      "stem": "highly_divisible_triangular_number_12",
+      "answer": "76576500"
+    },
+    {
+      "number": 13,
+      "stem": "large_sum_13",
+      "answer": "5537376230"
+    },
+    {
+      "number": 14,
+      "stem": "longest_collatz_sequence_14",
+      "answer": "837799"
+    },
+    {
+      "number": 16,
+      "stem": "power_digit_sum_16",
+      "answer": "1366"
+    },
+    {
+      "number": 17,
+      "stem": "number_letter_counts_17",
+      "answer": "21124"
+    },
+    {
+      "number": 19,
+      "stem": "counting_sundays_19",
+      "answer": "171"
+    },
+    {
+      "number": 20,
+      "stem": "factorial_digit_sum_20",
+      "answer": "648"
+    },
+    {
+      "number": 21,
+      "stem": "amicable_numbers_21",
+      "answer": "31626"
+    },
+    {
+      "number": 22,
+      "stem": "names_scores_22",
+      "answer": "871198282"
+    },
+    {
+      "number": 25,
+      "stem": "1000_digit_fibonacci_number_25",
+      "answer": "4782"
+    },
+    {
+      "number": 27,
+      "stem": "quadratic_primes_27",
+      "answer": "-59231"
+    },
+    {
+      "number": 28,
+      "stem": "number_spiral_diagonals_28",
+      "answer": "669171001"
+    },
+    {
+      "number": 29,
+      "stem": "distinct_powers_29",
+      "answer": "9183"
+    },
+    {
+      "number": 30,
+      "stem": "digit_fifth_powers_30",
+      "answer": "443839"
+    },
+    {
+      "number": 34,
+      "stem": "digit_factorials_34",
+      "answer": "40730"
+    },
+    {
+      "number": 35,
+      "stem": "circular_primes_35",
+      "answer": "55"
+    },
+    {
+      "number": 39,
+      "stem": "integer_right_triangles_39",
+      "answer": "840"
+    },
+    {
+      "number": 40,
+      "stem": "champernownes_constant_40",
+      "answer": "210"
+    },
+    {
+      "number": 44,
+      "stem": "pentagon_numbers_44",
+      "answer": "5482660"
+    },
+    {
+      "number": 46,
+      "stem": "goldbachs_other_conjecture_46",
+      "answer": "5777"
+    },
+    {
+      "number": 47,
+      "stem": "distinct_primes_factors_47",
+      "answer": "134043"
+    },
+    {
+      "number": 48,
+      "stem": "self_powers_48",
+      "answer": "9110846700"
+    },
+    {
+      "number": 50,
+      "stem": "consecutive_prime_sum_50",
+      "answer": "997651"
+    },
+    {
+      "number": 55,
+      "stem": "lychrel_numbers_55",
+      "answer": "249"
+    },
+    {
+      "number": 69,
+      "stem": "totient_maximum_69",
+      "answer": "510510"
+    },
+    {
+      "number": 92,
+      "stem": "square_digit_chains_92",
+      "answer": "8581146"
+    }
+  ]
+}

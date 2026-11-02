@@ -1,0 +1,18 @@
+\section{Longest Collatz Sequence --- Problem 14}
+\label{prob:14}
+\noindent\textbf{Source:} \url{https://github.com/KO0I/projectEuler/blob/reorganize/solutions-by-language/solutions/c/longest_collatz_sequence_14.c}
+
+\noindent\textbf{Assessment:} Search implemented; reporting format unsafe.
+
+\subsection*{Mathematical goal}
+For every starting integer \(2\leq n<10^6\), iterate \(n\mapsto n/2\) when even, or \(n\mapsto3n+1\) when odd. Find the start whose chain reaches 1 after the greatest number of terms.
+
+\subsection*{How the C code works}
+The helper \verb|collatz| counts the current number as the first term and advances until reaching 1. \verb|main| compares every length with \verb|max| and records the corresponding start in \verb|maxi|. It also prints each candidate's length.
+
+\subsection*{Correctness and limitations}
+The implementation redundantly calls \verb|collatz(i)| up to three times. The final \verb|printf| uses \verb|%i| for \verb|unsigned long long| values, causing undefined behavior; use \verb|%llu|. Intermediate values can exceed the starting limit and may overflow. The expected starting value is 837799, but the final formatting must be repaired.
+
+
+\subsection*{Correction to historical C --- Problem 14}
+{\color{red}\textbf{Correction:} The corrected implementation calculates each chain length only once per starting value and returns the winning start without the original mismatched printf conversion specifiers.}

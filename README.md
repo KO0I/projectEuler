@@ -30,33 +30,119 @@ finished before timing. Each timed child includes process startup, interpreter
 or vocabulary loading, computation, output capture, and shutdown. The runner
 checked the answer produced by the same invocation.
 
-The figures below report each problem separately. The y-axis uses milliseconds
-on the same logarithmic scale in every figure. A bar's full height is the
-observed child-process wall time. Its gray base is the minimal no-op startup
-estimate; its colored section contains solver loading, input/output, computation,
-and shutdown. An orange triangle is a timeout, and an open circle is a missing
-implementation. C and Rust passed 255/255, Gforth passed 115/120 with timeouts
-at 33, 49, 51, 88, and 98, and Factor passed its 191 declared entries.
+The figures below report each problem separately, with 10 problem IDs per
+image except for the final five IDs. They omit the minimal no-op startup
+estimate. Bar height is the remaining measured wall time, which still includes
+solver loading, input/output, computation, and shutdown. Every figure uses the
+same symmetric-logarithmic millisecond scale, including zero for programs whose
+observed duration did not exceed the startup estimate. An orange triangle is a
+timeout, and an open circle is a missing implementation. C and Rust passed
+255/255, Gforth passed 115/120 with timeouts at 33, 49, 51, 88, and 98, and
+Factor passed its 191 declared entries.
 
-### Problems 1 to 50
+### Problems 1 to 10
 
-![Per-problem runtime for Project Euler 1 through 50](docs/profile/20261102T044052Z/runtime_by_problem_001_050.svg)
+![Runtime for Project Euler 1 through 10, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_001_010.svg)
 
-### Problems 51 to 100
+### Problems 11 to 20
 
-![Per-problem runtime for Project Euler 51 through 100](docs/profile/20261102T044052Z/runtime_by_problem_051_100.svg)
+![Runtime for Project Euler 11 through 20, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_011_020.svg)
 
-### Problems 101 to 150
+### Problems 21 to 30
 
-![Per-problem runtime for Project Euler 101 through 150](docs/profile/20261102T044052Z/runtime_by_problem_101_150.svg)
+![Runtime for Project Euler 21 through 30, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_021_030.svg)
 
-### Problems 151 to 200
+### Problems 31 to 40
 
-![Per-problem runtime for Project Euler 151 through 200](docs/profile/20261102T044052Z/runtime_by_problem_151_200.svg)
+![Runtime for Project Euler 31 through 40, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_031_040.svg)
 
-### Problems 201 to 255
+### Problems 41 to 50
 
-![Per-problem runtime for Project Euler 201 through 255](docs/profile/20261102T044052Z/runtime_by_problem_201_255.svg)
+![Runtime for Project Euler 41 through 50, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_041_050.svg)
+
+### Problems 51 to 60
+
+![Runtime for Project Euler 51 through 60, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_051_060.svg)
+
+### Problems 61 to 70
+
+![Runtime for Project Euler 61 through 70, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_061_070.svg)
+
+### Problems 71 to 80
+
+![Runtime for Project Euler 71 through 80, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_071_080.svg)
+
+### Problems 81 to 90
+
+![Runtime for Project Euler 81 through 90, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_081_090.svg)
+
+### Problems 91 to 100
+
+![Runtime for Project Euler 91 through 100, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_091_100.svg)
+
+### Problems 101 to 110
+
+![Runtime for Project Euler 101 through 110, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_101_110.svg)
+
+### Problems 111 to 120
+
+![Runtime for Project Euler 111 through 120, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_111_120.svg)
+
+### Problems 121 to 130
+
+![Runtime for Project Euler 121 through 130, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_121_130.svg)
+
+### Problems 131 to 140
+
+![Runtime for Project Euler 131 through 140, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_131_140.svg)
+
+### Problems 141 to 150
+
+![Runtime for Project Euler 141 through 150, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_141_150.svg)
+
+### Problems 151 to 160
+
+![Runtime for Project Euler 151 through 160, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_151_160.svg)
+
+### Problems 161 to 170
+
+![Runtime for Project Euler 161 through 170, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_161_170.svg)
+
+### Problems 171 to 180
+
+![Runtime for Project Euler 171 through 180, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_171_180.svg)
+
+### Problems 181 to 190
+
+![Runtime for Project Euler 181 through 190, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_181_190.svg)
+
+### Problems 191 to 200
+
+![Runtime for Project Euler 191 through 200, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_191_200.svg)
+
+### Problems 201 to 210
+
+![Runtime for Project Euler 201 through 210, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_201_210.svg)
+
+### Problems 211 to 220
+
+![Runtime for Project Euler 211 through 220, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_211_220.svg)
+
+### Problems 221 to 230
+
+![Runtime for Project Euler 221 through 230, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_221_230.svg)
+
+### Problems 231 to 240
+
+![Runtime for Project Euler 231 through 240, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_231_240.svg)
+
+### Problems 241 to 250
+
+![Runtime for Project Euler 241 through 250, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_241_250.svg)
+
+### Problems 251 to 255
+
+![Runtime for Project Euler 251 through 255, excluding the minimal startup estimate](docs/profile/20261102T044052Z/runtime_by_problem_251_255.svg)
 
 Each point is one run with no warm-up or repeated solver samples. The figures
 compare these command-line programs, not intrinsic language speed. Factor starts

@@ -30,7 +30,7 @@ OVERHEAD_HATCH = ".."
 EDGE = "#202020"
 TIMEOUT_COLOR = "#b35c00"
 FAILURE_COLOR = "#9c1c1c"
-PROBLEMS_PER_FIGURE = 50
+PROBLEMS_PER_FIGURE = 10
 
 
 def parts(row: dict) -> tuple[float, float | None, float | None]:
@@ -177,36 +177,28 @@ def problem_ranges(numbers, size=PROBLEMS_PER_FIGURE):
     if size < 1:
         raise ValueError("Problem range size must be positive")
     ordered = sorted(numbers)
-    groups = [ordered[start:start + size] for start in range(0, len(ordered), size)]
-    # Avoid a nearly empty final figure such as 251 to 255. A small remainder is
-    # easier to read when appended to the preceding range, which is still close
-    # to the target width.
-    if len(groups) > 1 and len(groups[-1]) < size // 2:
-        groups[-2].extend(groups.pop())
-    return groups
+    return [ordered[start:start + size] for start in range(0, len(ordered), size)]
 
 
 def runtime_scale(rows, languages, numbers):
-    """Use one log scale across every range so separate figures stay comparable."""
+    """Use one residual-time scale across every range for visual comparison."""
     positive = []
     for language in languages:
         for number in numbers:
             row = rows[language].get(number)
             if not row or row["status"] != "pass":
                 continue
-            total, startup, _ = parts(row)
-            positive.append(total)
-            if startup is not None:
-                positive.append(startup)
+            total, startup, execution = parts(row)
+            positive.append(execution if execution is not None else total)
     if not positive:
         return None
-    return min(positive) / 1.75, max(positive) * 2
+    return 0, max(positive) * 2
 
 
 def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
-    """Render one readable problem range without changing the measured data."""
+    """Render one range with the estimated minimal startup removed."""
     languages = info["languages"]
-    fig, ax = plt.subplots(figsize=(16, 7))
+    fig, ax = plt.subplots(figsize=(11, 6))
     width = 0.8 / len(languages)
     unattributed = False
     for index, language in enumerate(languages):
@@ -217,7 +209,12 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
                 total, startup, execution = parts(row)
                 if startup is None:
                     unattributed = True
-                draw_timed_bar(ax, x, width, total, startup, execution, language)
+                # A calibrated row contributes only its post-startup residual.
+                # Legacy uncalibrated rows retain observed wall time and receive
+                # an explicit legend warning instead of an invented subtraction.
+                plotted = execution if execution is not None else total
+                ax.bar(x, plotted, width, color=COLORS[language],
+                       hatch=HATCHES[language], edgecolor=EDGE, linewidth=.6)
             else:
                 absent = row is None
                 if absent:
@@ -230,25 +227,32 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
                     ax.plot(x, .02, "x", transform=ax.get_xaxis_transform(),
                             color=FAILURE_COLOR, markersize=5)
     if scale:
-        ax.set_yscale("log")
+        # Some very short programs are at or below the no-op startup estimate,
+        # producing a capped zero residual. Symlog displays zero honestly while
+        # retaining logarithmic separation for the millisecond-to-second range.
+        ax.set_yscale("symlog", linthresh=.1, linscale=.5)
         ax.set_ylim(*scale)
     ax.set_xticks(np.arange(len(numbers)), [str(n) for n in numbers])
     ax.tick_params(axis="x", labelrotation=90, labelsize=8)
     ax.set_xlabel("Project Euler problem number")
-    ax.set_ylabel("One measured child process [ms] (log scale)")
+    ax.set_ylabel("Wall time after no-op startup subtraction [ms] (symlog scale)")
     ax.set_title(f"Per-problem runtime: Project Euler {numbers[0]} to {numbers[-1]}")
     ax.grid(axis="y", linestyle=":", alpha=.4)
-    handles = legend_handles(languages, unattributed=unattributed)
+    handles = [Patch(facecolor=COLORS[language], edgecolor=EDGE,
+                     hatch=HATCHES[language], label=f"{language.upper()} runtime")
+               for language in languages]
+    if unattributed:
+        handles.append(Patch(facecolor="white", hatch="---", edgecolor=EDGE,
+                             label="Observed wall time: no startup estimate"))
     handles.extend(result_marker_handles(rows, languages, numbers))
     ax.legend(handles=handles, ncol=3,
               fontsize=8, loc="upper left")
-    fig.text(.01, .060, available_medians(info), fontsize=9)
-    fig.text(.01, .040, "Gray hatched base = estimated minimum startup; colored section = residual to observed total. "
-             "Black line = split. Orange triangle = timeout; red X = other failure.", fontsize=9)
-    fig.text(.01, .020, "Not exact per-solver startup: solver loading and I/O are in the residual. "
-             "No warm-up or solver repeats; compilation excluded; no statistical error bars.", fontsize=8)
+    fig.text(.01, .040, "Bar height = observed child wall time minus the minimal no-op startup estimate. "
+             "Orange triangle = timeout; red X = other failure.", fontsize=8)
+    fig.text(.01, .020, "Residual still includes solver loading, I/O and shutdown. "
+             "One run per solver; no warm-up; compilation excluded; no statistical error bars.", fontsize=8)
     fig.text(.01, .004, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)
-    fig.tight_layout(rect=(0, .105, 1, 1))
+    fig.tight_layout(rect=(0, .085, 1, 1))
     write(fig, out, stem)
 
 

@@ -89,7 +89,7 @@ class StartupPlotTests(unittest.TestCase):
         rows = {'c': {1: self.row(1, 'c', 5, 1)}}
         with patch.object(plots, 'write') as write:
             plots.runtime_by_problem_panel(
-                rows, info, Path('.'), [1], (0, 10), 'sample')
+                rows, info, Path('.'), [1], (0.01, 10), 'sample')
         fig = write.call_args.args[0]
         self.assertEqual(len(fig.axes[0].patches), 3)
         self.assertAlmostEqual(fig.axes[0].patches[0].get_height(), 4.0)
@@ -103,12 +103,14 @@ class StartupPlotTests(unittest.TestCase):
         rows = {'c': {1: self.row(1, 'c', 1, 1)}}
         with patch.object(plots, 'write') as write:
             plots.runtime_by_problem_panel(
-                rows, info, Path('.'), [1], (0, 10), 'sample')
+                rows, info, Path('.'), [1], (0.01, 10), 'sample')
         fig = write.call_args.args[0]
         ax = fig.axes[0]
         self.assertIn('D', [line.get_marker() for line in ax.lines])
         labels = [text.get_text() for text in ax.get_legend().get_texts()]
-        self.assertIn('0 ms residual (at/below startup estimate)', labels)
+        self.assertIn('0 ms residual (pinned to log-scale floor)', labels)
+        self.assertEqual(ax.get_yscale(), 'log')
+        self.assertGreater(ax.get_ylim()[0], 0)
         plt.close(fig)
 
     def test_chart_rendered_for_single_language_without_fake_numbers(self):

@@ -198,18 +198,25 @@ def problem_ranges(numbers, size=PROBLEMS_PER_FIGURE):
 
 
 def runtime_scale(rows, languages, numbers):
-    """Use one residual-time scale across every range for visual comparison."""
+    """Use one positive log scale across every range for visual comparison."""
     positive = []
+    has_passing_result = False
     for language in languages:
         for number in numbers:
             row = rows[language].get(number)
             if not row or row["status"] != "pass":
                 continue
+            has_passing_result = True
             total, startup, execution = parts(row)
-            positive.append(execution if execution is not None else total)
+            plotted = execution if execution is not None else total
+            if plotted > 0:
+                positive.append(plotted)
     if not positive:
-        return None
-    return 0, max(positive) * 2
+        # A logarithmic axis has no coordinate for zero.  This fallback keeps
+        # an all-zero successful data set renderable without inventing times;
+        # its diamonds are explicitly documented as pinned to the lower edge.
+        return (0.01, 1.0) if has_passing_result else None
+    return min(positive) / 2, max(positive) * 2
 
 
 def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
@@ -238,7 +245,7 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
                     # invisible.  The diamond preserves that measured state
                     # and distinguishes it from missing or failed programs.
                     zero_residual = True
-                    ax.plot(x, 0, linestyle="none", marker="D", markersize=5,
+                    ax.plot(x, scale[0], linestyle="none", marker="D", markersize=5,
                             markerfacecolor=COLORS[language],
                             markeredgecolor=EDGE, zorder=6)
             else:
@@ -253,15 +260,15 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
                     ax.plot(x, .02, "x", transform=ax.get_xaxis_transform(),
                             color=FAILURE_COLOR, markersize=5)
     if scale:
-        # Some very short programs are at or below the no-op startup estimate,
-        # producing a capped zero residual. Symlog displays zero honestly while
-        # retaining logarithmic separation for the millisecond-to-second range.
-        ax.set_yscale("symlog", linthresh=.1, linscale=.5)
+        # A true logarithmic scale makes multiplicative runtime differences
+        # directly comparable.  Capped zeros have no logarithmic coordinate,
+        # so their explicitly labelled diamonds sit at the shared lower edge.
+        ax.set_yscale("log")
         ax.set_ylim(*scale)
     ax.set_xticks(np.arange(len(numbers)), [str(n) for n in numbers])
     ax.tick_params(axis="x", labelrotation=90, labelsize=8)
     ax.set_xlabel("Project Euler problem number")
-    ax.set_ylabel("Wall time after no-op startup subtraction [ms] (symlog scale)")
+    ax.set_ylabel("Wall time after no-op startup subtraction [ms] (log scale)")
     ax.set_title(f"Per-problem runtime: Project Euler {numbers[0]} to {numbers[-1]}")
     ax.grid(axis="y", linestyle=":", alpha=.4)
     handles = [Patch(facecolor=COLORS[language], edgecolor="white",
@@ -273,12 +280,12 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
     if zero_residual:
         handles.append(Line2D([], [], linestyle="none", marker="D", markersize=5,
                               markerfacecolor="white", markeredgecolor=EDGE,
-                              label="0 ms residual (at/below startup estimate)"))
+                              label="0 ms residual (pinned to log-scale floor)"))
     handles.extend(result_marker_handles(rows, languages, numbers))
     ax.legend(handles=handles, ncol=3,
               fontsize=8, loc="upper left")
     fig.text(.01, .040, "Bar height = observed child wall time minus the minimal no-op startup estimate. "
-             "Diamond at zero = duration at/below that estimate; orange triangle = timeout.", fontsize=8)
+             "Diamond at lower edge = 0 ms residual; orange triangle = timeout.", fontsize=8)
     fig.text(.01, .020, "Residual still includes solver loading, I/O and shutdown. "
              "One run per solver; no warm-up; compilation excluded; no statistical error bars.", fontsize=8)
     fig.text(.01, .004, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)

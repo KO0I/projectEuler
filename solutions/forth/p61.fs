@@ -55,4 +55,4 @@ create p61-path 6 cells allot
     answer 0<> if answer unloop exit then
   loop -1 ;
 
-[undefined] euler-testing [if] p61 . cr bye [then]
+[undefined] euler-testing [if] p61 .answer bye [then]

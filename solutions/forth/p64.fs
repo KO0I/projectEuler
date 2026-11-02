@@ -12,4 +12,4 @@ require math.fs
     then
   loop total ;
 
-[undefined] euler-testing [if] p64 . cr bye [then]
+[undefined] euler-testing [if] p64 .answer bye [then]

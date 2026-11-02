@@ -48,4 +48,4 @@ create names-length 5200 cells allot
   found 0 do i name-addr i name-len name-value i 1+ * sum + to sum loop
   buf free throw sum ;
 
-[undefined] euler-testing [if] p22 . cr bye [then]
+[undefined] euler-testing [if] p22 .answer bye [then]

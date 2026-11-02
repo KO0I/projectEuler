@@ -98,4 +98,4 @@ variable p103-bound
 \ Unlike the fixed cyclic-deck model, Chance/Chest cards are uniformly
 \ reshuffled after drawing. Both reproduce the requested 3-square modal code.
 
-[undefined] euler-testing [if] p103 . cr bye [then]
+[undefined] euler-testing [if] p103 .answer bye [then]

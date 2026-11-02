@@ -9,4 +9,4 @@ require math.fs
 : p36 ( -- n ) 0 { total }
   1000000 1 do i 10 palindrome-base? i 2 palindrome-base? and if total i + to total then 2 +loop total ;
 
-[undefined] euler-testing [if] p36 . cr bye [then]
+[undefined] euler-testing [if] p36 .answer bye [then]

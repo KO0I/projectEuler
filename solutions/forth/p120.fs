@@ -8,4 +8,4 @@ require math.fs
 
 \ Further reusable enumerators and exact integer recurrences.
 
-[undefined] euler-testing [if] p120 . cr bye [then]
+[undefined] euler-testing [if] p120 .answer bye [then]

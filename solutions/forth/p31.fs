@@ -11,4 +11,4 @@ create p31-coins 1 , 2 , 5 , 10 , 20 , 50 , 100 , 200 ,
   loop
   200 ways prefix@ to result ways free throw result ;
 
-[undefined] euler-testing [if] p31 . cr bye [then]
+[undefined] euler-testing [if] p31 .answer bye [then]

@@ -18,4 +18,4 @@ create power-seen 61000 allot
     loop
   loop count ;
 
-[undefined] euler-testing [if] p29 . cr bye [then]
+[undefined] euler-testing [if] p29 .answer bye [then]

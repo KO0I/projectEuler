@@ -41,4 +41,4 @@ create p118-known 512 allot
   0 0 0 p118-enumerate
   511 p118-partition ;
 
-[undefined] euler-testing [if] p118 . cr bye [then]
+[undefined] euler-testing [if] p118 .answer bye [then]

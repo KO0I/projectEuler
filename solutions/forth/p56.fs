@@ -11,4 +11,4 @@ require math.fs
     loop
   loop value bfree best ;
 
-[undefined] euler-testing [if] p56 . cr bye [then]
+[undefined] euler-testing [if] p56 .answer bye [then]

@@ -12,4 +12,4 @@ require math.fs
     representation 0= if n exit then
   then n 2 + to n again ;
 
-[undefined] euler-testing [if] p46 . cr bye [then]
+[undefined] euler-testing [if] p46 .answer bye [then]

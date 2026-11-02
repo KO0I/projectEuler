@@ -26,4 +26,4 @@ require math.fs
     count 15000 >= abort" Cubic permutation bucket capacity"
   again ;
 
-[undefined] euler-testing [if] p62 . cr bye [then]
+[undefined] euler-testing [if] p62 .answer bye [then]

@@ -17,4 +17,4 @@ require math.fs
     n 1+ to n
   again ;
 
-[undefined] euler-testing [if] p112 . cr bye [then]
+[undefined] euler-testing [if] p112 .answer bye [then]

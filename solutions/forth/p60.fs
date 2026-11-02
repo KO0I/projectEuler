@@ -98,4 +98,4 @@ variable p60-best
 
 \ Problem 93: evaluate every binary-expression tree using reduced rationals.
 
-[undefined] euler-testing [if] p60 . cr bye [then]
+[undefined] euler-testing [if] p60 .answer bye [then]

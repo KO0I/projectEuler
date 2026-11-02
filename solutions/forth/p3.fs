@@ -8,4 +8,4 @@ require math.fs
     else d 2 = if 3 else d 2 + then to d then
   repeat n 1 > if n else last then ;
 
-[undefined] euler-testing [if] p3 . cr bye [then]
+[undefined] euler-testing [if] p3 .answer bye [then]

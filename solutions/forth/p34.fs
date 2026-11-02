@@ -11,4 +11,4 @@ require math.fs
   0 { sum }
   2540161 3 do i digit-factorial-sum i = if sum i + to sum then loop sum ;
 
-[undefined] euler-testing [if] p34 . cr bye [then]
+[undefined] euler-testing [if] p34 .answer bye [then]

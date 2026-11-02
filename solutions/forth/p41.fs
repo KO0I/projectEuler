@@ -14,4 +14,4 @@ require math.fs
     number 2 - to number
   repeat abort" No 7-pandigital prime" ;
 
-[undefined] euler-testing [if] p41 . cr bye [then]
+[undefined] euler-testing [if] p41 .answer bye [then]

@@ -3,4 +3,4 @@ require math.fs
 
 : p108 ( -- n ) 1000 reciprocal-bound ;
 
-[undefined] euler-testing [if] p108 . cr bye [then]
+[undefined] euler-testing [if] p108 .answer bye [then]

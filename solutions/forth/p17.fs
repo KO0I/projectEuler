@@ -22,4 +22,4 @@ create letter-tens 0 , 0 , 6 , 6 , 5 , 5 , 5 , 7 , 6 , 6 ,
 
 : p17 ( -- answer ) 0 1001 1 do i count-letters + loop ;
 
-[undefined] euler-testing [if] p17 . cr bye [then]
+[undefined] euler-testing [if] p17 .answer bye [then]

@@ -34,4 +34,4 @@ require math.fs
     grid i j -1 1 grid-product best max to best
   loop loop grid free throw buf free throw best ;
 
-[undefined] euler-testing [if] p11 . cr bye [then]
+[undefined] euler-testing [if] p11 .answer bye [then]

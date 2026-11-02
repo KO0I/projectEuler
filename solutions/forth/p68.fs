@@ -44,4 +44,4 @@ variable p68-best
 
 : p68 ( -- n ) 0 p68-best ! 0 0 p68-search p68-best @ ;
 
-[undefined] euler-testing [if] p68 . cr bye [then]
+[undefined] euler-testing [if] p68 .answer bye [then]

@@ -40,4 +40,4 @@ require math.fs
     upper 1+ to lower upper 10 * 9 + to upper
   loop -1 ;
 
-[undefined] euler-testing [if] p51 . cr bye [then]
+[undefined] euler-testing [if] p51 .answer bye [then]

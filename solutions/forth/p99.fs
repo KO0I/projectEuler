@@ -16,4 +16,4 @@ fvariable p99-best-score
     else fdrop then
   loop values free throw best-index ;
 
-[undefined] euler-testing [if] p99 . cr bye [then]
+[undefined] euler-testing [if] p99 .answer bye [then]

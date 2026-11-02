@@ -7,4 +7,4 @@ require math.fs
   20 0 do 21 1 do ways i 1- cells + @ ways i cells + +! loop loop
   20 ways prefix@ ways free throw ;
 
-[undefined] euler-testing [if] p15 . cr bye [then]
+[undefined] euler-testing [if] p15 .answer bye [then]

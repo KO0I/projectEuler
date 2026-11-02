@@ -10,4 +10,4 @@ require math.fs
     loop
   loop value bfree total ;
 
-[undefined] euler-testing [if] p63 . cr bye [then]
+[undefined] euler-testing [if] p63 .answer bye [then]

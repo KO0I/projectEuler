@@ -7,4 +7,4 @@ require math.fs
     i i * 4 * i 1- 6 * - result + to result
   then loop result ;
 
-[undefined] euler-testing [if] p28 . cr bye [then]
+[undefined] euler-testing [if] p28 .answer bye [then]

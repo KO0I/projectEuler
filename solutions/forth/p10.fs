@@ -7,4 +7,4 @@ require math.fs
   2000000 2 do bytes i + c@ 0<> if answer i + to answer then loop
   bytes free throw answer ;
 
-[undefined] euler-testing [if] p10 . cr bye [then]
+[undefined] euler-testing [if] p10 .answer bye [then]

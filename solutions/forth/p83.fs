@@ -34,4 +34,4 @@ require math.fs
     row 79 < if vertex 80 + costs distance best p83-relax then
   loop -1 ;
 
-[undefined] euler-testing [if] p83 . cr bye [then]
+[undefined] euler-testing [if] p83 .answer bye [then]

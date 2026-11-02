@@ -15,4 +15,4 @@ require math.fs
     cycle best > if cycle to best i to answer then
   loop seen free throw answer ;
 
-[undefined] euler-testing [if] p26 . cr bye [then]
+[undefined] euler-testing [if] p26 .answer bye [then]

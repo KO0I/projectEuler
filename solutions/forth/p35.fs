@@ -14,4 +14,4 @@ require math.fs
     good if count 1+ to count then
   then loop primes free throw count ;
 
-[undefined] euler-testing [if] p35 . cr bye [then]
+[undefined] euler-testing [if] p35 .answer bye [then]

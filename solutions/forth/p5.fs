@@ -5,4 +5,4 @@ require math.fs
   1 { result }
   21 2 do result result i integer-gcd / i * to result loop result ;
 
-[undefined] euler-testing [if] p5 . cr bye [then]
+[undefined] euler-testing [if] p5 .answer bye [then]

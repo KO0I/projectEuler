@@ -44,4 +44,4 @@ require math.fs
     then
   loop best bfree value bfree answer ;
 
-[undefined] euler-testing [if] p66 . cr bye [then]
+[undefined] euler-testing [if] p66 .answer bye [then]

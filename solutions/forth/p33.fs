@@ -18,4 +18,4 @@ require math.fs
     loop
   loop product-n product-d integer-gcd product-d swap / ;
 
-[undefined] euler-testing [if] p33 . cr bye [then]
+[undefined] euler-testing [if] p33 .answer bye [then]

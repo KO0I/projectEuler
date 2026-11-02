@@ -12,4 +12,4 @@ require math.fs
     length best-length > if length to best-length i to best-start then
   loop best-start ;
 
-[undefined] euler-testing [if] p14 . cr bye [then]
+[undefined] euler-testing [if] p14 .answer bye [then]

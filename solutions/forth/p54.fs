@@ -69,4 +69,4 @@ require math.fs
     > if answer 1+ to answer then
   loop text free throw answer ;
 
-[undefined] euler-testing [if] p54 . cr bye [then]
+[undefined] euler-testing [if] p54 .answer bye [then]

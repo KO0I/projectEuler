@@ -105,4 +105,4 @@ variable p98-count
   loop
   raw free throw answer ;
 
-[undefined] euler-testing [if] p98 . cr bye [then]
+[undefined] euler-testing [if] p98 .answer bye [then]

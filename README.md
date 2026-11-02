@@ -21,6 +21,50 @@ Published catalogs and validation exports show only answer suffixes, for example
 - [Factor 121–255 deferred-problem ledger](docs/FACTOR_121_255_EXCEPTIONS.md)
 - [Rust through 255 and bounded Factor extension](docs/adr/0004-rust-255-factor-bounded-extension.md)
 
+## Published profile snapshot
+
+The 2 November 2026 profile ran every declared entry point once on an AMD Ryzen
+AI MAX+ 395 with 32 logical CPUs. C used GCC 16.2.1 with `-O2`; Rust used
+Rust 1.99.1 release builds; Gforth was 0.7.3; and Factor was 0.102. Compilation
+finished before timing. Each timed child includes process startup, interpreter
+or vocabulary loading, computation, output capture, and shutdown. The runner
+checked the answer produced by the same invocation.
+
+| Language | Declared entries | Valid results | Sequential suite wall time | Median valid child | Valid child range | Minimal startup median |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| C | 255 | 255 | 62.946 s | 2.285 ms | 0.263 ms to 22.513 s | 0.319 ms |
+| Rust | 255 | 255 | 64.990 s | 2.406 ms | 0.280 ms to 20.219 s | 0.385 ms |
+| Gforth | 120 | 115, plus 5 timeouts | 359.610 s | 10.375 ms | 3.799 ms to 33.253 s | 1.353 ms |
+| Factor | 191 | 191 | 421.245 s | 1.727 s | 80.137 ms to 20.479 s | 78.019 ms |
+
+![Declared-coverage suite profile for C, Rust, Gforth, and Factor](docs/profile/20261102T044052Z/totals.svg)
+
+The C and Rust totals differ by about 2.0 seconds, but this is one run with no
+warm-up or repeated solver samples. Treat that difference as inconclusive. The
+Gforth total includes five 60-second timeout windows for problems 33, 49, 51,
+88, and 98; its 115 completed children sum to 59.299 seconds. Factor starts a
+fresh VM for each entry point and loads the shared vocabularies, so its result
+measures the repository's command-line programs rather than steady-state
+language throughput. Different algorithms and coverage sets also prevent an
+intrinsic language-speed ranking.
+
+The next chart limits each language to the 120 IDs implemented in all four
+languages. It omits a Gforth total because five members of that set timed out.
+The other three bars contain only validated child-process measurements.
+
+![Equal-coverage profile over the 120 shared problem IDs](docs/profile/20261102T044052Z/matched_subset_totals.svg)
+
+The [per-problem log-scale plot](docs/profile/20261102T044052Z/runtime_by_problem.svg)
+shows all measured children, timeouts, and missing implementations. The
+[metadata](docs/profile/20261102T044052Z/metadata.json) records the run ID,
+toolchain versions, timing rules, startup probes, and coverage. Raw measurements
+are available for [C](docs/profile/20261102T044052Z/c.csv),
+[Rust](docs/profile/20261102T044052Z/rust.csv),
+[Gforth](docs/profile/20261102T044052Z/forth.csv), and
+[Factor](docs/profile/20261102T044052Z/factor.csv). This snapshot supports
+reproduction and diagnosis, not confidence intervals or a general language
+benchmark.
+
 ## Layout
 
 | Path | Purpose |

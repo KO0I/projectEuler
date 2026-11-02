@@ -16,4 +16,4 @@ require math.fs
     loop
   loop seen free throw total ;
 
-[undefined] euler-testing [if] p32 . cr bye [then]
+[undefined] euler-testing [if] p32 .answer bye [then]

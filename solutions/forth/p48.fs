@@ -5,4 +5,4 @@ require math.fs
   0 { sum }
   1001 1 do i i 10000000000 power-mod sum + 10000000000 mod to sum loop sum ;
 
-[undefined] euler-testing [if] p48 . cr bye [then]
+[undefined] euler-testing [if] p48 .answer bye [then]

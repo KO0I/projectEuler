@@ -45,4 +45,4 @@ require math.fs
     limit 10 * to limit
   loop values free throw abort" Missing digit-power term" ;
 
-[undefined] euler-testing [if] p119 . cr bye [then]
+[undefined] euler-testing [if] p119 .answer bye [then]

@@ -59,4 +59,4 @@ require math.fs
   loop
   raw free throw board free throw rows free throw cols free throw boxes free throw answer ;
 
-[undefined] euler-testing [if] p96 . cr bye [then]
+[undefined] euler-testing [if] p96 .answer bye [then]

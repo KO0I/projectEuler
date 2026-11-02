@@ -17,4 +17,4 @@ require math.fs
     count 11 = if total unloop exit then
   2 +loop abort" Not all truncatable primes found" ;
 
-[undefined] euler-testing [if] p37 . cr bye [then]
+[undefined] euler-testing [if] p37 .answer bye [then]

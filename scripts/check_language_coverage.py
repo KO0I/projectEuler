@@ -55,7 +55,12 @@ def audit() -> dict[str, int]:
         assert re.findall(r'^:\s+p(\d+)\s', text, re.M) == [str(n)], f'Forth p{n}: wrong owner'
         assert 'euler-solve' not in text, f'Forth p{n}: central dispatcher'
         assert not re.search(r'^(?:include|require)\s+(?:p\d+|solvers|extra\d*)\.fs', text, re.M), n
-        assert re.search(rf'\bp{n}\s+\.\s+cr\s+bye', text), f'Forth p{n}: no direct invocation'
+        # The entry point must call the problem-owned word directly and use the
+        # shared exact-answer printer. Gforth's ordinary `.` appends a space,
+        # which violates the same one-line output contract used by C, Rust,
+        # and Factor.
+        assert re.search(rf'\bp{n}\s+\.answer\s+bye', text), (
+            f'Forth p{n}: no direct exact-output invocation')
     for helper in ('math.fs', 'big.fs'):
         text = (forth / helper).read_text()
         assert not re.search(r'^:\s+(?:p\d+|euler-solve)\s', text, re.M), helper

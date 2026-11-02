@@ -13,4 +13,4 @@ require math.fs
     i 1+ 0 do i row prefix@ 1000000 > if count 1+ to count then loop
   loop row free throw count ;
 
-[undefined] euler-testing [if] p53 . cr bye [then]
+[undefined] euler-testing [if] p53 .answer bye [then]

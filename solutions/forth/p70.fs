@@ -20,4 +20,4 @@ require math.fs
     then
   loop phi free throw best ;
 
-[undefined] euler-testing [if] p70 . cr bye [then]
+[undefined] euler-testing [if] p70 .answer bye [then]

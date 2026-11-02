@@ -8,4 +8,4 @@ require math.fs
     next-blue to blue next-total to total
   repeat blue ;
 
-[undefined] euler-testing [if] p100 . cr bye [then]
+[undefined] euler-testing [if] p100 .answer bye [then]

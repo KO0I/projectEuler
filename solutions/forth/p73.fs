@@ -12,4 +12,4 @@ require math.fs
     c to a d to b next-c to c next-d to d
   again ;
 
-[undefined] euler-testing [if] p73 . cr bye [then]
+[undefined] euler-testing [if] p73 .answer bye [then]

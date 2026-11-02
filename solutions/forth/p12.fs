@@ -8,4 +8,4 @@ require math.fs
     n 1+ to n
   again ;
 
-[undefined] euler-testing [if] p12 . cr bye [then]
+[undefined] euler-testing [if] p12 .answer bye [then]

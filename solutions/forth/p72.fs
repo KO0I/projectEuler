@@ -14,4 +14,4 @@ require math.fs
   1000001 2 do result i phi prefix@ + to result loop
   phi free throw result ;
 
-[undefined] euler-testing [if] p72 . cr bye [then]
+[undefined] euler-testing [if] p72 .answer bye [then]

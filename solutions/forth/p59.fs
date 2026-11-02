@@ -65,4 +65,4 @@ create p59-letter-weights 8 , 2 , 3 , 4 , 13 , 2 , 2 , 6 , 7 , 1 , 1 , 4 , 2 , 7
   tied abort" Multiple equally ranked English XOR keys"
   answer ;
 
-[undefined] euler-testing [if] p59 . cr bye [then]
+[undefined] euler-testing [if] p59 .answer bye [then]

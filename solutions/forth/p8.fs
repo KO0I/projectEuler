@@ -17,4 +17,4 @@ require math.fs
     product best > if product to best then
   loop buffer free throw digits free throw best ;
 
-[undefined] euler-testing [if] p8 . cr bye [then]
+[undefined] euler-testing [if] p8 .answer bye [then]

@@ -13,4 +13,4 @@ require math.fs
     50 ways prefix@ 1- total + to total
   loop ways free throw total ;
 
-[undefined] euler-testing [if] p116 . cr bye [then]
+[undefined] euler-testing [if] p116 .answer bye [then]

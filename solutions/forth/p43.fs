@@ -23,4 +23,4 @@ require math.fs
 
 : p43 ( -- n ) 0 0 0 p43-search ;
 
-[undefined] euler-testing [if] p43 . cr bye [then]
+[undefined] euler-testing [if] p43 .answer bye [then]

@@ -28,4 +28,4 @@ require math.fs
   loop
   differences free throw first free throw total ;
 
-[undefined] euler-testing [if] p101 . cr bye [then]
+[undefined] euler-testing [if] p101 .answer bye [then]

@@ -24,4 +24,4 @@ require math.fs
   80 1 do answer i costs prefix@ min to answer loop
   matrix free throw costs free throw answer ;
 
-[undefined] euler-testing [if] p82 . cr bye [then]
+[undefined] euler-testing [if] p82 .answer bye [then]

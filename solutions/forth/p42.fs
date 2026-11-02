@@ -15,4 +15,4 @@ require math.fs
     then then
   loop raw free throw count ;
 
-[undefined] euler-testing [if] p42 . cr bye [then]
+[undefined] euler-testing [if] p42 .answer bye [then]

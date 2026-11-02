@@ -18,4 +18,4 @@ create champernowne-targets 1 , 10 , 100 , 1000 , 10000 , 100000 , 1000000 ,
   repeat product ;
 \ Integer binary search. Forth stack comments cannot contain nested parentheses.
 
-[undefined] euler-testing [if] p40 . cr bye [then]
+[undefined] euler-testing [if] p40 .answer bye [then]

@@ -18,4 +18,4 @@ require math.fs
   79 costs prefix@ to answer
   matrix free throw costs free throw answer ;
 
-[undefined] euler-testing [if] p81 . cr bye [then]
+[undefined] euler-testing [if] p81 .answer bye [then]

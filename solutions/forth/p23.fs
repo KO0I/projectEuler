@@ -18,4 +18,4 @@ require math.fs
   28124 1 do marked i + c@ 0= if answer i + to answer then loop
   marked free throw abundant free throw answer ;
 
-[undefined] euler-testing [if] p23 . cr bye [then]
+[undefined] euler-testing [if] p23 .answer bye [then]

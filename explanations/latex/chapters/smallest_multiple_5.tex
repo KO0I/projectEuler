@@ -11,7 +11,7 @@ The desired integer is \(\operatorname{lcm}(1,2,\ldots,20)\): the least positive
 The variable \verb|mult| begins at one. The \verb|for| loop tests \verb|mult%i| for each divisor up to \verb|limit=20|. Whenever a test fails, \verb|mult| increases and the divisor index is reset so that the new candidate is checked again. After all divisibility tests pass, the code prints the candidate.
 
 \subsection*{Correctness and limitations}
-The first qualifying candidate is 232792560, but checking essentially every preceding integer is computationally expensive. A much faster implementation would multiply the highest prime powers not exceeding 20. The surrounding \verb|done| loop is not needed to express the search.
+The first qualifying candidate is \texttt{...2560}, but checking essentially every preceding integer is computationally expensive. A much faster implementation would multiply the highest prime powers not exceeding 20. The surrounding \verb|done| loop is not needed to express the search.
 
 
 \subsection*{Correction to historical C --- Problem 5}

@@ -11,7 +11,7 @@ Determine the total of both diagonals in a \(1001\times1001\) clockwise number s
 Four functions, \verb|A| through \verb|D|, attempt to express the corner sequences algebraically. \verb|main| chooses a width \verb|n=5|, calls the four functions, adds the central one, and prints the result, thereby avoiding a full matrix representation.
 
 \subsection*{Correctness and limitations}
-Every helper overwrites its global \verb|sumA|, \verb|sumB|, \verb|sumC| or \verb|sumD| on each loop iteration instead of adding a sequence of terms. The width is five, not 1001. The print statement uses integer \verb|%ld| conversions with \verb|long double| arguments, which is undefined behavior. The expected total is 669171001, but this source does not compute it.
+Every helper overwrites its global \verb|sumA|, \verb|sumB|, \verb|sumC| or \verb|sumD| on each loop iteration instead of adding a sequence of terms. The width is five, not 1001. The print statement uses integer \verb|%ld| conversions with \verb|long double| arguments, which is undefined behavior. The expected total is \texttt{...1001}, but this source does not compute it.
 
 
 \subsection*{Correction to historical C}

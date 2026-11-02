@@ -1,3 +1,7 @@
-\ Project Euler problem 1
-include solvers.fs
-1 euler-solve . cr bye
+\ Project Euler 1: Multiples of 3 or 5.
+require math.fs
+
+: p1 ( -- answer )
+  0 1000 0 do i 3 mod 0= i 5 mod 0= or if i + then loop ;
+
+[undefined] euler-testing [if] p1 . cr bye [then]

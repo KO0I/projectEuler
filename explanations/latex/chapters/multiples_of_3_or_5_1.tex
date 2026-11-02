@@ -15,7 +15,7 @@ The disjunction counts multiples of both divisors once.
 The loop variable \verb|i| runs from 0 to 999. The remainder tests \verb|i%3==0| and \verb|i%5==0| select the eligible integers. The logical OR combines the conditions; the accumulator \verb|sum| starts at zero and receives each selected integer exactly once. The result is printed with \verb|printf|.
 
 \subsection*{Correctness and limitations}
-The code is correct for the stated bound and produces 233168. Including zero has no effect. The procedure takes \(O(N)\) time and \(O(1)\) auxiliary space. Inclusion--exclusion would be faster for very large limits, but it is not used here.
+The code is correct for the stated bound and produces \texttt{...3168}. Including zero has no effect. The procedure takes \(O(N)\) time and \(O(1)\) auxiliary space. Inclusion--exclusion would be faster for very large limits, but it is not used here.
 
 
 \subsection*{Correction to historical C --- Problem 1}

@@ -11,7 +11,7 @@ The goal is to determine the largest prime factor of \(600851475143\). Removing 
 The function \verb|factorize| starts with candidate divisor \verb|d=2|. If \verb|n%d==0|, it divides \verb|n| by \verb|d| and tries the same divisor again, removing repeated factors. Otherwise it moves to 3 and then successive odd candidates. Once the loop condition \verb|d<n| becomes false, it prints \verb|d|.
 
 \subsection*{Correctness and limitations}
-This factor-stripping approach yields the expected factor 6857 for the supplied value. \verb|unsigned long| needs to be at least 64 bits to represent the input portably. Testing candidates only up to the square root of the remaining number could improve efficiency.
+This factor-stripping approach yields the expected factor \texttt{...6857} for the supplied value. \verb|unsigned long| needs to be at least 64 bits to represent the input portably. Testing candidates only up to the square root of the remaining number could improve efficiency.
 
 
 \subsection*{Correction to historical C --- Problem 3}

@@ -1,9 +1,28 @@
-/* Project Euler 7: the corrected algorithm is in support/c/euler_common.c. */
-#include <stdio.h>
+/* Project Euler 7: 10 001st Prime.
+ * This file owns the problem algorithm. */
 #include "euler_common.h"
+#include <ctype.h>
+#include <gmp.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+static long long solve(void) {
+  unsigned count = 0, n = 1;
+  while (count < 10001) {
+    n++;
+    if (prime(n))
+      count++;
+  }
+  return n;
+}
+
 int main(void) {
-    long long answer = euler_solve(7);
-    if (answer < 0 && 7 != 27) return 1;
-    printf("%lld\n", answer);
-    return 0;
+  long long answer = solve();
+  if (answer < 0)
+    return 1;
+  printf("%lld\n", answer);
+  return 0;
 }

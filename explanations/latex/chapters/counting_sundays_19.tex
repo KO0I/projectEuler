@@ -11,7 +11,7 @@ Count months whose first day is Sunday between January 1901 and December 2000, i
 The global state tracks year, month \verb|j|, weekday \verb|i|, day of month and \verb|score|. It starts on Tuesday, January 1, 1901. \verb|nextDay| cycles through weekdays, and \verb|nextMonth| advances to the first of the next month and increments \verb|score| when that day is Sunday. The main loop handles February and months with 30 or 31 days.
 
 \subsection*{Correctness and limitations}
-The test \verb|year%4==0| omits the full Gregorian century rule, but covers leap years in the specified 1901--2000 interval, including 2000. Formal function arguments are unused, and the stopping boundary deserves tests. The intended answer is 171.
+The test \verb|year%4==0| omits the full Gregorian century rule, but covers leap years in the specified 1901--2000 interval, including 2000. Formal function arguments are unused, and the stopping boundary deserves tests. The intended answer is \texttt{...171}.
 
 
 \subsection*{Correction to historical C --- Problem 19}

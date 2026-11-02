@@ -11,7 +11,7 @@ Find the first four consecutive integers each having exactly four distinct prime
 The main loop tests starts from \verb|i=4| upward. For each candidate start, it checks whether \verb|distinctpfactors(i)| through \verb|distinctpfactors(i+3)| all equal \verb|score=4|. If all four tests pass, the program prints the sequence and exits the loop. It asserts that 60 has three distinct prime factors as a basic check.
 
 \subsection*{Correctness and limitations}
-The function \verb|distinctpfactors| lives in \verb|support/c/functions/distinctpfactors.c| and is not declared in this source. Linking and a prototype are required; the helper's fixed-size factor array and counting logic also merit tests. The search limit of twenty million is arbitrary. The expected first integer is 134043, but the exact code and helper should be tested before certifying the result.
+The function \verb|distinctpfactors| lives in \verb|support/c/functions/distinctpfactors.c| and is not declared in this source. Linking and a prototype are required; the helper's fixed-size factor array and counting logic also merit tests. The search limit of twenty million is arbitrary. The expected first integer is \texttt{...4043}, but the exact code and helper should be tested before certifying the result.
 
 
 \subsection*{Correction to historical C}

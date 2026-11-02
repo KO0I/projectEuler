@@ -1,5 +1,18 @@
-//! Project Euler 2: even_fibonacci_numbers_2.
+//! Project Euler 2: Even Fibonacci Numbers.
+
+fn solve() -> i64 {
+    {
+        let (mut a, mut b, mut sum) = (1i64, 2i64, 0i64);
+        while b <= 4_000_000 {
+            if b % 2 == 0 {
+                sum += b;
+            }
+            (a, b) = (b, a + b);
+        }
+        sum
+    }
+}
+
 fn main() {
-    let answer = project_euler::solve(2).expect("known Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

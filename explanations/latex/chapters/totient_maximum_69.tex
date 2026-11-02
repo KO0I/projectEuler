@@ -14,7 +14,7 @@ Euler's totient \(\varphi(n)\) counts positive integers at most \(n\) coprime to
 The helper \verb|phi| begins at \verb|res=i| and, whenever a prime factor is found, updates \verb|res -= res/p|, removing repeated copies of that factor from the working integer. \verb|main| loops over candidate \verb|n| values from 2 up to one million, calculates the floating-point ratio, and records the best position in \verb|maxpos|.
 
 \subsection*{Correctness and limitations}
-The factorization-based totient computation is appropriate, and the expected maximizing integer is 510510. The code recomputes \verb|phi(n)| after deciding the ratio improved, doubling work for those iterations. Its diagnostic print compares two equal values because \verb|maxval| was just updated. A product of successive small primes offers a faster mathematical route. The printed maximum remains valid if the helper is evaluated correctly.
+The factorization-based totient computation is appropriate, and the expected maximizing integer is \texttt{...0510}. The code recomputes \verb|phi(n)| after deciding the ratio improved, doubling work for those iterations. Its diagnostic print compares two equal values because \verb|maxval| was just updated. A product of successive small primes offers a faster mathematical route. The printed maximum remains valid if the helper is evaluated correctly.
 
 
 \subsection*{Correction to historical C}

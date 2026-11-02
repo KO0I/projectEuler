@@ -1,5 +1,16 @@
-//! Project Euler 21: amicable_numbers_21.
+//! Project Euler 21: Amicable Numbers.
+use project_euler::extra_helpers::divisor_sum;
+
+fn solve() -> i64 {
+    (2u32..10000)
+        .filter(|&a| {
+            let b = divisor_sum(a);
+            b != a && b > 0 && divisor_sum(b) == a
+        })
+        .map(i64::from)
+        .sum()
+}
+
 fn main() {
-    let answer = project_euler::solve(21).expect("known Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

@@ -9,15 +9,14 @@
 \usepackage{listings,graphicx}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.55em}
-\hypersetup{pdftitle={Project Euler C Code: Historical Methods and Corrections},pdfsubject={Historical C source with labelled corrections}}
-\title{Project Euler\\C Implementations: Methods and Corrections}
+\hypersetup{pdftitle={Project Euler 1--255: Algorithms and Cross-Language Implementations},pdfsubject={Source-based mathematical and code walkthroughs}}
+\title{Project Euler 1--255\\Algorithms and Cross-Language Implementations}
 \author{Source-based technical commentary}
 \date{November 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-This document covers the 37 Project Euler problems represented in the
-KO0I/projectEuler repository, in ascending problem order. The original
+This document covers Project Euler problems 1 through 255. The original
 explanations and assessments describe historical C attempts, including
 unfinished programs and defects; their source links point to the preserved
 reorganization branch. They must not be mistaken for assessments of the
@@ -25,15 +24,18 @@ subsequently corrected implementations.
 
 {\color{red}\textbf{Reading the corrections:} Red, explicitly labelled
 sections explain the repaired or completed C implementation. The main C
-files are now small entry points calling the corresponding algorithm in
+files now own their algorithms and call reusable mathematical helpers in
 \texttt{support/c/euler\_common.c}. Historical programs remain under
 \texttt{solutions/c/variants/historical/}. Problems 13 and 17 have new C
 implementations as well as their preserved earlier analyses.}
 
-All 37 C answers, 37 Rust answers and 37 Forth answers passed the same-machine
-validation baseline recorded in \texttt{docs/VALIDATION.md}. Each program was
-run once in that profile. Passing the fixed reference inputs is evidence of
-correctness for those inputs, not a proof of a general-purpose algorithm.
+Current answer coverage contains 255 C programs, 255 Rust programs, 120 Gforth
+programs, and 191 Factor programs. Passing the fixed reference inputs is
+evidence of correctness for those inputs, not a proof of a general-purpose
+algorithm. The 120-entry Gforth run recorded in
+\texttt{docs/VALIDATION\_FORTH\_1\_120.md} passes 115 entries with a
+60-second limit per solver. The remaining five are timeouts; the run contains
+no wrong answers or runtime errors.
 \end{abstract}
 \tableofcontents
 \clearpage
@@ -113,5 +115,12 @@ correctness for those inputs, not a proof of a general-purpose algorithm.
 \clearpage
 \input{chapters/multilanguage_comparisons.tex}
 \clearpage
+\input{chapters/problem_154_case_study.tex}
+\clearpage
+\input{generated/problem_walkthroughs.tex}
+\clearpage
 \input{chapters/visualizations.tex}
+\clearpage
+\appendix
+\input{generated/library_api.tex}
 \end{document}

@@ -1,0 +1,111 @@
+{
+  "schema": 1,
+  "description": "Unmodified official Project Euler resources. Solving and verification require no network.",
+  "files": [
+    {
+      "number": 42,
+      "path": "tests/data/p042_words.txt",
+      "url": "https://projecteuler.net/resources/documents/0042_words.txt",
+      "bytes": 16345,
+      "sha256": "433de40ef0a97760520cf0f5eebd9cacd96547e3292abade7c69736616452295"
+    },
+    {
+      "number": 54,
+      "path": "tests/data/p054_poker.txt",
+      "url": "https://projecteuler.net/resources/documents/0054_poker.txt",
+      "bytes": 30000,
+      "sha256": "0ecdf24e712750ac0797faf808726a6da149ab49dc3563a75af124af3cc3af16"
+    },
+    {
+      "number": 59,
+      "path": "tests/data/p059_cipher.txt",
+      "url": "https://projecteuler.net/resources/documents/0059_cipher.txt",
+      "bytes": 4062,
+      "sha256": "1a4f5f492825e377b6cc90b222f6ecb5200a752c888f439da8daea54621634e5"
+    },
+    {
+      "number": 67,
+      "path": "tests/data/p067_triangle.txt",
+      "url": "https://projecteuler.net/resources/documents/0067_triangle.txt",
+      "bytes": 15150,
+      "sha256": "141fb6ad2f3d00bba73b2d74c661aff696264d9e8d91f0fde6d3f8a201e10403"
+    },
+    {
+      "number": 79,
+      "path": "tests/data/p079_keylog.txt",
+      "url": "https://projecteuler.net/resources/documents/0079_keylog.txt",
+      "bytes": 200,
+      "sha256": "91a449a22a107dca172ee4f5fd3330180188dd9fd3d8fd7417f4176a38609db0"
+    },
+    {
+      "number": 81,
+      "path": "tests/data/p081_matrix.txt",
+      "url": "https://projecteuler.net/resources/documents/0081_matrix.txt",
+      "bytes": 31305,
+      "sha256": "43dbf3717094eb6b6cd733ab8319aa665c0efa58a4363ded7b1385edd35d4e0d"
+    },
+    {
+      "number": 82,
+      "path": "tests/data/p082_matrix.txt",
+      "url": "https://projecteuler.net/resources/documents/0082_matrix.txt",
+      "bytes": 31305,
+      "sha256": "43dbf3717094eb6b6cd733ab8319aa665c0efa58a4363ded7b1385edd35d4e0d"
+    },
+    {
+      "number": 83,
+      "path": "tests/data/p083_matrix.txt",
+      "url": "https://projecteuler.net/resources/documents/0083_matrix.txt",
+      "bytes": 31305,
+      "sha256": "43dbf3717094eb6b6cd733ab8319aa665c0efa58a4363ded7b1385edd35d4e0d"
+    },
+    {
+      "number": 89,
+      "path": "tests/data/p089_roman.txt",
+      "url": "https://projecteuler.net/resources/documents/0089_roman.txt",
+      "bytes": 9849,
+      "sha256": "35a5aa38c1d2e08027453bfd1844f61135f725304baa4b2331d73f22b86c6284"
+    },
+    {
+      "number": 96,
+      "path": "tests/data/p096_sudoku.txt",
+      "url": "https://projecteuler.net/resources/documents/0096_sudoku.txt",
+      "bytes": 4899,
+      "sha256": "86a5f925807f8a0b9f96bb2924c779b2ce23df4ab0b5a93da78ba94c146b4ecb"
+    },
+    {
+      "number": 98,
+      "path": "tests/data/p098_words.txt",
+      "url": "https://projecteuler.net/resources/documents/0098_words.txt",
+      "bytes": 16345,
+      "sha256": "433de40ef0a97760520cf0f5eebd9cacd96547e3292abade7c69736616452295"
+    },
+    {
+      "number": 99,
+      "path": "tests/data/p099_base_exp.txt",
+      "url": "https://projecteuler.net/resources/documents/0099_base_exp.txt",
+      "bytes": 13884,
+      "sha256": "cb67b5bbf5374dee71b67ad6ec00d7ecd5ba4f87168e82f538f676b8ae9d4ebd"
+    },
+    {
+      "number": 102,
+      "path": "tests/data/p102_triangles.txt",
+      "url": "https://projecteuler.net/resources/documents/0102_triangles.txt",
+      "bytes": 26383,
+      "sha256": "47782f5322fcddfc2ff56ff3274510c153a9102f745319f470eb7ecd31d6dcf8"
+    },
+    {
+      "number": 105,
+      "path": "tests/data/p105_sets.txt",
+      "url": "https://projecteuler.net/resources/documents/0105_sets.txt",
+      "bytes": 3639,
+      "sha256": "adbf7a9dfec0c137e387be59c69993e9e2564908be3a99f21144932a01368c32"
+    },
+    {
+      "number": 107,
+      "path": "tests/data/p107_network.txt",
+      "url": "https://projecteuler.net/resources/documents/0107_network.txt",
+      "bytes": 5174,
+      "sha256": "81f6b2c8da3b6f89cb6164b2bdf192a91d445095ef23b39bcfb75f0d4578c1c2"
+    }
+  ]
+}

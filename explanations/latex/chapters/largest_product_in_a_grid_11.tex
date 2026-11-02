@@ -11,7 +11,7 @@ Find the largest product of four adjacent entries along any row, column, or diag
 The code stores the grid as \verb|long grid[20][20]| and makes four directional sweeps. For each starting location it multiplies four entries and compares the result with \verb|max|. The horizontal and vertical sweeps use appropriate bounds for their directions.
 
 \subsection*{Correctness and limitations}
-Both diagonal expressions contain \verb|j-1|, \verb|j-2|, and \verb|j-3| even when \verb|j| begins at zero, producing negative indices and undefined behavior. The diagonal starting-column bounds must be repaired. The unused macro \verb|#define N = 4;| is not a valid numeric definition for use in expressions. The known maximum is 70600674 but is not safely demonstrated by this source.
+Both diagonal expressions contain \verb|j-1|, \verb|j-2|, and \verb|j-3| even when \verb|j| begins at zero, producing negative indices and undefined behavior. The diagonal starting-column bounds must be repaired. The unused macro \verb|#define N = 4;| is not a valid numeric definition for use in expressions. The known maximum is \texttt{...0674} but is not safely demonstrated by this source.
 
 
 \subsection*{Correction to historical C --- Problem 11}

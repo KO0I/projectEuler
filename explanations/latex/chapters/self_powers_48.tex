@@ -14,7 +14,7 @@ S\bmod10^{10}=\left(\sum_{n=1}^{1000} n^n\right)\bmod10^{10}.
 GMP constructs the modulus \verb|digitspan=10^10|. The loop evaluates each \verb|n^n| with \verb|mpz_ui_pow_ui|, reduces it modulo \verb|digitspan|, and adds it into \verb|result|. Finally the accumulated sum is reduced modulo the same modulus and printed.
 
 \subsection*{Correctness and limitations}
-The loop runs from 999 down to 1, omitting the 1000th term. This omission does not change the last ten digits because \(1000^{1000}\) is divisible by \(10^{10}\). The expected residue is 9110846700. The code computes full huge powers before reducing them; modular exponentiation would be significantly faster. GMP headers and \verb|-lgmp| are required.
+The loop runs from 999 down to 1, omitting the 1000th term. This omission does not change the last ten digits because \(1000^{1000}\) is divisible by \(10^{10}\). The expected residue is \texttt{...6700}. The code computes full huge powers before reducing them; modular exponentiation would be significantly faster. GMP headers and \verb|-lgmp| are required.
 
 
 \subsection*{Correction to historical C}

@@ -14,7 +14,7 @@ S=\sum_{\substack{F_n\leq4\,000\,000\\2\mid F_n}}F_n.
 The program allocates \verb|fib[33]|, initializes the first two entries to one and fills the array using \verb|fib[i-2]+fib[i-1]|. A second loop checks evenness with \verb|fib[k]%2==0|, accumulating qualifying entries in \verb|sum|. This separates generating the sequence from filtering it.
 
 \subsection*{Correctness and limitations}
-The declared \verb|unsigned long sum| is never initialized before \verb|sum += fib[k]|, so the behavior is undefined and the output cannot be trusted. It should start at zero. A value-bound loop would also be clearer than a fixed term count. The intended mathematical result is 4613732, not a reliable result of this source.
+The declared \verb|unsigned long sum| is never initialized before \verb|sum += fib[k]|, so the behavior is undefined and the output cannot be trusted. It should start at zero. A value-bound loop would also be clearer than a fixed term count. The intended mathematical result is \texttt{...3732}, not a reliable result of this source.
 
 
 \subsection*{Correction to historical C --- Problem 2}

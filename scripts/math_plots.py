@@ -140,12 +140,118 @@ def quadratic_primes(bound=100):
     save(fig,"quadratic_prime_heatmap")
 
 
+def trinomial(n, i, j):
+    """Return n!/(i!j!k!) for k=n-i-j using exact integer arithmetic."""
+    k = n - i - j
+    if min(i, j, k) < 0:
+        raise ValueError("trinomial indices must be nonnegative and sum to n")
+    # Choosing i positions and then j of the remaining positions avoids
+    # constructing three factorials.  Python's comb keeps the result exact.
+    return math.comb(n, i) * math.comb(n - i, j)
+
+
+def pascal_pyramid_coefficients(max_layer=14):
+    """Return (i,j,k,value) for every entry through one pyramid layer."""
+    points = []
+    for n in range(max_layer + 1):
+        for i in range(n + 1):
+            for j in range(n - i + 1):
+                k = n - i - j
+                points.append((i, j, k, trinomial(n, i, j)))
+    return points
+
+
+def pascal_pyramid_tetrahedron(max_layer=14):
+    """Plot all trinomial coefficients as the integer points of a tetrahedron."""
+    points = pascal_pyramid_coefficients(max_layer)
+    i, j, k, values = (np.asarray(column) for column in zip(*points))
+    log_values = np.log10(values.astype(float))
+
+    fig = plt.figure(figsize=(9, 7))
+    ax = fig.add_subplot(111, projection="3d")
+    scatter = ax.scatter(
+        i, j, k, c=log_values, cmap="cividis", s=12 + 8 * log_values,
+        alpha=.82, depthshade=False, edgecolors="none")
+    fig.colorbar(scatter, ax=ax, shrink=.68, pad=.08,
+                 label=r"Coefficient magnitude $\log_{10}{n!/(i!j!k!)}$")
+
+    # The coordinate planes and i+j+k=max_layer bound the plotted tetrahedron.
+    vertices = np.array(((0, 0, 0), (max_layer, 0, 0),
+                         (0, max_layer, 0), (0, 0, max_layer)))
+    for a, b in ((0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)):
+        ax.plot(*zip(vertices[a], vertices[b]), color="#303030", linewidth=.8)
+    ax.set_xlabel("Exponent i")
+    ax.set_ylabel("Exponent j")
+    ax.set_zlabel("Exponent k")
+    ax.set_title(
+        f"Pascal's pyramid through layer {max_layer}\n"
+        r"Each point is the coefficient of $x^iy^jz^k$ in $(x+y+z)^{i+j+k}$")
+    ax.view_init(elev=24, azim=38)
+    ax.set_box_aspect((1, 1, 1))
+    save(fig, "pascal_pyramid_tetrahedron")
+
+
+def pascal_pyramid_layer(layer=24):
+    """Plot one triangular layer as a 3D log-coefficient surface."""
+    xs, ys, heights = [], [], []
+    for i in range(layer + 1):
+        for j in range(layer - i + 1):
+            k = layer - i - j
+            # Equilateral-triangle coordinates preserve the permutation
+            # symmetry among i, j, and k on the horizontal plane.
+            xs.append(j + .5 * k)
+            ys.append(math.sqrt(3) * .5 * k)
+            heights.append(math.log10(trinomial(layer, i, j)))
+
+    fig = plt.figure(figsize=(9, 7))
+    ax = fig.add_subplot(111, projection="3d")
+    surface = ax.plot_trisurf(xs, ys, heights, cmap="cividis",
+                              linewidth=.16, edgecolor="#555555", antialiased=True)
+    fig.colorbar(surface, ax=ax, shrink=.68, pad=.08,
+                 label=r"Coefficient magnitude $\log_{10}{n!/(i!j!k!)}$")
+    ax.set_xlabel("Barycentric direction j")
+    ax.set_ylabel("Barycentric direction k")
+    ax.set_zlabel(r"$\log_{10}$ coefficient")
+    ax.set_title(
+        f"Pascal's pyramid, layer n={layer}\n"
+        "The central coefficients dominate the three symmetric edges")
+    ax.view_init(elev=28, azim=-55)
+    save(fig, "pascal_pyramid_layer_surface")
+
+
+def pascal_pyramid_parity(max_layer=31):
+    """Plot the odd coefficients, which form a tetrahedral mod-2 fractal."""
+    odd = []
+    for i, j, k, value in pascal_pyramid_coefficients(max_layer):
+        if value & 1:
+            odd.append((i, j, k, i + j + k))
+    i, j, k, layers = (np.asarray(column) for column in zip(*odd))
+
+    fig = plt.figure(figsize=(9, 7))
+    ax = fig.add_subplot(111, projection="3d")
+    scatter = ax.scatter(i, j, k, c=layers, cmap="Greys", vmin=0,
+                         vmax=max_layer, s=9, alpha=.86, depthshade=False)
+    fig.colorbar(scatter, ax=ax, shrink=.68, pad=.08, label="Layer n")
+    ax.set_xlabel("Exponent i")
+    ax.set_ylabel("Exponent j")
+    ax.set_zlabel("Exponent k")
+    ax.set_title(
+        f"Odd entries of Pascal's pyramid through layer {max_layer}\n"
+        "Lucas parity leaves a self-similar tetrahedral pattern")
+    ax.view_init(elev=23, azim=40)
+    ax.set_box_aspect((1, 1, 1))
+    save(fig, "pascal_pyramid_parity")
+
+
 if __name__=="__main__":
     ulam()
     spiral_diagonals()
     collatz()
     prime_distribution()
     quadratic_primes()
+    pascal_pyramid_tetrahedron()
+    pascal_pyramid_layer()
+    pascal_pyramid_parity()
     from euler_visuals import make_all
     make_all()
     print(f"Saved mathematical figures to {OUT}")

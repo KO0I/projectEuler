@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   validate:
-    name: C, Rust, Gforth and Factor (partial) on one machine
+    name: C, Rust, Gforth and Factor on one machine
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -51,7 +51,7 @@ jobs:
           cargo test --release --lib --manifest-path solutions/rust/Cargo.toml -- --skip small_problems
       - name: Build optimized executables
         run: make c-release rust-release
-      - name: Validate and profile all 111 existing + 12 Factor solutions exactly once
+      - name: Validate and profile each implemented language subset exactly once
         id: profile
         continue-on-error: true
         run: make profile PYTHON=.venv/bin/python

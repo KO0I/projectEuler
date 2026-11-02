@@ -1,5 +1,9 @@
-//! Project Euler 1: multiples_of_3_or_5_1.
+//! Project Euler 1: Multiples of 3 or 5.
+
+fn solve() -> i64 {
+    (1i64..1000).filter(|v| v % 3 == 0 || v % 5 == 0).sum()
+}
+
 fn main() {
-    let answer = project_euler::solve(1).expect("known Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

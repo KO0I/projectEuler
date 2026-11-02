@@ -1,0 +1,982 @@
+{
+  "compiler": [
+    "cc"
+  ],
+  "flags": [
+    "-O1",
+    "-g",
+    "-std=c11",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Werror",
+    "-fno-omit-frame-pointer",
+    "-fsanitize=address,undefined",
+    "-fno-pie",
+    "-no-pie",
+    "-Isupport/c"
+  ],
+  "source_revision": "e44f23ed50de1df537097dfa62e339a688e128ba",
+  "results": [
+    {
+      "number": 1,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20263168",
+      "actual": "\u20263168",
+      "stderr": ""
+    },
+    {
+      "number": 2,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20263732",
+      "actual": "\u20263732",
+      "stderr": ""
+    },
+    {
+      "number": 3,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266857",
+      "actual": "\u20266857",
+      "stderr": ""
+    },
+    {
+      "number": 4,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266609",
+      "actual": "\u20266609",
+      "stderr": ""
+    },
+    {
+      "number": 5,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262560",
+      "actual": "\u20262560",
+      "stderr": ""
+    },
+    {
+      "number": 6,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264150",
+      "actual": "\u20264150",
+      "stderr": ""
+    },
+    {
+      "number": 7,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264743",
+      "actual": "\u20264743",
+      "stderr": ""
+    },
+    {
+      "number": 8,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264000",
+      "actual": "\u20264000",
+      "stderr": ""
+    },
+    {
+      "number": 9,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265000",
+      "actual": "\u20265000",
+      "stderr": ""
+    },
+    {
+      "number": 10,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268922",
+      "actual": "\u20268922",
+      "stderr": ""
+    },
+    {
+      "number": 11,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260674",
+      "actual": "\u20260674",
+      "stderr": ""
+    },
+    {
+      "number": 12,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266500",
+      "actual": "\u20266500",
+      "stderr": ""
+    },
+    {
+      "number": 13,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266230",
+      "actual": "\u20266230",
+      "stderr": ""
+    },
+    {
+      "number": 14,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267799",
+      "actual": "\u20267799",
+      "stderr": ""
+    },
+    {
+      "number": 15,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268820",
+      "actual": "\u20268820",
+      "stderr": ""
+    },
+    {
+      "number": 16,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261366",
+      "actual": "\u20261366",
+      "stderr": ""
+    },
+    {
+      "number": 17,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261124",
+      "actual": "\u20261124",
+      "stderr": ""
+    },
+    {
+      "number": 18,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261074",
+      "actual": "\u20261074",
+      "stderr": ""
+    },
+    {
+      "number": 19,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026171",
+      "actual": "\u2026171",
+      "stderr": ""
+    },
+    {
+      "number": 20,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026648",
+      "actual": "\u2026648",
+      "stderr": ""
+    },
+    {
+      "number": 21,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261626",
+      "actual": "\u20261626",
+      "stderr": ""
+    },
+    {
+      "number": 22,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268282",
+      "actual": "\u20268282",
+      "stderr": ""
+    },
+    {
+      "number": 23,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269871",
+      "actual": "\u20269871",
+      "stderr": ""
+    },
+    {
+      "number": 24,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265460",
+      "actual": "\u20265460",
+      "stderr": ""
+    },
+    {
+      "number": 25,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264782",
+      "actual": "\u20264782",
+      "stderr": ""
+    },
+    {
+      "number": 26,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026983",
+      "actual": "\u2026983",
+      "stderr": ""
+    },
+    {
+      "number": 27,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269231",
+      "actual": "\u20269231",
+      "stderr": ""
+    },
+    {
+      "number": 28,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261001",
+      "actual": "\u20261001",
+      "stderr": ""
+    },
+    {
+      "number": 29,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269183",
+      "actual": "\u20269183",
+      "stderr": ""
+    },
+    {
+      "number": 30,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20263839",
+      "actual": "\u20263839",
+      "stderr": ""
+    },
+    {
+      "number": 31,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20263682",
+      "actual": "\u20263682",
+      "stderr": ""
+    },
+    {
+      "number": 32,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265228",
+      "actual": "\u20265228",
+      "stderr": ""
+    },
+    {
+      "number": 33,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026100",
+      "actual": "\u2026100",
+      "stderr": ""
+    },
+    {
+      "number": 34,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260730",
+      "actual": "\u20260730",
+      "stderr": ""
+    },
+    {
+      "number": 35,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u202655",
+      "actual": "\u202655",
+      "stderr": ""
+    },
+    {
+      "number": 36,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262187",
+      "actual": "\u20262187",
+      "stderr": ""
+    },
+    {
+      "number": 37,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268317",
+      "actual": "\u20268317",
+      "stderr": ""
+    },
+    {
+      "number": 38,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268654",
+      "actual": "\u20268654",
+      "stderr": ""
+    },
+    {
+      "number": 39,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026840",
+      "actual": "\u2026840",
+      "stderr": ""
+    },
+    {
+      "number": 40,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026210",
+      "actual": "\u2026210",
+      "stderr": ""
+    },
+    {
+      "number": 41,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262413",
+      "actual": "\u20262413",
+      "stderr": ""
+    },
+    {
+      "number": 42,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026162",
+      "actual": "\u2026162",
+      "stderr": ""
+    },
+    {
+      "number": 43,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264890",
+      "actual": "\u20264890",
+      "stderr": ""
+    },
+    {
+      "number": 44,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262660",
+      "actual": "\u20262660",
+      "stderr": ""
+    },
+    {
+      "number": 45,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266805",
+      "actual": "\u20266805",
+      "stderr": ""
+    },
+    {
+      "number": 46,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265777",
+      "actual": "\u20265777",
+      "stderr": ""
+    },
+    {
+      "number": 47,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264043",
+      "actual": "\u20264043",
+      "stderr": ""
+    },
+    {
+      "number": 48,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266700",
+      "actual": "\u20266700",
+      "stderr": ""
+    },
+    {
+      "number": 49,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269629",
+      "actual": "\u20269629",
+      "stderr": ""
+    },
+    {
+      "number": 50,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267651",
+      "actual": "\u20267651",
+      "stderr": ""
+    },
+    {
+      "number": 51,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261313",
+      "actual": "\u20261313",
+      "stderr": ""
+    },
+    {
+      "number": 52,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262857",
+      "actual": "\u20262857",
+      "stderr": ""
+    },
+    {
+      "number": 53,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264075",
+      "actual": "\u20264075",
+      "stderr": ""
+    },
+    {
+      "number": 54,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026376",
+      "actual": "\u2026376",
+      "stderr": ""
+    },
+    {
+      "number": 55,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026249",
+      "actual": "\u2026249",
+      "stderr": ""
+    },
+    {
+      "number": 56,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026972",
+      "actual": "\u2026972",
+      "stderr": ""
+    },
+    {
+      "number": 57,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026153",
+      "actual": "\u2026153",
+      "stderr": ""
+    },
+    {
+      "number": 58,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266241",
+      "actual": "\u20266241",
+      "stderr": ""
+    },
+    {
+      "number": 59,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269448",
+      "actual": "\u20269448",
+      "stderr": ""
+    },
+    {
+      "number": 60,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20266033",
+      "actual": "\u20266033",
+      "stderr": ""
+    },
+    {
+      "number": 61,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268684",
+      "actual": "\u20268684",
+      "stderr": ""
+    },
+    {
+      "number": 62,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264683",
+      "actual": "\u20264683",
+      "stderr": ""
+    },
+    {
+      "number": 63,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u202649",
+      "actual": "\u202649",
+      "stderr": ""
+    },
+    {
+      "number": 64,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261322",
+      "actual": "\u20261322",
+      "stderr": ""
+    },
+    {
+      "number": 65,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026272",
+      "actual": "\u2026272",
+      "stderr": ""
+    },
+    {
+      "number": 66,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026661",
+      "actual": "\u2026661",
+      "stderr": ""
+    },
+    {
+      "number": 67,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267273",
+      "actual": "\u20267273",
+      "stderr": ""
+    },
+    {
+      "number": 68,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262725",
+      "actual": "\u20262725",
+      "stderr": ""
+    },
+    {
+      "number": 69,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260510",
+      "actual": "\u20260510",
+      "stderr": ""
+    },
+    {
+      "number": 70,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269823",
+      "actual": "\u20269823",
+      "stderr": ""
+    },
+    {
+      "number": 71,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268570",
+      "actual": "\u20268570",
+      "stderr": ""
+    },
+    {
+      "number": 72,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262391",
+      "actual": "\u20262391",
+      "stderr": ""
+    },
+    {
+      "number": 73,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265372",
+      "actual": "\u20265372",
+      "stderr": ""
+    },
+    {
+      "number": 74,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026402",
+      "actual": "\u2026402",
+      "stderr": ""
+    },
+    {
+      "number": 75,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261667",
+      "actual": "\u20261667",
+      "stderr": ""
+    },
+    {
+      "number": 76,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269291",
+      "actual": "\u20269291",
+      "stderr": ""
+    },
+    {
+      "number": 77,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u202671",
+      "actual": "\u202671",
+      "stderr": ""
+    },
+    {
+      "number": 78,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265374",
+      "actual": "\u20265374",
+      "stderr": ""
+    },
+    {
+      "number": 79,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262890",
+      "actual": "\u20262890",
+      "stderr": ""
+    },
+    {
+      "number": 80,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260886",
+      "actual": "\u20260886",
+      "stderr": ""
+    },
+    {
+      "number": 81,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267337",
+      "actual": "\u20267337",
+      "stderr": ""
+    },
+    {
+      "number": 82,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260324",
+      "actual": "\u20260324",
+      "stderr": ""
+    },
+    {
+      "number": 83,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20265185",
+      "actual": "\u20265185",
+      "stderr": ""
+    },
+    {
+      "number": 84,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261524",
+      "actual": "\u20261524",
+      "stderr": ""
+    },
+    {
+      "number": 85,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262772",
+      "actual": "\u20262772",
+      "stderr": ""
+    },
+    {
+      "number": 86,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261818",
+      "actual": "\u20261818",
+      "stderr": ""
+    },
+    {
+      "number": 87,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267343",
+      "actual": "\u20267343",
+      "stderr": ""
+    },
+    {
+      "number": 88,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267457",
+      "actual": "\u20267457",
+      "stderr": ""
+    },
+    {
+      "number": 89,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026743",
+      "actual": "\u2026743",
+      "stderr": ""
+    },
+    {
+      "number": 90,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261217",
+      "actual": "\u20261217",
+      "stderr": ""
+    },
+    {
+      "number": 91,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264234",
+      "actual": "\u20264234",
+      "stderr": ""
+    },
+    {
+      "number": 92,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261146",
+      "actual": "\u20261146",
+      "stderr": ""
+    },
+    {
+      "number": 93,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261258",
+      "actual": "\u20261258",
+      "stderr": ""
+    },
+    {
+      "number": 94,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268346",
+      "actual": "\u20268346",
+      "stderr": ""
+    },
+    {
+      "number": 95,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264316",
+      "actual": "\u20264316",
+      "stderr": ""
+    },
+    {
+      "number": 96,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264702",
+      "actual": "\u20264702",
+      "stderr": ""
+    },
+    {
+      "number": 97,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262577",
+      "actual": "\u20262577",
+      "stderr": ""
+    },
+    {
+      "number": 98,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268769",
+      "actual": "\u20268769",
+      "stderr": ""
+    },
+    {
+      "number": 99,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026709",
+      "actual": "\u2026709",
+      "stderr": ""
+    },
+    {
+      "number": 100,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267473",
+      "actual": "\u20267473",
+      "stderr": ""
+    },
+    {
+      "number": 101,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264526",
+      "actual": "\u20264526",
+      "stderr": ""
+    },
+    {
+      "number": 102,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026228",
+      "actual": "\u2026228",
+      "stderr": ""
+    },
+    {
+      "number": 103,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264245",
+      "actual": "\u20264245",
+      "stderr": ""
+    },
+    {
+      "number": 104,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269468",
+      "actual": "\u20269468",
+      "stderr": ""
+    },
+    {
+      "number": 105,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20263702",
+      "actual": "\u20263702",
+      "stderr": ""
+    },
+    {
+      "number": 106,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20261384",
+      "actual": "\u20261384",
+      "stderr": ""
+    },
+    {
+      "number": 107,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20269679",
+      "actual": "\u20269679",
+      "stderr": ""
+    },
+    {
+      "number": 108,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260180",
+      "actual": "\u20260180",
+      "stderr": ""
+    },
+    {
+      "number": 109,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20268182",
+      "actual": "\u20268182",
+      "stderr": ""
+    },
+    {
+      "number": 110,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260600",
+      "actual": "\u20260600",
+      "stderr": ""
+    },
+    {
+      "number": 111,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267715",
+      "actual": "\u20267715",
+      "stderr": ""
+    },
+    {
+      "number": 112,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267000",
+      "actual": "\u20267000",
+      "stderr": ""
+    },
+    {
+      "number": 113,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264250",
+      "actual": "\u20264250",
+      "stderr": ""
+    },
+    {
+      "number": 114,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260049",
+      "actual": "\u20260049",
+      "stderr": ""
+    },
+    {
+      "number": 115,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u2026168",
+      "actual": "\u2026168",
+      "stderr": ""
+    },
+    {
+      "number": 116,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260929",
+      "actual": "\u20260929",
+      "stderr": ""
+    },
+    {
+      "number": 117,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20260497",
+      "actual": "\u20260497",
+      "stderr": ""
+    },
+    {
+      "number": 118,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20264680",
+      "actual": "\u20264680",
+      "stderr": ""
+    },
+    {
+      "number": 119,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20267521",
+      "actual": "\u20267521",
+      "stderr": ""
+    },
+    {
+      "number": 120,
+      "passed": true,
+      "exit_code": 0,
+      "expected": "\u20262500",
+      "actual": "\u20262500",
+      "stderr": ""
+    }
+  ]
+}

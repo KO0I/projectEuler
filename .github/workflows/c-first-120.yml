@@ -1,0 +1,51 @@
+name: C solutions 1 through 120
+
+on:
+  pull_request:
+    paths:
+      - 'solutions/c/**'
+      - 'support/c/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'explanations/latex/project_euler_c_explanations.tex'
+      - 'Makefile'
+      - '.github/workflows/c-first-120.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: c-first-120-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install C and test dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libgmp-dev python3-numpy python3-matplotlib
+      - name: Check coverage and official input integrity
+        run: make check-c-coverage check-inputs
+      - name: Compile with warnings as errors and check independent examples
+        run: make -j2 c-release unit-c CFLAGS='-O2 -std=c11 -Wall -Wextra -Wpedantic -Werror'
+      - name: Check runner and coverage regressions
+        run: make unit-python
+      - name: Validate all 120 answers
+        run: make test-c
+      - name: Check memory and undefined behavior
+        run: make sanitize-c
+      - name: Preserve validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c-first-120-${{ github.run_id }}
+          path: |
+            build/test-results/
+            build/sanitize/results.json
+          retention-days: 30
+          if-no-files-found: error

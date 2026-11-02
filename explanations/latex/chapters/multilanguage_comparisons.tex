@@ -2,13 +2,19 @@
 \label{sec:crosslanguage}
 
 The original 37-problem collection has a dated validation baseline for C, Rust,
-and Gforth. The new \emph{Factor programming language} solutions are a
-separately staged, partially covered extension. Factor is a concatenative,
+and Gforth. C and Rust now cover problems 1 through 255. Factor has 191 validated
+entry points, and Gforth has 120. A
+60-second-per-solver Gforth run passes 115 entries and times out on five. The
+\emph{Factor programming language} is a concatenative,
 stack-based language with its own VM; it is neither Gforth nor the GNU
 \texttt{factor} integer-factorization command. The excerpts below reflect
 the algorithms in this development branch, not the uncorrected historical
-programs. No Factor speed measurements are asserted until its CI invocation
-passes reference-answer validation.
+programs.
+
+The C, Rust, and Gforth algorithms now reside in their individual problem files.
+Shared libraries contain reusable mathematical and input operations, with no
+problem-number dispatcher. Problem-specific search state and helper routines
+stay with their owning algorithm. The code excerpts below identify those owners.
 
 \lstset{
  basicstyle=\ttfamily\footnotesize,
@@ -31,19 +37,19 @@ The perimeter constraint eliminates one search variable:
 \]
 All versions test the same conditions but spell the computation differently.
 
-\textbf{C} (\texttt{support/c/euler\_common.c}):
+\textbf{C} (\texttt{solutions/c/special\_pythagorean\_triplet\_9.c}):
 \begin{lstlisting}
 int c=1000-a-b;
 if(c>b&&a*a+b*b==c*c)return a*b*c;
 \end{lstlisting}
 
-\textbf{Rust} (\texttt{solutions/rust/src/lib.rs}):
+\textbf{Rust} (\texttt{solutions/rust/src/bin/p9.rs}):
 \begin{lstlisting}
 let c=1000-a-b;
 if c>b&&a*a+b*b==c*c {answer=a*b*c;break;}
 \end{lstlisting}
 
-\textbf{Gforth} (\texttt{solutions/forth/solvers.fs}, \texttt{pythagorean-product}):
+\textbf{Gforth} (\texttt{solutions/forth/p9.fs}, \texttt{pythagorean-product}):
 \begin{lstlisting}
 1000 a - b - to c
 c b > a a * b b * + c c * = and
@@ -200,7 +206,26 @@ without warming up; it checks that same invocation's exact decimal output
 against \texttt{tests/answers.json}. The wall time includes startup and
 output capture, but not compilation. It records process version, source
 revision and selected coverage; no error bars or confidence intervals
-are inferred from one measurement. Only complete passing 37-problem
-language suites get total-suite bars. The initial Factor subset contains
-12 out of 37 problems, so it is never compared against full-suite totals
-as though it had identical coverage.
+are inferred from one measurement. Only complete passing declared-coverage
+language suites get total-suite bars. In the recorded Gforth run, the five timed-out
+entries are marked explicitly and no Gforth total-suite bar is drawn.
+
+\IfFileExists{../../build/profile/latest-plots/runtime_by_problem.pdf}{%
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{../../build/profile/latest-plots/runtime_by_problem.pdf}
+\caption{The recorded profile run preceding the ownership refactor. Passing solvers have measured bars;
+timeouts use orange triangles, while wrong answers and runtime errors would use
+red crosses. The run identifier printed in the figure ties it to its CSV and
+metadata.}
+\end{figure}
+}{}
+
+\IfFileExists{../../build/profile/latest-plots/totals.pdf}{%
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\linewidth]{../../build/profile/latest-plots/totals.pdf}
+\caption{Complete-suite status for the same run. An incomplete suite receives
+no duration bar, so timeout work cannot be mistaken for a passing total.}
+\end{figure}
+}{}

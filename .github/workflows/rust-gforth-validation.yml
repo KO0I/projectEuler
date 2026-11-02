@@ -1,0 +1,85 @@
+name: Validate Rust and Gforth Euler solutions
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'solutions/rust/**'
+      - 'solutions/forth/**'
+      - 'support/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'Makefile'
+      - '.github/workflows/rust-gforth-validation.yml'
+  pull_request:
+    paths:
+      - 'solutions/rust/**'
+      - 'solutions/forth/**'
+      - 'support/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'Makefile'
+      - '.github/workflows/rust-gforth-validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust and Gforth (Factor intentionally excluded)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gforth python3-numpy python3-matplotlib
+          rustup default stable
+          rustc --version
+          cargo --version
+          gforth --version
+      - name: Check native language coverage and official input hashes
+        run: |
+          python3 scripts/check_language_coverage.py
+          make check-inputs
+      - name: Build Rust release binaries
+        run: make rust-release
+      - name: Run Rust unit tests
+        run: make unit-rust
+      - name: Run Gforth unit tests
+        run: make unit-forth
+      - name: Verify Rust answers 1 through 120
+        id: rust_answers
+        continue-on-error: true
+        run: make test-rust
+      - name: Verify Gforth answers 1 through 120
+        id: forth_answers
+        continue-on-error: true
+        run: make test-forth
+      - name: Profile Rust and Gforth with startup calibration
+        id: profile
+        continue-on-error: true
+        run: |
+          make build/bench/noop-rust
+          python3 scripts/bench.py --mode profile --languages rust forth
+          make plots
+      - name: Upload verification and profiling evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: euler-rust-gforth-${{ github.run_id }}
+          path: |
+            build/test-results/
+            build/profile/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Fail CI for incorrect results or failed profiling
+        if: always()
+        env:
+          RUST_OUTCOME: ${{ steps.rust_answers.outcome }}
+          FORTH_OUTCOME: ${{ steps.forth_answers.outcome }}
+          PROFILE_OUTCOME: ${{ steps.profile.outcome }}
+        run: |
+          test "$RUST_OUTCOME" = success
+          test "$FORTH_OUTCOME" = success
+          test "$PROFILE_OUTCOME" = success

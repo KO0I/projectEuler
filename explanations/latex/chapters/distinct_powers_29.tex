@@ -11,7 +11,7 @@ Count the distinct integers among \(a^b\) with \(2\leq a\leq100\) and \(2\leq b\
 The helper \verb|ipow| uses exponentiation by squaring: it multiplies the accumulated result when an exponent bit is set, shifts the exponent, and squares the base. \verb|main| prints a small table for bases and exponents 2 through 6. This demonstrates power generation but not deduplication.
 
 \subsection*{Correctness and limitations}
-No distinct-values set or counter is present. A signed \verb|int| cannot represent general powers up to \(100^{100}\), though the small demonstration fits. A corrected algorithm could normalize bases to primitive powers and count exponent combinations, or use GMP values and a set. The expected distinct count is 9183, not an output of the existing program.
+No distinct-values set or counter is present. A signed \verb|int| cannot represent general powers up to \(100^{100}\), though the small demonstration fits. A corrected algorithm could normalize bases to primitive powers and count exponent combinations, or use GMP values and a set. The expected distinct count is \texttt{...9183}, not an output of the existing program.
 
 
 \subsection*{Correction to historical C}

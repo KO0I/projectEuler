@@ -1,4 +1,6 @@
-# Project Euler solutions in C, Rust, Gforth, and Factor
+# Project Euler solutions in C, Rust, Gforth, Factor, and Goose
+
+Goose covers problems 1–100 with native, problem-owned algorithms. See [Goose setup and profiling](solutions/goose/README.md).
 
 C and Rust have genuine computed solutions for **every problem from 1 through 255**. Gforth covers 1 through 120. Factor has 191 validated entry points: 1 through 120 plus 71 selected problems from 121 through 255. Generated scaffolds record every remaining unsolved language/problem pair without counting it as coverage. Each C, Rust, and Gforth file owns its problem's algorithm; Factor uses numbered entry points backed by native Factor vocabularies. The answer harness compares exact output strings, so decimal, hexadecimal, fraction, and coordinate answers are checked without numeric coercion. Original attempts remain under `variants/`.
 

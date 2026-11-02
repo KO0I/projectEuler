@@ -114,11 +114,18 @@ def audit() -> dict[str, int]:
     for item in problems:
         n = item['number']
         expected_languages = {'c', 'rust'}
+        if n <= 100:
+            expected_languages.add('goose')
         if n <= 120:
             expected_languages.add('forth')
         if n in factor_numbers:
             expected_languages.add('factor')
         assert set(item['languages']) == expected_languages, item['number']
+    try:
+        from scripts.check_goose import audit as goose_audit
+    except ModuleNotFoundError:
+        from check_goose import audit as goose_audit
+    result['goose'] = goose_audit()
     return result
 
 

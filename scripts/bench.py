@@ -34,7 +34,7 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "tests" / "answers.json"
-LANGUAGES = ("c", "rust", "forth", "factor")
+LANGUAGES = ("c", "rust", "forth", "factor", "goose")
 def selected_problems(language: str, manifest: list[dict]) -> list[dict]:
     """Honor explicit language coverage from the answer manifest."""
     if language not in LANGUAGES:
@@ -51,6 +51,8 @@ FIELDS = ("run_id", "language", "problem", "stem", "runtime_ms",
 
 def command(language: str, number: int, stem: str) -> list[str]:
     suffix = ".exe" if os.name == "nt" else ""
+    if language == "goose":
+        return [str(ROOT / "build" / "goose" / (stem + suffix))]
     if language == "c":
         return [str(ROOT / "build" / "c" / (stem + suffix))]
     if language == "rust":
@@ -97,6 +99,8 @@ def environment() -> dict:
         "rust_profile": "release (see solutions/rust/Cargo.toml)",
         "gforth": probe(["gforth", "--version"]),
         "factor_vm": factor_vm(),
+        "goose": probe([os.environ.get("GOOSE", str(ROOT / ".toolchains/goose/build/goose")), "version"]),
+        "goose_build": "optimized standalone, gcc -O2; see build/goose/compilation.json",
         "github_run_id": os.environ.get("GITHUB_RUN_ID"),
         "manifest_sha256": hashlib.sha256(MANIFEST.read_bytes()).hexdigest(),
     }

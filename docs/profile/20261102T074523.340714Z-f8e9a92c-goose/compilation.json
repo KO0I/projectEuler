@@ -1,0 +1,1610 @@
+{
+  "timestamp_utc": "2026-11-02T07:43:36.752705+00:00",
+  "compiler": "goose v2026.3-265-geadca409 (runtime 3025e5810379)",
+  "expected_compiler_commit": "eadca409f68210893f366e60d0c2f0dc29a339be",
+  "cc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+  "debug": false,
+  "measurement": "One build invocation per changed source; includes Goose and C compilation/linking. Runtime object cache may be warm.",
+  "rows": [
+    {
+      "source": "solutions/goose/1000_digit_fibonacci_number_25.goose",
+      "compilation_ms": 104.655957,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/1000_digit_fibonacci_number_25.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/1000_digit_fibonacci_number_25.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "c60f2476da29fb05f8c99d2608e8e2576f7df614f83c2e30ced890f163b0a11e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/10_001st_prime_7.goose",
+      "compilation_ms": 95.183194,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/10_001st_prime_7.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/10_001st_prime_7.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "f89ff65350dda87b556ff102d00a7c2b909243684e01ec7602a8ffd4af5a2340",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/almost_equilateral_triangles_94.goose",
+      "compilation_ms": 89.308551,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/almost_equilateral_triangles_94.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/almost_equilateral_triangles_94.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "ff90a3eb4e9ee786b3d8568ed7ed3e6182d70aecc15a284140e39587d5dd3bce",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/amicable_chains_95.goose",
+      "compilation_ms": 112.49776,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/amicable_chains_95.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/amicable_chains_95.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "630abaf0b380ca2038bc47850b58b7860952df59641a6324673a37dec519ceb4",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/amicable_numbers_21.goose",
+      "compilation_ms": 107.18525,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/amicable_numbers_21.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/amicable_numbers_21.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "a6f695eb6d8696ab07af2122788a06ed296b9f5887882aef8fbde42ff5560a15",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/anagramic_squares_98.goose",
+      "compilation_ms": 152.806661,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/anagramic_squares_98.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/anagramic_squares_98.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "39ac104a51f69e2536bdbd39d43df54d8ae45884a9c4e17a43f6f0bd7eed898a",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/arithmetic_expressions_93.goose",
+      "compilation_ms": 128.213025,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/arithmetic_expressions_93.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/arithmetic_expressions_93.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "f93f622e31f789d8fa7a3ba99d8ee8d4e16afded5b962ba7205b8c5d590c55a8",
+      "stderr": "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/arithmetic_expressions_93.goose:7: warning: redundant `as f64`: an i64 converts to f64 implicitly here\n/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/arithmetic_expressions_93.goose:60: warning: redundant `as f64`: an i64 converts to f64 implicitly here\n/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/arithmetic_expressions_93.goose:60: warning: redundant `as f64`: an i64 converts to f64 implicitly here\n/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/arithmetic_expressions_93.goose:60: warning: redundant `as f64`: an i64 converts to f64 implicitly here\n"
+    },
+    {
+      "source": "solutions/goose/arranged_probability_100.goose",
+      "compilation_ms": 85.575335,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/arranged_probability_100.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/arranged_probability_100.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "ae5fe6671fa3134ba721b76554f68b0ad79c22e11c0807be95ba9ceda19e3cd5",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/champernownes_constant_40.goose",
+      "compilation_ms": 109.152386,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/champernownes_constant_40.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/champernownes_constant_40.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b0d67561a31352a3aef9646608e3cde23a6c862035fd037c897c6a644749fa00",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/circular_primes_35.goose",
+      "compilation_ms": 125.046201,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/circular_primes_35.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/circular_primes_35.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "4cef92292c66a8bac50296a6e76e7ee591021d640e2b0666e7e1fa8b408c4eba",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/coded_triangle_numbers_42.goose",
+      "compilation_ms": 128.712923,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/coded_triangle_numbers_42.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/coded_triangle_numbers_42.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "cf39901e704d65f8ad01858c997add8873c11d825691353554ad8e6615210cdd",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/coin_partitions_78.goose",
+      "compilation_ms": 126.066284,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/coin_partitions_78.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/coin_partitions_78.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "0fb1df0b2c6f11c987f1771ab01df77192ce42179aaf6fe00c37b47e7ab1737a",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/coin_sums_31.goose",
+      "compilation_ms": 102.110641,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/coin_sums_31.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/coin_sums_31.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "1ce5f1c57f782636532e8892eddc0fbf9187121fbe4095b97d776d21fc4cd920",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/combinatoric_selections_53.goose",
+      "compilation_ms": 104.807091,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/combinatoric_selections_53.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/combinatoric_selections_53.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "7bbf6091f6cb460deea050eb13b0665fd328ab4595eaf2305c32fdb980d52ab7",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/consecutive_prime_sum_50.goose",
+      "compilation_ms": 111.606541,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/consecutive_prime_sum_50.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/consecutive_prime_sum_50.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "02c769efda5cfe51796993620ea0b15fba1b31818fefb63a9acc555fe5e34260",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/convergents_of_e_65.goose",
+      "compilation_ms": 133.187293,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/convergents_of_e_65.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/convergents_of_e_65.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "ddd7cdc0762fee981c6b99d3417cc17015d5a60df06293a18b487d06cac31b0d",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/counting_fractions_72.goose",
+      "compilation_ms": 111.772331,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/counting_fractions_72.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/counting_fractions_72.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "beb3a1e87597842c83ff8a91d53382d0a2a44474357f8bf66190d761586e820e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/counting_fractions_in_a_range_73.goose",
+      "compilation_ms": 107.353755,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/counting_fractions_in_a_range_73.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/counting_fractions_in_a_range_73.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "cb417636ddbc71b8943ca80877a9aa4fcfc63541a8f49fded4871daff6d0e3dd",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/counting_rectangles_85.goose",
+      "compilation_ms": 95.19779,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/counting_rectangles_85.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/counting_rectangles_85.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "a0169436a82ceed2d43bbc1480fe86487677df0bfccd471f9eea98a6d09878b8",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/counting_summations_76.goose",
+      "compilation_ms": 96.434735,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/counting_summations_76.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/counting_summations_76.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "c62953da6de71d51f76ab130fdcdf3fddb793c0743bd054e69ef7707f241df3e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/counting_sundays_19.goose",
+      "compilation_ms": 120.786614,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/counting_sundays_19.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/counting_sundays_19.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "fc2dd81733222bb28515bb5a12c65358315c9ff67d2420c8898795004a6503a5",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/cube_digit_pairs_90.goose",
+      "compilation_ms": 135.9907,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/cube_digit_pairs_90.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/cube_digit_pairs_90.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "1f38398dfde036c423004504870678602c51bae8f40049aaf1108d093686b4c4",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/cubic_permutations_62.goose",
+      "compilation_ms": 276.12359,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/cubic_permutations_62.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/cubic_permutations_62.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "d228b25f2230784de8ae01e6706d73047216553563a9b7022afb27e20c567f6e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/cuboid_route_86.goose",
+      "compilation_ms": 144.817647,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/cuboid_route_86.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/cuboid_route_86.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b78f9867f29c807d6e105d78555eadf4acb35c5754f36e01d2bfede638da8182",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/cyclical_figurate_numbers_61.goose",
+      "compilation_ms": 119.510781,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/cyclical_figurate_numbers_61.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/cyclical_figurate_numbers_61.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "a99bf37a89d5b5c1b4c766b8cf1f82a5cb3bd82891ed3058924e4e056f03e5a9",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/digit_cancelling_fractions_33.goose",
+      "compilation_ms": 113.283434,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/digit_cancelling_fractions_33.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/digit_cancelling_fractions_33.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "fc97e92dd293f374f5694267bd2adfd193077a52b1f4e4e94084816ea6b76712",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/digit_factorial_chains_74.goose",
+      "compilation_ms": 124.075443,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/digit_factorial_chains_74.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/digit_factorial_chains_74.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "6dc33a403e6c9e449a1bbad32469796e2b4fd75e0363ed8af568b911296ef829",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/digit_factorials_34.goose",
+      "compilation_ms": 113.750843,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/digit_factorials_34.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/digit_factorials_34.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b65d36279d3bcb9ff5290c0c3129d9575775a9b26eeba84ed18bbd4e40d440a7",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/digit_fifth_powers_30.goose",
+      "compilation_ms": 134.027656,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/digit_fifth_powers_30.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/digit_fifth_powers_30.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "4589ea0d4b1d34043be59ffde4feec950bf55a180fae39401ed794fadbf3576b",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/diophantine_equation_66.goose",
+      "compilation_ms": 158.615216,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/diophantine_equation_66.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/diophantine_equation_66.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "5c17b3c006b8fedbc1053df7ba202ae1a8b56b8bad24cdecce0ea16404b60179",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/distinct_powers_29.goose",
+      "compilation_ms": 99.969733,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/distinct_powers_29.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/distinct_powers_29.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "852cd42acae34a08ec5afccc68675387d58ff0789b3c0850dcd5615b6893382d",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/distinct_primes_factors_47.goose",
+      "compilation_ms": 108.630465,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/distinct_primes_factors_47.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/distinct_primes_factors_47.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "918b74525a375615224d5ce4d905a9ffea203d73a30811c87f0d792bdc7637eb",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/double_base_palindromes_36.goose",
+      "compilation_ms": 95.081785,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/double_base_palindromes_36.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/double_base_palindromes_36.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "af8d7c3fb86cb672ab2931a13c9943e1efb305ad5bdc7f8bc716ff92ece4ee13",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/even_fibonacci_numbers_2.goose",
+      "compilation_ms": 94.784227,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/even_fibonacci_numbers_2.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/even_fibonacci_numbers_2.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "0bab755ba6e1ef9ef4c0e5c2d14e045fc2ae29fbc67ec4e5579bf9e5bddf5ad2",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/factorial_digit_sum_20.goose",
+      "compilation_ms": 122.564194,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/factorial_digit_sum_20.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/factorial_digit_sum_20.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "608ca2fa061afa55dd9cbddf30ca5729186d56043196bf4bafbd9c741795c03c",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/goldbachs_other_conjecture_46.goose",
+      "compilation_ms": 118.574555,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/goldbachs_other_conjecture_46.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/goldbachs_other_conjecture_46.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "c771a935c9a093487923c598fc96717d60e0f067b235ca7f8aeb4a8b03382dd9",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/highly_divisible_triangular_number_12.goose",
+      "compilation_ms": 128.15311,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/highly_divisible_triangular_number_12.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/highly_divisible_triangular_number_12.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "86ca3a6f2b845b4f3b8cfd5fa43c6341cee75949490f495ea2f57446265eb9eb",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/integer_right_triangles_39.goose",
+      "compilation_ms": 115.808917,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/integer_right_triangles_39.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/integer_right_triangles_39.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "34de9c4dfb14d9c9f7e6047c495d1ad93545c476e6d1b2b35fc59d916ae54b0f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/large_non_mersenne_prime_97.goose",
+      "compilation_ms": 78.422531,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/large_non_mersenne_prime_97.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/large_non_mersenne_prime_97.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "1ee9b4bd87b9de75757607fcee04e1f8058d6be87a201d71fb928643b6c4da1f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/large_sum_13.goose",
+      "compilation_ms": 114.99539,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/large_sum_13.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/large_sum_13.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "9d6d37e8163c561710fa6a8a6ed397927e01ad89175dddb5edc1f4e63996c462",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/largest_exponential_99.goose",
+      "compilation_ms": 111.60891,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/largest_exponential_99.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/largest_exponential_99.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "1b99969926df373bb0a0586cb37b484009e5644d884a96b05ca305a9bee9a63e",
+      "stderr": "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/largest_exponential_99.goose:10: warning: redundant `as f64`: an i64 converts to f64 implicitly here\n"
+    },
+    {
+      "source": "solutions/goose/largest_palindrome_product_4.goose",
+      "compilation_ms": 105.977456,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/largest_palindrome_product_4.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/largest_palindrome_product_4.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "c99df248fae50c4c551a3b9206891601a28bb5065abf18c451183ce7f33d7ac3",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/largest_prime_factor_3.goose",
+      "compilation_ms": 93.782736,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/largest_prime_factor_3.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/largest_prime_factor_3.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "995dcb6fd99e62fa94130c631c48fabe14f39c74f1dc73cca9eb1286949744c9",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/largest_product_in_a_grid_11.goose",
+      "compilation_ms": 102.620329,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/largest_product_in_a_grid_11.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/largest_product_in_a_grid_11.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "7d3a191ac4f03ce5bdef521d0aee56dda21321525b793d5e346306d74d71b21f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/largest_product_in_a_series_8.goose",
+      "compilation_ms": 110.035853,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/largest_product_in_a_series_8.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/largest_product_in_a_series_8.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "32cc2185726244b166cfeb0d9b0f46993b5198ad7ebfee2aa6d2d954b0f0459c",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/lattice_paths_15.goose",
+      "compilation_ms": 95.073818,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/lattice_paths_15.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/lattice_paths_15.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "75ae51040c0218bf701a62584ea9f0ad6dda58405377cfd104526177d9ab35b5",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/lexicographic_permutations_24.goose",
+      "compilation_ms": 109.274581,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/lexicographic_permutations_24.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/lexicographic_permutations_24.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "e21f0108dab69e3899deb90edff0cd8b76a777c838599f26d82fa11e903265c5",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/longest_collatz_sequence_14.goose",
+      "compilation_ms": 106.647464,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/longest_collatz_sequence_14.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/longest_collatz_sequence_14.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "0736e7674164e0d0c48b91b5e37d620e4a1fd7f1af737e4f45d1cc0452d3fe74",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/lychrel_numbers_55.goose",
+      "compilation_ms": 145.471312,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/lychrel_numbers_55.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/lychrel_numbers_55.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "ff88a5f68c3c3ce92516fee8d752afe01305d18e3445c077a16e8a1eea010b07",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/magic_5_gon_ring_68.goose",
+      "compilation_ms": 135.735585,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/magic_5_gon_ring_68.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/magic_5_gon_ring_68.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "d4724f2ae31447c2989ef21e0902b7558e35a4a0f32dbd38db4d2565886a9299",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/maximum_path_sum_i_18.goose",
+      "compilation_ms": 113.693654,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/maximum_path_sum_i_18.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/maximum_path_sum_i_18.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "74822ac859262f8101bdd535ae957d7fd946c790d62e0c626a802b8089b66533",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/maximum_path_sum_ii_67.goose",
+      "compilation_ms": 102.015166,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/maximum_path_sum_ii_67.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/maximum_path_sum_ii_67.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "a484f4850bae8d34550e2aa14a3a92c0e4df157ad755019bbc246b997d76a9c0",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/monopoly_odds_84.goose",
+      "compilation_ms": 125.863188,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/monopoly_odds_84.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/monopoly_odds_84.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "19380244eea0924855eeed42e7afc8876a7c3233f9eef74c54e4734ceabded83",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/multiples_of_3_or_5_1.goose",
+      "compilation_ms": 124.539217,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/multiples_of_3_or_5_1.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/multiples_of_3_or_5_1.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "33bf6e9421693cf3f0dd7f0d1628423ba38f952498a1c77893302f2deccbf21f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/names_scores_22.goose",
+      "compilation_ms": 335.356673,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/names_scores_22.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/names_scores_22.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b47b9d0788af2533238cdfd81fbfa8e2f9e7e6bbb3a3332a926be277cc1fa6c0",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/non_abundant_sums_23.goose",
+      "compilation_ms": 116.623679,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/non_abundant_sums_23.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/non_abundant_sums_23.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "d845fc731b1d7d21f09c71a018994b520d875c7ca6f1cffd2f941f5f4b270514",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/number_letter_counts_17.goose",
+      "compilation_ms": 100.033215,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/number_letter_counts_17.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/number_letter_counts_17.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "61863867224b657a6de7f32989fb90136e2b8f8a824d7a6149af09302d8105a1",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/number_spiral_diagonals_28.goose",
+      "compilation_ms": 105.811103,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/number_spiral_diagonals_28.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/number_spiral_diagonals_28.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "572e7320473a19d64940877a265a3bc6b0bad0f5284ef46c40a9a19e654f00ee",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/odd_period_square_roots_64.goose",
+      "compilation_ms": 117.420741,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/odd_period_square_roots_64.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/odd_period_square_roots_64.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "23ba17ee1a6bebd3f27010ddfa35c7e3fcc54442869e2485eb671db1b2867da5",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/ordered_fractions_71.goose",
+      "compilation_ms": 122.029243,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/ordered_fractions_71.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/ordered_fractions_71.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "580600b58fa31c7846a5a275a9598b30b529b06a347af87518df5b1a8b9df30b",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/pandigital_multiples_38.goose",
+      "compilation_ms": 123.485885,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/pandigital_multiples_38.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/pandigital_multiples_38.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "dcfc837c145106c18ffdd785fcef65bb19d89dc3cc3afc2bafdf94c89b37ae7b",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/pandigital_prime_41.goose",
+      "compilation_ms": 108.168594,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/pandigital_prime_41.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/pandigital_prime_41.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "383226712b8a770ad1e0561d3bad9284fb73e14798098cc7c1d20ec657c19ea6",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/pandigital_products_32.goose",
+      "compilation_ms": 110.061137,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/pandigital_products_32.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/pandigital_products_32.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "2a7cbb3a3ceddece676a91e0d230661d326486c72281dd60fe78d9c92846f16f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/passcode_derivation_79.goose",
+      "compilation_ms": 171.729403,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/passcode_derivation_79.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/passcode_derivation_79.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "4cd5fb17f4c7c489c67019ead61d8372167c573cdcf987ff95785ab2f5bc168e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/path_sum_four_ways_83.goose",
+      "compilation_ms": 126.868859,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/path_sum_four_ways_83.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/path_sum_four_ways_83.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "80b946cc0943c37a7cb576d35c7590445abbef04db31d3795770c75ca967175b",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/path_sum_three_ways_82.goose",
+      "compilation_ms": 132.564356,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/path_sum_three_ways_82.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/path_sum_three_ways_82.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "d5f7117ccb5dd3469c535a6f2c7b49e49cf1d6bf85d23f92323783e8c96ce86e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/path_sum_two_ways_81.goose",
+      "compilation_ms": 104.237672,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/path_sum_two_ways_81.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/path_sum_two_ways_81.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b2fcb479423329ded3fd8a560ac5b6eac11f36a934b458d211a780bdf1f8da68",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/pentagon_numbers_44.goose",
+      "compilation_ms": 104.623693,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/pentagon_numbers_44.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/pentagon_numbers_44.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "032f150e46a5d6db6b38b2a251ae0c9a58545674ad9c9f97495b026d8f771c80",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/permuted_multiples_52.goose",
+      "compilation_ms": 102.499556,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/permuted_multiples_52.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/permuted_multiples_52.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "0bf3ea343ff48c64ec0e67f8341dea3d4755021c41dc721decfa66a5baa9d429",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/poker_hands_54.goose",
+      "compilation_ms": 233.813041,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/poker_hands_54.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/poker_hands_54.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "35ebe3336a24f8ef96bbb19cddfae67b747011cdf80e21456bdd3faebc6bee71",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/power_digit_sum_16.goose",
+      "compilation_ms": 106.401749,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/power_digit_sum_16.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/power_digit_sum_16.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "df72954660facd3493ecc5b1681a78ed008b3b587f3a9662d583a01ad403e4c9",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/powerful_digit_counts_63.goose",
+      "compilation_ms": 128.780651,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/powerful_digit_counts_63.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/powerful_digit_counts_63.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "c75ef677d71cf931a0c9608aed2596a5767de0514947ad622686fde2db5115e6",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/powerful_digit_sum_56.goose",
+      "compilation_ms": 111.366864,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/powerful_digit_sum_56.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/powerful_digit_sum_56.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "d4d55107ece699d518f53446a336f40fbd532c79ce6550a1314c02534f641433",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/prime_digit_replacements_51.goose",
+      "compilation_ms": 135.050538,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/prime_digit_replacements_51.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/prime_digit_replacements_51.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "bd011dffeaaeb68ceb952443196fbef9aba4d137ddbc2cf4a564532eab58a8c3",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/prime_pair_sets_60.goose",
+      "compilation_ms": 151.159698,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/prime_pair_sets_60.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/prime_pair_sets_60.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "32eff0fb52f7addce66f5691fd3a9e9627b659c35125932e14e853a9aa35211e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/prime_permutations_49.goose",
+      "compilation_ms": 124.452526,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/prime_permutations_49.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/prime_permutations_49.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "6c6863c0755c8dbeb78dc9333c10ec470aff53818d5518b6a409920b5d46e8a1",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/prime_power_triples_87.goose",
+      "compilation_ms": 142.37193,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/prime_power_triples_87.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/prime_power_triples_87.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "8fcda9ccde8d1ae4aaadef63806d56d0a5a1650446fbf385729b33d7025f8343",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/prime_summations_77.goose",
+      "compilation_ms": 114.498751,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/prime_summations_77.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/prime_summations_77.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b488ded262a046b8e20954fc9f5ffe125507f2346396e9ea53ea79541f8fc4a8",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/product_sum_numbers_88.goose",
+      "compilation_ms": 100.262755,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/product_sum_numbers_88.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/product_sum_numbers_88.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "ca837bf537ac873580ecfef65139bc39a10ef97c5466b0b94885cdf08e59d4ea",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/quadratic_primes_27.goose",
+      "compilation_ms": 104.363366,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/quadratic_primes_27.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/quadratic_primes_27.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "df911fc3ebb831bc0c51367afe9a15ddd7bcef4d6d5d7673125aad78064ac204",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/reciprocal_cycles_26.goose",
+      "compilation_ms": 105.555899,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/reciprocal_cycles_26.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/reciprocal_cycles_26.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "4bd605c5d454757cf07f54b00ed7dcb645b1a5ee617410b61119b2de99878ed8",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/right_triangles_with_integer_coordinates_91.goose",
+      "compilation_ms": 96.743023,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/right_triangles_with_integer_coordinates_91.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/right_triangles_with_integer_coordinates_91.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b2f258beeda1c0a2a5b1b8189e8586cf2d8a1f20dc3c15a839a46e3af0022c93",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/roman_numerals_89.goose",
+      "compilation_ms": 124.840796,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/roman_numerals_89.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/roman_numerals_89.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "bb3e320afdfb7dd8bc6f06fd0a66dd8ec7d28974e696ef88c5f490615d53aa1f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/self_powers_48.goose",
+      "compilation_ms": 95.055394,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/self_powers_48.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/self_powers_48.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "de2f22ebb76f1a5841d94a3718b4a84854e95faa31eb207926e752fd6d24637c",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/singular_integer_right_triangles_75.goose",
+      "compilation_ms": 147.27387,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/singular_integer_right_triangles_75.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/singular_integer_right_triangles_75.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "d8e7b546acf879d532bc8cde8e179bb5ce4d51772eb212ccb4de64ee2bc2b280",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/smallest_multiple_5.goose",
+      "compilation_ms": 101.273793,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/smallest_multiple_5.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/smallest_multiple_5.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "86fa4a79b3316a7d3a4097d8bc1465dbdbd29b064436f12cf78418af3b9f3fc9",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/special_pythagorean_triplet_9.goose",
+      "compilation_ms": 87.387795,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/special_pythagorean_triplet_9.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/special_pythagorean_triplet_9.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "2df568063c3faaf4cf58d247d8e9453a495dc41177e8787895bf6e6c59505b3f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/spiral_primes_58.goose",
+      "compilation_ms": 93.330899,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/spiral_primes_58.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/spiral_primes_58.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "20861f92d348d1633d82a5d73cfcc45c0ac5bf4b4aa19fa62e0d9989f7efc82e",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/square_digit_chains_92.goose",
+      "compilation_ms": 108.322961,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/square_digit_chains_92.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/square_digit_chains_92.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "c0884dba76c35b27f970e3adbe81a6215eff1a2dd44881cb1b2c28e5d79c7a07",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/square_root_convergents_57.goose",
+      "compilation_ms": 128.341098,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/square_root_convergents_57.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/square_root_convergents_57.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "b286ccaa0e28c6495e00cc20ee1fdcbffee9900adf17b3fcd0784ed344d5578f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/square_root_digital_expansion_80.goose",
+      "compilation_ms": 231.225254,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/square_root_digital_expansion_80.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/square_root_digital_expansion_80.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "30dbcd179bec7c93839a4debb03ac870c6204656fdedd7dabe1c316817befea0",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/su_doku_96.goose",
+      "compilation_ms": 164.552183,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/su_doku_96.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/su_doku_96.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "eedafb2d5d7558941f88cc6fda0ae52b59e3a706db0d8ec312cdf0d43db0c932",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/sub_string_divisibility_43.goose",
+      "compilation_ms": 120.850761,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/sub_string_divisibility_43.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/sub_string_divisibility_43.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "217cd1b51dffc7364647b48c7b1ada897292dea8844504bccc787b3e10f9ed8f",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/sum_square_difference_6.goose",
+      "compilation_ms": 84.726713,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/sum_square_difference_6.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/sum_square_difference_6.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "0318cd5991e6c23bd9acade6db404135343408cd46fbd107fe74dfeabf09564a",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/summation_of_primes_10.goose",
+      "compilation_ms": 93.729852,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/summation_of_primes_10.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/summation_of_primes_10.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "dbaabb1aa49280a5b44e1627ddd41d04530d8d14074584f2375c32b94299b67d",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/totient_maximum_69.goose",
+      "compilation_ms": 114.582938,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/totient_maximum_69.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/totient_maximum_69.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "bb47fc295c4618d69840dda44766814701a2a51bebfdfc156460717a2832ce3a",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/totient_permutation_70.goose",
+      "compilation_ms": 125.249587,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/totient_permutation_70.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/totient_permutation_70.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "a3011396eeb8c77230e3b042b279935dab1297ebf70be86632e3c2d3b1b47091",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/triangular_pentagonal_and_hexagonal_45.goose",
+      "compilation_ms": 120.171021,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/triangular_pentagonal_and_hexagonal_45.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/triangular_pentagonal_and_hexagonal_45.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "000df15d00692e8ca3b9f5f52c43076cf7cdb6f2de2745425ba7b1e1600da2e3",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/truncatable_primes_37.goose",
+      "compilation_ms": 136.031397,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/truncatable_primes_37.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/truncatable_primes_37.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "02001d0598793fa21e2e7a84dbaea81916a467fc352c469af6c278281b58ada5",
+      "stderr": ""
+    },
+    {
+      "source": "solutions/goose/xor_decryption_59.goose",
+      "compilation_ms": 129.018319,
+      "command": [
+        "/workspace/scratch/e83a2e1e9a8e/goose-compiler/build/goose",
+        "build",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/solutions/goose/xor_decryption_59.goose",
+        "--cc",
+        "gcc",
+        "-o",
+        "/workspace/scratch/e83a2e1e9a8e/projectEuler/build/goose/xor_decryption_59.pending"
+      ],
+      "exit_code": 0,
+      "build_inputs_sha256": "bbb6194f63a522ef9f66fac14c7b3088b8b3ba9b9fe9f5c18f6a4273788e7a66",
+      "stderr": ""
+    }
+  ]
+}

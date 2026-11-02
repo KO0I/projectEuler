@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   validate:
-    name: C, Rust, Gforth and Factor on one machine
+    name: C, Rust, Gforth, Factor and Goose on one machine
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: Install language and documentation dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends gforth libgmp-dev python3-venv texlive-latex-recommended lmodern
+          sudo apt-get install -y --no-install-recommends gforth libgmp-dev cmake g++ python3-venv texlive-latex-recommended lmodern
           python3 -m venv .venv
           .venv/bin/pip install --disable-pip-version-check numpy matplotlib
           rustup default stable
@@ -49,6 +49,8 @@ jobs:
         run: |
           make unit-c unit-forth unit-python PYTHON=.venv/bin/python
           cargo test --release --lib --manifest-path solutions/rust/Cargo.toml -- --skip small_problems
+      - name: Build pinned Goose compiler
+        run: make setup-goose
       - name: Build optimized executables
         run: make c-release rust-release
       - name: Validate and profile each implemented language subset exactly once

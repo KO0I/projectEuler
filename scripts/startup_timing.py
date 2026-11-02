@@ -37,6 +37,8 @@ def isolated_factor_environment(*, root: Path = ROOT) -> dict[str, str]:
 def probe_command(language: str, *, root: Path = ROOT, factor_vm: str | None = None) -> list[str]:
     """No-op command matching the solver's runtime and invocation style."""
     ext = ".exe" if os.name == "nt" else ""
+    if language == "goose":
+        return [str(root / "build" / "bench" / ("noop-goose" + ext))]
     if language == "c":
         return [str(root / "build" / "bench" / ("noop-c" + ext))]
     if language == "rust":

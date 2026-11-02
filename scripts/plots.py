@@ -24,8 +24,8 @@ BASE = ROOT / "build" / "profile"
 # Light fills keep dense groups of bars readable without making any language
 # visually dominant.  Language identity also comes from the white pattern, so
 # the figures remain usable when hue perception or printing conditions vary.
-COLORS = {"c": "#a9d6e5", "rust": "#f4b6a6", "forth": "#cfc4e8", "factor": "#b8e0c2"}
-HATCHES = {"c": "...", "rust": "\\\\\\", "forth": "xxx", "factor": "oo"}
+COLORS = {"c": "#a9d6e5", "rust": "#f4b6a6", "forth": "#cfc4e8", "factor": "#b8e0c2", "goose": "#eedc9a"}
+HATCHES = {"c": "...", "rust": "\\\\\\", "forth": "xxx", "factor": "oo", "goose": "++"}
 STARTUP_COLOR = "#d2d2d2"
 STARTUP_HATCH = "/////"
 OVERHEAD_COLOR = "#fafafa"

@@ -1,0 +1,46 @@
+name: Goose solutions 1 through 100
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'solutions/goose/**'
+      - 'support/goose/**'
+      - 'support/bench/noop.goose'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'Makefile'
+      - '.github/workflows/goose-validation.yml'
+  pull_request:
+    paths:
+      - 'solutions/goose/**'
+      - 'support/goose/**'
+      - 'support/bench/noop.goose'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'Makefile'
+      - '.github/workflows/goose-validation.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build pinned Goose compiler
+        run: make setup-goose
+      - name: Check helpers, coverage and inputs
+        run: make unit-goose check-goose-coverage check-inputs
+      - name: Build optimized executables and measure Goose
+        run: |
+          make goose-release
+          python3 scripts/bench.py --mode profile --languages goose --timeout 60
+      - name: Preserve measured compilation and runtime observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goose-first-100-${{ github.run_id }}
+          path: |
+            build/goose/compilation.json
+            build/profile/
+          if-no-files-found: error

@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "description": "Project Euler 1 through 255 in C and Rust, through 120 in Gforth, and 191 selected native Factor implementations (71 in the 121–255 extension). Answers are exact output strings, including decimals, hexadecimal, fractions, and coordinate lists.",
+  "description": "Project Euler 1 through 255 in C and Rust, through 120 in Gforth, and 191 selected native Factor implementations (71 in the 121\u2013255 extension). Answers are exact output strings, including decimals, hexadecimal, fractions, and coordinate lists. Goose has native problem-owned implementations for 1\u2013100.",
   "baseline_commit": "e44f23ed50de1df537097dfa62e339a688e128ba",
   "problems": [
     {
@@ -12,7 +12,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=1"
@@ -26,7 +27,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=2"
@@ -40,7 +42,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=3"
@@ -54,7 +57,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=4"
@@ -68,7 +72,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=5"
@@ -82,7 +87,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=6"
@@ -96,7 +102,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=7"
@@ -110,7 +117,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=8"
@@ -124,7 +132,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=9"
@@ -138,7 +147,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=10"
@@ -152,7 +162,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=11"
@@ -166,7 +177,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=12"
@@ -180,7 +192,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=13"
@@ -194,7 +207,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=14"
@@ -208,7 +222,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=15",
@@ -223,7 +238,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=16"
@@ -237,7 +253,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=17"
@@ -251,7 +268,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=18",
@@ -266,7 +284,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=19"
@@ -280,7 +299,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=20"
@@ -294,7 +314,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=21"
@@ -308,7 +329,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=22"
@@ -322,7 +344,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=23",
@@ -337,7 +360,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=24",
@@ -352,7 +376,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=25"
@@ -366,7 +391,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=26",
@@ -381,7 +407,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=27"
@@ -395,7 +422,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=28"
@@ -409,7 +437,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=29"
@@ -423,7 +452,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=30"
@@ -437,7 +467,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=31",
@@ -452,7 +483,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=32",
@@ -467,7 +499,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=33",
@@ -482,7 +515,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=34"
@@ -496,7 +530,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=35"
@@ -510,7 +545,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=36",
@@ -525,7 +561,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=37",
@@ -540,7 +577,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=38",
@@ -555,7 +593,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=39"
@@ -569,7 +608,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=40"
@@ -583,7 +623,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=41",
@@ -598,7 +639,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=42",
@@ -613,7 +655,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=43",
@@ -628,7 +671,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=44"
@@ -642,7 +686,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=45",
@@ -657,7 +702,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=46"
@@ -671,7 +717,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=47"
@@ -685,7 +732,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=48"
@@ -699,7 +747,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=49",
@@ -714,7 +763,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=50"
@@ -728,7 +778,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=51",
@@ -743,7 +794,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=52",
@@ -758,7 +810,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=53",
@@ -773,7 +826,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=54",
@@ -788,7 +842,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=55"
@@ -802,7 +857,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=56",
@@ -817,7 +873,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=57",
@@ -832,7 +889,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=58",
@@ -847,7 +905,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=59",
@@ -862,7 +921,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=60",
@@ -877,7 +937,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=61",
@@ -892,7 +953,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=62",
@@ -907,7 +969,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=63",
@@ -922,7 +985,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=64",
@@ -937,7 +1001,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=65",
@@ -952,7 +1017,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=66",
@@ -967,7 +1033,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=67",
@@ -982,7 +1049,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=68",
@@ -997,7 +1065,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=69"
@@ -1011,7 +1080,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=70",
@@ -1026,7 +1096,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=71",
@@ -1041,7 +1112,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=72",
@@ -1056,7 +1128,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=73",
@@ -1071,7 +1144,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=74",
@@ -1086,7 +1160,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=75",
@@ -1101,7 +1176,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=76",
@@ -1116,7 +1192,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=77",
@@ -1131,7 +1208,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=78",
@@ -1146,7 +1224,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=79",
@@ -1161,7 +1240,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=80",
@@ -1176,7 +1256,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=81",
@@ -1191,7 +1272,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=82",
@@ -1206,7 +1288,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=83",
@@ -1221,7 +1304,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=84",
@@ -1236,7 +1320,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=85",
@@ -1251,7 +1336,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=86",
@@ -1266,7 +1352,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=87",
@@ -1281,7 +1368,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=88",
@@ -1296,7 +1384,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=89",
@@ -1311,7 +1400,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=90",
@@ -1326,7 +1416,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=91",
@@ -1341,7 +1432,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": true,
       "source": "https://projecteuler.net/problem=92"
@@ -1355,7 +1447,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=93",
@@ -1370,7 +1463,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=94",
@@ -1385,7 +1479,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=95",
@@ -1400,7 +1495,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=96",
@@ -1415,7 +1511,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=97",
@@ -1430,7 +1527,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=98",
@@ -1445,7 +1543,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=99",
@@ -1460,7 +1559,8 @@
         "c",
         "rust",
         "forth",
-        "factor"
+        "factor",
+        "goose"
       ],
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=100",

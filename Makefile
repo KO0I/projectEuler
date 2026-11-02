@@ -60,10 +60,10 @@ unit-forth: forth-check
 	gforth solutions/forth/test-solvers.fs
 unit-python:
 	$(PYTHON) -m unittest discover -s tests -p 'test_*.py'
-unit: unit-c unit-rust unit-forth unit-python
+unit: unit-c unit-rust unit-forth unit-python unit-goose
 
-test: c-release rust-release forth-check factor-check check-c-coverage check-inputs
-	$(PYTHON) scripts/bench.py --mode test --languages c rust forth factor
+test: c-release rust-release forth-check factor-check goose-release check-goose-coverage check-c-coverage check-inputs
+	$(PYTHON) scripts/bench.py --mode test --languages c rust forth factor goose
 test-c: c-release check-c-coverage check-inputs
 	$(PYTHON) scripts/bench.py --mode test --timeout $(TEST_TIMEOUT) --languages c
 test-rust: rust-release
@@ -79,15 +79,15 @@ define profile_command
 	plot_status=0; $(MAKE) plots || plot_status=$$?; \
 	if [ $$status -ne 0 ]; then exit $$status; else exit $$plot_status; fi
 endef
-# Profile explicit manifest coverage: C/Rust 1–255; Gforth 1–120; Factor 191 entries.
+# Profile manifest coverage: C/Rust 1–255; Gforth 1–120; Factor 191; Goose 1–100.
 # Uses one shared run ID and generates all cross-language plots; never mixes runs.
 run_profile_all: profile
 setup-arch:
 	./setup.sh
 check-arch-setup:
 	./setup.sh --check
-profile: c-release rust-release $(STARTUP_C) $(STARTUP_RUST) forth-check factor-check check-c-coverage check-inputs
-	$(call profile_command,c rust forth factor)
+profile: c-release rust-release $(STARTUP_C) $(STARTUP_RUST) forth-check factor-check goose-release check-goose-coverage check-c-coverage check-inputs
+	$(call profile_command,c rust forth factor goose)
 profile-c: c-release $(STARTUP_C) check-c-coverage check-inputs
 	$(call profile_command,c)
 profile-rust: rust-release $(STARTUP_RUST)
@@ -128,3 +128,23 @@ check-scaffolds:
 	$(PYTHON) scripts/scaffold_euler.py --check
 refresh-scaffolds:
 	$(PYTHON) scripts/scaffold_euler.py --refresh
+
+# Goose uses a pinned source compiler; timings use optimized native executables.
+GOOSE ?= $(CURDIR)/.toolchains/goose/build/goose
+export GOOSE
+.PHONY: goose-release test-goose profile-goose setup-goose check-goose-coverage
+goose-release:
+	$(PYTHON) scripts/build_goose.py
+check-goose-coverage:
+	$(PYTHON) scripts/check_goose.py
+test-goose: goose-release check-goose-coverage check-inputs
+	$(PYTHON) scripts/bench.py --mode test --timeout $(TEST_TIMEOUT) --languages goose
+profile-goose: goose-release check-goose-coverage check-inputs
+	$(call profile_command,goose)
+setup-goose:
+	bash scripts/setup_goose.sh
+.PHONY: unit-goose
+unit-goose:
+	@mkdir -p build/tests
+	$(GOOSE) build tests/goose_helpers.goose --debug -o build/tests/goose_helpers$(EXE)
+	./build/tests/goose_helpers$(EXE)

@@ -15,9 +15,12 @@ class CoverageTests(unittest.TestCase):
         problems = json.loads((ROOT / "tests/answers.json").read_text())["problems"]
         self.assertEqual({p["number"] for p in bench.selected_problems("c", problems)},
                          set(range(1, 256)))
-        for language in ("rust", "forth", "factor"):
+        for language, expected in (("rust", set(range(1,256))),
+                                   ("forth", set(range(1,121))),
+                                   ("factor", {p["number"] for p in problems if "factor" in p["languages"]}),
+                                   ("goose", set(range(1,101)))):
             self.assertEqual({p["number"] for p in bench.selected_problems(language, problems)},
-                             set(range(1, 121)))
+                             expected)
 
     def test_c_only_entry_is_excluded_from_rust_and_forth(self):
         problems = [{"number": 120, "languages": ["c"]}]

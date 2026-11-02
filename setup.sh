@@ -39,7 +39,7 @@ if [[ "$CHECK_ONLY" == 0 ]] && [[ "$NO_PACMAN" == 0 ]]; then
     echo 'pacman is unavailable. This script supports Arch Linux (or --no-pacman).' >&2
     exit 1
   fi
-  packages=(base-devel gmp gforth rust python python-numpy python-matplotlib curl tar)
+  packages=(base-devel gmp gforth rust python python-numpy python-matplotlib curl tar git cmake)
   echo "Installing Arch packages: ${packages[*]}"
   if [[ "${EUID}" -eq 0 ]]; then
     pacman -S --needed --noconfirm "${packages[@]}"
@@ -47,6 +47,12 @@ if [[ "$CHECK_ONLY" == 0 ]] && [[ "$NO_PACMAN" == 0 ]]; then
     command -v sudo >/dev/null || { echo 'sudo is required to install Arch packages.' >&2; exit 1; }
     sudo pacman -S --needed --noconfirm "${packages[@]}"
   fi
+fi
+
+if [[ "$CHECK_ONLY" == 0 ]]; then
+  bash "$ROOT/scripts/setup_goose.sh"
+else
+  "${GOOSE:-$ROOT/.toolchains/goose/build/goose}" version
 fi
 
 factor_dir="$ROOT/.toolchains/factor"

@@ -46,6 +46,22 @@ class StartupPlotTests(unittest.TestCase):
                    + [{'status': 'timeout'}] * 5)
         self.assertEqual(plots.status_summary(records), '115 pass, 5 timeout')
 
+    def test_problem_ranges_are_readable_and_complete(self):
+        groups = plots.problem_ranges(range(1, 256))
+        self.assertEqual([(group[0], group[-1]) for group in groups],
+                         [(1, 50), (51, 100), (101, 150),
+                          (151, 200), (201, 255)])
+        self.assertEqual([number for group in groups for number in group],
+                         list(range(1, 256)))
+
+    def test_range_legend_does_not_report_status_from_another_figure(self):
+        rows = {'forth': {
+            33: {'status': 'timeout'},
+            201: {'status': 'pass'},
+        }}
+        handles = plots.result_marker_handles(rows, ['forth'], [201])
+        self.assertNotIn('Timed out', [handle.get_label() for handle in handles])
+
     def test_breakdown_bar_has_two_colors_hatches_and_boundary_line(self):
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots()
@@ -71,9 +87,10 @@ class StartupPlotTests(unittest.TestCase):
                         'suite_wall_ms':9.0, 'passing_child_runtime_ms':8.0}}}
             data = {1:self.row(1,'c',3,1), 2:self.row(2,'c',5,1)}
             rows = {'c':data}
-            plots.runtime_by_problem(rows, info, Path(d))
+            stems = plots.runtime_by_problem(rows, info, Path(d))
             plots.totals(rows, info, Path(d))
-            self.assertTrue((Path(d)/'runtime_by_problem.svg').is_file())
+            self.assertEqual(stems, ['runtime_by_problem_001_002'])
+            self.assertTrue((Path(d)/'runtime_by_problem_001_002.svg').is_file())
             self.assertTrue((Path(d)/'totals.pdf').is_file())
 
     def test_matched_subset_plot_has_both_components(self):

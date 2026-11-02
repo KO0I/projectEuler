@@ -30,6 +30,7 @@ OVERHEAD_HATCH = ".."
 EDGE = "#202020"
 TIMEOUT_COLOR = "#b35c00"
 FAILURE_COLOR = "#9c1c1c"
+PROBLEMS_PER_FIGURE = 50
 
 
 def parts(row: dict) -> tuple[float, float | None, float | None]:
@@ -130,7 +131,9 @@ def legend_handles(languages, *, overhead: bool = False, unattributed: bool = Fa
 
 def result_marker_handles(rows, languages, problem_numbers):
     """Describe only result states that occur in this saved run."""
-    statuses = {row["status"] for language in languages for row in rows[language].values()}
+    statuses = {rows[language][number]["status"]
+                for language in languages for number in problem_numbers
+                if number in rows[language]}
     handles = []
     if "timeout" in statuses:
         handles.append(Line2D([], [], linestyle="none", marker="v",
@@ -169,12 +172,42 @@ def available_medians(info):
     return "Minimal startup medians: " + "; ".join(medians)
 
 
-def runtime_by_problem(rows, info, out):
-    numbers = sorted(info["problems"])
-    languages = info["languages"]
-    fig, ax = plt.subplots(figsize=(18, 7))
-    width = 0.8 / len(languages)
+def problem_ranges(numbers, size=PROBLEMS_PER_FIGURE):
+    """Split ordered problem IDs into stable, readable chart ranges."""
+    if size < 1:
+        raise ValueError("Problem range size must be positive")
+    ordered = sorted(numbers)
+    groups = [ordered[start:start + size] for start in range(0, len(ordered), size)]
+    # Avoid a nearly empty final figure such as 251 to 255. A small remainder is
+    # easier to read when appended to the preceding range, which is still close
+    # to the target width.
+    if len(groups) > 1 and len(groups[-1]) < size // 2:
+        groups[-2].extend(groups.pop())
+    return groups
+
+
+def runtime_scale(rows, languages, numbers):
+    """Use one log scale across every range so separate figures stay comparable."""
     positive = []
+    for language in languages:
+        for number in numbers:
+            row = rows[language].get(number)
+            if not row or row["status"] != "pass":
+                continue
+            total, startup, _ = parts(row)
+            positive.append(total)
+            if startup is not None:
+                positive.append(startup)
+    if not positive:
+        return None
+    return min(positive) / 1.75, max(positive) * 2
+
+
+def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
+    """Render one readable problem range without changing the measured data."""
+    languages = info["languages"]
+    fig, ax = plt.subplots(figsize=(16, 7))
+    width = 0.8 / len(languages)
     unattributed = False
     for index, language in enumerate(languages):
         xs = np.arange(len(numbers)) + (index - (len(languages) - 1) / 2) * width
@@ -182,10 +215,7 @@ def runtime_by_problem(rows, info, out):
             row = rows[language].get(number)
             if row and row["status"] == "pass":
                 total, startup, execution = parts(row)
-                positive.append(total)
-                if startup is not None:
-                    positive.append(startup)
-                else:
+                if startup is None:
                     unattributed = True
                 draw_timed_bar(ax, x, width, total, startup, execution, language)
             else:
@@ -199,15 +229,14 @@ def runtime_by_problem(rows, info, out):
                 else:
                     ax.plot(x, .02, "x", transform=ax.get_xaxis_transform(),
                             color=FAILURE_COLOR, markersize=5)
-    if positive:
+    if scale:
         ax.set_yscale("log")
-        ax.set_ylim(bottom=min(positive) / 1.75, top=max(positive) * 2)
+        ax.set_ylim(*scale)
     ax.set_xticks(np.arange(len(numbers)), [str(n) for n in numbers])
-    if len(numbers) > 50:
-        ax.tick_params(axis="x", labelrotation=90, labelsize=7)
+    ax.tick_params(axis="x", labelrotation=90, labelsize=8)
     ax.set_xlabel("Project Euler problem number")
     ax.set_ylabel("One measured child process [ms] (log scale)")
-    ax.set_title("Startup baseline and appended execution time by Euler problem")
+    ax.set_title(f"Per-problem runtime: Project Euler {numbers[0]} to {numbers[-1]}")
     ax.grid(axis="y", linestyle=":", alpha=.4)
     handles = legend_handles(languages, unattributed=unattributed)
     handles.extend(result_marker_handles(rows, languages, numbers))
@@ -220,7 +249,19 @@ def runtime_by_problem(rows, info, out):
              "No warm-up or solver repeats; compilation excluded; no statistical error bars.", fontsize=8)
     fig.text(.01, .004, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)
     fig.tight_layout(rect=(0, .105, 1, 1))
-    write(fig, out, "runtime_by_problem")
+    write(fig, out, stem)
+
+
+def runtime_by_problem(rows, info, out):
+    """Render fixed-size per-problem figures on one shared runtime scale."""
+    numbers = sorted(info["problems"])
+    scale = runtime_scale(rows, info["languages"], numbers)
+    stems = []
+    for group in problem_ranges(numbers):
+        stem = f"runtime_by_problem_{group[0]:03d}_{group[-1]:03d}"
+        runtime_by_problem_panel(rows, info, out, group, scale, stem)
+        stems.append(stem)
+    return stems
 
 
 def totals(rows, info, out):
@@ -372,13 +413,20 @@ def main():
     except (OSError, ValueError, KeyError) as exc:
         parser.error(str(exc))
     run_plots = run / "plots"
+    # Range names are derived from the current manifest. Remove older range
+    # files first so changing the range size cannot publish stale charts.
+    run_plots.mkdir(parents=True, exist_ok=True)
+    for stale in run_plots.glob("runtime_by_problem*.*"):
+        stale.unlink()
     runtime_by_problem(rows, info, run_plots)
     totals(rows, info, run_plots)
     matched_subset_totals(rows, info, run_plots)
 
     latest_plots = BASE / "latest-plots"
     latest_plots.mkdir(parents=True, exist_ok=True)
-    for stem in ("runtime_by_problem", "totals", "matched_subset_totals"):
+    for stale in latest_plots.glob("runtime_by_problem*.*"):
+        stale.unlink()
+    for stem in ("totals", "matched_subset_totals"):
         for extension in ("svg", "png", "pdf"):
             (latest_plots / f"{stem}.{extension}").unlink(missing_ok=True)
     for source in run_plots.iterdir():

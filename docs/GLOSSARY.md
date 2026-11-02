@@ -8,9 +8,14 @@ existing variants directories preserve the original implementation.
 after addressing a known defect. This status alone is not evidence of correctness.
 
 **Validated Solution:** A buildable program that prints exactly one signed or
-unsigned decimal integer and whose exit status and answer match the versioned
+canonical one-line answer string and whose exit status and answer match the versioned
 fixture in \`tests/answers.json\`. Edge tests and toolchain availability must also
 be reported; passing one reference answer does not establish a proof.
+
+**Solution Scaffold:** An explicitly incomplete language-specific starter file
+containing official problem metadata and an entrypoint shape. It is excluded from
+implementation coverage, builds, answer validation, and profiling until replaced
+by a solution.
 
 **Language Port:** An independently implemented solution in C, Rust, or Forth
 with the same problem semantics and reference answer. It need not duplicate

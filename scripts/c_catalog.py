@@ -14,15 +14,17 @@ def answer_suffix(answer: str) -> str:
 def main() -> None:
     manifest = json.loads((ROOT / "tests/answers.json").read_text())
     problems = sorted(manifest["problems"], key=lambda p: p["number"])
-    new = [p for p in problems if not p["covered_by_report"]]
-    covered = [p["number"] for p in problems if p["covered_by_report"]]
+    first_120 = [p for p in problems if p["number"] <= 120]
+    new = [p for p in first_120 if not p["covered_by_report"]]
+    covered = [p["number"] for p in first_120 if p["covered_by_report"]]
     index = ["# Project Euler solution index", "",
-        "C covers every official problem number from 1 through 120. The 37 solutions already",
-        "addressed in the report are retained; the other 83 have new C implementations.", "",
+        "C covers every official problem number from 1 through 255. The 37 solutions already",
+        "addressed in the report are retained; another 218 have C implementations.", "",
         "Every C file contains its algorithm. The shared `support/c/euler_common.c`",
         "module provides reusable mathematical operations. Historical attempts are in",
         "`c/variants/`; they are not the programs built by the default target.", "",
-        "Rust, Gforth, and Factor also have entry points for every listed problem.",
+        "Rust, Gforth, and Factor have implemented entry points through problem 120; later",
+        "entries are C-only and have separate generated scaffolds for those languages.",
         "The implementation column records source coverage, not validation status.", "",
         "See [new C methods and bounds](../docs/C_1_120.md),",
         "[C validation](../docs/VALIDATION_C_1_120.md),",
@@ -61,7 +63,7 @@ def main() -> None:
         "On Windows with GCC and GMP available through MSYS2/UCRT64, use",
         "`./scripts/test.ps1 -Action test-c`. Windows execution has not been verified in this change.", "",
         "`tests/answers.json` records reference answers and implementation coverage. The runner",
-        "checks exact decimal stdout and a successful exit. It reports missing executables,",
+        "checks exact one-line stdout and a successful exit. It reports missing executables,",
         "wrong answers, errors and timeouts separately. Its timings include process startup;",
         "a single test run does not establish a statistical performance comparison.", "",
         "## Inputs", "",
@@ -113,17 +115,17 @@ def main() -> None:
         notes.append(f"| {p['number']} | [{p['title']}](../solutions/c/{p['stem']}.c) | "
                      f"`{answer_suffix(p['answer'])}` | {p['method'].replace('|', '/')} |")
     notes += ["", "## Verification entry points", "",
-        "- `make check-c-coverage` checks exactly 120 numbered sources and the 37 report exclusions.",
+        "- `make check-c-coverage` checks exactly 255 numbered sources and the 37 report exclusions.",
         "- `make check-inputs` checks all 15 official input hashes.",
-        "- `make test-c` checks all 120 exact answers.",
+        "- `make test-c` checks all 255 exact answers.",
         "- `make unit-c` runs independent examples, arithmetic boundaries, brute-force comparisons, and rule checks.",
         "- `make unit-python` checks the runner, language coverage, and existing visualization arithmetic.",
-        "- `make sanitize-c` compiles and executes all 120 programs with AddressSanitizer and UBSan on Linux.", "",
+        "- `make sanitize-c` compiles and executes all 255 programs with AddressSanitizer and UBSan on Linux.", "",
         "- `make audit-c` independently checks expression trees, letter mappings, repeated primes, and digit-set partitions.", "",
         "The [validation record](VALIDATION_C_1_120.md) distinguishes what was executed from",
         "what is configured for future CI runs. Regenerate this catalog with `make catalog-c`."]
     (ROOT / "docs/C_1_120.md").write_text("\n".join(notes) + "\n")
-    print(f"Generated source index for {len(problems)} problems and methods for {len(new)} additions")
+    print(f"Generated source index for {len(problems)} problems and 1–120 methods for {len(new)} additions")
 
 
 if __name__ == "__main__":

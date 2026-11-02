@@ -1,0 +1,9 @@
+/* Odd Elimination: https://projecteuler.net/problem=539
+ * Solution scaffold; excluded from coverage. */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    fputs("Project Euler 539 scaffold: not implemented\n", stderr);
+    return EXIT_FAILURE;
+}

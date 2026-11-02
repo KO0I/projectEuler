@@ -1,7 +1,7 @@
 # One executable per problem and language; one observation per profile run.
 PYTHON ?= python3
 CC ?= gcc
-CFLAGS ?= -O2 -std=c11 -Wall -Wextra
+CFLAGS ?= -O2 -std=c11 -Wall -Wextra -Werror
 LDLIBS ?= -lgmp -lm
 export CC CFLAGS
 C_FILES := $(wildcard solutions/c/*.c)
@@ -14,11 +14,12 @@ EXE := $(if $(filter Windows_NT,$(OS)),.exe,)
 STARTUP_C := build/bench/noop-c$(EXE)
 STARTUP_RUST := build/bench/noop-rust$(EXE)
 PROFILE_TIMEOUT ?= 30
+TEST_TIMEOUT ?= 60
 STARTUP_SAMPLES ?= 5
 
 .PHONY: all c-release rust-release forth-check factor-check unit unit-c unit-rust unit-forth unit-python \
         test test-c test-rust test-forth test-factor profile profile-c profile-rust profile-forth profile-factor \
-        run_profile_all setup-arch check-arch-setup plots plots-math docs clean
+        run_profile_all setup-arch check-arch-setup plots plots-math docs clean scaffolds check-scaffolds refresh-scaffolds
 all: c-release
 c-release: $(C_TARGETS)
 build/c/euler_common.o: support/c/euler_common.c support/c/euler_common.h
@@ -64,7 +65,7 @@ unit: unit-c unit-rust unit-forth unit-python
 test: c-release rust-release forth-check factor-check check-c-coverage check-inputs
 	$(PYTHON) scripts/bench.py --mode test --languages c rust forth factor
 test-c: c-release check-c-coverage check-inputs
-	$(PYTHON) scripts/bench.py --mode test --languages c
+	$(PYTHON) scripts/bench.py --mode test --timeout $(TEST_TIMEOUT) --languages c
 test-rust: rust-release
 	$(PYTHON) scripts/bench.py --mode test --languages rust
 test-forth: forth-check
@@ -78,7 +79,7 @@ define profile_command
 	plot_status=0; $(MAKE) plots || plot_status=$$?; \
 	if [ $$status -ne 0 ]; then exit $$status; else exit $$plot_status; fi
 endef
-# Complete four-language profile: 120 problems x C, Rust, Gforth, and Factor.
+# Profile explicit manifest coverage: C/Rust 1–255; Gforth 1–120; Factor 191 entries.
 # Uses one shared run ID and generates all cross-language plots; never mixes runs.
 run_profile_all: profile
 setup-arch:
@@ -121,3 +122,9 @@ catalog-c:
 	$(PYTHON) scripts/c_catalog.py
 audit-c:
 	$(PYTHON) scripts/audit_c.py
+scaffolds:
+	$(PYTHON) scripts/scaffold_euler.py
+check-scaffolds:
+	$(PYTHON) scripts/scaffold_euler.py --check
+refresh-scaffolds:
+	$(PYTHON) scripts/scaffold_euler.py --refresh

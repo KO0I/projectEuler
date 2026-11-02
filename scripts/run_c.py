@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("number", type=int, choices=range(1, 121), metavar="1..120")
+    parser.add_argument("number", type=int, choices=range(1, 256), metavar="1..255")
     args = parser.parse_args()
     manifest = json.loads((ROOT / "tests/answers.json").read_text())
     problem = next(p for p in manifest["problems"] if p["number"] == args.number)

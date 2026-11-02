@@ -1,0 +1,138 @@
+\section{Problem 154: counting divisible coefficients in Pascal's pyramid}
+\label{sec:p154}
+
+Problem 154 asks for one layer of Pascal's pyramid. The coefficient of
+$x^a y^b z^c$ in $(x+y+z)^N$, where $a+b+c=N$, is
+\[
+  T(N;a,b,c)=\frac{N!}{a!b!c!}.
+\]
+Here $N=200000$. We must count the coefficients divisible by
+$10^{12}=2^{12}5^{12}$. The implementation never constructs a coefficient
+that large. It counts factors of 2 and 5 instead.
+
+The organization of this explanation follows Tam Nguyen's
+\href{https://tamnd.github.io/brain/practice/euler/154/}{Project Euler 154
+note}: derive the valuation test, reduce the search by symmetry, and check the
+logic on a smaller layer. The code and the two-stage optimization below come
+from this repository.
+
+\subsection{Replace divisibility with two valuation tests}
+
+For a prime $p$, let $v_p(m)$ be the exponent of $p$ in $m$. Then
+\[
+ v_p(T)=v_p(N!)-v_p(a!)-v_p(b!)-v_p(c!).
+\]
+The coefficient qualifies exactly when $v_2(T)\geq12$ and
+$v_5(T)\geq12$. Both programs build prefix tables for $v_2(n!)$ and
+$v_5(n!)$. The recurrence is small:
+\[
+ v_p(n!)=v_p((n-1)!)+v_p(n).
+\]
+After this $O(N\log N)$ setup, either valuation of a binomial coefficient is
+an $O(1)$ subtraction.
+
+\subsection{Split one trinomial coefficient into two binomial coefficients}
+
+Set $i=b+c$ and $j=b$. Then $a=N-i$ and $c=i-j$, so
+\[
+ T(N;N-i,j,i-j)=\binom{N}{i}\binom{i}{j}.
+\]
+Valuations turn the product into a sum:
+\[
+ v_p(T)=v_p\!\left(\binom{N}{i}\right)
+       +v_p\!\left(\binom{i}{j}\right).
+\]
+This factorization creates a useful fast path. If $\binom{N}{i}$ already has
+at least twelve factors of both 2 and 5, then all $i+1$ splits of $i$ into
+$j$ and $i-j$ qualify. The program adds the whole row without inspecting its
+members.
+
+For the remaining rows, exchanging $b$ and $c$ does not change the
+coefficient. The inner loop examines half of the row and gives a nonsymmetric
+pair weight two. When $b=c$, the pair has weight one.
+
+\subsection{C implementation}
+
+The C version stores the two prefix tables in flat arrays. Its helper computes
+the valuation of a binomial coefficient.
+
+\begin{lstlisting}
+static unsigned choose154(const unsigned *factorial, unsigned n, unsigned k) {
+    return factorial[n] - factorial[k] - factorial[n - k];
+}
+
+for (unsigned i = 0; i <= LAYER; ++i) {
+    unsigned outer2 = choose154(twos, LAYER, i);
+    unsigned outer5 = choose154(fives, LAYER, i);
+    if (outer2 >= 12 && outer5 >= 12) {
+        answer += i + 1;
+        continue;
+    }
+    for (unsigned j = 0; j <= (i + 1) / 2; ++j) {
+        if (outer2 + choose154(twos, i, j) >= 12 &&
+            outer5 + choose154(fives, i, j) >= 12) {
+            ++answer;
+            if (j < i / 2) ++answer;
+        }
+    }
+}
+\end{lstlisting}
+
+The arrays contain at most $N+1$ values. The code uses unsigned subtraction
+only where the factorial valuation is monotone, so the result cannot become
+negative.
+
+\subsection{Rust implementation}
+
+Rust expresses the same algorithm with slices and vectors. The loop bounds,
+the row fast path, and the symmetry weights match the C version.
+
+\begin{lstlisting}
+fn choose(v: &[u32], n: usize, k: usize) -> u32 {
+    v[n] - v[k] - v[n - k]
+}
+
+for i in 0..=N {
+    let (a, b) = (choose(&twos, N, i), choose(&fives, N, i));
+    if a >= 12 && b >= 12 {
+        answer += (i + 1) as u64;
+        continue;
+    }
+    for j in 0..=(i + 1) / 2 {
+        if a + choose(&twos, i, j) >= 12
+            && b + choose(&fives, i, j) >= 12 {
+            answer += 1;
+            if j < i / 2 { answer += 1 }
+        }
+    }
+}
+\end{lstlisting}
+
+The Rust types state two bounds that C leaves implicit. Table indices use
+\texttt{usize}, and the final count uses \texttt{u64}. The valuation entries fit
+in \texttt{u32} by a wide margin.
+
+\subsection{Cross-language comparison and missing ports}
+
+C and Rust use the same mathematical decomposition and asymptotic work. C
+manages the table allocation and release. Rust owns the tables through
+\texttt{Vec<u32>} and releases them when \texttt{solve} returns. Neither version
+uses the shared prime or combinatoric API because the two valuation tables are
+specific to this problem.
+
+The repository has no validated Gforth or Factor implementation for problem
+154. Their scaffold files stay outside answer coverage. This report does not
+replace those missing programs with pseudocode or reference-answer constants.
+
+\subsection{Small checks catch symmetry errors}
+
+For a reduced layer, enumerate every ordered triple $(a,b,c)$ with
+$a+b+c=n$. Compare the direct multinomial valuation with the two-binomial
+decomposition. Then compare the full ordered count with the weighted
+half-row count. These checks detect the two common mistakes: dropping the
+middle pair when $i$ is odd and counting the $b=c$ case twice.
+
+The generated figures in Section~\ref{sec:visualatlas} show three views of the
+same object. The coefficient surface explains why central entries grow fastest.
+The parity plot shows what remains when divisibility is reduced to one factor
+of 2. Problem 154 applies the stronger two-prime test at layer 200000.

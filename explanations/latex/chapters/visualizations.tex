@@ -20,6 +20,17 @@ measurement of algorithm runtime.
  \end{figure}
 }
 
+\newcommand{\MathChart}[2]{%
+ \begin{figure}[p]\centering
+ \IfFileExists{../../build/math_plots/#1.pdf}{%
+  \includegraphics[width=0.92\linewidth,height=0.37\textheight,keepaspectratio]{../../build/math_plots/#1.pdf}%
+ }{\fbox{\parbox{0.76\linewidth}{%
+  Figure not generated: \texttt{\detokenize{#1.pdf}}. Run \texttt{make plots-math}
+  before rebuilding this report.}}}%
+ \caption{#2}\label{fig:#1}
+ \end{figure}
+}
+
 \subsection{Integer geometry and spirals}
 \EulerChart{pythagorean_perimeters}{9, 39, 75}{Euclid's formula enumerates
 right-triangle perimeter counts; the dashed marker gives the full problem
@@ -68,4 +79,14 @@ combinations under score 80, with an obligatory final double.}
 \EulerChart{block_tilings}{114, 115, 116, 117}{Four exact
 dynamic-programming recurrences on short rows; the second curve is a
 scaled illustration, not the full problem-115 threshold.}
+
+\subsection{Pascal's pyramid}
+\MathChart{pascal_pyramid_tetrahedron}{Every trinomial coefficient through
+layer 14. The integer coordinates $(i,j,k)$ identify the coefficient of
+$x^iy^jz^k$ and fill a tetrahedron bounded by $i+j+k\leq14$.}
+\MathChart{pascal_pyramid_layer_surface}{Layer 24 drawn in barycentric
+coordinates. Height and color encode the base-10 logarithm of the exact
+coefficient, so the three permutation-symmetric edges remain visible.}
+\MathChart{pascal_pyramid_parity}{Odd coefficients through layer 31. Removing
+the even coefficients exposes the self-similar mod-2 tetrahedron.}
 \clearpage

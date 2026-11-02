@@ -1,0 +1,158 @@
+\section{Shared Project Euler library API}
+\label{sec:libraryapi}
+
+This appendix is a generated reference. The problem programs own their algorithms. These modules provide arithmetic, input, and collection operations that more than one solver can reuse. Stack comments are the signatures for Gforth and Factor words.
+
+\subsection{C API}
+Source: \path{support/c/euler_common.h}, \path{support/c/euler_extra.h}.
+\begin{description}
+\item[\texttt{\detokenize{prime}}] \texttt{\detokenize{int prime(uint64_t n)}}. Tests primality by trial division.
+\item[\texttt{\detokenize{gcd}}] \texttt{\detokenize{unsigned gcd(unsigned a, unsigned b)}}. Computes a greatest common divisor.
+\item[\texttt{\detokenize{count_divisors}}] \texttt{\detokenize{unsigned count_divisors(uint64_t n)}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{divisor_sum}}] \texttt{\detokenize{unsigned divisor_sum(unsigned n)}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{palindrome}}] \texttt{\detokenize{int palindrome(unsigned n)}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{sieve}}] \texttt{\detokenize{unsigned char *sieve(unsigned limit)}}. Builds primality flags through an inclusive bound.
+\item[\texttt{\detokenize{digit_sum}}] \texttt{\detokenize{long long digit_sum(const mpz_t z)}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{namecmp}}] \texttt{\detokenize{int namecmp(const void *a, const void *b)}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{factorial}}] \texttt{\detokenize{unsigned factorial(unsigned n)}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{digit_power_sum}}] \texttt{\detokenize{unsigned digit_power_sum(unsigned n, const unsigned table[10])}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{pentagonal}}] \texttt{\detokenize{int pentagonal(uint64_t n)}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{distinct_factors}}] \texttt{\detokenize{unsigned distinct_factors(unsigned n)}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{euler_fail}}] \texttt{\detokenize{static inline void euler_fail(const char *message)}}. Checks a C allocation, file, or failure boundary.
+\item[\texttt{\detokenize{euler_malloc}}] \texttt{\detokenize{static inline void *euler_malloc(size_t size)}}. Checks a C allocation, file, or failure boundary.
+\item[\texttt{\detokenize{euler_calloc}}] \texttt{\detokenize{static inline void *euler_calloc(size_t count, size_t size)}}. Checks a C allocation, file, or failure boundary.
+\item[\texttt{\detokenize{euler_open}}] \texttt{\detokenize{static inline FILE *euler_open(const char *path)}}. Checks a C allocation, file, or failure boundary.
+\item[\texttt{\detokenize{euler_gcd}}] \texttt{\detokenize{static inline uint64_t euler_gcd(uint64_t a, uint64_t b)}}. Computes a greatest common divisor.
+\item[\texttt{\detokenize{euler_isqrt}}] \texttt{\detokenize{static inline uint64_t euler_isqrt(uint64_t n)}}. Returns the floor of an integer square root.
+\item[\texttt{\detokenize{euler_sieve}}] \texttt{\detokenize{static inline unsigned char *euler_sieve(size_t limit)}}. Builds primality flags through an inclusive bound.
+\item[\texttt{\detokenize{euler_mulmod}}] \texttt{\detokenize{static inline uint64_t euler_mulmod(uint64_t a, uint64_t b, uint64_t m)}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{euler_powmod}}] \texttt{\detokenize{static inline uint64_t euler_powmod(uint64_t a, uint64_t exponent, uint64_t m)}}. Computes an integer power modulo a modulus.
+\item[\texttt{\detokenize{euler_is_prime}}] \texttt{\detokenize{static inline bool euler_is_prime(uint64_t n)}}. Tests every 64-bit input with deterministic Miller--Rabin witnesses.
+\end{description}
+
+\subsection{Rust API}
+Source: \path{solutions/rust/src/extra_helpers.rs}.
+\begin{description}
+\item[\texttt{\detokenize{gcd}}] \texttt{\detokenize{pub fn gcd(mut a: u64, mut b: u64) -> u64}}. Computes a greatest common divisor.
+\item[\texttt{\detokenize{isqrt}}] \texttt{\detokenize{pub fn isqrt(n: u64) -> u64}}. Returns the floor of an integer square root.
+\item[\texttt{\detokenize{prime}}] \texttt{\detokenize{pub fn prime(n: u64) -> bool}}. Tests primality by trial division.
+\item[\texttt{\detokenize{sieve}}] \texttt{\detokenize{pub fn sieve(limit: usize) -> Vec<bool>}}. Builds primality flags through an inclusive bound.
+\item[\texttt{\detokenize{primes}}] \texttt{\detokenize{pub fn primes(limit: usize) -> Vec<u64>}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{decimal_signature}}] \texttt{\detokenize{pub fn decimal_signature(mut n: u64) -> u64}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{palindrome}}] \texttt{\detokenize{pub fn palindrome(mut n: u64, base: u64) -> bool}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{digits}}] \texttt{\detokenize{pub fn digits(mut n: u64) -> Vec<u8>}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{digits_sum_big}}] \texttt{\detokenize{pub fn digits_sum_big(n: &BigUint) -> usize}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{parse_numbers}}] \texttt{\detokenize{pub fn parse_numbers(data: &str) -> Vec<u64>}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{matrix}}] \texttt{\detokenize{pub fn matrix(data: &str) -> Vec<Vec<u64>>}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{triangle_max}}] \texttt{\detokenize{pub fn triangle_max(mut rows: Vec<Vec<u64>>) -> u64}}. Provides a combinatoric or path operation.
+\item[\texttt{\detokenize{proper_divisor_sums}}] \texttt{\detokenize{pub fn proper_divisor_sums(limit: usize) -> Vec<usize>}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{totients}}] \texttt{\detokenize{pub fn totients(limit: usize) -> Vec<u32>}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{is_square}}] \texttt{\detokenize{pub fn is_square(n: u64) -> bool}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{pandigital_1_to_9}}] \texttt{\detokenize{pub fn pandigital_1_to_9(mut n: u64) -> bool}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{next_permutation}}] \texttt{\detokenize{pub fn next_permutation<T: Ord>(items: &mut [T]) -> bool}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{choose}}] \texttt{\detokenize{pub fn choose(n: u64, k: u64) -> u128}}. Computes a binomial coefficient exactly.
+\item[\texttt{\detokenize{mod_pow}}] \texttt{\detokenize{pub fn mod_pow(mut a: u64, mut e: u64, m: u64) -> u64}}. Computes an integer power modulo a modulus.
+\item[\texttt{\detokenize{big_isqrt}}] \texttt{\detokenize{pub fn big_isqrt(n: &BigUint) -> BigUint}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{fibonacci_pair}}] \texttt{\detokenize{pub fn fibonacci_pair(n: u64) -> (BigUint, BigUint)}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{prime64}}] \texttt{\detokenize{pub fn prime64(n: u64) -> bool}}. Tests every 64-bit input with deterministic Miller--Rabin witnesses.
+\item[\texttt{\detokenize{divisor_count}}] \texttt{\detokenize{pub fn divisor_count(mut n: u64) -> u32}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{divisor_sum}}] \texttt{\detokenize{pub fn divisor_sum(n: u32) -> u32}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{is_palindrome}}] \texttt{\detokenize{pub fn is_palindrome(n: u32) -> bool}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{digit_sum}}] \texttt{\detokenize{pub fn digit_sum(n: &BigUint) -> i64}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{digit_power_sum}}] \texttt{\detokenize{pub fn digit_power_sum(mut n: u32, table: &[u32; 10]) -> u32}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{distinct_factors}}] \texttt{\detokenize{pub fn distinct_factors(mut n: u32) -> u32}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{pentagonal}}] \texttt{\detokenize{pub fn pentagonal(n: u64) -> bool}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{factorial}}] \texttt{\detokenize{pub fn factorial(n: u32) -> u32}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{least_reciprocal_denominator}}] \texttt{\detokenize{pub fn least_reciprocal_denominator(limit: u64) -> i64}}. Provides a reusable mathematical operation.
+\end{description}
+
+\subsection{Gforth API}
+Source: \path{solutions/forth/math.fs}, \path{solutions/forth/big.fs}.
+\begin{description}
+\item[\texttt{\detokenize{require-64bit}}] \texttt{\detokenize{( -- )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{is-prime?}}] \texttt{\detokenize{( n -- flag )}}. Tests primality by trial division.
+\item[\texttt{\detokenize{integer-gcd}}] \texttt{\detokenize{( a b -- gcd )}}. Computes a greatest common divisor.
+\item[\texttt{\detokenize{divisor-count}}] \texttt{\detokenize{( n -- count )}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{proper-divisor-sum}}] \texttt{\detokenize{( n -- sum )}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{factorial}}] \texttt{\detokenize{( n -- n! )}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{digit-pow-sum}}] \texttt{\detokenize{( n power -- sum )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{read-fixture}}] \texttt{\detokenize{( caddr u capacity -- buf n )}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{sieve-build}}] \texttt{\detokenize{( limit -- ptr )}}. Builds primality flags through an inclusive bound.
+\item[\texttt{\detokenize{integer-sqrt}}] \texttt{\detokenize{( n -- root )}}. Returns the floor of an integer square root.
+\item[\texttt{\detokenize{pentagonal?}}] \texttt{\detokenize{( n -- flag )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{multiply-mod}}] \texttt{\detokenize{( a b modulo -- remainder )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{power-mod}}] \texttt{\detokenize{( b exp m -- residue )}}. Computes an integer power modulo a modulus.
+\item[\texttt{\detokenize{prefix@}}] \texttt{\detokenize{( index address -- value )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{prefix!}}] \texttt{\detokenize{( value index address -- )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{decimal-digits}}] \texttt{\detokenize{( n -- digits )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{pow10}}] \texttt{\detokenize{( n -- 10^n )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{append-number}}] \texttt{\detokenize{( a b -- ab )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{digit-signature}}] \texttt{\detokenize{( n -- signature )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{pandigital-nine?}}] \texttt{\detokenize{( n -- flag )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{choose}}] \texttt{\detokenize{( n k -- binomial )}}. Computes a binomial coefficient exactly.
+\item[\texttt{\detokenize{triangle-offset}}] \texttt{\detokenize{( r c -- index )}}. Provides a combinatoric or path operation.
+\item[\texttt{\detokenize{fixture-integers}}] \texttt{\detokenize{( c-addr u capacity -- values count )}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{triangle-path-max}}] \texttt{\detokenize{( c-addr u rows -- maximum )}}. Provides a combinatoric or path operation.
+\item[\texttt{\detokenize{bit-count}}] \texttt{\detokenize{( n -- population )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{reciprocal-search}}] \texttt{\detokenize{( index maxexp n divisors -- )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{reciprocal-bound}}] \texttt{\detokenize{( solutions -- minimum n )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{bsign@}}] \texttt{\detokenize{( b -- n )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bsign!}}] \texttt{\detokenize{( n b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{blen@}}] \texttt{\detokenize{( b -- u )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{blen!}}] \texttt{\detokenize{( u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bcap@}}] \texttt{\detokenize{( b -- u )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bcap!}}] \texttt{\detokenize{( u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bptr@}}] \texttt{\detokenize{( b -- a )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bptr!}}] \texttt{\detokenize{( a b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bnew}}] \texttt{\detokenize{( u -- b )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bfree}}] \texttt{\detokenize{( b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bclear}}] \texttt{\detokenize{( b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{blimb@}}] \texttt{\detokenize{( i b -- u )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{blimb!}}] \texttt{\detokenize{( u i b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bensure}}] \texttt{\detokenize{( u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bnormalize}}] \texttt{\detokenize{( b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bset-u}}] \texttt{\detokenize{( u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bcopy}}] \texttt{\detokenize{( a b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{babscompare}}] \texttt{\detokenize{( a b -- -1|0|1 )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{baddabs!}}] \texttt{\detokenize{( a b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bsubabs!}}] \texttt{\detokenize{( a b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{badd}}] \texttt{\detokenize{( a b out -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bmul-small!}}] \texttt{\detokenize{( u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bmul}}] \texttt{\detokenize{( a b out -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bdiv-small!}}] \texttt{\detokenize{( u b -- r )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{badd-small!}}] \texttt{\detokenize{( u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bfrom-dec}}] \texttt{\detokenize{( c-addr u b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\item[\texttt{\detokenize{bdecimal-length}}] \texttt{\detokenize{( b -- u )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{bdigitsum}}] \texttt{\detokenize{( b -- u )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{.padded4}}] \texttt{\detokenize{( 0..9999 -- )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{bprint}}] \texttt{\detokenize{( b -- )}}. Provides base-10000 arbitrary-precision storage or arithmetic.
+\end{description}
+
+\subsection{Factor API}
+Source: \path{solutions/factor/euler/shared/shared.factor}.
+\begin{description}
+\item[\texttt{\detokenize{decimal-digits}}] \texttt{\detokenize{( n -- digits )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{digit-sum}}] \texttt{\detokenize{( n -- sum )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{factorial-number}}] \texttt{\detokenize{( n -- n! )}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{decimal-palindrome?}}] \texttt{\detokenize{( n -- ? )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{digit-signature}}] \texttt{\detokenize{( n -- seq )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{pandigital-nine?}}] \texttt{\detokenize{( n -- ? )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{pandigital-seven?}}] \texttt{\detokenize{( n -- ? )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{digit-squares}}] \texttt{\detokenize{( n -- sum )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{pow10}}] \texttt{\detokenize{( n -- x )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{concat-number}}] \texttt{\detokenize{( a b -- ab )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{decimal-cell}}] \texttt{\detokenize{( str -- n )}}. Provides a decimal-digit operation.
+\item[\texttt{\detokenize{whitespace?}}] \texttt{\detokenize{( ch -- ? )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{separator?}}] \texttt{\detokenize{( ch -- ? )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{read-numbers}}] \texttt{\detokenize{( path -- seq )}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{read-signed-numbers}}] \texttt{\detokenize{( path -- seq )}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{euler-sieve}}] \texttt{\detokenize{( bound -- flags )}}. Builds primality flags through an inclusive bound.
+\item[\texttt{\detokenize{divisor-sum-sieve}}] \texttt{\detokenize{( bound -- arr )}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{phi-sieve}}] \texttt{\detokenize{( bound -- arr )}}. Provides a number-theory operation.
+\item[\texttt{\detokenize{euler-isqrt}}] \texttt{\detokenize{( n -- root )}}. Returns the floor of an integer square root.
+\item[\texttt{\detokenize{polygonal?}}] \texttt{\detokenize{( n sides -- ? )}}. Provides a reusable mathematical operation.
+\item[\texttt{\detokenize{modular-pow}}] \texttt{\detokenize{( base exponent modulus -- residue )}}. Computes an integer power modulo a modulus.
+\item[\texttt{\detokenize{read-upper-words}}] \texttt{\detokenize{( path -- words )}}. Reads or parses a committed problem fixture.
+\item[\texttt{\detokenize{max-triangle-path}}] \texttt{\detokenize{( path -- max )}}. Provides a combinatoric or path operation.
+\end{description}
+

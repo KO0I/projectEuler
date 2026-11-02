@@ -2,7 +2,8 @@
 \label{sec:crosslanguage}
 
 The original 37-problem collection has a dated validation baseline for C, Rust,
-and Gforth. C, Rust, and Factor now have complete 120-answer validation records. A
+and Gforth. C and Rust now cover problems 1 through 255. Factor has 191 validated
+entry points, and Gforth has 120. A
 60-second-per-solver Gforth run passes 115 entries and times out on five. The
 \emph{Factor programming language} is a concatenative,
 stack-based language with its own VM; it is neither Gforth nor the GNU
@@ -205,8 +206,8 @@ without warming up; it checks that same invocation's exact decimal output
 against \texttt{tests/answers.json}. The wall time includes startup and
 output capture, but not compilation. It records process version, source
 revision and selected coverage; no error bars or confidence intervals
-are inferred from one measurement. Only complete passing 120-problem language
-suites get total-suite bars. In the current Gforth run, the five timed-out
+are inferred from one measurement. Only complete passing declared-coverage
+language suites get total-suite bars. In the recorded Gforth run, the five timed-out
 entries are marked explicitly and no Gforth total-suite bar is drawn.
 
 \IfFileExists{../../build/profile/latest-plots/runtime_by_problem.pdf}{%

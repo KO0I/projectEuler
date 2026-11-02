@@ -1,11 +1,15 @@
 # Project Euler C explanations in LaTeX
 
-This directory contains one LaTeX chapter for each of the **37 main C problem files**, in ascending Project Euler problem order, plus a combined compilable document.
+This directory contains the historical handwritten C chapters, a deep problem
+154 case study, generated cross-language walkthroughs for problems 1 through
+255, and a generated shared-library API appendix.
 
 - [Combined LaTeX source](project_euler_c_explanations.tex)
 - [Individual chapters](chapters/)
 - [Cross-language code comparisons](chapters/multilanguage_comparisons.tex)
 - [Visual figures atlas](chapters/visualizations.tex)
+- [Problem 154 case study](chapters/problem_154_case_study.tex)
+- [Walkthrough and API generator](../../scripts/generate_report_appendices.py)
 - [Figure index](../../docs/visualization_index.md)
 - [C source files](../../solutions/c/)
 - [Existing LaTeX explanation for problem 17](../../solutions/latex/number_letter_counts_17.tex)
@@ -16,7 +20,7 @@ Each chapter describes the mathematical goal, the C control flow and data struct
 
 ## Build the combined PDF
 
-Run `make plots-math` from the repository root **first** to embed mathematical figures. Run a profile target and `make plots` to include the latest validation and timing figures. Then build the LaTeX from this directory:
+Run `make plots-math` from the repository root first to embed mathematical figures. Run a profile target and `make plots` to include the latest validation and timing figures. Then build the LaTeX from this directory. The Makefile regenerates the walkthroughs and API appendix from current source files.
 
 ```sh
 make

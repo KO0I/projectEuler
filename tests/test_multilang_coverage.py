@@ -32,15 +32,16 @@ class LanguageCoverage(unittest.TestCase):
 
     def test_native_entrypoints_and_helpers(self):
         checker = module('coverage', 'scripts/check_language_coverage.py')
-        self.assertEqual(checker.audit(), {'rust': 120, 'forth': 120, 'factor': 120})
+        self.assertEqual(checker.audit(), {'rust': 255, 'forth': 120, 'factor': 191})
 
     def test_benchmark_selected_problems(self):
         import json
         bench = module('bench_full', 'scripts/bench.py')
         problems = json.loads((ROOT / 'tests/answers.json').read_text())['problems']
+        expected = {'c': 255, 'rust': 255, 'forth': 120, 'factor': 191}
         for lang in ('c', 'rust', 'forth', 'factor'):
             with self.subTest(lang=lang):
-                self.assertEqual(len(bench.selected_problems(lang, problems)), 120)
+                self.assertEqual(len(bench.selected_problems(lang, problems)), expected[lang])
 
     def test_factor_vocab_root(self):
         bench = module('bench_factor', 'scripts/bench.py')

@@ -36,8 +36,17 @@ class BenchmarkTests(unittest.TestCase):
         self.assertEqual(row["split_status"], "estimated")
     def test_wrong_answer(self):
         self.assertEqual(self.run_fake("123\n")["status"], "wrong-answer")
-    def test_non_numeric_output(self):
-        self.assertEqual(self.run_fake("answer: 233168\n")["status"], "invalid-output")
+    def test_noncanonical_output(self):
+        self.assertEqual(self.run_fake("233168\nextra\n")["status"], "invalid-output")
+        self.assertEqual(self.run_fake("233168")["status"], "invalid-output")
+    def test_exact_non_integer_answer_formats(self):
+        for answer in ("0.464399", "3D58725572C62302", "1,13717420,8", "123/59"):
+            problem = {**PROBLEM, "answer": answer}
+            completed = subprocess.CompletedProcess(["solver"], 0, stdout=answer + "\n", stderr="")
+            with patch.object(bench, "command", return_value=["solver"]), \
+                 patch.object(bench.shutil, "which", return_value="solver"), \
+                 patch.object(bench.subprocess, "run", return_value=completed):
+                self.assertEqual(bench.run_one("c", problem, 30, "test-run")["status"], "pass")
     def test_exit_failure(self):
         self.assertEqual(self.run_fake(code=1)["status"], "error")
     def test_timeout_is_not_zero(self):

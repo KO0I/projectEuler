@@ -14,7 +14,7 @@ class CoverageTests(unittest.TestCase):
     def test_full_multilang_source_coverage(self):
         problems = json.loads((ROOT / "tests/answers.json").read_text())["problems"]
         self.assertEqual({p["number"] for p in bench.selected_problems("c", problems)},
-                         set(range(1, 121)))
+                         set(range(1, 256)))
         for language in ("rust", "forth", "factor"):
             self.assertEqual({p["number"] for p in bench.selected_problems(language, problems)},
                              set(range(1, 121)))

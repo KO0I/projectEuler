@@ -1,0 +1,9 @@
+/* x^y \equiv y^x: https://projecteuler.net/problem=801
+ * Solution scaffold; excluded from coverage. */
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+    fputs("Project Euler 801 scaffold: not implemented\n", stderr);
+    return EXIT_FAILURE;
+}

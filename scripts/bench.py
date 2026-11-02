@@ -18,7 +18,6 @@ import math
 import os
 from pathlib import Path
 import platform
-import re
 import shlex
 import shutil
 import subprocess
@@ -124,14 +123,14 @@ def run_one(language: str, problem: dict, timeout: float, run_id: str,
         elapsed = time.perf_counter_ns() - start
         row["runtime_ms"] = f"{elapsed / 1_000_000:.6f}"
         row["exit_code"] = proc.returncode
-        stdout = proc.stdout.strip()
-        row["actual"] = stdout[:256]
+        canonical = proc.stdout[:-1] if proc.stdout.endswith("\n") else proc.stdout
+        row["actual"] = canonical[:256]
         row["message"] = proc.stderr.strip()[:500]
         if proc.returncode:
             row["status"] = "error"
-        elif re.fullmatch(r"-?[0-9]+", stdout) is None:
+        elif proc.stdout != canonical + "\n" or "\n" in canonical or "\r" in canonical:
             row["status"] = "invalid-output"
-        elif stdout != str(expected):
+        elif canonical != str(expected):
             row["status"] = "wrong-answer"
         else:
             row["status"] = "pass"
@@ -155,6 +154,8 @@ def main(argv: list[str] | None = None) -> int:
                         default=list(LANGUAGES))
     parser.add_argument("--mode", choices=("test", "profile"), default="test")
     parser.add_argument("--timeout", type=float, default=30.0)
+    parser.add_argument("--problem-range", nargs=2, type=int, metavar=("FIRST", "LAST"),
+                        help="Run only the inclusive problem-number range")
     parser.add_argument("--startup-samples", type=int, default=5,
                         help="Number of independent no-op runs per language (profile only)")
     args = parser.parse_args(argv)
@@ -165,6 +166,11 @@ def main(argv: list[str] | None = None) -> int:
     if not 1 <= args.startup_samples <= 99:
         parser.error("--startup-samples must be between 1 and 99")
     problems = json.loads(MANIFEST.read_text(encoding="utf-8"))["problems"]
+    if args.problem_range:
+        first, last = args.problem_range
+        if first < 1 or last < first:
+            parser.error("--problem-range requires 1 <= FIRST <= LAST")
+        problems = [p for p in problems if first <= p["number"] <= last]
     numbers = [p["number"] for p in problems]
     if len(numbers) != len(set(numbers)):
         parser.error("Duplicate problem numbers in the manifest")

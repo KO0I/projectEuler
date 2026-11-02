@@ -1,13 +1,14 @@
 # Project Euler solution index
 
-C covers every official problem number from 1 through 120. The 37 solutions already
-addressed in the report are retained; the other 83 have new C implementations.
+C covers every official problem number from 1 through 255. The 37 solutions already
+addressed in the report are retained; another 218 have C implementations.
 
 Every C file contains its algorithm. The shared `support/c/euler_common.c`
 module provides reusable mathematical operations. Historical attempts are in
 `c/variants/`; they are not the programs built by the default target.
 
-Rust, Gforth, and Factor also have entry points for every listed problem.
+Rust, Gforth, and Factor have implemented entry points through problem 120; later
+entries are C-only and have separate generated scaffolds for those languages.
 The implementation column records source coverage, not validation status.
 
 See [new C methods and bounds](../docs/C_1_120.md),
@@ -137,3 +138,138 @@ See [new C methods and bounds](../docs/C_1_120.md),
 | 118 | [Pandigital Prime Sets](https://projecteuler.net/problem=118) | [C](c/pandigital_prime_sets_118.c) | Added | rust, forth, factor |
 | 119 | [Digit Power Sum](https://projecteuler.net/problem=119) | [C](c/digit_power_sum_119.c) | Added | rust, forth, factor |
 | 120 | [Square Remainders](https://projecteuler.net/problem=120) | [C](c/square_remainders_120.c) | Added | rust, forth, factor |
+| 121 | [Disc Game Prize Fund](https://projecteuler.net/problem=121) | [C](c/disc_game_prize_fund_121.c) | Added | C only |
+| 122 | [Efficient Exponentiation](https://projecteuler.net/problem=122) | [C](c/efficient_exponentiation_122.c) | Added | C only |
+| 123 | [Prime Square Remainders](https://projecteuler.net/problem=123) | [C](c/prime_square_remainders_123.c) | Added | C only |
+| 124 | [Ordered Radicals](https://projecteuler.net/problem=124) | [C](c/ordered_radicals_124.c) | Added | C only |
+| 125 | [Palindromic Sums](https://projecteuler.net/problem=125) | [C](c/palindromic_sums_125.c) | Added | C only |
+| 126 | [Cuboid Layers](https://projecteuler.net/problem=126) | [C](c/cuboid_layers_126.c) | Added | C only |
+| 127 | [abc-hits](https://projecteuler.net/problem=127) | [C](c/abc_hits_127.c) | Added | C only |
+| 128 | [Hexagonal Tile Differences](https://projecteuler.net/problem=128) | [C](c/hexagonal_tile_differences_128.c) | Added | C only |
+| 129 | [Repunit Divisibility](https://projecteuler.net/problem=129) | [C](c/repunit_divisibility_129.c) | Added | C only |
+| 130 | [Composites with Prime Repunit Property](https://projecteuler.net/problem=130) | [C](c/composites_with_prime_repunit_property_130.c) | Added | C only |
+| 131 | [Prime Cube Partnership](https://projecteuler.net/problem=131) | [C](c/prime_cube_partnership_131.c) | Added | C only |
+| 132 | [Large Repunit Factors](https://projecteuler.net/problem=132) | [C](c/large_repunit_factors_132.c) | Added | C only |
+| 133 | [Repunit Nonfactors](https://projecteuler.net/problem=133) | [C](c/repunit_nonfactors_133.c) | Added | C only |
+| 134 | [Prime Pair Connection](https://projecteuler.net/problem=134) | [C](c/prime_pair_connection_134.c) | Added | C only |
+| 135 | [Same Differences](https://projecteuler.net/problem=135) | [C](c/same_differences_135.c) | Added | C only |
+| 136 | [Singleton Difference](https://projecteuler.net/problem=136) | [C](c/singleton_difference_136.c) | Added | C only |
+| 137 | [Fibonacci Golden Nuggets](https://projecteuler.net/problem=137) | [C](c/fibonacci_golden_nuggets_137.c) | Added | C only |
+| 138 | [Special Isosceles Triangles](https://projecteuler.net/problem=138) | [C](c/special_isosceles_triangles_138.c) | Added | C only |
+| 139 | [Pythagorean Tiles](https://projecteuler.net/problem=139) | [C](c/pythagorean_tiles_139.c) | Added | C only |
+| 140 | [Modified Fibonacci Golden Nuggets](https://projecteuler.net/problem=140) | [C](c/modified_fibonacci_golden_nuggets_140.c) | Added | C only |
+| 141 | [Square Progressive Numbers](https://projecteuler.net/problem=141) | [C](c/square_progressive_numbers_141.c) | Added | C only |
+| 142 | [Perfect Square Collection](https://projecteuler.net/problem=142) | [C](c/perfect_square_collection_142.c) | Added | C only |
+| 143 | [Torricelli Triangles](https://projecteuler.net/problem=143) | [C](c/torricelli_triangles_143.c) | Added | C only |
+| 144 | [Laser Beam Reflections](https://projecteuler.net/problem=144) | [C](c/laser_beam_reflections_144.c) | Added | C only |
+| 145 | [Reversible Numbers](https://projecteuler.net/problem=145) | [C](c/reversible_numbers_145.c) | Added | C only |
+| 146 | [Investigating a Prime Pattern](https://projecteuler.net/problem=146) | [C](c/investigating_a_prime_pattern_146.c) | Added | C only |
+| 147 | [Rectangles in Cross-hatched Grids](https://projecteuler.net/problem=147) | [C](c/rectangles_in_cross_hatched_grids_147.c) | Added | C only |
+| 148 | [Exploring Pascal's Triangle](https://projecteuler.net/problem=148) | [C](c/exploring_pascals_triangle_148.c) | Added | C only |
+| 149 | [Maximum-sum Subsequence](https://projecteuler.net/problem=149) | [C](c/maximum_sum_subsequence_149.c) | Added | C only |
+| 150 | [Sub-triangle Sums](https://projecteuler.net/problem=150) | [C](c/sub_triangle_sums_150.c) | Added | C only |
+| 151 | [A Preference for A5](https://projecteuler.net/problem=151) | [C](c/a_preference_for_a5_151.c) | Added | C only |
+| 152 | [Sums of Square Reciprocals](https://projecteuler.net/problem=152) | [C](c/writing_one_half_as_inverse_squares_152.c) | Added | C only |
+| 153 | [Investigating Gaussian Integers](https://projecteuler.net/problem=153) | [C](c/investigating_gaussian_integers_153.c) | Added | C only |
+| 154 | [Exploring Pascal's Pyramid](https://projecteuler.net/problem=154) | [C](c/exploring_pascals_pyramid_154.c) | Added | C only |
+| 155 | [Counting Capacitor Circuits](https://projecteuler.net/problem=155) | [C](c/counting_capacitor_circuits_155.c) | Added | C only |
+| 156 | [Counting Digits](https://projecteuler.net/problem=156) | [C](c/counting_digits_156.c) | Added | C only |
+| 157 | [Base-10 Diophantine Reciprocal](https://projecteuler.net/problem=157) | [C](c/solving_diophantine_equation_157.c) | Added | C only |
+| 158 | [Lexicographical Neighbours](https://projecteuler.net/problem=158) | [C](c/lexicographical_neighbours_158.c) | Added | C only |
+| 159 | [Digital Root Sums of Factorisations](https://projecteuler.net/problem=159) | [C](c/digital_root_sums_of_factorisations_159.c) | Added | C only |
+| 160 | [Factorial Trailing Digits](https://projecteuler.net/problem=160) | [C](c/factorial_trailing_digits_160.c) | Added | C only |
+| 161 | [Triominoes](https://projecteuler.net/problem=161) | [C](c/triominoes_161.c) | Added | C only |
+| 162 | [Hexadecimal Numbers](https://projecteuler.net/problem=162) | [C](c/hexadecimal_numbers_162.c) | Added | C only |
+| 163 | [Cross-hatched Triangles](https://projecteuler.net/problem=163) | [C](c/cross_hatched_triangles_163.c) | Added | C only |
+| 164 | [Three Consecutive Digital Sum Limit](https://projecteuler.net/problem=164) | [C](c/three_consecutive_digital_sum_limit_164.c) | Added | C only |
+| 165 | [Intersections](https://projecteuler.net/problem=165) | [C](c/intersections_165.c) | Added | C only |
+| 166 | [Criss Cross](https://projecteuler.net/problem=166) | [C](c/criss_cross_166.c) | Added | C only |
+| 167 | [Investigating Ulam Sequences](https://projecteuler.net/problem=167) | [C](c/investigating_ulam_sequences_167.c) | Added | C only |
+| 168 | [Number Rotations](https://projecteuler.net/problem=168) | [C](c/number_rotations_168.c) | Added | C only |
+| 169 | [Sums of Powers of Two](https://projecteuler.net/problem=169) | [C](c/sums_of_powers_of_two_169.c) | Added | C only |
+| 170 | [Pandigital Concatenating Products](https://projecteuler.net/problem=170) | [C](c/pandigital_concatenating_products_170.c) | Added | C only |
+| 171 | [Square Sum of the Digital Squares](https://projecteuler.net/problem=171) | [C](c/square_sum_of_the_digital_squares_171.c) | Added | C only |
+| 172 | [Few Repeated Digits](https://projecteuler.net/problem=172) | [C](c/few_repeated_digits_172.c) | Added | C only |
+| 173 | [Hollow Square Laminae I](https://projecteuler.net/problem=173) | [C](c/hollow_square_laminae_i_173.c) | Added | C only |
+| 174 | [Hollow Square Laminae II](https://projecteuler.net/problem=174) | [C](c/hollow_square_laminae_ii_174.c) | Added | C only |
+| 175 | [Fractions and Sum of Powers of Two](https://projecteuler.net/problem=175) | [C](c/fractions_involving_the_number_of_ways_175.c) | Added | C only |
+| 176 | [Common Cathetus Right-angled Triangles](https://projecteuler.net/problem=176) | [C](c/right_angled_triangles_that_share_a_cathetus_176.c) | Added | C only |
+| 177 | [Integer Angled Quadrilaterals](https://projecteuler.net/problem=177) | [C](c/integer_angled_quadrilaterals_177.c) | Added | C only |
+| 178 | [Step Numbers](https://projecteuler.net/problem=178) | [C](c/step_numbers_178.c) | Added | C only |
+| 179 | [Consecutive Positive Divisors](https://projecteuler.net/problem=179) | [C](c/consecutive_positive_divisors_179.c) | Added | C only |
+| 180 | [Golden Triplets](https://projecteuler.net/problem=180) | [C](c/golden_triplets_180.c) | Added | C only |
+| 181 | [Grouping Two Different Coloured Objects](https://projecteuler.net/problem=181) | [C](c/investigating_in_how_many_ways_objects_of_two_different_colours_can_be_grouped_181.c) | Added | C only |
+| 182 | [RSA Encryption](https://projecteuler.net/problem=182) | [C](c/rsa_encryption_182.c) | Added | C only |
+| 183 | [Maximum Product of Parts](https://projecteuler.net/problem=183) | [C](c/maximum_product_of_parts_183.c) | Added | C only |
+| 184 | [Triangles Containing the Origin](https://projecteuler.net/problem=184) | [C](c/triangles_containing_the_origin_184.c) | Added | C only |
+| 185 | [Number Mind](https://projecteuler.net/problem=185) | [C](c/number_mind_185.c) | Added | C only |
+| 186 | [Connectedness of a Network](https://projecteuler.net/problem=186) | [C](c/connectedness_of_a_network_186.c) | Added | C only |
+| 187 | [Semiprimes](https://projecteuler.net/problem=187) | [C](c/semiprimes_187.c) | Added | C only |
+| 188 | [Hyperexponentiation](https://projecteuler.net/problem=188) | [C](c/hyperexponentiation_188.c) | Added | C only |
+| 189 | [Tri-colouring a Triangular Grid](https://projecteuler.net/problem=189) | [C](c/tri_colouring_a_triangular_grid_189.c) | Added | C only |
+| 190 | [Maximising a Weighted Product](https://projecteuler.net/problem=190) | [C](c/maximising_a_weighted_product_190.c) | Added | C only |
+| 191 | [Prize Strings](https://projecteuler.net/problem=191) | [C](c/prize_strings_191.c) | Added | C only |
+| 192 | [Best Approximations](https://projecteuler.net/problem=192) | [C](c/best_approximations_192.c) | Added | C only |
+| 193 | [Squarefree Numbers](https://projecteuler.net/problem=193) | [C](c/squarefree_numbers_193.c) | Added | C only |
+| 194 | [Coloured Configurations](https://projecteuler.net/problem=194) | [C](c/coloured_configurations_194.c) | Added | C only |
+| 195 | [60-degree Triangle Inscribed Circles](https://projecteuler.net/problem=195) | [C](c/inscribed_circles_of_triangles_with_one_angle_of_60_degrees_195.c) | Added | C only |
+| 196 | [Prime Triplets](https://projecteuler.net/problem=196) | [C](c/prime_triplets_196.c) | Added | C only |
+| 197 | [A Recursively Defined Sequence](https://projecteuler.net/problem=197) | [C](c/investigating_the_behaviour_of_a_recursively_defined_sequence_197.c) | Added | C only |
+| 198 | [Ambiguous Numbers](https://projecteuler.net/problem=198) | [C](c/ambiguous_numbers_198.c) | Added | C only |
+| 199 | [Iterative Circle Packing](https://projecteuler.net/problem=199) | [C](c/iterative_circle_packing_199.c) | Added | C only |
+| 200 | [Prime-proof Squbes](https://projecteuler.net/problem=200) | [C](c/prime_proof_squbes_200.c) | Added | C only |
+| 201 | [Subsets with a Unique Sum](https://projecteuler.net/problem=201) | [C](c/subsets_with_a_unique_sum_201.c) | Added | C only |
+| 202 | [Laserbeam](https://projecteuler.net/problem=202) | [C](c/laserbeam_202.c) | Added | C only |
+| 203 | [Squarefree Binomial Coefficients](https://projecteuler.net/problem=203) | [C](c/squarefree_binomial_coefficients_203.c) | Added | C only |
+| 204 | [Generalised Hamming Numbers](https://projecteuler.net/problem=204) | [C](c/generalised_hamming_numbers_204.c) | Added | C only |
+| 205 | [Dice Game](https://projecteuler.net/problem=205) | [C](c/dice_game_205.c) | Added | C only |
+| 206 | [Concealed Square](https://projecteuler.net/problem=206) | [C](c/concealed_square_206.c) | Added | C only |
+| 207 | [Integer Partition Equations](https://projecteuler.net/problem=207) | [C](c/integer_partition_equations_207.c) | Added | C only |
+| 208 | [Robot Walks](https://projecteuler.net/problem=208) | [C](c/robot_walks_208.c) | Added | C only |
+| 209 | [Circular Logic](https://projecteuler.net/problem=209) | [C](c/circular_logic_209.c) | Added | C only |
+| 210 | [Obtuse Angled Triangles](https://projecteuler.net/problem=210) | [C](c/obtuse_angled_triangles_210.c) | Added | C only |
+| 211 | [Divisor Square Sum](https://projecteuler.net/problem=211) | [C](c/divisor_square_sum_211.c) | Added | C only |
+| 212 | [Combined Volume of Cuboids](https://projecteuler.net/problem=212) | [C](c/combined_volume_of_cuboids_212.c) | Added | C only |
+| 213 | [Flea Circus](https://projecteuler.net/problem=213) | [C](c/flea_circus_213.c) | Added | C only |
+| 214 | [Totient Chains](https://projecteuler.net/problem=214) | [C](c/totient_chains_214.c) | Added | C only |
+| 215 | [Crack-free Walls](https://projecteuler.net/problem=215) | [C](c/crack_free_walls_215.c) | Added | C only |
+| 216 | [The Primality of 2n^2 - 1](https://projecteuler.net/problem=216) | [C](c/the_primality_of_2n2_minus_1_216.c) | Added | C only |
+| 217 | [Balanced Numbers](https://projecteuler.net/problem=217) | [C](c/balanced_numbers_217.c) | Added | C only |
+| 218 | [Perfect Right-angled Triangles](https://projecteuler.net/problem=218) | [C](c/perfect_right_angled_triangles_218.c) | Added | C only |
+| 219 | [Skew-cost Coding](https://projecteuler.net/problem=219) | [C](c/skew_cost_coding_219.c) | Added | C only |
+| 220 | [Heighway Dragon](https://projecteuler.net/problem=220) | [C](c/heighway_dragon_220.c) | Added | C only |
+| 221 | [Alexandrian Integers](https://projecteuler.net/problem=221) | [C](c/alexandrian_integers_221.c) | Added | C only |
+| 222 | [Sphere Packing](https://projecteuler.net/problem=222) | [C](c/sphere_packing_222.c) | Added | C only |
+| 223 | [Almost Right-angled Triangles I](https://projecteuler.net/problem=223) | [C](c/almost_right_angled_triangles_i_223.c) | Added | C only |
+| 224 | [Almost Right-angled Triangles II](https://projecteuler.net/problem=224) | [C](c/almost_right_angled_triangles_ii_224.c) | Added | C only |
+| 225 | [Tribonacci Non-divisors](https://projecteuler.net/problem=225) | [C](c/tribonacci_non_divisors_225.c) | Added | C only |
+| 226 | [A Scoop of Blancmange](https://projecteuler.net/problem=226) | [C](c/a_scoop_of_blancmange_226.c) | Added | C only |
+| 227 | [The Chase](https://projecteuler.net/problem=227) | [C](c/the_chase_227.c) | Added | C only |
+| 228 | [Minkowski Sums](https://projecteuler.net/problem=228) | [C](c/minkowski_sums_228.c) | Added | C only |
+| 229 | [Four Representations Using Squares](https://projecteuler.net/problem=229) | [C](c/four_representations_using_squares_229.c) | Added | C only |
+| 230 | [Fibonacci Words](https://projecteuler.net/problem=230) | [C](c/fibonacci_words_230.c) | Added | C only |
+| 231 | [Prime Factorisation of Binomial Coefficients](https://projecteuler.net/problem=231) | [C](c/prime_factorisation_of_binomial_coefficients_231.c) | Added | C only |
+| 232 | [The Race](https://projecteuler.net/problem=232) | [C](c/the_race_232.c) | Added | C only |
+| 233 | [Lattice Points on a Circle](https://projecteuler.net/problem=233) | [C](c/lattice_points_on_a_circle_233.c) | Added | C only |
+| 234 | [Semidivisible Numbers](https://projecteuler.net/problem=234) | [C](c/semidivisible_numbers_234.c) | Added | C only |
+| 235 | [An Arithmetic Geometric Sequence](https://projecteuler.net/problem=235) | [C](c/an_arithmetic_geometric_sequence_235.c) | Added | C only |
+| 236 | [Luxury Hampers](https://projecteuler.net/problem=236) | [C](c/luxury_hampers_236.c) | Added | C only |
+| 237 | [Tours on a 4 \times N Playing Board](https://projecteuler.net/problem=237) | [C](c/tours_on_a_4_x_n_playing_board_237.c) | Added | C only |
+| 238 | [Infinite String Tour](https://projecteuler.net/problem=238) | [C](c/infinite_string_tour_238.c) | Added | C only |
+| 239 | [Twenty-two Foolish Primes](https://projecteuler.net/problem=239) | [C](c/twenty_two_foolish_primes_239.c) | Added | C only |
+| 240 | [Top Dice](https://projecteuler.net/problem=240) | [C](c/top_dice_240.c) | Added | C only |
+| 241 | [Perfection Quotients](https://projecteuler.net/problem=241) | [C](c/perfection_quotients_241.c) | Added | C only |
+| 242 | [Odd Triplets](https://projecteuler.net/problem=242) | [C](c/odd_triplets_242.c) | Added | C only |
+| 243 | [Resilience](https://projecteuler.net/problem=243) | [C](c/resilience_243.c) | Added | C only |
+| 244 | [Sliders](https://projecteuler.net/problem=244) | [C](c/sliders_244.c) | Added | C only |
+| 245 | [Coresilience](https://projecteuler.net/problem=245) | [C](c/coresilience_245.c) | Added | C only |
+| 246 | [Tangents to an Ellipse](https://projecteuler.net/problem=246) | [C](c/tangents_to_an_ellipse_246.c) | Added | C only |
+| 247 | [Squares Under a Hyperbola](https://projecteuler.net/problem=247) | [C](c/squares_under_a_hyperbola_247.c) | Added | C only |
+| 248 | [Euler's Totient Function Equals 13!](https://projecteuler.net/problem=248) | [C](c/euler_s_totient_function_equals_13_factorial_248.c) | Added | C only |
+| 249 | [Prime Subset Sums](https://projecteuler.net/problem=249) | [C](c/prime_subset_sums_249.c) | Added | C only |
+| 250 | [250250](https://projecteuler.net/problem=250) | [C](c/250250_250.c) | Added | C only |
+| 251 | [Cardano Triplets](https://projecteuler.net/problem=251) | [C](c/cardano_triplets_251.c) | Added | C only |
+| 252 | [Convex Holes](https://projecteuler.net/problem=252) | [C](c/convex_holes_252.c) | Added | C only |
+| 253 | [Tidying Up A](https://projecteuler.net/problem=253) | [C](c/tidying_up_a_253.c) | Added | C only |
+| 254 | [Sums of Digit Factorials](https://projecteuler.net/problem=254) | [C](c/sums_of_digit_factorials_254.c) | Added | C only |
+| 255 | [Rounded Square Roots](https://projecteuler.net/problem=255) | [C](c/rounded_square_roots_255.c) | Added | C only |

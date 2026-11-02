@@ -5,3 +5,7 @@
 /explanations/latex/build/
 /solutions/rust/target/
 __pycache__/
+/.toolchains/
+/.cache/
+/.agents/
+/.codex/

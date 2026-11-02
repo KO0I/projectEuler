@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "description": "Project Euler 1 through 120 in C, Rust, Gforth, and Factor. C, Rust, and Factor pass all 120 exact-answer checks. A recorded 60-second-per-solver Gforth run passes 115 and times out on 5. C, Rust, and Gforth algorithms reside in their individual problem files.",
+  "description": "Project Euler 1 through 255 in C and Rust, through 120 in Gforth, and 191 selected native Factor implementations (71 in the 121–255 extension). Answers are exact output strings, including decimals, hexadecimal, fractions, and coordinate lists.",
   "baseline_commit": "e44f23ed50de1df537097dfa62e339a688e128ba",
   "problems": [
     {
@@ -1765,6 +1765,1697 @@
       "covered_by_report": false,
       "source": "https://projecteuler.net/problem=120",
       "method": "Use the binomial remainder formula to obtain 2a floor((a-1)/2) for each a, then sum from 3 through 1000."
+    },
+    {
+      "number": 121,
+      "title": "Disc Game Prize Fund",
+      "stem": "disc_game_prize_fund_121",
+      "answer": "2269",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=121"
+    },
+    {
+      "number": 122,
+      "title": "Efficient Exponentiation",
+      "stem": "efficient_exponentiation_122",
+      "answer": "1582",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=122"
+    },
+    {
+      "number": 123,
+      "title": "Prime Square Remainders",
+      "stem": "prime_square_remainders_123",
+      "answer": "21035",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=123"
+    },
+    {
+      "number": 124,
+      "title": "Ordered Radicals",
+      "stem": "ordered_radicals_124",
+      "answer": "21417",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=124"
+    },
+    {
+      "number": 125,
+      "title": "Palindromic Sums",
+      "stem": "palindromic_sums_125",
+      "answer": "2906969179",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=125"
+    },
+    {
+      "number": 126,
+      "title": "Cuboid Layers",
+      "stem": "cuboid_layers_126",
+      "answer": "18522",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=126"
+    },
+    {
+      "number": 127,
+      "title": "abc-hits",
+      "stem": "abc_hits_127",
+      "answer": "18407904",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=127"
+    },
+    {
+      "number": 128,
+      "title": "Hexagonal Tile Differences",
+      "stem": "hexagonal_tile_differences_128",
+      "answer": "14516824220",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=128"
+    },
+    {
+      "number": 129,
+      "title": "Repunit Divisibility",
+      "stem": "repunit_divisibility_129",
+      "answer": "1000023",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=129"
+    },
+    {
+      "number": 130,
+      "title": "Composites with Prime Repunit Property",
+      "stem": "composites_with_prime_repunit_property_130",
+      "answer": "149253",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=130"
+    },
+    {
+      "number": 131,
+      "title": "Prime Cube Partnership",
+      "stem": "prime_cube_partnership_131",
+      "answer": "173",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=131"
+    },
+    {
+      "number": 132,
+      "title": "Large Repunit Factors",
+      "stem": "large_repunit_factors_132",
+      "answer": "843296",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=132"
+    },
+    {
+      "number": 133,
+      "title": "Repunit Nonfactors",
+      "stem": "repunit_nonfactors_133",
+      "answer": "453647705",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=133"
+    },
+    {
+      "number": 134,
+      "title": "Prime Pair Connection",
+      "stem": "prime_pair_connection_134",
+      "answer": "18613426663617118",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=134"
+    },
+    {
+      "number": 135,
+      "title": "Same Differences",
+      "stem": "same_differences_135",
+      "answer": "4989",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=135"
+    },
+    {
+      "number": 136,
+      "title": "Singleton Difference",
+      "stem": "singleton_difference_136",
+      "answer": "2544559",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=136"
+    },
+    {
+      "number": 137,
+      "title": "Fibonacci Golden Nuggets",
+      "stem": "fibonacci_golden_nuggets_137",
+      "answer": "1120149658760",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=137"
+    },
+    {
+      "number": 138,
+      "title": "Special Isosceles Triangles",
+      "stem": "special_isosceles_triangles_138",
+      "answer": "1118049290473932",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=138"
+    },
+    {
+      "number": 139,
+      "title": "Pythagorean Tiles",
+      "stem": "pythagorean_tiles_139",
+      "answer": "10057761",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=139"
+    },
+    {
+      "number": 140,
+      "title": "Modified Fibonacci Golden Nuggets",
+      "stem": "modified_fibonacci_golden_nuggets_140",
+      "answer": "5673835352990",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=140"
+    },
+    {
+      "number": 141,
+      "title": "Square Progressive Numbers",
+      "stem": "square_progressive_numbers_141",
+      "answer": "878454337159",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=141"
+    },
+    {
+      "number": 142,
+      "title": "Perfect Square Collection",
+      "stem": "perfect_square_collection_142",
+      "answer": "1006193",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=142"
+    },
+    {
+      "number": 143,
+      "title": "Torricelli Triangles",
+      "stem": "torricelli_triangles_143",
+      "answer": "30758397",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=143"
+    },
+    {
+      "number": 144,
+      "title": "Laser Beam Reflections",
+      "stem": "laser_beam_reflections_144",
+      "answer": "354",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=144"
+    },
+    {
+      "number": 145,
+      "title": "Reversible Numbers",
+      "stem": "reversible_numbers_145",
+      "answer": "608720",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=145"
+    },
+    {
+      "number": 146,
+      "title": "Investigating a Prime Pattern",
+      "stem": "investigating_a_prime_pattern_146",
+      "answer": "676333270",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=146"
+    },
+    {
+      "number": 147,
+      "title": "Rectangles in Cross-hatched Grids",
+      "stem": "rectangles_in_cross_hatched_grids_147",
+      "answer": "846910284",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=147"
+    },
+    {
+      "number": 148,
+      "title": "Exploring Pascal's Triangle",
+      "stem": "exploring_pascals_triangle_148",
+      "answer": "2129970655314432",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=148"
+    },
+    {
+      "number": 149,
+      "title": "Maximum-sum Subsequence",
+      "stem": "maximum_sum_subsequence_149",
+      "answer": "52852124",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=149"
+    },
+    {
+      "number": 150,
+      "title": "Sub-triangle Sums",
+      "stem": "sub_triangle_sums_150",
+      "answer": "-271248680",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=150"
+    },
+    {
+      "number": 151,
+      "title": "A Preference for A5",
+      "stem": "a_preference_for_a5_151",
+      "answer": "0.464399",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=151"
+    },
+    {
+      "number": 152,
+      "title": "Sums of Square Reciprocals",
+      "stem": "writing_one_half_as_inverse_squares_152",
+      "answer": "301",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=152"
+    },
+    {
+      "number": 153,
+      "title": "Investigating Gaussian Integers",
+      "stem": "investigating_gaussian_integers_153",
+      "answer": "17971254122360635",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=153"
+    },
+    {
+      "number": 154,
+      "title": "Exploring Pascal's Pyramid",
+      "stem": "exploring_pascals_pyramid_154",
+      "answer": "479742450",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=154"
+    },
+    {
+      "number": 155,
+      "title": "Counting Capacitor Circuits",
+      "stem": "counting_capacitor_circuits_155",
+      "answer": "3857447",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=155"
+    },
+    {
+      "number": 156,
+      "title": "Counting Digits",
+      "stem": "counting_digits_156",
+      "answer": "21295121502550",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=156"
+    },
+    {
+      "number": 157,
+      "title": "Base-10 Diophantine Reciprocal",
+      "stem": "solving_diophantine_equation_157",
+      "answer": "53490",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=157"
+    },
+    {
+      "number": 158,
+      "title": "Lexicographical Neighbours",
+      "stem": "lexicographical_neighbours_158",
+      "answer": "409511334375",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=158"
+    },
+    {
+      "number": 159,
+      "title": "Digital Root Sums of Factorisations",
+      "stem": "digital_root_sums_of_factorisations_159",
+      "answer": "14489159",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=159"
+    },
+    {
+      "number": 160,
+      "title": "Factorial Trailing Digits",
+      "stem": "factorial_trailing_digits_160",
+      "answer": "16576",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=160"
+    },
+    {
+      "number": 161,
+      "title": "Triominoes",
+      "stem": "triominoes_161",
+      "answer": "20574308184277971",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=161"
+    },
+    {
+      "number": 162,
+      "title": "Hexadecimal Numbers",
+      "stem": "hexadecimal_numbers_162",
+      "answer": "3D58725572C62302",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=162"
+    },
+    {
+      "number": 163,
+      "title": "Cross-hatched Triangles",
+      "stem": "cross_hatched_triangles_163",
+      "answer": "343047",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=163"
+    },
+    {
+      "number": 164,
+      "title": "Three Consecutive Digital Sum Limit",
+      "stem": "three_consecutive_digital_sum_limit_164",
+      "answer": "378158756814587",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=164"
+    },
+    {
+      "number": 165,
+      "title": "Intersections",
+      "stem": "intersections_165",
+      "answer": "2868868",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=165"
+    },
+    {
+      "number": 166,
+      "title": "Criss Cross",
+      "stem": "criss_cross_166",
+      "answer": "7130034",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=166"
+    },
+    {
+      "number": 167,
+      "title": "Investigating Ulam Sequences",
+      "stem": "investigating_ulam_sequences_167",
+      "answer": "3916160068885",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=167"
+    },
+    {
+      "number": 168,
+      "title": "Number Rotations",
+      "stem": "number_rotations_168",
+      "answer": "59206",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=168"
+    },
+    {
+      "number": 169,
+      "title": "Sums of Powers of Two",
+      "stem": "sums_of_powers_of_two_169",
+      "answer": "178653872807",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=169"
+    },
+    {
+      "number": 170,
+      "title": "Pandigital Concatenating Products",
+      "stem": "pandigital_concatenating_products_170",
+      "answer": "9857164023",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=170"
+    },
+    {
+      "number": 171,
+      "title": "Square Sum of the Digital Squares",
+      "stem": "square_sum_of_the_digital_squares_171",
+      "answer": "142989277",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=171"
+    },
+    {
+      "number": 172,
+      "title": "Few Repeated Digits",
+      "stem": "few_repeated_digits_172",
+      "answer": "227485267000992000",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=172"
+    },
+    {
+      "number": 173,
+      "title": "Hollow Square Laminae I",
+      "stem": "hollow_square_laminae_i_173",
+      "answer": "1572729",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=173"
+    },
+    {
+      "number": 174,
+      "title": "Hollow Square Laminae II",
+      "stem": "hollow_square_laminae_ii_174",
+      "answer": "209566",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=174"
+    },
+    {
+      "number": 175,
+      "title": "Fractions and Sum of Powers of Two",
+      "stem": "fractions_involving_the_number_of_ways_175",
+      "answer": "1,13717420,8",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=175"
+    },
+    {
+      "number": 176,
+      "title": "Common Cathetus Right-angled Triangles",
+      "stem": "right_angled_triangles_that_share_a_cathetus_176",
+      "answer": "96818198400000",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=176"
+    },
+    {
+      "number": 177,
+      "title": "Integer Angled Quadrilaterals",
+      "stem": "integer_angled_quadrilaterals_177",
+      "answer": "129325",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=177"
+    },
+    {
+      "number": 178,
+      "title": "Step Numbers",
+      "stem": "step_numbers_178",
+      "answer": "126461847755",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=178"
+    },
+    {
+      "number": 179,
+      "title": "Consecutive Positive Divisors",
+      "stem": "consecutive_positive_divisors_179",
+      "answer": "986262",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=179"
+    },
+    {
+      "number": 180,
+      "title": "Golden Triplets",
+      "stem": "golden_triplets_180",
+      "answer": "285196020571078987",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=180"
+    },
+    {
+      "number": 181,
+      "title": "Grouping Two Different Coloured Objects",
+      "stem": "investigating_in_how_many_ways_objects_of_two_different_colours_can_be_grouped_181",
+      "answer": "83735848679360680",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=181"
+    },
+    {
+      "number": 182,
+      "title": "RSA Encryption",
+      "stem": "rsa_encryption_182",
+      "answer": "399788195976",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=182"
+    },
+    {
+      "number": 183,
+      "title": "Maximum Product of Parts",
+      "stem": "maximum_product_of_parts_183",
+      "answer": "48861552",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=183"
+    },
+    {
+      "number": 184,
+      "title": "Triangles Containing the Origin",
+      "stem": "triangles_containing_the_origin_184",
+      "answer": "1725323624056",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=184"
+    },
+    {
+      "number": 185,
+      "title": "Number Mind",
+      "stem": "number_mind_185",
+      "answer": "4640261571849533",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=185"
+    },
+    {
+      "number": 186,
+      "title": "Connectedness of a Network",
+      "stem": "connectedness_of_a_network_186",
+      "answer": "2325629",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=186"
+    },
+    {
+      "number": 187,
+      "title": "Semiprimes",
+      "stem": "semiprimes_187",
+      "answer": "17427258",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=187"
+    },
+    {
+      "number": 188,
+      "title": "Hyperexponentiation",
+      "stem": "hyperexponentiation_188",
+      "answer": "95962097",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=188"
+    },
+    {
+      "number": 189,
+      "title": "Tri-colouring a Triangular Grid",
+      "stem": "tri_colouring_a_triangular_grid_189",
+      "answer": "10834893628237824",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=189"
+    },
+    {
+      "number": 190,
+      "title": "Maximising a Weighted Product",
+      "stem": "maximising_a_weighted_product_190",
+      "answer": "371048281",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=190"
+    },
+    {
+      "number": 191,
+      "title": "Prize Strings",
+      "stem": "prize_strings_191",
+      "answer": "1918080160",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=191"
+    },
+    {
+      "number": 192,
+      "title": "Best Approximations",
+      "stem": "best_approximations_192",
+      "answer": "57060635927998347",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=192"
+    },
+    {
+      "number": 193,
+      "title": "Squarefree Numbers",
+      "stem": "squarefree_numbers_193",
+      "answer": "684465067343069",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=193"
+    },
+    {
+      "number": 194,
+      "title": "Coloured Configurations",
+      "stem": "coloured_configurations_194",
+      "answer": "61190912",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=194"
+    },
+    {
+      "number": 195,
+      "title": "60-degree Triangle Inscribed Circles",
+      "stem": "inscribed_circles_of_triangles_with_one_angle_of_60_degrees_195",
+      "answer": "75085391",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=195"
+    },
+    {
+      "number": 196,
+      "title": "Prime Triplets",
+      "stem": "prime_triplets_196",
+      "answer": "322303240771079935",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=196"
+    },
+    {
+      "number": 197,
+      "title": "A Recursively Defined Sequence",
+      "stem": "investigating_the_behaviour_of_a_recursively_defined_sequence_197",
+      "answer": "1.710637717",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=197"
+    },
+    {
+      "number": 198,
+      "title": "Ambiguous Numbers",
+      "stem": "ambiguous_numbers_198",
+      "answer": "52374425",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=198"
+    },
+    {
+      "number": 199,
+      "title": "Iterative Circle Packing",
+      "stem": "iterative_circle_packing_199",
+      "answer": "0.00396087",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=199"
+    },
+    {
+      "number": 200,
+      "title": "Prime-proof Squbes",
+      "stem": "prime_proof_squbes_200",
+      "answer": "229161792008",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=200"
+    },
+    {
+      "number": 201,
+      "title": "Subsets with a Unique Sum",
+      "stem": "subsets_with_a_unique_sum_201",
+      "answer": "115039000",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=201"
+    },
+    {
+      "number": 202,
+      "title": "Laserbeam",
+      "stem": "laserbeam_202",
+      "answer": "1209002624",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=202"
+    },
+    {
+      "number": 203,
+      "title": "Squarefree Binomial Coefficients",
+      "stem": "squarefree_binomial_coefficients_203",
+      "answer": "34029210557338",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=203"
+    },
+    {
+      "number": 204,
+      "title": "Generalised Hamming Numbers",
+      "stem": "generalised_hamming_numbers_204",
+      "answer": "2944730",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=204"
+    },
+    {
+      "number": 205,
+      "title": "Dice Game",
+      "stem": "dice_game_205",
+      "answer": "0.5731441",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=205"
+    },
+    {
+      "number": 206,
+      "title": "Concealed Square",
+      "stem": "concealed_square_206",
+      "answer": "1389019170",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=206"
+    },
+    {
+      "number": 207,
+      "title": "Integer Partition Equations",
+      "stem": "integer_partition_equations_207",
+      "answer": "44043947822",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=207"
+    },
+    {
+      "number": 208,
+      "title": "Robot Walks",
+      "stem": "robot_walks_208",
+      "answer": "331951449665644800",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=208"
+    },
+    {
+      "number": 209,
+      "title": "Circular Logic",
+      "stem": "circular_logic_209",
+      "answer": "15964587728784",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=209"
+    },
+    {
+      "number": 210,
+      "title": "Obtuse Angled Triangles",
+      "stem": "obtuse_angled_triangles_210",
+      "answer": "1598174770174689458",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=210"
+    },
+    {
+      "number": 211,
+      "title": "Divisor Square Sum",
+      "stem": "divisor_square_sum_211",
+      "answer": "1922364685",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=211"
+    },
+    {
+      "number": 212,
+      "title": "Combined Volume of Cuboids",
+      "stem": "combined_volume_of_cuboids_212",
+      "answer": "328968937309",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=212"
+    },
+    {
+      "number": 213,
+      "title": "Flea Circus",
+      "stem": "flea_circus_213",
+      "answer": "330.721154",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=213"
+    },
+    {
+      "number": 214,
+      "title": "Totient Chains",
+      "stem": "totient_chains_214",
+      "answer": "1677366278943",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=214"
+    },
+    {
+      "number": 215,
+      "title": "Crack-free Walls",
+      "stem": "crack_free_walls_215",
+      "answer": "806844323190414",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=215"
+    },
+    {
+      "number": 216,
+      "title": "The Primality of 2n^2 - 1",
+      "stem": "the_primality_of_2n2_minus_1_216",
+      "answer": "5437849",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=216"
+    },
+    {
+      "number": 217,
+      "title": "Balanced Numbers",
+      "stem": "balanced_numbers_217",
+      "answer": "6273134",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=217"
+    },
+    {
+      "number": 218,
+      "title": "Perfect Right-angled Triangles",
+      "stem": "perfect_right_angled_triangles_218",
+      "answer": "0",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=218"
+    },
+    {
+      "number": 219,
+      "title": "Skew-cost Coding",
+      "stem": "skew_cost_coding_219",
+      "answer": "64564225042",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=219"
+    },
+    {
+      "number": 220,
+      "title": "Heighway Dragon",
+      "stem": "heighway_dragon_220",
+      "answer": "139776,963904",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=220"
+    },
+    {
+      "number": 221,
+      "title": "Alexandrian Integers",
+      "stem": "alexandrian_integers_221",
+      "answer": "1884161251122450",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=221"
+    },
+    {
+      "number": 222,
+      "title": "Sphere Packing",
+      "stem": "sphere_packing_222",
+      "answer": "1590933",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=222"
+    },
+    {
+      "number": 223,
+      "title": "Almost Right-angled Triangles I",
+      "stem": "almost_right_angled_triangles_i_223",
+      "answer": "61614848",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=223"
+    },
+    {
+      "number": 224,
+      "title": "Almost Right-angled Triangles II",
+      "stem": "almost_right_angled_triangles_ii_224",
+      "answer": "4137330",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=224"
+    },
+    {
+      "number": 225,
+      "title": "Tribonacci Non-divisors",
+      "stem": "tribonacci_non_divisors_225",
+      "answer": "2009",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=225"
+    },
+    {
+      "number": 226,
+      "title": "A Scoop of Blancmange",
+      "stem": "a_scoop_of_blancmange_226",
+      "answer": "0.11316017",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=226"
+    },
+    {
+      "number": 227,
+      "title": "The Chase",
+      "stem": "the_chase_227",
+      "answer": "3780.618622",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=227"
+    },
+    {
+      "number": 228,
+      "title": "Minkowski Sums",
+      "stem": "minkowski_sums_228",
+      "answer": "86226",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=228"
+    },
+    {
+      "number": 229,
+      "title": "Four Representations Using Squares",
+      "stem": "four_representations_using_squares_229",
+      "answer": "11325263",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=229"
+    },
+    {
+      "number": 230,
+      "title": "Fibonacci Words",
+      "stem": "fibonacci_words_230",
+      "answer": "850481152593119296",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=230"
+    },
+    {
+      "number": 231,
+      "title": "Prime Factorisation of Binomial Coefficients",
+      "stem": "prime_factorisation_of_binomial_coefficients_231",
+      "answer": "7526965179680",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=231"
+    },
+    {
+      "number": 232,
+      "title": "The Race",
+      "stem": "the_race_232",
+      "answer": "0.83648556",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=232"
+    },
+    {
+      "number": 233,
+      "title": "Lattice Points on a Circle",
+      "stem": "lattice_points_on_a_circle_233",
+      "answer": "271204031455541309",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=233"
+    },
+    {
+      "number": 234,
+      "title": "Semidivisible Numbers",
+      "stem": "semidivisible_numbers_234",
+      "answer": "1259187438574927161",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=234"
+    },
+    {
+      "number": 235,
+      "title": "An Arithmetic Geometric Sequence",
+      "stem": "an_arithmetic_geometric_sequence_235",
+      "answer": "1.002322108633",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=235"
+    },
+    {
+      "number": 236,
+      "title": "Luxury Hampers",
+      "stem": "luxury_hampers_236",
+      "answer": "123/59",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=236"
+    },
+    {
+      "number": 237,
+      "title": "Tours on a 4 \\times N Playing Board",
+      "stem": "tours_on_a_4_x_n_playing_board_237",
+      "answer": "15836928",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=237"
+    },
+    {
+      "number": 238,
+      "title": "Infinite String Tour",
+      "stem": "infinite_string_tour_238",
+      "answer": "9922545104535661",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=238"
+    },
+    {
+      "number": 239,
+      "title": "Twenty-two Foolish Primes",
+      "stem": "twenty_two_foolish_primes_239",
+      "answer": "0.001887854841",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=239"
+    },
+    {
+      "number": 240,
+      "title": "Top Dice",
+      "stem": "top_dice_240",
+      "answer": "7448717393364181966",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=240"
+    },
+    {
+      "number": 241,
+      "title": "Perfection Quotients",
+      "stem": "perfection_quotients_241",
+      "answer": "482316491800641154",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=241"
+    },
+    {
+      "number": 242,
+      "title": "Odd Triplets",
+      "stem": "odd_triplets_242",
+      "answer": "997104142249036713",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=242"
+    },
+    {
+      "number": 243,
+      "title": "Resilience",
+      "stem": "resilience_243",
+      "answer": "892371480",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=243"
+    },
+    {
+      "number": 244,
+      "title": "Sliders",
+      "stem": "sliders_244",
+      "answer": "96356848",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=244"
+    },
+    {
+      "number": 245,
+      "title": "Coresilience",
+      "stem": "coresilience_245",
+      "answer": "288084712410001",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=245"
+    },
+    {
+      "number": 246,
+      "title": "Tangents to an Ellipse",
+      "stem": "tangents_to_an_ellipse_246",
+      "answer": "810834388",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=246"
+    },
+    {
+      "number": 247,
+      "title": "Squares Under a Hyperbola",
+      "stem": "squares_under_a_hyperbola_247",
+      "answer": "782252",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=247"
+    },
+    {
+      "number": 248,
+      "title": "Euler's Totient Function Equals 13!",
+      "stem": "euler_s_totient_function_equals_13_factorial_248",
+      "answer": "23507044290",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=248"
+    },
+    {
+      "number": 249,
+      "title": "Prime Subset Sums",
+      "stem": "prime_subset_sums_249",
+      "answer": "9275262564250418",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=249"
+    },
+    {
+      "number": 250,
+      "title": "250250",
+      "stem": "250250_250",
+      "answer": "1425480602091519",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=250"
+    },
+    {
+      "number": 251,
+      "title": "Cardano Triplets",
+      "stem": "cardano_triplets_251",
+      "answer": "18946051",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=251"
+    },
+    {
+      "number": 252,
+      "title": "Convex Holes",
+      "stem": "convex_holes_252",
+      "answer": "104924.0",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=252"
+    },
+    {
+      "number": 253,
+      "title": "Tidying Up A",
+      "stem": "tidying_up_a_253",
+      "answer": "11.492847",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=253"
+    },
+    {
+      "number": 254,
+      "title": "Sums of Digit Factorials",
+      "stem": "sums_of_digit_factorials_254",
+      "answer": "8184523820510",
+      "languages": [
+        "c",
+        "rust"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=254"
+    },
+    {
+      "number": 255,
+      "title": "Rounded Square Roots",
+      "stem": "rounded_square_roots_255",
+      "answer": "4.4474011180",
+      "languages": [
+        "c",
+        "rust",
+        "factor"
+      ],
+      "covered_by_report": false,
+      "source": "https://projecteuler.net/problem=255"
     }
   ]
 }

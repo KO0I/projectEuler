@@ -1,6 +1,7 @@
 # Project Euler visualization index
 
-Generate with `make plots-math`. All 23 figures (five pre-existing plus 18 additional)
+Generate with `make plots-math`. All 26 figures (five pre-existing, 18 Euler figures,
+and three Pascal's-pyramid figures)
 are saved to `build/math_plots/` as **SVG, PDF, and PNG**. The linked LaTeX
 report includes the relevant figures automatically when plots have been generated
 before `make docs`. No solver is profiled while creating these figures.
@@ -52,6 +53,9 @@ before `make docs`. No solver is profiled while creating these figures.
 | 115 | Counting Block Combinations II | `block_tilings` | Scaled min red run =4 |
 | 116 | Red, Green or Blue Tiles | `block_tilings` | One color per row |
 | 117 | Red, Green, and Blue Tiles | `block_tilings` | Mixed lengths 2/3/4 |
+| 154 | Exploring Pascal's Pyramid | `pascal_pyramid_tetrahedron` | Exact coefficients through layer 14 |
+| 154 | Exploring Pascal's Pyramid | `pascal_pyramid_layer_surface` | Exact layer 24, log-height surface |
+| 154 | Exploring Pascal's Pyramid | `pascal_pyramid_parity` | Odd coefficients through layer 31 |
 
 These are official Project Euler IDs, **not** the line numbers of the user's
 original list. Problem 10 (Summation of Primes) has an existing extra figure,

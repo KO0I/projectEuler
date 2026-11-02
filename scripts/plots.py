@@ -21,7 +21,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "build" / "profile"
-COLORS = {"c": "#2b6684", "rust": "#cc7954", "forth": "#76718c", "factor": "#407c61"}
+# Light fills keep dense groups of bars readable without making any language
+# visually dominant.  Language identity also comes from the white pattern, so
+# the figures remain usable when hue perception or printing conditions vary.
+COLORS = {"c": "#a9d6e5", "rust": "#f4b6a6", "forth": "#cfc4e8", "factor": "#b8e0c2"}
 HATCHES = {"c": "...", "rust": "\\\\\\", "forth": "xxx", "factor": "oo"}
 STARTUP_COLOR = "#d2d2d2"
 STARTUP_HATCH = "/////"
@@ -93,34 +96,48 @@ def mark_split(ax, x: float, width: float, startup: float):
                   colors=EDGE, linewidth=1.35, zorder=5)
 
 
+def draw_pattern_bar(ax, x: float, height: float, width: float, facecolor: str,
+                     hatch: str, *, bottom: float = 0.0):
+    """Draw a pastel bar with a white pattern and an independent dark outline.
+
+    Matplotlib normally uses one ``edgecolor`` for both the hatch strokes and
+    the rectangle border.  Layering three copies lets the pattern be white for
+    contrast while retaining a crisp dark boundary around adjacent bars.
+    """
+    ax.bar(x, height, width, bottom=bottom, color=facecolor,
+           edgecolor="none", zorder=2)
+    ax.bar(x, height, width, bottom=bottom, color="none", hatch=hatch,
+           edgecolor="white", linewidth=0, zorder=3)
+    ax.bar(x, height, width, bottom=bottom, color="none",
+           edgecolor=EDGE, linewidth=.6, zorder=4)
+
+
 def draw_timed_bar(ax, x: float, width: float, total: float,
                    startup: float | None, execution: float | None,
                    language: str, *, extras: float = 0.0):
     """Draw contiguous time portions with additive heights and fixed hatching."""
     if startup is None or execution is None:
-        ax.bar(x, total + extras, width, color=COLORS[language],
-               hatch=HATCHES[language], edgecolor=EDGE, linewidth=.6)
+        draw_pattern_bar(ax, x, total + extras, width,
+                         COLORS[language], HATCHES[language])
         return
-    ax.bar(x, startup, width, color=STARTUP_COLOR, hatch=STARTUP_HATCH,
-           edgecolor=EDGE, linewidth=.6)
-    ax.bar(x, execution, width, bottom=startup, color=COLORS[language],
-           hatch=HATCHES[language], edgecolor=EDGE, linewidth=.6)
+    draw_pattern_bar(ax, x, startup, width, STARTUP_COLOR, STARTUP_HATCH)
+    draw_pattern_bar(ax, x, execution, width, COLORS[language],
+                     HATCHES[language], bottom=startup)
     mark_split(ax, x, width, startup)
     if extras > 0:
-        ax.bar(x, extras, width, bottom=startup + execution,
-               color=OVERHEAD_COLOR, hatch=OVERHEAD_HATCH,
-               edgecolor=EDGE, linewidth=.6)
+        draw_pattern_bar(ax, x, extras, width, OVERHEAD_COLOR,
+                         OVERHEAD_HATCH, bottom=startup + execution)
 
 
 def legend_handles(languages, *, overhead: bool = False, unattributed: bool = False):
-    handles = [Patch(facecolor=STARTUP_COLOR, edgecolor=EDGE, hatch=STARTUP_HATCH,
+    handles = [Patch(facecolor=STARTUP_COLOR, edgecolor="white", hatch=STARTUP_HATCH,
                      label="Startup: no-op baseline estimate")]
-    handles.extend(Patch(facecolor=COLORS[lang], edgecolor=EDGE,
+    handles.extend(Patch(facecolor=COLORS[lang], edgecolor="white",
                          hatch=HATCHES[lang], label=f"{lang.upper()} execution residual")
                    for lang in languages)
     if overhead:
         handles.append(Patch(facecolor=OVERHEAD_COLOR, hatch=OVERHEAD_HATCH,
-                             edgecolor=EDGE, label="Runner overhead (suite only)"))
+                             edgecolor="white", label="Runner overhead (suite only)"))
     if unattributed:
         handles.append(Patch(facecolor="white", hatch="---", edgecolor=EDGE,
                              label="Undivided: no startup calibration"))
@@ -201,6 +218,7 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
     fig, ax = plt.subplots(figsize=(11, 6))
     width = 0.8 / len(languages)
     unattributed = False
+    zero_residual = False
     for index, language in enumerate(languages):
         xs = np.arange(len(numbers)) + (index - (len(languages) - 1) / 2) * width
         for x, number in zip(xs, numbers):
@@ -213,8 +231,16 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
                 # Legacy uncalibrated rows retain observed wall time and receive
                 # an explicit legend warning instead of an invented subtraction.
                 plotted = execution if execution is not None else total
-                ax.bar(x, plotted, width, color=COLORS[language],
-                       hatch=HATCHES[language], edgecolor=EDGE, linewidth=.6)
+                draw_pattern_bar(ax, x, plotted, width,
+                                 COLORS[language], HATCHES[language])
+                if plotted == 0:
+                    # A zero-height rectangle is mathematically correct but
+                    # invisible.  The diamond preserves that measured state
+                    # and distinguishes it from missing or failed programs.
+                    zero_residual = True
+                    ax.plot(x, 0, linestyle="none", marker="D", markersize=5,
+                            markerfacecolor=COLORS[language],
+                            markeredgecolor=EDGE, zorder=6)
             else:
                 absent = row is None
                 if absent:
@@ -238,17 +264,21 @@ def runtime_by_problem_panel(rows, info, out, numbers, scale, stem):
     ax.set_ylabel("Wall time after no-op startup subtraction [ms] (symlog scale)")
     ax.set_title(f"Per-problem runtime: Project Euler {numbers[0]} to {numbers[-1]}")
     ax.grid(axis="y", linestyle=":", alpha=.4)
-    handles = [Patch(facecolor=COLORS[language], edgecolor=EDGE,
+    handles = [Patch(facecolor=COLORS[language], edgecolor="white",
                      hatch=HATCHES[language], label=f"{language.upper()} runtime")
                for language in languages]
     if unattributed:
         handles.append(Patch(facecolor="white", hatch="---", edgecolor=EDGE,
                              label="Observed wall time: no startup estimate"))
+    if zero_residual:
+        handles.append(Line2D([], [], linestyle="none", marker="D", markersize=5,
+                              markerfacecolor="white", markeredgecolor=EDGE,
+                              label="0 ms residual (at/below startup estimate)"))
     handles.extend(result_marker_handles(rows, languages, numbers))
     ax.legend(handles=handles, ncol=3,
               fontsize=8, loc="upper left")
     fig.text(.01, .040, "Bar height = observed child wall time minus the minimal no-op startup estimate. "
-             "Orange triangle = timeout; red X = other failure.", fontsize=8)
+             "Diamond at zero = duration at/below that estimate; orange triangle = timeout.", fontsize=8)
     fig.text(.01, .020, "Residual still includes solver loading, I/O and shutdown. "
              "One run per solver; no warm-up; compilation excluded; no statistical error bars.", fontsize=8)
     fig.text(.01, .004, f"Run: {info['run_id']} | revision: {info['environment']['revision'][:12]}", fontsize=8)

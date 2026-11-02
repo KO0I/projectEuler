@@ -68,12 +68,16 @@ class StartupPlotTests(unittest.TestCase):
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots()
         plots.draw_timed_bar(ax, 0, .6, 4.0, 1.25, 2.75, 'c')
-        self.assertEqual(len(ax.patches), 2)
+        # Each logical segment has a fill, a white-hatch overlay, and a dark
+        # outline.  The layers decouple hatch color from border color.
+        self.assertEqual(len(ax.patches), 6)
         self.assertAlmostEqual(ax.patches[0].get_height(), 1.25)
-        self.assertAlmostEqual(ax.patches[1].get_height(), 2.75)
-        self.assertAlmostEqual(ax.patches[1].get_y(), 1.25)
-        self.assertNotEqual(ax.patches[0].get_facecolor(), ax.patches[1].get_facecolor())
-        self.assertNotEqual(ax.patches[0].get_hatch(), ax.patches[1].get_hatch())
+        self.assertAlmostEqual(ax.patches[3].get_height(), 2.75)
+        self.assertAlmostEqual(ax.patches[3].get_y(), 1.25)
+        self.assertNotEqual(ax.patches[0].get_facecolor(), ax.patches[3].get_facecolor())
+        self.assertEqual(ax.patches[1].get_edgecolor(), (1.0, 1.0, 1.0, 1.0))
+        self.assertEqual(ax.patches[4].get_edgecolor(), (1.0, 1.0, 1.0, 1.0))
+        self.assertNotEqual(ax.patches[1].get_hatch(), ax.patches[4].get_hatch())
         self.assertTrue(ax.collections, 'Startup/compute boundary must be a visible line')
         plt.close(fig)
 
@@ -87,8 +91,24 @@ class StartupPlotTests(unittest.TestCase):
             plots.runtime_by_problem_panel(
                 rows, info, Path('.'), [1], (0, 10), 'sample')
         fig = write.call_args.args[0]
-        self.assertEqual(len(fig.axes[0].patches), 1)
+        self.assertEqual(len(fig.axes[0].patches), 3)
         self.assertAlmostEqual(fig.axes[0].patches[0].get_height(), 4.0)
+        plt.close(fig)
+
+    def test_zero_residual_is_an_explicit_diamond_not_an_absent_bar(self):
+        import matplotlib.pyplot as plt
+        from unittest.mock import patch
+        info = {'run_id': 'sample', 'languages': ['c'],
+                'environment': {'revision': 'unavailable'}}
+        rows = {'c': {1: self.row(1, 'c', 1, 1)}}
+        with patch.object(plots, 'write') as write:
+            plots.runtime_by_problem_panel(
+                rows, info, Path('.'), [1], (0, 10), 'sample')
+        fig = write.call_args.args[0]
+        ax = fig.axes[0]
+        self.assertIn('D', [line.get_marker() for line in ax.lines])
+        labels = [text.get_text() for text in ax.get_legend().get_texts()]
+        self.assertIn('0 ms residual (at/below startup estimate)', labels)
         plt.close(fig)
 
     def test_chart_rendered_for_single_language_without_fake_numbers(self):

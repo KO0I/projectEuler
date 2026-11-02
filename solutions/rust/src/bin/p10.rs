@@ -1,5 +1,13 @@
-//! Project Euler 10: summation_of_primes_10.
+//! Project Euler 10: Summation of Primes.
+use project_euler::extra_helpers::sieve;
+
+fn solve() -> i64 {
+    {
+        let p = sieve(2_000_000);
+        (2..2_000_000).filter(|&v| p[v]).map(|v| v as i64).sum()
+    }
+}
+
 fn main() {
-    let answer = project_euler::solve(10).expect("known Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

@@ -39,9 +39,9 @@ forth-check:
 factor-check:
 	@test -x "$(FACTOR_VM)" || { echo "Factor language VM missing: set FACTOR_VM to the executable, NOT GNU factor"; exit 1; }
 
-build/tests/c_helpers: tests/c_helpers.c support/c/euler_common.c support/c/euler_common.h
+build/tests/c_helpers: tests/c_helpers.c support/c/euler_common.c support/c/euler_common.h solutions/c/number_letter_counts_17.c solutions/c/counting_sundays_19.c
 	@mkdir -p "$(@D)"
-	$(CC) $(CFLAGS) -UNDEBUG -Isupport/c "$<" -o "$@" $(LDFLAGS) $(LDLIBS)
+	$(CC) $(CFLAGS) -UNDEBUG -Isupport/c "$<" support/c/euler_common.c -o "$@" $(LDFLAGS) $(LDLIBS)
 build/tests/c_extra_helpers: tests/c_extra_helpers.c support/c/euler_extra.h
 	@mkdir -p "$(@D)"
 	$(CC) $(CFLAGS) -UNDEBUG -Isupport/c "$<" -o "$@" $(LDFLAGS) $(LDLIBS)
@@ -53,7 +53,7 @@ unit-c: build/tests/c_helpers build/tests/c_extra_helpers $(C_EXAMPLE_TESTS)
 	./build/tests/c_extra_helpers
 	@set -e; for example_test in $(C_EXAMPLE_TESTS); do ./$$example_test; done
 unit-rust:
-	cargo test --release --lib --manifest-path $(RUST_MANIFEST)
+	cargo test --release --lib --bins --manifest-path $(RUST_MANIFEST)
 unit-forth: forth-check
 	gforth solutions/forth/test-big.fs
 	gforth solutions/forth/test-solvers.fs

@@ -22,7 +22,7 @@ Run `make plots-math` from the repository root **first** to embed mathematical f
 make
 ```
 
-Requires a reasonably complete TeX Live installation with `pdflatex`, `amsmath`, `geometry`, `hyperref`, `microtype`, and Latin Modern fonts. The generated PDF is `build/project_euler_c_explanations.pdf`. The atlas has placeholders for unbuilt diagrams and includes generated PDF figures after `make plots-math`. The code comparison chapter distinguishes complete C and Factor validation from the current 115-pass, five-timeout Gforth result and the older Rust baseline. Build artifacts are excluded by the repository-wide `.gitignore`.
+Requires a reasonably complete TeX Live installation with `pdflatex`, `amsmath`, `geometry`, `hyperref`, `microtype`, and Latin Modern fonts. The generated PDF is `build/project_euler_c_explanations.pdf`. The atlas has placeholders for unbuilt diagrams and includes generated PDF figures after `make plots-math`. The code comparison chapter distinguishes complete C, Rust, and Factor validation from the 115-pass, five-timeout Gforth result. The embedded profile figures carry their recorded run identifier; see the validation records for later runs. Build artifacts are excluded by the repository-wide `.gitignore`.
 
 ## Chapters
 

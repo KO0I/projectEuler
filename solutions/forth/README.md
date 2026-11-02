@@ -1,6 +1,8 @@
 # Gforth solutions and arbitrary precision
 
-Run from the repository root, for example `gforth solutions/forth/p25.fs`. Each `pN.fs` includes `solvers.fs` relative to the file and prints one integer. The solution collection requires a **64-bit Gforth** host; it fails explicitly with other cell widths. Gforth 0.7.3 is the validated interpreter. Brace locals are a documented Gforth extension rather than an assertion of universal Forth portability.
+Run from the repository root, for example `gforth solutions/forth/p25.fs`. Each `pN.fs` defines its own algorithm and problem-specific state, requires the reusable words in `math.fs`, and prints one integer. It does not load other problems or dispatch on a problem number. The solution collection requires a **64-bit Gforth** host; it fails explicitly with other cell widths. Gforth 0.7.3 is the validated interpreter. Brace locals are a documented Gforth extension rather than an assertion of universal Forth portability.
+
+Helper tests define `euler-testing` before including selected problem files. This suppresses their final print-and-exit invocation so the tests can exercise their words directly. Normal command-line execution needs no flag. Shared big integers live in `big.fs`; problem-specific buffers such as the prime-pair adjacency matrix live in their owning problem file.
 
 ## Big integers (`big.fs`)
 
@@ -12,6 +14,6 @@ A heap-allocated number stores sign, used-limb count, capacity and a separately 
 - `bmul`: signed multiplication into a distinct destination. `bmul-small!`, `badd-small!`, `bdiv-small!` serve positive-magnitude arithmetic and return the small-division remainder.
 - `babscompare`, `bdecimal-length`, `bdigitsum`, `bprint`: comparison, inspection and decimal output.
 
-The destination of `badd` or `bmul` must not alias either input. Small factors/divisors must keep intermediate cell arithmetic in range. This is an initial project-specific bigint library, not a general replacement for GMP; full big-divisor division and a public signed text parser are not implemented. Problem 48 uses bounded double-cell modular arithmetic through `multiply-mod` and `power-mod` in `solvers.fs`.
+The destination of `badd` or `bmul` must not alias either input. Small factors/divisors must keep intermediate cell arithmetic in range. This is an initial project-specific bigint library, not a general replacement for GMP; full big-divisor division and a public signed text parser are not implemented. Problem 48 uses bounded double-cell modular arithmetic through `multiply-mod` and `power-mod` in `math.fs`.
 
 Run `make unit-forth` for bigint tests and the standard `T{ ... -> ... }T` stack-test convention for numerical helpers. Bigint regressions cover 1201-digit dynamic growth, zero normalization, carries, borrows, signs, multiplication, small division and decimal conversion. Run `python3 scripts/bench.py --mode test --timeout 60 --languages forth` to check all 120 entry points with a one-minute limit per solver, or `make profile-forth PROFILE_TIMEOUT=60` to record one timed invocation of each and generate graphs. The current result is 115 passes and five timeouts, with no wrong answers or runtime errors; see the [validation record](../../docs/VALIDATION_FORTH_1_120.md).

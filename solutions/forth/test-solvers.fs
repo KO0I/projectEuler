@@ -1,5 +1,12 @@
 \ Minimal cell-stack tester using the standard T{ ... -> ... }T convention.
-include solvers.fs
+true constant euler-testing
+require math.fs
+include p17.fs
+include p60.fs
+include p68.fs
+include p80.fs
+include p105.fs
+include p115.fs
 variable test-start
 variable actual-count
 create actual-stack 128 cells allot

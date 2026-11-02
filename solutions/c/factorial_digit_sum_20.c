@@ -1,9 +1,27 @@
-/* Project Euler 20: the corrected algorithm is in support/c/euler_common.c. */
-#include <stdio.h>
+/* Project Euler 20: Factorial Digit Sum.
+ * This file owns the problem algorithm. */
 #include "euler_common.h"
+#include <ctype.h>
+#include <gmp.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+static long long solve(void) {
+  mpz_t n;
+  mpz_init(n);
+  mpz_fac_ui(n, 100);
+  long long s = digit_sum(n);
+  mpz_clear(n);
+  return s;
+}
+
 int main(void) {
-    long long answer = euler_solve(20);
-    if (answer < 0 && 20 != 27) return 1;
-    printf("%lld\n", answer);
-    return 0;
+  long long answer = solve();
+  if (answer < 0)
+    return 1;
+  printf("%lld\n", answer);
+  return 0;
 }

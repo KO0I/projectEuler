@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Structural coverage audit for Euler 1–120 (not a compiler or runtime test).
 
-Asserts that every entrypoint exists, names a source-level native solver, the
-Forth dispatcher covers every number, and no manifesto language claims refer
-to missing executables. Runtime verification is deliberately separate.
+Asserts that every entrypoint exists and C, Rust, and Forth algorithms belong
+to their problem files. Libraries must not dispatch problem numbers or import
+problem implementations. Runtime verification is deliberately separate.
 """
 from __future__ import annotations
 
@@ -46,19 +46,16 @@ def audit() -> dict[str, int]:
         result[lang] = len(available)
 
     forth = BASE / 'forth'
-    dispatcher = (forth / 'solvers.fs').read_text()
-    included = re.findall(r'^include (extra\d?\.fs)$', dispatcher, re.M)
-    assert set(included) == {'extra.fs', 'extra2.fs', 'extra3.fs', 'extra4.fs'}
-    sources = '\n'.join((forth / name).read_text() for name in
-                        ('solvers.fs', 'extra.fs', 'extra2.fs', 'extra3.fs', 'extra4.fs'))
-    definitions = [int(n) for n in re.findall(r'^:\s+p(\d+)\s', sources, re.M)]
-    assert len(definitions) == 120 and set(definitions) == NUMBERS, 'Forth definitions mismatch'
-    choices = [int(n) for n in re.findall(r'\b(\d+)\s+of\s+p\d+\s+endof', dispatcher)]
-    assert len(choices) == 120 and set(choices) == NUMBERS, 'Forth switch mismatch'
     for n in NUMBERS:
-        assert re.search(rf'\b{n}\s+of\s+p{n}\s+endof\b', dispatcher), n
-        assert re.search(rf'\b{n}\s+euler-solve\s+\.\s+cr\s+bye',
-                         (forth / f'p{n}.fs').read_text()), n
+        text = (forth / f'p{n}.fs').read_text()
+        assert re.findall(r'^:\s+p(\d+)\s', text, re.M) == [str(n)], f'Forth p{n}: wrong owner'
+        assert 'euler-solve' not in text, f'Forth p{n}: central dispatcher'
+        assert not re.search(r'^(?:include|require)\s+(?:p\d+|solvers|extra\d*)\.fs', text, re.M), n
+        assert re.search(rf'\bp{n}\s+\.\s+cr\s+bye', text), f'Forth p{n}: no direct invocation'
+    for helper in ('math.fs', 'big.fs'):
+        text = (forth / helper).read_text()
+        assert not re.search(r'^:\s+(?:p\d+|euler-solve)\s', text, re.M), helper
+        assert not re.search(r'^(?:include|require)\s+p\d+\.fs', text, re.M), helper
 
     factor = BASE / 'factor'
     originals = {1, 2, 5, 6, 9, 10, 11, 16, 20, 25, 28, 39}
@@ -79,21 +76,25 @@ def audit() -> dict[str, int]:
     assert (factor / 'euler/shared/shared.factor').is_file(), 'missing shared Factor vocabulary'
 
     rust = BASE / 'rust' / 'src'
-    def match_arms(path: Path) -> set[int]:
-        source = path.read_text()
-        start = source.index('pub fn solve(')
-        return {int(n) for n in re.findall(r'\b(\d+)\s*=>', source[start:])}
-    preexisting = match_arms(rust / 'lib.rs')
-    additions = [match_arms(rust / 'extra' / f'{part}.rs')
-                 for part in ('easy', 'middle', 'hard')]
-    assert len(preexisting) == 37
-    assert len(set.union(*additions)) == 83
-    assert sum(map(len, additions)) == 83, 'duplicate Rust solver match arms'
-    assert preexisting | set.union(*additions) == NUMBERS, 'Rust switch mismatch'
-    assert 'pub mod extra_helpers;' in (rust / 'lib.rs').read_text()
     for n in NUMBERS:
         text = (rust / 'bin' / f'p{n}.rs').read_text()
-        assert re.search(r'\bsolve\s*\(', text), f'Rust p{n}: no solver call'
+        assert re.search(r'^fn solve\(\)\s*->\s*i64', text, re.M), f'Rust p{n}: no local algorithm'
+        assert 'project_euler::solve' not in text, f'Rust p{n}: central dispatcher'
+        assert not re.search(r'include!\s*\(|#\[path|\bmod p\d+', text), f'Rust p{n}: external solver'
+    for helper in rust.rglob('*.rs'):
+        if 'bin' in helper.relative_to(rust).parts:
+            continue
+        text = helper.read_text()
+        assert not re.search(r'\bfn (?:solve|p\d+)\s*\(', text), f'Rust library contains problem solver: {helper}'
+
+    for item in problems:
+        path = BASE / 'c' / (item['stem'] + '.c')
+        text = path.read_text()
+        assert 'euler_solve' not in text, f'C {item["number"]}: central dispatcher'
+        assert re.search(r'\bint main\s*\(', text), f'C {item["number"]}: no main'
+    for helper in (ROOT / 'support/c').glob('euler_*.*'):
+        text = helper.read_text()
+        assert not re.search(r'\b(?:euler_solve|problem\d+)\s*\(', text), helper
 
     for item in problems:
         assert set(item['languages']) == {'c', 'rust', 'forth', 'factor'}, item['number']

@@ -1,5 +1,10 @@
-//! Project Euler 108: native Rust via the shared project_euler library.
+//! Project Euler 108: Diophantine Reciprocals I.
+use project_euler::extra_helpers::least_reciprocal_denominator;
+
+fn solve() -> i64 {
+    least_reciprocal_denominator(1000)
+}
+
 fn main() {
-    let answer = project_euler::solve(108).expect("implemented Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

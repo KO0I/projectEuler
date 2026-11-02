@@ -1,5 +1,10 @@
 # Validation of C problems 1 through 120
 
+This is the historical validation record for the C extension. The subsequent
+[ownership refactor](adr/0002-problem-owned-algorithms.md) moves the original
+37 algorithms into their problem files; claims below about unchanged sources
+refer to the extension at the time of this record.
+
 The extension adds 83 C solutions to the 37 already covered in the report.
 All 120 programs produce their exact reference answers. The original C source
 files, `support/c/euler_common.c`, and the existing LaTeX report are unchanged

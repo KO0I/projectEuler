@@ -3,8 +3,8 @@
 C covers every official problem number from 1 through 120. The 37 solutions already
 addressed in the report are retained; the other 83 have new C implementations.
 
-Each new C file contains its algorithm. The older C entry points retain their
-implementations in `support/c/euler_common.c`. Historical attempts are in
+Every C file contains its algorithm. The shared `support/c/euler_common.c`
+module provides reusable mathematical operations. Historical attempts are in
 `c/variants/`; they are not the programs built by the default target.
 
 Rust, Gforth, and Factor also have entry points for every listed problem.

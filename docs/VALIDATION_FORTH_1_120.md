@@ -1,5 +1,9 @@
 # Validation of Gforth problems 1 through 120
 
+This record describes the repair cycle before algorithms moved into individual
+problem files. The [ownership-refactor validation](VALIDATION_PROBLEM_OWNERSHIP.md)
+reproduces the same 115-pass, five-timeout result with the new layout.
+
 The Gforth collection has 120 entry points. On the recorded 60-second-per-solver run, 115 produce the exact reference answer. Problems 33, 49, 51, 88, and 98 time out. The run has no wrong answers, runtime errors, or unavailable entries.
 
 ## Executed checks

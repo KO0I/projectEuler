@@ -1,31 +1,33 @@
 # Project Euler solutions in C, Rust, Gforth, and Factor
 
-C now covers **all 120 problems from 1 through 120**. The 37 C solutions already addressed in the report are retained; this change adds the other 83. Each new title-named C file contains its algorithm. Rust, Gforth, and Factor now have source entry points for 120 problems each. The Factor 0.102 suite passes all 120 exact-answer checks. A recorded 60-second-per-solver Gforth run passes 115; problems 33, 49, 51, 88, and 98 time out, with no wrong answers or runtime errors. Rust still requires a recorded full native validation. Original attempts remain under `variants/`. This branch does not modify `master` until reviewed and merged.
+C, Rust, Gforth, and Factor have source entry points for **all 120 problems from 1 through 120**. Each C, Rust, and Gforth file owns its problem's algorithm and uses shared mathematical helpers. C and Rust pass all 120 exact-answer checks after the ownership refactor; the Factor 0.102 suite also has a complete passing validation record. A recorded 60-second-per-solver Gforth run passes 115; problems 33, 49, 51, 88, and 98 time out, with no wrong answers or runtime errors. Original attempts remain under `variants/`. This branch does not modify `master` until reviewed and merged.
 
 - [Problem index](solutions/README.md)
 - [The 83 new C methods, answers, bounds, and model qualifications](docs/C_1_120.md)
 - [C 1–120 validation record](docs/VALIDATION_C_1_120.md)
 - [Gforth 1–120 validation record](docs/VALIDATION_FORTH_1_120.md)
+- [Validation after moving algorithms into problem files](docs/VALIDATION_PROBLEM_OWNERSHIP.md)
 - [Factor implementations](solutions/factor/README.md)
 - [Mathematical figure index](docs/visualization_index.md)
 - [LaTeX explanations and red correction notes](explanations/latex/README.md)
 - [Validation baseline](docs/VALIDATION.md)
 - [Original-to-new path map](docs/renames.tsv)
 - [Implementation and timing decisions](docs/adr/0001-c-rust-forth.md)
+- [Problem ownership and shared-library boundaries](docs/adr/0002-problem-owned-algorithms.md)
 
 ## Layout
 
 | Path | Purpose |
 | --- | --- |
 | `solutions/c/` | 120 title-named C programs: 37 retained and 83 added |
-| `support/c/euler_common.c` | Unchanged implementations for the original 37 C programs |
+| `support/c/euler_common.c` | Reusable mathematical helpers, including primality, divisors, and digit sums |
 | `support/c/euler_extra.h` | Exact arithmetic, primality, allocation, and input helpers for the new C programs |
 | `solutions/c/variants/historical/` | Preserved original main C programs |
-| `solutions/rust/src/lib.rs` | Independent Rust algorithms |
-| `solutions/rust/src/bin/pN.rs` | One Rust executable per problem |
-| `solutions/forth/solvers.fs` | Independent Gforth algorithms |
+| `solutions/rust/src/lib.rs` | Library entry point exposing reusable mathematical and input helpers |
+| `solutions/rust/src/bin/pN.rs` | Each problem's Rust algorithm, private helpers, and executable entry point |
+| `solutions/forth/math.fs` | Reusable mathematical and input words; no problem dispatcher |
 | `solutions/forth/big.fs` | Dynamic base-10000 arbitrary-precision arithmetic |
-| `solutions/forth/pN.fs` | One Gforth entry point per problem |
+| `solutions/forth/pN.fs` | Each problem's Gforth algorithm, private state, and direct invocation |
 | `solutions/factor/pN.factor` | 120 Factor language entry points; not GNU coreutils or Gforth |
 | `tests/answers.json` | 120 exact reference answers and explicit per-language coverage |
 | `tests/data/manifest.json` | Official URLs and SHA-256 hashes for 15 additional input files |
@@ -34,6 +36,8 @@ C now covers **all 120 problems from 1 through 120**. The 37 C solutions already
 
 Historical Shell, Mathematica and LaTeX work remains under `solutions/`. Generated prime and palindrome tables are no longer required by the main solutions. Real input datasets remain versioned: `lsum`, `names.txt`, and `tests/data/p008.txt` / `p011.txt`.
 
+Every C, Rust, and Gforth problem owns its algorithm in its numbered source file. Libraries provide parameterized mathematical operations and input handling. There is no `euler_solve(N)`, `project_euler::solve(N)`, or `euler-solve` dispatcher. Run `python3 scripts/check_language_coverage.py` to check these ownership rules. The original 37 C algorithms were moved out of the common module; the dated validation records describe the earlier layout.
+
 ## C only
 
 For the C suite, install a C11 compiler, GMP development files, GNU Make, and Python 3. All problem inputs are included; solving does not require network access.
@@ -41,7 +45,6 @@ For the C suite, install a C11 compiler, GMP development files, GNU Make, and Py
 ```sh
 make -j4 c-release
 make test-c                 # all 120 exact answers and input checksums
-python3 scripts/bench.py --mode test --timeout 60 --languages forth
 make unit-c                 # independent examples and arithmetic checks
 make run-c PROBLEM=120      # build and run one problem by number
 make sanitize-c            # Linux: all 120 under AddressSanitizer and UBSan
@@ -107,10 +110,10 @@ make run_profile_all PROFILE_TIMEOUT=120 STARTUP_SAMPLES=7
 make plots                     # regenerate plots from the latest complete run
 ```
 
-The Factor 0.102 entry points pass all 120 exact-answer checks in local native
-validation. The recorded Gforth full-suite run passes 115 of 120 with a
-60-second limit per solver; the other five are timeouts. Rust has not yet
-completed the same recorded full-suite run. A failed benchmark remains a validation finding. The installer and full
+The Rust and Factor 0.102 entry points pass all 120 exact-answer checks in local
+native validation. The recorded Gforth full-suite run passes 115 of 120 with a
+60-second limit per solver; the other five are timeouts.
+A failed benchmark remains a validation finding. The installer and full
 four-language target have passed static checks but have not been executed on
 Arch Linux here.
 

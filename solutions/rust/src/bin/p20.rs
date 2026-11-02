@@ -1,5 +1,18 @@
-//! Project Euler 20: factorial_digit_sum_20.
+//! Project Euler 20: Factorial Digit Sum.
+use num_bigint::BigUint;
+use num_traits::One;
+use project_euler::extra_helpers::digit_sum;
+
+fn solve() -> i64 {
+    {
+        let mut fact = BigUint::one();
+        for n in 2u32..=100 {
+            fact *= n;
+        }
+        digit_sum(&fact)
+    }
+}
+
 fn main() {
-    let answer = project_euler::solve(20).expect("known Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

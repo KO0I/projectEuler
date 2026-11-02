@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "description": "Project Euler 1 through 120 in C, Rust, Gforth, and Factor. C and Factor pass all 120 exact-answer checks. A recorded 60-second-per-solver Gforth run passes 115 and times out on 5. Rust still requires a recorded full native validation.",
+  "description": "Project Euler 1 through 120 in C, Rust, Gforth, and Factor. C, Rust, and Factor pass all 120 exact-answer checks. A recorded 60-second-per-solver Gforth run passes 115 and times out on 5. C, Rust, and Gforth algorithms reside in their individual problem files.",
   "baseline_commit": "e44f23ed50de1df537097dfa62e339a688e128ba",
   "problems": [
     {

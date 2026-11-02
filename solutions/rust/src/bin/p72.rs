@@ -1,5 +1,13 @@
-//! Project Euler 72: native Rust via the shared project_euler library.
+//! Project Euler 72: Counting Fractions.
+use project_euler::extra_helpers::totients;
+
+fn solve() -> i64 {
+    {
+        let p = totients(1_000_000);
+        p[2..].iter().map(|&v| v as i64).sum()
+    }
+}
+
 fn main() {
-    let answer = project_euler::solve(72).expect("implemented Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

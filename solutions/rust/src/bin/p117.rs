@@ -1,5 +1,20 @@
-//! Project Euler 117: native Rust via the shared project_euler library.
+//! Project Euler 117: Red, Green, and Blue Tiles.
+
+fn solve() -> i64 {
+    {
+        let mut ways = [0u64; 51];
+        ways[0] = 1;
+        for n in 1..=50 {
+            for size in 1..=4 {
+                if size <= n {
+                    ways[n] += ways[n - size];
+                }
+            }
+        }
+        ways[50] as i64
+    }
+}
+
 fn main() {
-    let answer = project_euler::solve(117).expect("implemented Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

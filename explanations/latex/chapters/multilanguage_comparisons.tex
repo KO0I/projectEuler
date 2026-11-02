@@ -2,13 +2,18 @@
 \label{sec:crosslanguage}
 
 The original 37-problem collection has a dated validation baseline for C, Rust,
-and Gforth. C and Factor now have complete 120-answer validation records. A
+and Gforth. C, Rust, and Factor now have complete 120-answer validation records. A
 60-second-per-solver Gforth run passes 115 entries and times out on five. The
 \emph{Factor programming language} is a concatenative,
 stack-based language with its own VM; it is neither Gforth nor the GNU
 \texttt{factor} integer-factorization command. The excerpts below reflect
 the algorithms in this development branch, not the uncorrected historical
 programs.
+
+The C, Rust, and Gforth algorithms now reside in their individual problem files.
+Shared libraries contain reusable mathematical and input operations, with no
+problem-number dispatcher. Problem-specific search state and helper routines
+stay with their owning algorithm. The code excerpts below identify those owners.
 
 \lstset{
  basicstyle=\ttfamily\footnotesize,
@@ -31,19 +36,19 @@ The perimeter constraint eliminates one search variable:
 \]
 All versions test the same conditions but spell the computation differently.
 
-\textbf{C} (\texttt{support/c/euler\_common.c}):
+\textbf{C} (\texttt{solutions/c/special\_pythagorean\_triplet\_9.c}):
 \begin{lstlisting}
 int c=1000-a-b;
 if(c>b&&a*a+b*b==c*c)return a*b*c;
 \end{lstlisting}
 
-\textbf{Rust} (\texttt{solutions/rust/src/lib.rs}):
+\textbf{Rust} (\texttt{solutions/rust/src/bin/p9.rs}):
 \begin{lstlisting}
 let c=1000-a-b;
 if c>b&&a*a+b*b==c*c {answer=a*b*c;break;}
 \end{lstlisting}
 
-\textbf{Gforth} (\texttt{solutions/forth/solvers.fs}, \texttt{pythagorean-product}):
+\textbf{Gforth} (\texttt{solutions/forth/p9.fs}, \texttt{pythagorean-product}):
 \begin{lstlisting}
 1000 a - b - to c
 c b > a a * b b * + c c * = and
@@ -208,7 +213,7 @@ entries are marked explicitly and no Gforth total-suite bar is drawn.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{../../build/profile/latest-plots/runtime_by_problem.pdf}
-\caption{The latest selected profile run. Passing solvers have measured bars;
+\caption{The recorded profile run preceding the ownership refactor. Passing solvers have measured bars;
 timeouts use orange triangles, while wrong answers and runtime errors would use
 red crosses. The run identifier printed in the figure ties it to its CSV and
 metadata.}

@@ -1,5 +1,11 @@
-//! Project Euler 16: power_digit_sum_16.
+//! Project Euler 16: Power Digit Sum.
+use num_bigint::BigUint;
+use project_euler::extra_helpers::digit_sum;
+
+fn solve() -> i64 {
+    digit_sum(&BigUint::from(2u8).pow(1000))
+}
+
 fn main() {
-    let answer = project_euler::solve(16).expect("known Euler problem");
-    println!("{answer}");
+    println!("{}", solve());
 }

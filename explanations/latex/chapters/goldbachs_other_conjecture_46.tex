@@ -11,7 +11,7 @@ The conjecture under test is that every odd composite integer \(z\) can be writt
 The program reads prime numbers from \verb|million_primes|, generates odd composite candidates using the external helper \verb|isPrime|, then searches pairs \((p,m)\) for the required decomposition. It calls external \verb|powi| to square \verb|m|, advances to the next candidate when a representation is found, and times the search.
 
 \subsection*{Correctness and limitations}
-The source does not declare its external helper prototypes or link them directly; it must be built with \verb|support/c/functions/isPrime.c| and \verb|powi.c|. It reads without guarding the million-element array capacity and loops using \verb|i<=1000000|, an out-of-range index. Advancing \verb|i| inside nested loops can also invalidate the current candidate. The expected counterexample is 5777; the current implementation cannot be regarded as a safe computation of it.
+The source does not declare its external helper prototypes or link them directly; it must be built with \verb|support/c/functions/isPrime.c| and \verb|powi.c|. It reads without guarding the million-element array capacity and loops using \verb|i<=1000000|, an out-of-range index. Advancing \verb|i| inside nested loops can also invalidate the current candidate. The expected counterexample is \texttt{...5777}; the current implementation cannot be regarded as a safe computation of it.
 
 
 \subsection*{Correction to historical C}

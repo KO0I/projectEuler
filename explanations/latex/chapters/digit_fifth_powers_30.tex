@@ -11,7 +11,7 @@ Find nontrivial positive integers whose value equals the sum of the fifth powers
 The helper \verb|powi| evaluates integer powers by repeated multiplication. For each candidate \verb|j| from 2 to one million, seven expressions using division and remainder extract decimal digits from units through millions. Their fifth powers are summed and compared to \verb|j|. Matching candidates are printed and added to \verb|answer|.
 
 \subsection*{Correctness and limitations}
-This search covers all candidates that can meet the condition, and leading zero digits contribute zero. The expected sum is 443839. The upper bound is conservative; using the maximum digit-power sum gives a tighter bound. The unused variable \verb|k| and outdated comment about fourth powers do not change the computation.
+This search covers all candidates that can meet the condition, and leading zero digits contribute zero. The expected sum is \texttt{...3839}. The upper bound is conservative; using the maximum digit-power sum gives a tighter bound. The unused variable \verb|k| and outdated comment about fourth powers do not change the computation.
 
 
 \subsection*{Correction to historical C}

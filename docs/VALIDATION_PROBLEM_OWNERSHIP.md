@@ -23,6 +23,9 @@ concurrently, so these durations are validation evidence, not a speed comparison
 The source export has no local Git metadata, so the runner records the revision
 as unavailable.
 
+Published CSV and JSON evidence uses answer suffixes such as `…9448`. The
+unredacted values remain in `tests/answers.json`, which the test runner uses.
+
 The Gforth run is `20261102T005541.284606Z-d9722a86`. It reproduced the existing
 timeouts on problems 33, 49, 51, 88, and 98, with zero wrong answers or runtime
 errors. The refactor does not resolve those remaining algorithm/runtime findings.

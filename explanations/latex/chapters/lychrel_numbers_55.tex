@@ -11,7 +11,7 @@ For each positive integer below 10000, repeatedly reverse its decimal digits and
 The helper \verb|reverse| extracts base-ten digits using remainder and division, building the reversed number. \verb|isPalindrome| compares a number with its reversal. For each starting value, the main loop performs up to 50 reverse-and-add operations, clears the \verb|lychrel| flag if a palindrome appears, and increments \verb|score| otherwise.
 
 \subsection*{Correctness and limitations}
-The outer loop includes 10000 itself (\verb|a<10001|), one beyond the stated strict upper bound. More importantly, repeated reverse-and-add operations can exceed the capacity of \verb|unsigned long long|; unsigned overflow silently changes the sequence. Arbitrary-precision integers are needed for a trustworthy 50-iteration test. The expected candidate count is 249, but the program's fixed-width arithmetic may not reproduce it.
+The outer loop includes 10000 itself (\verb|a<10001|), one beyond the stated strict upper bound. More importantly, repeated reverse-and-add operations can exceed the capacity of \verb|unsigned long long|; unsigned overflow silently changes the sequence. Arbitrary-precision integers are needed for a trustworthy 50-iteration test. The expected candidate count is \texttt{...249}, but the program's fixed-width arithmetic may not reproduce it.
 
 
 \subsection*{Correction to historical C}

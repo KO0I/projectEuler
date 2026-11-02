@@ -11,7 +11,7 @@ Find the sum of the decimal digits of \(100!\).
 The call \verb|mpz_fac_ui(factorial,100)| constructs the factorial exactly. A modulus with powers of ten retains the lowest digits; division by the next lower power isolates one digit. Each digit is added to \verb|result|, an arbitrary-precision accumulator.
 
 \subsection*{Correctness and limitations}
-The loop runs beyond the decimal length, but the surplus digits are zero. The expected sum is 648. The output message incorrectly describes digits of \(2^{100}\), copied from problem 16; it should name \(100!\). Compiling requires GMP and \verb|-lgmp|.
+The loop runs beyond the decimal length, but the surplus digits are zero. The expected sum is \texttt{...648}. The output message incorrectly describes digits of \(2^{100}\), copied from problem 16; it should name \(100!\). Compiling requires GMP and \verb|-lgmp|.
 
 
 \subsection*{Correction to historical C --- Problem 20}

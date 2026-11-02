@@ -11,7 +11,7 @@ For every starting integer \(2\leq n<10^6\), iterate \(n\mapsto n/2\) when even,
 The helper \verb|collatz| counts the current number as the first term and advances until reaching 1. \verb|main| compares every length with \verb|max| and records the corresponding start in \verb|maxi|. It also prints each candidate's length.
 
 \subsection*{Correctness and limitations}
-The implementation redundantly calls \verb|collatz(i)| up to three times. The final \verb|printf| uses \verb|%i| for \verb|unsigned long long| values, causing undefined behavior; use \verb|%llu|. Intermediate values can exceed the starting limit and may overflow. The expected starting value is 837799, but the final formatting must be repaired.
+The implementation redundantly calls \verb|collatz(i)| up to three times. The final \verb|printf| uses \verb|%i| for \verb|unsigned long long| values, causing undefined behavior; use \verb|%llu|. Intermediate values can exceed the starting limit and may overflow. The expected starting value is \texttt{...7799}, but the final formatting must be repaired.
 
 
 \subsection*{Correction to historical C --- Problem 14}

@@ -14,7 +14,7 @@ S=\sum_{\substack{p<2\,000\,000\\p\text{ prime}}}p.
 The program reads an integer \verb|n| from its command-line argument and loops from \verb|i=1| through \verb|n|, adding each integer to \verb|sum|. It thus computes the arithmetic series \(n(n+1)/2\). There is no primality test.
 
 \subsection*{Correctness and limitations}
-This C program does not solve the prime-summation problem. Using \verb|int| also overflows for the intended bound. A sieve of Eratosthenes combined with a 64-bit accumulator would solve the actual problem. The mathematical answer is 142913828922, not the sum produced by the present algorithm.
+This C program does not solve the prime-summation problem. Using \verb|int| also overflows for the intended bound. A sieve of Eratosthenes combined with a 64-bit accumulator would solve the actual problem. The mathematical answer is \texttt{...8922}, not the sum produced by the present algorithm.
 
 
 \subsection*{Correction to historical C --- Problem 10}

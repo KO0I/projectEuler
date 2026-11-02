@@ -6,6 +6,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def answer_suffix(answer: str) -> str:
+    """Show enough of a result to identify it without revealing the full answer."""
+    return "…" + answer[-4:]
+
+
 def main() -> None:
     manifest = json.loads((ROOT / "tests/answers.json").read_text())
     problems = sorted(manifest["problems"], key=lambda p: p["number"])
@@ -84,29 +89,29 @@ def main() -> None:
         "### Two model qualifications", "",
         "Problem 59 exhausts every lowercase three-letter key and ranks the resulting text",
         "with an English-language score. That recognition rule is a documented heuristic;",
-        "the official input produces the expected sum 129448.", "",
+        "the official input produces the expected sum `" + answer_suffix("129448") + "`.", "",
         "Problem 84 solves a 30,720-state Markov chain with cyclic deck indices and the",
         "consecutive-doubles count. The initial shuffle is unspecified in the [official",
         "problem](https://projecteuler.net/problem=84), so the code declares two possible deck",
-        "orders. Both give the requested four-sided modal string 101524. Probabilities are",
+        "orders. Both give the requested four-sided modal string `" + answer_suffix("101524") + "`. Probabilities are",
         "conditional on those orders, rather than averaged over every possible shuffle.", "",
         "| Six-sided model | GO probability | Square 19 probability | Modal string |",
         "| --- | ---: | ---: | --- |",
-        "| Explicit cyclic order 0 | 0.030976091750 | 0.031045560279 | 102419 |",
-        "| Explicit cyclic order 1 | 0.030992122560 | 0.030852423967 | 102400 |", "",
+        "| Explicit cyclic order 0 | 0.030976091750 | 0.031045560279 | `" + answer_suffix("102419") + "` |",
+        "| Explicit cyclic order 1 | 0.030992122560 | 0.030852423967 | `" + answer_suffix("102400") + "` |", "",
         "This small difference explains why one fixed order differs from the statement's",
         "illustrative six-sided result. An independent rule interpreter checks every one of",
         "the 1,105,920 state/dice combinations. Regression tests retain both six-sided",
         "conditional results, the four-sided answer, and the card/jail edge cases.", "",
         "## The 83 new solutions", "",
-        "These are reference answers used by the automated checks. Each source computes its",
-        "answer from the problem constraints or its official input; the table is not read by",
+        "These answer suffixes identify the automated checks without publishing full results.",
+        "Each source computes its answer from the problem constraints or its official input; the table is not read by",
         "the solvers. Follow each C link for the recurrence, search bound, and implementation.", "",
-        "| No. | Problem and source | Reference answer | Method |",
+        "| No. | Problem and source | Answer suffix | Method |",
         "| ---: | --- | ---: | --- |"]
     for p in new:
         notes.append(f"| {p['number']} | [{p['title']}](../solutions/c/{p['stem']}.c) | "
-                     f"`{p['answer']}` | {p['method'].replace('|', '/')} |")
+                     f"`{answer_suffix(p['answer'])}` | {p['method'].replace('|', '/')} |")
     notes += ["", "## Verification entry points", "",
         "- `make check-c-coverage` checks exactly 120 numbered sources and the 37 report exclusions.",
         "- `make check-inputs` checks all 15 official input hashes.",

@@ -2,6 +2,8 @@
 
 C, Rust, Gforth, and Factor have source entry points for **all 120 problems from 1 through 120**. Each C, Rust, and Gforth file owns its problem's algorithm and uses shared mathematical helpers. C and Rust pass all 120 exact-answer checks after the ownership refactor; the Factor 0.102 suite also has a complete passing validation record. A recorded 60-second-per-solver Gforth run passes 115; problems 33, 49, 51, 88, and 98 time out, with no wrong answers or runtime errors. Original attempts remain under `variants/`. This branch does not modify `master` until reviewed and merged.
 
+Published catalogs and validation exports show only answer suffixes, for example `…9448`. `tests/answers.json` retains exact values for automated verification.
+
 - [Problem index](solutions/README.md)
 - [The 83 new C methods, answers, bounds, and model qualifications](docs/C_1_120.md)
 - [C 1–120 validation record](docs/VALIDATION_C_1_120.md)

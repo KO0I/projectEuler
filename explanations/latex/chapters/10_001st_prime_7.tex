@@ -11,7 +11,7 @@ The aim is to identify \(p_{10001}\), the prime in position 10001 of the ordered
 The program seeds a table with 2 and 3, examines successive odd candidates using trial division up to a rounded square root, and writes accepted candidates to a file named \verb|primes|. Comments discuss using the table for other Euler problems as well.
 
 \subsection*{Correctness and limitations}
-The hard-coded \verb|countDone=78497| is unrelated to the 10001st prime, and the desired table entry is never printed. Both the generation loop and the output loop access index \verb|countDone| in an array of that length, which is out of bounds. Candidate-reset behavior during trial division also needs correction. The expected prime is 104743; this file does not establish it.
+The hard-coded \verb|countDone=78497| is unrelated to the 10001st prime, and the desired table entry is never printed. Both the generation loop and the output loop access index \verb|countDone| in an array of that length, which is out of bounds. Candidate-reset behavior during trial division also needs correction. The expected prime is \texttt{...4743}; this file does not establish it.
 
 
 \subsection*{Correction to historical C --- Problem 7}

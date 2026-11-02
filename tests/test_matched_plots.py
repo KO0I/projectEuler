@@ -48,9 +48,11 @@ class StartupPlotTests(unittest.TestCase):
 
     def test_problem_ranges_are_readable_and_complete(self):
         groups = plots.problem_ranges(range(1, 256))
-        self.assertEqual([(group[0], group[-1]) for group in groups],
-                         [(1, 50), (51, 100), (101, 150),
-                          (151, 200), (201, 255)])
+        self.assertEqual(len(groups), 26)
+        self.assertEqual([(group[0], group[-1]) for group in groups[:3]],
+                         [(1, 10), (11, 20), (21, 30)])
+        self.assertEqual((groups[-1][0], groups[-1][-1]), (251, 255))
+        self.assertTrue(all(len(group) == 10 for group in groups[:-1]))
         self.assertEqual([number for group in groups for number in group],
                          list(range(1, 256)))
 
@@ -73,6 +75,20 @@ class StartupPlotTests(unittest.TestCase):
         self.assertNotEqual(ax.patches[0].get_facecolor(), ax.patches[1].get_facecolor())
         self.assertNotEqual(ax.patches[0].get_hatch(), ax.patches[1].get_hatch())
         self.assertTrue(ax.collections, 'Startup/compute boundary must be a visible line')
+        plt.close(fig)
+
+    def test_per_problem_panel_omits_startup_estimate(self):
+        import matplotlib.pyplot as plt
+        from unittest.mock import patch
+        info = {'run_id': 'sample', 'languages': ['c'],
+                'environment': {'revision': 'unavailable'}}
+        rows = {'c': {1: self.row(1, 'c', 5, 1)}}
+        with patch.object(plots, 'write') as write:
+            plots.runtime_by_problem_panel(
+                rows, info, Path('.'), [1], (0, 10), 'sample')
+        fig = write.call_args.args[0]
+        self.assertEqual(len(fig.axes[0].patches), 1)
+        self.assertAlmostEqual(fig.axes[0].patches[0].get_height(), 4.0)
         plt.close(fig)
 
     def test_chart_rendered_for_single_language_without_fake_numbers(self):
